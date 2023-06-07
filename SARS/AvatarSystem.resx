@@ -1,0 +1,3988 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="tabControl.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Bottom, Left, Right</value>
+  </data>
+  <data name="avatarGrid.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Bottom, Left, Right</value>
+  </data>
+  <metadata name="picture.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <data name="picture.HeaderText" xml:space="preserve">
+    <value>Picture</value>
+  </data>
+  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="picture.Width" type="System.Int32, mscorlib">
+    <value>258</value>
+  </data>
+  <metadata name="AvatarName.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <data name="AvatarName.HeaderText" xml:space="preserve">
+    <value>Name</value>
+  </data>
+  <metadata name="Author.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <data name="Author.HeaderText" xml:space="preserve">
+    <value>Author Name</value>
+  </data>
+  <metadata name="AvatarId.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <data name="AvatarId.HeaderText" xml:space="preserve">
+    <value>Avatar ID</value>
+  </data>
+  <metadata name="Logged.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <data name="Logged.HeaderText" xml:space="preserve">
+    <value>Date Logged</value>
+  </data>
+  <metadata name="ImageURL.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <data name="ImageURL.HeaderText" xml:space="preserve">
+    <value>ImageURL</value>
+  </data>
+  <data name="ImageURL.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <metadata name="Ripped.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <data name="Ripped.HeaderText" xml:space="preserve">
+    <value>Ripped</value>
+  </data>
+  <metadata name="Favorited.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <data name="Favorited.HeaderText" xml:space="preserve">
+    <value>Favorited</value>
+  </data>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="avatarGrid.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI, 11px</value>
+  </data>
+  <data name="avatarGrid.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="avatarGrid.ScrollBars" type="System.Windows.Forms.ScrollBars, System.Windows.Forms">
+    <value>Vertical</value>
+  </data>
+  <data name="avatarGrid.Size" type="System.Drawing.Size, System.Drawing">
+    <value>840, 411</value>
+  </data>
+  <data name="avatarGrid.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;avatarGrid.Name" xml:space="preserve">
+    <value>avatarGrid</value>
+  </data>
+  <data name="&gt;&gt;avatarGrid.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridView, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;avatarGrid.Parent" xml:space="preserve">
+    <value>metroTabPage1</value>
+  </data>
+  <data name="&gt;&gt;avatarGrid.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="metroTabPage1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 38</value>
+  </data>
+  <data name="metroTabPage1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>840, 414</value>
+  </data>
+  <data name="metroTabPage1.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="metroTabPage1.Text" xml:space="preserve">
+    <value>Avatars</value>
+  </data>
+  <data name="&gt;&gt;metroTabPage1.Name" xml:space="preserve">
+    <value>metroTabPage1</value>
+  </data>
+  <data name="&gt;&gt;metroTabPage1.Type" xml:space="preserve">
+    <value>MetroFramework.Controls.MetroTabPage, MetroFramework, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a</value>
+  </data>
+  <data name="&gt;&gt;metroTabPage1.Parent" xml:space="preserve">
+    <value>tabControl</value>
+  </data>
+  <data name="&gt;&gt;metroTabPage1.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="groupBox7.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Bottom, Left, Right</value>
+  </data>
+  <data name="btnNewPreview.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Right</value>
+  </data>
+  <data name="btnNewPreview.Location" type="System.Drawing.Point, System.Drawing">
+    <value>650, 79</value>
+  </data>
+  <data name="btnNewPreview.Size" type="System.Drawing.Size, System.Drawing">
+    <value>141, 35</value>
+  </data>
+  <data name="btnNewPreview.TabIndex" type="System.Int32, mscorlib">
+    <value>103</value>
+  </data>
+  <data name="btnNewPreview.Text" xml:space="preserve">
+    <value>Preview 2.0</value>
+  </data>
+  <data name="&gt;&gt;btnNewPreview.Name" xml:space="preserve">
+    <value>btnNewPreview</value>
+  </data>
+  <data name="&gt;&gt;btnNewPreview.Type" xml:space="preserve">
+    <value>MetroFramework.Controls.MetroButton, MetroFramework, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a</value>
+  </data>
+  <data name="&gt;&gt;btnNewPreview.Parent" xml:space="preserve">
+    <value>groupBox7</value>
+  </data>
+  <data name="&gt;&gt;btnNewPreview.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="chkReuploaderEnabled.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="chkReuploaderEnabled.Location" type="System.Drawing.Point, System.Drawing">
+    <value>7, 19</value>
+  </data>
+  <data name="chkReuploaderEnabled.Size" type="System.Drawing.Size, System.Drawing">
+    <value>695, 15</value>
+  </data>
+  <data name="chkReuploaderEnabled.TabIndex" type="System.Int32, mscorlib">
+    <value>105</value>
+  </data>
+  <data name="chkReuploaderEnabled.Text" xml:space="preserve">
+    <value>Enable Reuploader (Reuploader is not as safe as unity method use at your own risk as this may lead to you getting banned)</value>
+  </data>
+  <data name="chkReuploaderEnabled.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="&gt;&gt;chkReuploaderEnabled.Name" xml:space="preserve">
+    <value>chkReuploaderEnabled</value>
+  </data>
+  <data name="&gt;&gt;chkReuploaderEnabled.Type" xml:space="preserve">
+    <value>MetroFramework.Controls.MetroCheckBox, MetroFramework, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a</value>
+  </data>
+  <data name="&gt;&gt;chkReuploaderEnabled.Parent" xml:space="preserve">
+    <value>groupBox7</value>
+  </data>
+  <data name="&gt;&gt;chkReuploaderEnabled.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="groupBox7.Location" type="System.Drawing.Point, System.Drawing">
+    <value>9, 285</value>
+  </data>
+  <data name="groupBox7.Size" type="System.Drawing.Size, System.Drawing">
+    <value>797, 120</value>
+  </data>
+  <data name="groupBox7.TabIndex" type="System.Int32, mscorlib">
+    <value>104</value>
+  </data>
+  <data name="groupBox7.Text" xml:space="preserve">
+    <value>Misc</value>
+  </data>
+  <data name="&gt;&gt;groupBox7.Name" xml:space="preserve">
+    <value>groupBox7</value>
+  </data>
+  <data name="&gt;&gt;groupBox7.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;groupBox7.Parent" xml:space="preserve">
+    <value>metroTabPage2</value>
+  </data>
+  <data name="&gt;&gt;groupBox7.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="groupBox5.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Left, Right</value>
+  </data>
+  <data name="chkCustomApi.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Right</value>
+  </data>
+  <data name="chkCustomApi.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="chkCustomApi.Location" type="System.Drawing.Point, System.Drawing">
+    <value>333, 64</value>
+  </data>
+  <data name="chkCustomApi.Size" type="System.Drawing.Size, System.Drawing">
+    <value>108, 15</value>
+  </data>
+  <data name="chkCustomApi.TabIndex" type="System.Int32, mscorlib">
+    <value>102</value>
+  </data>
+  <data name="chkCustomApi.Text" xml:space="preserve">
+    <value>Use Custom API</value>
+  </data>
+  <data name="&gt;&gt;chkCustomApi.Name" xml:space="preserve">
+    <value>chkCustomApi</value>
+  </data>
+  <data name="&gt;&gt;chkCustomApi.Type" xml:space="preserve">
+    <value>MetroFramework.Controls.MetroCheckBox, MetroFramework, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a</value>
+  </data>
+  <data name="&gt;&gt;chkCustomApi.Parent" xml:space="preserve">
+    <value>groupBox5</value>
+  </data>
+  <data name="&gt;&gt;chkCustomApi.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="metroLabel7.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="metroLabel7.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 16</value>
+  </data>
+  <data name="metroLabel7.Size" type="System.Drawing.Size, System.Drawing">
+    <value>150, 25</value>
+  </data>
+  <data name="metroLabel7.TabIndex" type="System.Int32, mscorlib">
+    <value>87</value>
+  </data>
+  <data name="metroLabel7.Text" xml:space="preserve">
+    <value>Custom API URL</value>
+  </data>
+  <data name="&gt;&gt;metroLabel7.Name" xml:space="preserve">
+    <value>metroLabel7</value>
+  </data>
+  <data name="&gt;&gt;metroLabel7.Type" xml:space="preserve">
+    <value>MetroFramework.Controls.MetroLabel, MetroFramework, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a</value>
+  </data>
+  <data name="&gt;&gt;metroLabel7.Parent" xml:space="preserve">
+    <value>groupBox5</value>
+  </data>
+  <data name="&gt;&gt;metroLabel7.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="txtCustomApi.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Left, Right</value>
+  </data>
+  <data name="resource.Image" type="System.Resources.ResXNullRef, System.Windows.Forms">
+    <value />
+  </data>
+  <data name="resource.Location" type="System.Drawing.Point, System.Drawing">
+    <value>399, 2</value>
+  </data>
+  <data name="resource.Size" type="System.Drawing.Size, System.Drawing">
+    <value>27, 27</value>
+  </data>
+  <data name="resource.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="resource.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="txtCustomApi.Location" type="System.Drawing.Point, System.Drawing">
+    <value>162, 16</value>
+  </data>
+  <data name="txtCustomApi.Size" type="System.Drawing.Size, System.Drawing">
+    <value>429, 32</value>
+  </data>
+  <data name="txtCustomApi.TabIndex" type="System.Int32, mscorlib">
+    <value>80</value>
+  </data>
+  <data name="&gt;&gt;txtCustomApi.Name" xml:space="preserve">
+    <value>txtCustomApi</value>
+  </data>
+  <data name="&gt;&gt;txtCustomApi.Type" xml:space="preserve">
+    <value>MetroFramework.Controls.MetroTextBox, MetroFramework, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a</value>
+  </data>
+  <data name="&gt;&gt;txtCustomApi.Parent" xml:space="preserve">
+    <value>groupBox5</value>
+  </data>
+  <data name="&gt;&gt;txtCustomApi.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="btnCustomSave.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Right</value>
+  </data>
+  <data name="btnCustomSave.Location" type="System.Drawing.Point, System.Drawing">
+    <value>449, 54</value>
+  </data>
+  <data name="btnCustomSave.Size" type="System.Drawing.Size, System.Drawing">
+    <value>141, 35</value>
+  </data>
+  <data name="btnCustomSave.TabIndex" type="System.Int32, mscorlib">
+    <value>95</value>
+  </data>
+  <data name="btnCustomSave.Text" xml:space="preserve">
+    <value>Save</value>
+  </data>
+  <data name="&gt;&gt;btnCustomSave.Name" xml:space="preserve">
+    <value>btnCustomSave</value>
+  </data>
+  <data name="&gt;&gt;btnCustomSave.Type" xml:space="preserve">
+    <value>MetroFramework.Controls.MetroButton, MetroFramework, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a</value>
+  </data>
+  <data name="&gt;&gt;btnCustomSave.Parent" xml:space="preserve">
+    <value>groupBox5</value>
+  </data>
+  <data name="&gt;&gt;btnCustomSave.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="groupBox5.Location" type="System.Drawing.Point, System.Drawing">
+    <value>210, 117</value>
+  </data>
+  <data name="groupBox5.Size" type="System.Drawing.Size, System.Drawing">
+    <value>596, 98</value>
+  </data>
+  <data name="groupBox5.TabIndex" type="System.Int32, mscorlib">
+    <value>102</value>
+  </data>
+  <data name="groupBox5.Text" xml:space="preserve">
+    <value>Custom API</value>
+  </data>
+  <data name="&gt;&gt;groupBox5.Name" xml:space="preserve">
+    <value>groupBox5</value>
+  </data>
+  <data name="&gt;&gt;groupBox5.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;groupBox5.Parent" xml:space="preserve">
+    <value>metroTabPage2</value>
+  </data>
+  <data name="&gt;&gt;groupBox5.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="chkTls13.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Right</value>
+  </data>
+  <data name="chkTls13.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="chkTls13.Location" type="System.Drawing.Point, System.Drawing">
+    <value>381, 69</value>
+  </data>
+  <data name="chkTls13.Size" type="System.Drawing.Size, System.Drawing">
+    <value>59, 15</value>
+  </data>
+  <data name="chkTls13.TabIndex" type="System.Int32, mscorlib">
+    <value>101</value>
+  </data>
+  <data name="chkTls13.Text" xml:space="preserve">
+    <value>TLS 1.3</value>
+  </data>
+  <data name="&gt;&gt;chkTls13.Name" xml:space="preserve">
+    <value>chkTls13</value>
+  </data>
+  <data name="&gt;&gt;chkTls13.Type" xml:space="preserve">
+    <value>MetroFramework.Controls.MetroCheckBox, MetroFramework, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a</value>
+  </data>
+  <data name="&gt;&gt;chkTls13.Parent" xml:space="preserve">
+    <value>groupBox4</value>
+  </data>
+  <data name="&gt;&gt;chkTls13.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="chkTls12.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Right</value>
+  </data>
+  <data name="chkTls12.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="chkTls12.Location" type="System.Drawing.Point, System.Drawing">
+    <value>316, 69</value>
+  </data>
+  <data name="chkTls12.Size" type="System.Drawing.Size, System.Drawing">
+    <value>59, 15</value>
+  </data>
+  <data name="chkTls12.TabIndex" type="System.Int32, mscorlib">
+    <value>100</value>
+  </data>
+  <data name="chkTls12.Text" xml:space="preserve">
+    <value>TLS 1.2</value>
+  </data>
+  <data name="&gt;&gt;chkTls12.Name" xml:space="preserve">
+    <value>chkTls12</value>
+  </data>
+  <data name="&gt;&gt;chkTls12.Type" xml:space="preserve">
+    <value>MetroFramework.Controls.MetroCheckBox, MetroFramework, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a</value>
+  </data>
+  <data name="&gt;&gt;chkTls12.Parent" xml:space="preserve">
+    <value>groupBox4</value>
+  </data>
+  <data name="&gt;&gt;chkTls12.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="chkTls11.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Right</value>
+  </data>
+  <data name="chkTls11.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="chkTls11.Location" type="System.Drawing.Point, System.Drawing">
+    <value>251, 69</value>
+  </data>
+  <data name="chkTls11.Size" type="System.Drawing.Size, System.Drawing">
+    <value>59, 15</value>
+  </data>
+  <data name="chkTls11.TabIndex" type="System.Int32, mscorlib">
+    <value>99</value>
+  </data>
+  <data name="chkTls11.Text" xml:space="preserve">
+    <value>TLS 1.1</value>
+  </data>
+  <data name="&gt;&gt;chkTls11.Name" xml:space="preserve">
+    <value>chkTls11</value>
+  </data>
+  <data name="&gt;&gt;chkTls11.Type" xml:space="preserve">
+    <value>MetroFramework.Controls.MetroCheckBox, MetroFramework, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a</value>
+  </data>
+  <data name="&gt;&gt;chkTls11.Parent" xml:space="preserve">
+    <value>groupBox4</value>
+  </data>
+  <data name="&gt;&gt;chkTls11.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="chkTls10.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Right</value>
+  </data>
+  <data name="chkTls10.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="chkTls10.Location" type="System.Drawing.Point, System.Drawing">
+    <value>186, 69</value>
+  </data>
+  <data name="chkTls10.Size" type="System.Drawing.Size, System.Drawing">
+    <value>59, 15</value>
+  </data>
+  <data name="chkTls10.TabIndex" type="System.Int32, mscorlib">
+    <value>98</value>
+  </data>
+  <data name="chkTls10.Text" xml:space="preserve">
+    <value>TLS 1.0</value>
+  </data>
+  <data name="&gt;&gt;chkTls10.Name" xml:space="preserve">
+    <value>chkTls10</value>
+  </data>
+  <data name="&gt;&gt;chkTls10.Type" xml:space="preserve">
+    <value>MetroFramework.Controls.MetroCheckBox, MetroFramework, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a</value>
+  </data>
+  <data name="&gt;&gt;chkTls10.Parent" xml:space="preserve">
+    <value>groupBox4</value>
+  </data>
+  <data name="&gt;&gt;chkTls10.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="chkAltApi.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="chkAltApi.Location" type="System.Drawing.Point, System.Drawing">
+    <value>14, 69</value>
+  </data>
+  <data name="chkAltApi.Size" type="System.Drawing.Size, System.Drawing">
+    <value>77, 15</value>
+  </data>
+  <data name="chkAltApi.TabIndex" type="System.Int32, mscorlib">
+    <value>97</value>
+  </data>
+  <data name="chkAltApi.Text" xml:space="preserve">
+    <value>Alt API Url</value>
+  </data>
+  <data name="&gt;&gt;chkAltApi.Name" xml:space="preserve">
+    <value>chkAltApi</value>
+  </data>
+  <data name="&gt;&gt;chkAltApi.Type" xml:space="preserve">
+    <value>MetroFramework.Controls.MetroCheckBox, MetroFramework, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a</value>
+  </data>
+  <data name="&gt;&gt;chkAltApi.Parent" xml:space="preserve">
+    <value>groupBox4</value>
+  </data>
+  <data name="&gt;&gt;chkAltApi.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="metroLabel15.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="metroLabel15.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 16</value>
+  </data>
+  <data name="metroLabel15.Size" type="System.Drawing.Size, System.Drawing">
+    <value>79, 25</value>
+  </data>
+  <data name="metroLabel15.TabIndex" type="System.Int32, mscorlib">
+    <value>87</value>
+  </data>
+  <data name="metroLabel15.Text" xml:space="preserve">
+    <value>API Key</value>
+  </data>
+  <data name="&gt;&gt;metroLabel15.Name" xml:space="preserve">
+    <value>metroLabel15</value>
+  </data>
+  <data name="&gt;&gt;metroLabel15.Type" xml:space="preserve">
+    <value>MetroFramework.Controls.MetroLabel, MetroFramework, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a</value>
+  </data>
+  <data name="&gt;&gt;metroLabel15.Parent" xml:space="preserve">
+    <value>groupBox4</value>
+  </data>
+  <data name="&gt;&gt;metroLabel15.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="txtApiKey.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Left, Right</value>
+  </data>
+  <data name="resource.Image1" type="System.Resources.ResXNullRef, System.Windows.Forms">
+    <value />
+  </data>
+  <data name="resource.Location1" type="System.Drawing.Point, System.Drawing">
+    <value>469, 2</value>
+  </data>
+  <data name="resource.Size1" type="System.Drawing.Size, System.Drawing">
+    <value>27, 27</value>
+  </data>
+  <data name="resource.TabIndex1" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="resource.Visible1" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="txtApiKey.Location" type="System.Drawing.Point, System.Drawing">
+    <value>92, 16</value>
+  </data>
+  <data name="txtApiKey.Size" type="System.Drawing.Size, System.Drawing">
+    <value>499, 32</value>
+  </data>
+  <data name="txtApiKey.TabIndex" type="System.Int32, mscorlib">
+    <value>80</value>
+  </data>
+  <data name="&gt;&gt;txtApiKey.Name" xml:space="preserve">
+    <value>txtApiKey</value>
+  </data>
+  <data name="&gt;&gt;txtApiKey.Type" xml:space="preserve">
+    <value>MetroFramework.Controls.MetroTextBox, MetroFramework, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a</value>
+  </data>
+  <data name="&gt;&gt;txtApiKey.Parent" xml:space="preserve">
+    <value>groupBox4</value>
+  </data>
+  <data name="&gt;&gt;txtApiKey.ZOrder" xml:space="preserve">
+    <value>6</value>
+  </data>
+  <data name="btnSave.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Right</value>
+  </data>
+  <data name="btnSave.Location" type="System.Drawing.Point, System.Drawing">
+    <value>449, 60</value>
+  </data>
+  <data name="btnSave.Size" type="System.Drawing.Size, System.Drawing">
+    <value>141, 35</value>
+  </data>
+  <data name="btnSave.TabIndex" type="System.Int32, mscorlib">
+    <value>95</value>
+  </data>
+  <data name="btnSave.Text" xml:space="preserve">
+    <value>Save</value>
+  </data>
+  <data name="&gt;&gt;btnSave.Name" xml:space="preserve">
+    <value>btnSave</value>
+  </data>
+  <data name="&gt;&gt;btnSave.Type" xml:space="preserve">
+    <value>MetroFramework.Controls.MetroButton, MetroFramework, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a</value>
+  </data>
+  <data name="&gt;&gt;btnSave.Parent" xml:space="preserve">
+    <value>groupBox4</value>
+  </data>
+  <data name="&gt;&gt;btnSave.ZOrder" xml:space="preserve">
+    <value>7</value>
+  </data>
+  <data name="groupBox4.Location" type="System.Drawing.Point, System.Drawing">
+    <value>210, 3</value>
+  </data>
+  <data name="groupBox4.Size" type="System.Drawing.Size, System.Drawing">
+    <value>596, 108</value>
+  </data>
+  <data name="groupBox4.TabIndex" type="System.Int32, mscorlib">
+    <value>96</value>
+  </data>
+  <data name="groupBox4.Text" xml:space="preserve">
+    <value>API</value>
+  </data>
+  <data name="&gt;&gt;groupBox4.Name" xml:space="preserve">
+    <value>groupBox4</value>
+  </data>
+  <data name="&gt;&gt;groupBox4.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;groupBox4.Parent" xml:space="preserve">
+    <value>metroTabPage2</value>
+  </data>
+  <data name="&gt;&gt;groupBox4.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="btnCheck.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 60</value>
+  </data>
+  <data name="btnCheck.Size" type="System.Drawing.Size, System.Drawing">
+    <value>183, 35</value>
+  </data>
+  <data name="btnCheck.TabIndex" type="System.Int32, mscorlib">
+    <value>80</value>
+  </data>
+  <data name="btnCheck.Text" xml:space="preserve">
+    <value>Check Stored Token</value>
+  </data>
+  <data name="&gt;&gt;btnCheck.Name" xml:space="preserve">
+    <value>btnCheck</value>
+  </data>
+  <data name="&gt;&gt;btnCheck.Type" xml:space="preserve">
+    <value>MetroFramework.Controls.MetroButton, MetroFramework, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a</value>
+  </data>
+  <data name="&gt;&gt;btnCheck.Parent" xml:space="preserve">
+    <value>groupBox2</value>
+  </data>
+  <data name="&gt;&gt;btnCheck.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="btnHsbClean.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 19</value>
+  </data>
+  <data name="btnHsbClean.Size" type="System.Drawing.Size, System.Drawing">
+    <value>183, 35</value>
+  </data>
+  <data name="btnHsbClean.TabIndex" type="System.Int32, mscorlib">
+    <value>79</value>
+  </data>
+  <data name="btnHsbClean.Text" xml:space="preserve">
+    <value>Clean HSB</value>
+  </data>
+  <data name="&gt;&gt;btnHsbClean.Name" xml:space="preserve">
+    <value>btnHsbClean</value>
+  </data>
+  <data name="&gt;&gt;btnHsbClean.Type" xml:space="preserve">
+    <value>MetroFramework.Controls.MetroButton, MetroFramework, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a</value>
+  </data>
+  <data name="&gt;&gt;btnHsbClean.Parent" xml:space="preserve">
+    <value>groupBox2</value>
+  </data>
+  <data name="&gt;&gt;btnHsbClean.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="groupBox2.Location" type="System.Drawing.Point, System.Drawing">
+    <value>9, 3</value>
+  </data>
+  <data name="groupBox2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>195, 108</value>
+  </data>
+  <data name="groupBox2.TabIndex" type="System.Int32, mscorlib">
+    <value>91</value>
+  </data>
+  <data name="groupBox2.Text" xml:space="preserve">
+    <value>S.A.R.S Functions</value>
+  </data>
+  <data name="&gt;&gt;groupBox2.Name" xml:space="preserve">
+    <value>groupBox2</value>
+  </data>
+  <data name="&gt;&gt;groupBox2.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;groupBox2.Parent" xml:space="preserve">
+    <value>metroTabPage2</value>
+  </data>
+  <data name="&gt;&gt;groupBox2.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="btnLight.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Bottom, Left</value>
+  </data>
+  <data name="btnLight.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 19</value>
+  </data>
+  <data name="btnLight.Size" type="System.Drawing.Size, System.Drawing">
+    <value>183, 35</value>
+  </data>
+  <data name="btnLight.TabIndex" type="System.Int32, mscorlib">
+    <value>82</value>
+  </data>
+  <data name="btnLight.Text" xml:space="preserve">
+    <value>Light</value>
+  </data>
+  <data name="&gt;&gt;btnLight.Name" xml:space="preserve">
+    <value>btnLight</value>
+  </data>
+  <data name="&gt;&gt;btnLight.Type" xml:space="preserve">
+    <value>MetroFramework.Controls.MetroButton, MetroFramework, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a</value>
+  </data>
+  <data name="&gt;&gt;btnLight.Parent" xml:space="preserve">
+    <value>groupBox1</value>
+  </data>
+  <data name="&gt;&gt;btnLight.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="btnDark.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Bottom, Left</value>
+  </data>
+  <data name="btnDark.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 60</value>
+  </data>
+  <data name="btnDark.Size" type="System.Drawing.Size, System.Drawing">
+    <value>183, 35</value>
+  </data>
+  <data name="btnDark.TabIndex" type="System.Int32, mscorlib">
+    <value>84</value>
+  </data>
+  <data name="btnDark.Text" xml:space="preserve">
+    <value>Dark</value>
+  </data>
+  <data name="&gt;&gt;btnDark.Name" xml:space="preserve">
+    <value>btnDark</value>
+  </data>
+  <data name="&gt;&gt;btnDark.Type" xml:space="preserve">
+    <value>MetroFramework.Controls.MetroButton, MetroFramework, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a</value>
+  </data>
+  <data name="&gt;&gt;btnDark.Parent" xml:space="preserve">
+    <value>groupBox1</value>
+  </data>
+  <data name="&gt;&gt;btnDark.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="cbThemeColour.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Bottom, Left</value>
+  </data>
+  <data name="cbThemeColour.ItemHeight" type="System.Int32, mscorlib">
+    <value>23</value>
+  </data>
+  <data name="cbThemeColour.Items" xml:space="preserve">
+    <value>Default</value>
+  </data>
+  <data name="cbThemeColour.Items1" xml:space="preserve">
+    <value>Black</value>
+  </data>
+  <data name="cbThemeColour.Items2" xml:space="preserve">
+    <value>White</value>
+  </data>
+  <data name="cbThemeColour.Items3" xml:space="preserve">
+    <value>Silver</value>
+  </data>
+  <data name="cbThemeColour.Items4" xml:space="preserve">
+    <value>Blue</value>
+  </data>
+  <data name="cbThemeColour.Items5" xml:space="preserve">
+    <value>Green</value>
+  </data>
+  <data name="cbThemeColour.Items6" xml:space="preserve">
+    <value>Lime</value>
+  </data>
+  <data name="cbThemeColour.Items7" xml:space="preserve">
+    <value>Teal</value>
+  </data>
+  <data name="cbThemeColour.Items8" xml:space="preserve">
+    <value>Orange</value>
+  </data>
+  <data name="cbThemeColour.Items9" xml:space="preserve">
+    <value>Brown</value>
+  </data>
+  <data name="cbThemeColour.Items10" xml:space="preserve">
+    <value>Pink</value>
+  </data>
+  <data name="cbThemeColour.Items11" xml:space="preserve">
+    <value>Magenta</value>
+  </data>
+  <data name="cbThemeColour.Items12" xml:space="preserve">
+    <value>Purple</value>
+  </data>
+  <data name="cbThemeColour.Items13" xml:space="preserve">
+    <value>Red</value>
+  </data>
+  <data name="cbThemeColour.Items14" xml:space="preserve">
+    <value>Yellow</value>
+  </data>
+  <data name="cbThemeColour.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 133</value>
+  </data>
+  <data name="cbThemeColour.Size" type="System.Drawing.Size, System.Drawing">
+    <value>183, 29</value>
+  </data>
+  <data name="cbThemeColour.TabIndex" type="System.Int32, mscorlib">
+    <value>86</value>
+  </data>
+  <data name="&gt;&gt;cbThemeColour.Name" xml:space="preserve">
+    <value>cbThemeColour</value>
+  </data>
+  <data name="&gt;&gt;cbThemeColour.Type" xml:space="preserve">
+    <value>MetroFramework.Controls.MetroComboBox, MetroFramework, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a</value>
+  </data>
+  <data name="&gt;&gt;cbThemeColour.Parent" xml:space="preserve">
+    <value>groupBox1</value>
+  </data>
+  <data name="&gt;&gt;cbThemeColour.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="metroLabel12.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Bottom, Left</value>
+  </data>
+  <data name="metroLabel12.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="metroLabel12.Location" type="System.Drawing.Point, System.Drawing">
+    <value>32, 98</value>
+  </data>
+  <data name="metroLabel12.Size" type="System.Drawing.Size, System.Drawing">
+    <value>131, 25</value>
+  </data>
+  <data name="metroLabel12.TabIndex" type="System.Int32, mscorlib">
+    <value>85</value>
+  </data>
+  <data name="metroLabel12.Text" xml:space="preserve">
+    <value>Theme Colour</value>
+  </data>
+  <data name="&gt;&gt;metroLabel12.Name" xml:space="preserve">
+    <value>metroLabel12</value>
+  </data>
+  <data name="&gt;&gt;metroLabel12.Type" xml:space="preserve">
+    <value>MetroFramework.Controls.MetroLabel, MetroFramework, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a</value>
+  </data>
+  <data name="&gt;&gt;metroLabel12.Parent" xml:space="preserve">
+    <value>groupBox1</value>
+  </data>
+  <data name="&gt;&gt;metroLabel12.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="groupBox1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>9, 117</value>
+  </data>
+  <data name="groupBox1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>195, 168</value>
+  </data>
+  <data name="groupBox1.TabIndex" type="System.Int32, mscorlib">
+    <value>90</value>
+  </data>
+  <data name="groupBox1.Text" xml:space="preserve">
+    <value>Theme Settings</value>
+  </data>
+  <data name="&gt;&gt;groupBox1.Name" xml:space="preserve">
+    <value>groupBox1</value>
+  </data>
+  <data name="&gt;&gt;groupBox1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;groupBox1.Parent" xml:space="preserve">
+    <value>metroTabPage2</value>
+  </data>
+  <data name="&gt;&gt;groupBox1.ZOrder" xml:space="preserve">
+    <value>6</value>
+  </data>
+  <data name="metroTabPage2.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 38</value>
+  </data>
+  <data name="metroTabPage2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>840, 414</value>
+  </data>
+  <data name="metroTabPage2.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="metroTabPage2.Text" xml:space="preserve">
+    <value>Settings</value>
+  </data>
+  <data name="&gt;&gt;metroTabPage2.Name" xml:space="preserve">
+    <value>metroTabPage2</value>
+  </data>
+  <data name="&gt;&gt;metroTabPage2.Type" xml:space="preserve">
+    <value>MetroFramework.Controls.MetroTabPage, MetroFramework, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a</value>
+  </data>
+  <data name="&gt;&gt;metroTabPage2.Parent" xml:space="preserve">
+    <value>tabControl</value>
+  </data>
+  <data name="&gt;&gt;metroTabPage2.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="btnUnityLoc.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 99</value>
+  </data>
+  <data name="btnUnityLoc.Size" type="System.Drawing.Size, System.Drawing">
+    <value>189, 35</value>
+  </data>
+  <data name="btnUnityLoc.TabIndex" type="System.Int32, mscorlib">
+    <value>63</value>
+  </data>
+  <data name="btnUnityLoc.Text" xml:space="preserve">
+    <value>Change Unity Location</value>
+  </data>
+  <data name="&gt;&gt;btnUnityLoc.Name" xml:space="preserve">
+    <value>btnUnityLoc</value>
+  </data>
+  <data name="&gt;&gt;btnUnityLoc.Type" xml:space="preserve">
+    <value>MetroFramework.Controls.MetroButton, MetroFramework, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a</value>
+  </data>
+  <data name="&gt;&gt;btnUnityLoc.Parent" xml:space="preserve">
+    <value>metroTabPage4</value>
+  </data>
+  <data name="&gt;&gt;btnUnityLoc.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="toggleWorld.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Right</value>
+  </data>
+  <data name="toggleWorld.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="toggleWorld.Location" type="System.Drawing.Point, System.Drawing">
+    <value>757, 269</value>
+  </data>
+  <data name="toggleWorld.Size" type="System.Drawing.Size, System.Drawing">
+    <value>80, 17</value>
+  </data>
+  <data name="toggleWorld.TabIndex" type="System.Int32, mscorlib">
+    <value>62</value>
+  </data>
+  <data name="toggleWorld.Text" xml:space="preserve">
+    <value>Off</value>
+  </data>
+  <data name="&gt;&gt;toggleWorld.Name" xml:space="preserve">
+    <value>toggleWorld</value>
+  </data>
+  <data name="&gt;&gt;toggleWorld.Type" xml:space="preserve">
+    <value>MetroFramework.Controls.MetroToggle, MetroFramework, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a</value>
+  </data>
+  <data name="&gt;&gt;toggleWorld.Parent" xml:space="preserve">
+    <value>metroTabPage4</value>
+  </data>
+  <data name="&gt;&gt;toggleWorld.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="toggleAvatar.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Right</value>
+  </data>
+  <data name="toggleAvatar.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="toggleAvatar.Location" type="System.Drawing.Point, System.Drawing">
+    <value>757, 214</value>
+  </data>
+  <data name="toggleAvatar.Size" type="System.Drawing.Size, System.Drawing">
+    <value>80, 17</value>
+  </data>
+  <data name="toggleAvatar.TabIndex" type="System.Int32, mscorlib">
+    <value>61</value>
+  </data>
+  <data name="toggleAvatar.Text" xml:space="preserve">
+    <value>Off</value>
+  </data>
+  <data name="&gt;&gt;toggleAvatar.Name" xml:space="preserve">
+    <value>toggleAvatar</value>
+  </data>
+  <data name="&gt;&gt;toggleAvatar.Type" xml:space="preserve">
+    <value>MetroFramework.Controls.MetroToggle, MetroFramework, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a</value>
+  </data>
+  <data name="&gt;&gt;toggleAvatar.Parent" xml:space="preserve">
+    <value>metroTabPage4</value>
+  </data>
+  <data name="&gt;&gt;toggleAvatar.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="btnWorldOut.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Right</value>
+  </data>
+  <data name="btnWorldOut.Location" type="System.Drawing.Point, System.Drawing">
+    <value>633, 261</value>
+  </data>
+  <data name="btnWorldOut.Size" type="System.Drawing.Size, System.Drawing">
+    <value>106, 35</value>
+  </data>
+  <data name="btnWorldOut.TabIndex" type="System.Int32, mscorlib">
+    <value>60</value>
+  </data>
+  <data name="btnWorldOut.Text" xml:space="preserve">
+    <value>Select</value>
+  </data>
+  <data name="&gt;&gt;btnWorldOut.Name" xml:space="preserve">
+    <value>btnWorldOut</value>
+  </data>
+  <data name="&gt;&gt;btnWorldOut.Type" xml:space="preserve">
+    <value>MetroFramework.Controls.MetroButton, MetroFramework, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a</value>
+  </data>
+  <data name="&gt;&gt;btnWorldOut.Parent" xml:space="preserve">
+    <value>metroTabPage4</value>
+  </data>
+  <data name="&gt;&gt;btnWorldOut.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="txtWorldOutput.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Left, Right</value>
+  </data>
+  <data name="resource.Image2" type="System.Resources.ResXNullRef, System.Windows.Forms">
+    <value />
+  </data>
+  <data name="resource.Location2" type="System.Drawing.Point, System.Drawing">
+    <value>338, 1</value>
+  </data>
+  <data name="resource.Size2" type="System.Drawing.Size, System.Drawing">
+    <value>33, 33</value>
+  </data>
+  <data name="resource.TabIndex2" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="resource.Visible2" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="txtWorldOutput.Location" type="System.Drawing.Point, System.Drawing">
+    <value>254, 261</value>
+  </data>
+  <data name="txtWorldOutput.Size" type="System.Drawing.Size, System.Drawing">
+    <value>372, 35</value>
+  </data>
+  <data name="txtWorldOutput.TabIndex" type="System.Int32, mscorlib">
+    <value>59</value>
+  </data>
+  <data name="&gt;&gt;txtWorldOutput.Name" xml:space="preserve">
+    <value>txtWorldOutput</value>
+  </data>
+  <data name="&gt;&gt;txtWorldOutput.Type" xml:space="preserve">
+    <value>MetroFramework.Controls.MetroTextBox, MetroFramework, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a</value>
+  </data>
+  <data name="&gt;&gt;txtWorldOutput.Parent" xml:space="preserve">
+    <value>metroTabPage4</value>
+  </data>
+  <data name="&gt;&gt;txtWorldOutput.ZOrder" xml:space="preserve">
+    <value>6</value>
+  </data>
+  <data name="metroLabel14.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="metroLabel14.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 261</value>
+  </data>
+  <data name="metroLabel14.Size" type="System.Drawing.Size, System.Drawing">
+    <value>242, 25</value>
+  </data>
+  <data name="metroLabel14.TabIndex" type="System.Int32, mscorlib">
+    <value>58</value>
+  </data>
+  <data name="metroLabel14.Text" xml:space="preserve">
+    <value>World pre-selected output:</value>
+  </data>
+  <data name="&gt;&gt;metroLabel14.Name" xml:space="preserve">
+    <value>metroLabel14</value>
+  </data>
+  <data name="&gt;&gt;metroLabel14.Type" xml:space="preserve">
+    <value>MetroFramework.Controls.MetroLabel, MetroFramework, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a</value>
+  </data>
+  <data name="&gt;&gt;metroLabel14.Parent" xml:space="preserve">
+    <value>metroTabPage4</value>
+  </data>
+  <data name="&gt;&gt;metroLabel14.ZOrder" xml:space="preserve">
+    <value>7</value>
+  </data>
+  <data name="btnAvatarOut.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Right</value>
+  </data>
+  <data name="btnAvatarOut.Location" type="System.Drawing.Point, System.Drawing">
+    <value>633, 206</value>
+  </data>
+  <data name="btnAvatarOut.Size" type="System.Drawing.Size, System.Drawing">
+    <value>106, 35</value>
+  </data>
+  <data name="btnAvatarOut.TabIndex" type="System.Int32, mscorlib">
+    <value>57</value>
+  </data>
+  <data name="btnAvatarOut.Text" xml:space="preserve">
+    <value>Select</value>
+  </data>
+  <data name="&gt;&gt;btnAvatarOut.Name" xml:space="preserve">
+    <value>btnAvatarOut</value>
+  </data>
+  <data name="&gt;&gt;btnAvatarOut.Type" xml:space="preserve">
+    <value>MetroFramework.Controls.MetroButton, MetroFramework, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a</value>
+  </data>
+  <data name="&gt;&gt;btnAvatarOut.Parent" xml:space="preserve">
+    <value>metroTabPage4</value>
+  </data>
+  <data name="&gt;&gt;btnAvatarOut.ZOrder" xml:space="preserve">
+    <value>8</value>
+  </data>
+  <data name="metroLabel13.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="metroLabel13.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 206</value>
+  </data>
+  <data name="metroLabel13.Size" type="System.Drawing.Size, System.Drawing">
+    <value>247, 25</value>
+  </data>
+  <data name="metroLabel13.TabIndex" type="System.Int32, mscorlib">
+    <value>56</value>
+  </data>
+  <data name="metroLabel13.Text" xml:space="preserve">
+    <value>Avatar pre-selected output:</value>
+  </data>
+  <data name="&gt;&gt;metroLabel13.Name" xml:space="preserve">
+    <value>metroLabel13</value>
+  </data>
+  <data name="&gt;&gt;metroLabel13.Type" xml:space="preserve">
+    <value>MetroFramework.Controls.MetroLabel, MetroFramework, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a</value>
+  </data>
+  <data name="&gt;&gt;metroLabel13.Parent" xml:space="preserve">
+    <value>metroTabPage4</value>
+  </data>
+  <data name="&gt;&gt;metroLabel13.ZOrder" xml:space="preserve">
+    <value>9</value>
+  </data>
+  <data name="txtAvatarOutput.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Left, Right</value>
+  </data>
+  <data name="resource.Image3" type="System.Resources.ResXNullRef, System.Windows.Forms">
+    <value />
+  </data>
+  <data name="resource.Location3" type="System.Drawing.Point, System.Drawing">
+    <value>338, 1</value>
+  </data>
+  <data name="resource.Size3" type="System.Drawing.Size, System.Drawing">
+    <value>33, 33</value>
+  </data>
+  <data name="resource.TabIndex3" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="resource.Visible3" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="txtAvatarOutput.Location" type="System.Drawing.Point, System.Drawing">
+    <value>254, 206</value>
+  </data>
+  <data name="txtAvatarOutput.Size" type="System.Drawing.Size, System.Drawing">
+    <value>372, 35</value>
+  </data>
+  <data name="txtAvatarOutput.TabIndex" type="System.Int32, mscorlib">
+    <value>55</value>
+  </data>
+  <data name="&gt;&gt;txtAvatarOutput.Name" xml:space="preserve">
+    <value>txtAvatarOutput</value>
+  </data>
+  <data name="&gt;&gt;txtAvatarOutput.Type" xml:space="preserve">
+    <value>MetroFramework.Controls.MetroTextBox, MetroFramework, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a</value>
+  </data>
+  <data name="&gt;&gt;txtAvatarOutput.Parent" xml:space="preserve">
+    <value>metroTabPage4</value>
+  </data>
+  <data name="&gt;&gt;txtAvatarOutput.ZOrder" xml:space="preserve">
+    <value>10</value>
+  </data>
+  <data name="btnExtractVRCA.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 58</value>
+  </data>
+  <data name="btnExtractVRCA.Size" type="System.Drawing.Size, System.Drawing">
+    <value>189, 35</value>
+  </data>
+  <data name="btnExtractVRCA.TabIndex" type="System.Int32, mscorlib">
+    <value>36</value>
+  </data>
+  <data name="btnExtractVRCA.Text" xml:space="preserve">
+    <value>Extract VRCA</value>
+  </data>
+  <data name="&gt;&gt;btnExtractVRCA.Name" xml:space="preserve">
+    <value>btnExtractVRCA</value>
+  </data>
+  <data name="&gt;&gt;btnExtractVRCA.Type" xml:space="preserve">
+    <value>MetroFramework.Controls.MetroButton, MetroFramework, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a</value>
+  </data>
+  <data name="&gt;&gt;btnExtractVRCA.Parent" xml:space="preserve">
+    <value>metroTabPage4</value>
+  </data>
+  <data name="&gt;&gt;btnExtractVRCA.ZOrder" xml:space="preserve">
+    <value>11</value>
+  </data>
+  <data name="btnLoadVRCA.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 17</value>
+  </data>
+  <data name="btnLoadVRCA.Size" type="System.Drawing.Size, System.Drawing">
+    <value>189, 35</value>
+  </data>
+  <data name="btnLoadVRCA.TabIndex" type="System.Int32, mscorlib">
+    <value>35</value>
+  </data>
+  <data name="btnLoadVRCA.Text" xml:space="preserve">
+    <value>Load VRCA</value>
+  </data>
+  <data name="&gt;&gt;btnLoadVRCA.Name" xml:space="preserve">
+    <value>btnLoadVRCA</value>
+  </data>
+  <data name="&gt;&gt;btnLoadVRCA.Type" xml:space="preserve">
+    <value>MetroFramework.Controls.MetroButton, MetroFramework, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a</value>
+  </data>
+  <data name="&gt;&gt;btnLoadVRCA.Parent" xml:space="preserve">
+    <value>metroTabPage4</value>
+  </data>
+  <data name="&gt;&gt;btnLoadVRCA.ZOrder" xml:space="preserve">
+    <value>12</value>
+  </data>
+  <data name="metroTabPage4.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 38</value>
+  </data>
+  <data name="metroTabPage4.Size" type="System.Drawing.Size, System.Drawing">
+    <value>840, 414</value>
+  </data>
+  <data name="metroTabPage4.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="metroTabPage4.Text" xml:space="preserve">
+    <value>Utility</value>
+  </data>
+  <data name="&gt;&gt;metroTabPage4.Name" xml:space="preserve">
+    <value>metroTabPage4</value>
+  </data>
+  <data name="&gt;&gt;metroTabPage4.Type" xml:space="preserve">
+    <value>MetroFramework.Controls.MetroTabPage, MetroFramework, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a</value>
+  </data>
+  <data name="&gt;&gt;metroTabPage4.Parent" xml:space="preserve">
+    <value>tabControl</value>
+  </data>
+  <data name="&gt;&gt;metroTabPage4.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="lblPrivate.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="lblPrivate.Location" type="System.Drawing.Point, System.Drawing">
+    <value>727, 13</value>
+  </data>
+  <data name="lblPrivate.Size" type="System.Drawing.Size, System.Drawing">
+    <value>17, 19</value>
+  </data>
+  <data name="lblPrivate.TabIndex" type="System.Int32, mscorlib">
+    <value>61</value>
+  </data>
+  <data name="lblPrivate.Text" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;lblPrivate.Name" xml:space="preserve">
+    <value>lblPrivate</value>
+  </data>
+  <data name="&gt;&gt;lblPrivate.Type" xml:space="preserve">
+    <value>MetroFramework.Controls.MetroLabel, MetroFramework, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a</value>
+  </data>
+  <data name="&gt;&gt;lblPrivate.Parent" xml:space="preserve">
+    <value>metroTabPage3</value>
+  </data>
+  <data name="&gt;&gt;lblPrivate.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="metroLabel19.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="metroLabel19.Location" type="System.Drawing.Point, System.Drawing">
+    <value>581, 13</value>
+  </data>
+  <data name="metroLabel19.Size" type="System.Drawing.Size, System.Drawing">
+    <value>120, 19</value>
+  </data>
+  <data name="metroLabel19.TabIndex" type="System.Int32, mscorlib">
+    <value>60</value>
+  </data>
+  <data name="metroLabel19.Text" xml:space="preserve">
+    <value>Private Avatars: </value>
+  </data>
+  <data name="&gt;&gt;metroLabel19.Name" xml:space="preserve">
+    <value>metroLabel19</value>
+  </data>
+  <data name="&gt;&gt;metroLabel19.Type" xml:space="preserve">
+    <value>MetroFramework.Controls.MetroLabel, MetroFramework, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a</value>
+  </data>
+  <data name="&gt;&gt;metroLabel19.Parent" xml:space="preserve">
+    <value>metroTabPage3</value>
+  </data>
+  <data name="&gt;&gt;metroLabel19.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="lblPublic.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="lblPublic.Location" type="System.Drawing.Point, System.Drawing">
+    <value>437, 13</value>
+  </data>
+  <data name="lblPublic.Size" type="System.Drawing.Size, System.Drawing">
+    <value>17, 19</value>
+  </data>
+  <data name="lblPublic.TabIndex" type="System.Int32, mscorlib">
+    <value>59</value>
+  </data>
+  <data name="lblPublic.Text" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;lblPublic.Name" xml:space="preserve">
+    <value>lblPublic</value>
+  </data>
+  <data name="&gt;&gt;lblPublic.Type" xml:space="preserve">
+    <value>MetroFramework.Controls.MetroLabel, MetroFramework, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a</value>
+  </data>
+  <data name="&gt;&gt;lblPublic.Parent" xml:space="preserve">
+    <value>metroTabPage3</value>
+  </data>
+  <data name="&gt;&gt;lblPublic.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="metroLabel17.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="metroLabel17.Location" type="System.Drawing.Point, System.Drawing">
+    <value>296, 13</value>
+  </data>
+  <data name="metroLabel17.Size" type="System.Drawing.Size, System.Drawing">
+    <value>113, 19</value>
+  </data>
+  <data name="metroLabel17.TabIndex" type="System.Int32, mscorlib">
+    <value>58</value>
+  </data>
+  <data name="metroLabel17.Text" xml:space="preserve">
+    <value>Public Avatars: </value>
+  </data>
+  <data name="&gt;&gt;metroLabel17.Name" xml:space="preserve">
+    <value>metroLabel17</value>
+  </data>
+  <data name="&gt;&gt;metroLabel17.Type" xml:space="preserve">
+    <value>MetroFramework.Controls.MetroLabel, MetroFramework, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a</value>
+  </data>
+  <data name="&gt;&gt;metroLabel17.Parent" xml:space="preserve">
+    <value>metroTabPage3</value>
+  </data>
+  <data name="&gt;&gt;metroLabel17.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="txtAbout.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Bottom, Left, Right</value>
+  </data>
+  <data name="resource.Image4" type="System.Resources.ResXNullRef, System.Windows.Forms">
+    <value />
+  </data>
+  <data name="resource.Location4" type="System.Drawing.Point, System.Drawing">
+    <value>464, 2</value>
+  </data>
+  <data name="resource.Size4" type="System.Drawing.Size, System.Drawing">
+    <value>367, 367</value>
+  </data>
+  <data name="resource.TabIndex4" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="resource.Visible4" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="txtAbout.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 39</value>
+  </data>
+  <data name="txtAbout.Size" type="System.Drawing.Size, System.Drawing">
+    <value>834, 372</value>
+  </data>
+  <data name="txtAbout.TabIndex" type="System.Int32, mscorlib">
+    <value>57</value>
+  </data>
+  <data name="&gt;&gt;txtAbout.Name" xml:space="preserve">
+    <value>txtAbout</value>
+  </data>
+  <data name="&gt;&gt;txtAbout.Type" xml:space="preserve">
+    <value>MetroFramework.Controls.MetroTextBox, MetroFramework, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a</value>
+  </data>
+  <data name="&gt;&gt;txtAbout.Parent" xml:space="preserve">
+    <value>metroTabPage3</value>
+  </data>
+  <data name="&gt;&gt;txtAbout.ZOrder" xml:space="preserve">
+    <value>6</value>
+  </data>
+  <data name="lblSize.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="lblSize.Location" type="System.Drawing.Point, System.Drawing">
+    <value>158, 13</value>
+  </data>
+  <data name="lblSize.Size" type="System.Drawing.Size, System.Drawing">
+    <value>17, 19</value>
+  </data>
+  <data name="lblSize.TabIndex" type="System.Int32, mscorlib">
+    <value>56</value>
+  </data>
+  <data name="lblSize.Text" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;lblSize.Name" xml:space="preserve">
+    <value>lblSize</value>
+  </data>
+  <data name="&gt;&gt;lblSize.Type" xml:space="preserve">
+    <value>MetroFramework.Controls.MetroLabel, MetroFramework, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a</value>
+  </data>
+  <data name="&gt;&gt;lblSize.Parent" xml:space="preserve">
+    <value>metroTabPage3</value>
+  </data>
+  <data name="&gt;&gt;lblSize.ZOrder" xml:space="preserve">
+    <value>7</value>
+  </data>
+  <data name="metroLabel10.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="metroLabel10.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 13</value>
+  </data>
+  <data name="metroLabel10.Size" type="System.Drawing.Size, System.Drawing">
+    <value>110, 19</value>
+  </data>
+  <data name="metroLabel10.TabIndex" type="System.Int32, mscorlib">
+    <value>55</value>
+  </data>
+  <data name="metroLabel10.Text" xml:space="preserve">
+    <value>Database Size: </value>
+  </data>
+  <data name="&gt;&gt;metroLabel10.Name" xml:space="preserve">
+    <value>metroLabel10</value>
+  </data>
+  <data name="&gt;&gt;metroLabel10.Type" xml:space="preserve">
+    <value>MetroFramework.Controls.MetroLabel, MetroFramework, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a</value>
+  </data>
+  <data name="&gt;&gt;metroLabel10.Parent" xml:space="preserve">
+    <value>metroTabPage3</value>
+  </data>
+  <data name="&gt;&gt;metroLabel10.ZOrder" xml:space="preserve">
+    <value>8</value>
+  </data>
+  <data name="metroTabPage3.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 38</value>
+  </data>
+  <data name="metroTabPage3.Size" type="System.Drawing.Size, System.Drawing">
+    <value>840, 414</value>
+  </data>
+  <data name="metroTabPage3.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="metroTabPage3.Text" xml:space="preserve">
+    <value>About</value>
+  </data>
+  <data name="&gt;&gt;metroTabPage3.Name" xml:space="preserve">
+    <value>metroTabPage3</value>
+  </data>
+  <data name="&gt;&gt;metroTabPage3.Type" xml:space="preserve">
+    <value>MetroFramework.Controls.MetroTabPage, MetroFramework, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a</value>
+  </data>
+  <data name="&gt;&gt;metroTabPage3.Parent" xml:space="preserve">
+    <value>tabControl</value>
+  </data>
+  <data name="&gt;&gt;metroTabPage3.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="faq.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="faq.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="faq.MinimumSize" type="System.Drawing.Size, System.Drawing">
+    <value>20, 20</value>
+  </data>
+  <data name="faq.Size" type="System.Drawing.Size, System.Drawing">
+    <value>840, 414</value>
+  </data>
+  <data name="faq.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;faq.Name" xml:space="preserve">
+    <value>faq</value>
+  </data>
+  <data name="&gt;&gt;faq.Type" xml:space="preserve">
+    <value>System.Windows.Forms.WebBrowser, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;faq.Parent" xml:space="preserve">
+    <value>metroTabPage5</value>
+  </data>
+  <data name="&gt;&gt;faq.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="metroTabPage5.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 38</value>
+  </data>
+  <data name="metroTabPage5.Size" type="System.Drawing.Size, System.Drawing">
+    <value>840, 414</value>
+  </data>
+  <data name="metroTabPage5.TabIndex" type="System.Int32, mscorlib">
+    <value>4</value>
+  </data>
+  <data name="metroTabPage5.Text" xml:space="preserve">
+    <value>FAQ</value>
+  </data>
+  <data name="&gt;&gt;metroTabPage5.Name" xml:space="preserve">
+    <value>metroTabPage5</value>
+  </data>
+  <data name="&gt;&gt;metroTabPage5.Type" xml:space="preserve">
+    <value>MetroFramework.Controls.MetroTabPage, MetroFramework, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a</value>
+  </data>
+  <data name="&gt;&gt;metroTabPage5.Parent" xml:space="preserve">
+    <value>tabControl</value>
+  </data>
+  <data name="&gt;&gt;metroTabPage5.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="btnParseImages.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Bottom, Left</value>
+  </data>
+  <data name="btnParseImages.Location" type="System.Drawing.Point, System.Drawing">
+    <value>247, 366</value>
+  </data>
+  <data name="btnParseImages.Size" type="System.Drawing.Size, System.Drawing">
+    <value>283, 35</value>
+  </data>
+  <data name="btnParseImages.TabIndex" type="System.Int32, mscorlib">
+    <value>81</value>
+  </data>
+  <data name="btnParseImages.Text" xml:space="preserve">
+    <value>Try get names &amp;&amp; images &amp;&amp; upload to API</value>
+  </data>
+  <data name="&gt;&gt;btnParseImages.Name" xml:space="preserve">
+    <value>btnParseImages</value>
+  </data>
+  <data name="&gt;&gt;btnParseImages.Type" xml:space="preserve">
+    <value>MetroFramework.Controls.MetroButton, MetroFramework, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a</value>
+  </data>
+  <data name="&gt;&gt;btnParseImages.Parent" xml:space="preserve">
+    <value>btnScanCache</value>
+  </data>
+  <data name="&gt;&gt;btnParseImages.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="btnLoadResults.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Bottom, Left</value>
+  </data>
+  <data name="btnLoadResults.Location" type="System.Drawing.Point, System.Drawing">
+    <value>536, 366</value>
+  </data>
+  <data name="btnLoadResults.Size" type="System.Drawing.Size, System.Drawing">
+    <value>175, 35</value>
+  </data>
+  <data name="btnLoadResults.TabIndex" type="System.Int32, mscorlib">
+    <value>80</value>
+  </data>
+  <data name="btnLoadResults.Text" xml:space="preserve">
+    <value>Load Results into Avatars</value>
+  </data>
+  <data name="&gt;&gt;btnLoadResults.Name" xml:space="preserve">
+    <value>btnLoadResults</value>
+  </data>
+  <data name="&gt;&gt;btnLoadResults.Type" xml:space="preserve">
+    <value>MetroFramework.Controls.MetroButton, MetroFramework, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a</value>
+  </data>
+  <data name="&gt;&gt;btnLoadResults.Parent" xml:space="preserve">
+    <value>btnScanCache</value>
+  </data>
+  <data name="&gt;&gt;btnLoadResults.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="btnScanCacheFolder.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Bottom, Left</value>
+  </data>
+  <data name="btnScanCacheFolder.Location" type="System.Drawing.Point, System.Drawing">
+    <value>717, 366</value>
+  </data>
+  <data name="btnScanCacheFolder.Size" type="System.Drawing.Size, System.Drawing">
+    <value>120, 35</value>
+  </data>
+  <data name="btnScanCacheFolder.TabIndex" type="System.Int32, mscorlib">
+    <value>79</value>
+  </data>
+  <data name="btnScanCacheFolder.Text" xml:space="preserve">
+    <value>Scan Cache</value>
+  </data>
+  <data name="&gt;&gt;btnScanCacheFolder.Name" xml:space="preserve">
+    <value>btnScanCacheFolder</value>
+  </data>
+  <data name="&gt;&gt;btnScanCacheFolder.Type" xml:space="preserve">
+    <value>MetroFramework.Controls.MetroButton, MetroFramework, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a</value>
+  </data>
+  <data name="&gt;&gt;btnScanCacheFolder.Parent" xml:space="preserve">
+    <value>btnScanCache</value>
+  </data>
+  <data name="&gt;&gt;btnScanCacheFolder.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="txtCacheScannerLog.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Bottom, Left, Right</value>
+  </data>
+  <data name="resource.Image5" type="System.Resources.ResXNullRef, System.Windows.Forms">
+    <value />
+  </data>
+  <data name="resource.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="resource.Location5" type="System.Drawing.Point, System.Drawing">
+    <value>491, 2</value>
+  </data>
+  <data name="resource.Size5" type="System.Drawing.Size, System.Drawing">
+    <value>343, 343</value>
+  </data>
+  <data name="resource.TabIndex5" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="resource.Visible5" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="txtCacheScannerLog.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 12</value>
+  </data>
+  <data name="txtCacheScannerLog.Size" type="System.Drawing.Size, System.Drawing">
+    <value>837, 348</value>
+  </data>
+  <data name="txtCacheScannerLog.TabIndex" type="System.Int32, mscorlib">
+    <value>69</value>
+  </data>
+  <data name="&gt;&gt;txtCacheScannerLog.Name" xml:space="preserve">
+    <value>txtCacheScannerLog</value>
+  </data>
+  <data name="&gt;&gt;txtCacheScannerLog.Type" xml:space="preserve">
+    <value>MetroFramework.Controls.MetroTextBox, MetroFramework, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a</value>
+  </data>
+  <data name="&gt;&gt;txtCacheScannerLog.Parent" xml:space="preserve">
+    <value>btnScanCache</value>
+  </data>
+  <data name="&gt;&gt;txtCacheScannerLog.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="btnScanCache.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 38</value>
+  </data>
+  <data name="btnScanCache.Size" type="System.Drawing.Size, System.Drawing">
+    <value>840, 414</value>
+  </data>
+  <data name="btnScanCache.TabIndex" type="System.Int32, mscorlib">
+    <value>5</value>
+  </data>
+  <data name="btnScanCache.Text" xml:space="preserve">
+    <value>Cache Scanner</value>
+  </data>
+  <data name="&gt;&gt;btnScanCache.Name" xml:space="preserve">
+    <value>btnScanCache</value>
+  </data>
+  <data name="&gt;&gt;btnScanCache.Type" xml:space="preserve">
+    <value>MetroFramework.Controls.MetroTabPage, MetroFramework, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a</value>
+  </data>
+  <data name="&gt;&gt;btnScanCache.Parent" xml:space="preserve">
+    <value>tabControl</value>
+  </data>
+  <data name="&gt;&gt;btnScanCache.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="groupBox6.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Left, Right</value>
+  </data>
+  <data name="btnReLogin.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Right</value>
+  </data>
+  <data name="btnReLogin.Location" type="System.Drawing.Point, System.Drawing">
+    <value>682, 104</value>
+  </data>
+  <data name="btnReLogin.Size" type="System.Drawing.Size, System.Drawing">
+    <value>141, 35</value>
+  </data>
+  <data name="btnReLogin.TabIndex" type="System.Int32, mscorlib">
+    <value>90</value>
+  </data>
+  <data name="btnReLogin.Text" xml:space="preserve">
+    <value>Login</value>
+  </data>
+  <data name="&gt;&gt;btnReLogin.Name" xml:space="preserve">
+    <value>btnReLogin</value>
+  </data>
+  <data name="&gt;&gt;btnReLogin.Type" xml:space="preserve">
+    <value>MetroFramework.Controls.MetroButton, MetroFramework, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a</value>
+  </data>
+  <data name="&gt;&gt;btnReLogin.Parent" xml:space="preserve">
+    <value>groupBox6</value>
+  </data>
+  <data name="&gt;&gt;btnReLogin.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="metroLabel11.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="metroLabel11.Location" type="System.Drawing.Point, System.Drawing">
+    <value>15, 73</value>
+  </data>
+  <data name="metroLabel11.Size" type="System.Drawing.Size, System.Drawing">
+    <value>160, 25</value>
+  </data>
+  <data name="metroLabel11.TabIndex" type="System.Int32, mscorlib">
+    <value>94</value>
+  </data>
+  <data name="metroLabel11.Text" xml:space="preserve">
+    <value>VRChat Password</value>
+  </data>
+  <data name="&gt;&gt;metroLabel11.Name" xml:space="preserve">
+    <value>metroLabel11</value>
+  </data>
+  <data name="&gt;&gt;metroLabel11.Type" xml:space="preserve">
+    <value>MetroFramework.Controls.MetroLabel, MetroFramework, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a</value>
+  </data>
+  <data name="&gt;&gt;metroLabel11.Parent" xml:space="preserve">
+    <value>groupBox6</value>
+  </data>
+  <data name="&gt;&gt;metroLabel11.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="metroLabel16.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="metroLabel16.Location" type="System.Drawing.Point, System.Drawing">
+    <value>15, 28</value>
+  </data>
+  <data name="metroLabel16.Size" type="System.Drawing.Size, System.Drawing">
+    <value>165, 25</value>
+  </data>
+  <data name="metroLabel16.TabIndex" type="System.Int32, mscorlib">
+    <value>91</value>
+  </data>
+  <data name="metroLabel16.Text" xml:space="preserve">
+    <value>VRChat Username</value>
+  </data>
+  <data name="&gt;&gt;metroLabel16.Name" xml:space="preserve">
+    <value>metroLabel16</value>
+  </data>
+  <data name="&gt;&gt;metroLabel16.Type" xml:space="preserve">
+    <value>MetroFramework.Controls.MetroLabel, MetroFramework, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a</value>
+  </data>
+  <data name="&gt;&gt;metroLabel16.Parent" xml:space="preserve">
+    <value>groupBox6</value>
+  </data>
+  <data name="&gt;&gt;metroLabel16.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="txtRePassword.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Left, Right</value>
+  </data>
+  <data name="resource.Image6" type="System.Resources.ResXNullRef, System.Windows.Forms">
+    <value />
+  </data>
+  <data name="resource.ImeMode1" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="resource.Location6" type="System.Drawing.Point, System.Drawing">
+    <value>607, 2</value>
+  </data>
+  <data name="resource.Size6" type="System.Drawing.Size, System.Drawing">
+    <value>27, 27</value>
+  </data>
+  <data name="resource.TabIndex6" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="resource.Visible6" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="txtRePassword.Location" type="System.Drawing.Point, System.Drawing">
+    <value>186, 66</value>
+  </data>
+  <data name="txtRePassword.Size" type="System.Drawing.Size, System.Drawing">
+    <value>637, 32</value>
+  </data>
+  <data name="txtRePassword.TabIndex" type="System.Int32, mscorlib">
+    <value>93</value>
+  </data>
+  <data name="&gt;&gt;txtRePassword.Name" xml:space="preserve">
+    <value>txtRePassword</value>
+  </data>
+  <data name="&gt;&gt;txtRePassword.Type" xml:space="preserve">
+    <value>MetroFramework.Controls.MetroTextBox, MetroFramework, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a</value>
+  </data>
+  <data name="&gt;&gt;txtRePassword.Parent" xml:space="preserve">
+    <value>groupBox6</value>
+  </data>
+  <data name="&gt;&gt;txtRePassword.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="txtReUsername.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Left, Right</value>
+  </data>
+  <data name="resource.Image7" type="System.Resources.ResXNullRef, System.Windows.Forms">
+    <value />
+  </data>
+  <data name="resource.ImeMode2" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="resource.Location7" type="System.Drawing.Point, System.Drawing">
+    <value>607, 2</value>
+  </data>
+  <data name="resource.Size7" type="System.Drawing.Size, System.Drawing">
+    <value>27, 27</value>
+  </data>
+  <data name="resource.TabIndex7" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="resource.Visible7" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="txtReUsername.Location" type="System.Drawing.Point, System.Drawing">
+    <value>186, 28</value>
+  </data>
+  <data name="txtReUsername.Size" type="System.Drawing.Size, System.Drawing">
+    <value>637, 32</value>
+  </data>
+  <data name="txtReUsername.TabIndex" type="System.Int32, mscorlib">
+    <value>92</value>
+  </data>
+  <data name="&gt;&gt;txtReUsername.Name" xml:space="preserve">
+    <value>txtReUsername</value>
+  </data>
+  <data name="&gt;&gt;txtReUsername.Type" xml:space="preserve">
+    <value>MetroFramework.Controls.MetroTextBox, MetroFramework, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a</value>
+  </data>
+  <data name="&gt;&gt;txtReUsername.Parent" xml:space="preserve">
+    <value>groupBox6</value>
+  </data>
+  <data name="&gt;&gt;txtReUsername.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="groupBox6.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 216</value>
+  </data>
+  <data name="groupBox6.Size" type="System.Drawing.Size, System.Drawing">
+    <value>834, 158</value>
+  </data>
+  <data name="groupBox6.TabIndex" type="System.Int32, mscorlib">
+    <value>98</value>
+  </data>
+  <data name="groupBox6.Text" xml:space="preserve">
+    <value>VRChat Credientials (For Reuploader)</value>
+  </data>
+  <data name="groupBox6.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="&gt;&gt;groupBox6.Name" xml:space="preserve">
+    <value>groupBox6</value>
+  </data>
+  <data name="&gt;&gt;groupBox6.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;groupBox6.Parent" xml:space="preserve">
+    <value>metroTabPage6</value>
+  </data>
+  <data name="&gt;&gt;groupBox6.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="groupBox3.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Left, Right</value>
+  </data>
+  <data name="btn2FA.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Right</value>
+  </data>
+  <data name="btn2FA.Location" type="System.Drawing.Point, System.Drawing">
+    <value>15, 152</value>
+  </data>
+  <data name="btn2FA.Size" type="System.Drawing.Size, System.Drawing">
+    <value>141, 35</value>
+  </data>
+  <data name="btn2FA.TabIndex" type="System.Int32, mscorlib">
+    <value>97</value>
+  </data>
+  <data name="btn2FA.Text" xml:space="preserve">
+    <value>2FA?</value>
+  </data>
+  <data name="&gt;&gt;btn2FA.Name" xml:space="preserve">
+    <value>btn2FA</value>
+  </data>
+  <data name="&gt;&gt;btn2FA.Type" xml:space="preserve">
+    <value>MetroFramework.Controls.MetroButton, MetroFramework, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a</value>
+  </data>
+  <data name="&gt;&gt;btn2FA.Parent" xml:space="preserve">
+    <value>groupBox3</value>
+  </data>
+  <data name="&gt;&gt;btn2FA.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="btnSaveVRC.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Right</value>
+  </data>
+  <data name="btnSaveVRC.Location" type="System.Drawing.Point, System.Drawing">
+    <value>682, 152</value>
+  </data>
+  <data name="btnSaveVRC.Size" type="System.Drawing.Size, System.Drawing">
+    <value>141, 35</value>
+  </data>
+  <data name="btnSaveVRC.TabIndex" type="System.Int32, mscorlib">
+    <value>90</value>
+  </data>
+  <data name="btnSaveVRC.Text" xml:space="preserve">
+    <value>Login</value>
+  </data>
+  <data name="&gt;&gt;btnSaveVRC.Name" xml:space="preserve">
+    <value>btnSaveVRC</value>
+  </data>
+  <data name="&gt;&gt;btnSaveVRC.Type" xml:space="preserve">
+    <value>MetroFramework.Controls.MetroButton, MetroFramework, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a</value>
+  </data>
+  <data name="&gt;&gt;btnSaveVRC.Parent" xml:space="preserve">
+    <value>groupBox3</value>
+  </data>
+  <data name="&gt;&gt;btnSaveVRC.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="metroLabel1.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="metroLabel1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>15, 73</value>
+  </data>
+  <data name="metroLabel1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>160, 25</value>
+  </data>
+  <data name="metroLabel1.TabIndex" type="System.Int32, mscorlib">
+    <value>94</value>
+  </data>
+  <data name="metroLabel1.Text" xml:space="preserve">
+    <value>VRChat Password</value>
+  </data>
+  <data name="&gt;&gt;metroLabel1.Name" xml:space="preserve">
+    <value>metroLabel1</value>
+  </data>
+  <data name="&gt;&gt;metroLabel1.Type" xml:space="preserve">
+    <value>MetroFramework.Controls.MetroLabel, MetroFramework, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a</value>
+  </data>
+  <data name="&gt;&gt;metroLabel1.Parent" xml:space="preserve">
+    <value>groupBox3</value>
+  </data>
+  <data name="&gt;&gt;metroLabel1.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="metroLabel4.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="metroLabel4.Location" type="System.Drawing.Point, System.Drawing">
+    <value>15, 28</value>
+  </data>
+  <data name="metroLabel4.Size" type="System.Drawing.Size, System.Drawing">
+    <value>165, 25</value>
+  </data>
+  <data name="metroLabel4.TabIndex" type="System.Int32, mscorlib">
+    <value>91</value>
+  </data>
+  <data name="metroLabel4.Text" xml:space="preserve">
+    <value>VRChat Username</value>
+  </data>
+  <data name="&gt;&gt;metroLabel4.Name" xml:space="preserve">
+    <value>metroLabel4</value>
+  </data>
+  <data name="&gt;&gt;metroLabel4.Type" xml:space="preserve">
+    <value>MetroFramework.Controls.MetroLabel, MetroFramework, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a</value>
+  </data>
+  <data name="&gt;&gt;metroLabel4.Parent" xml:space="preserve">
+    <value>groupBox3</value>
+  </data>
+  <data name="&gt;&gt;metroLabel4.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="txtVRCPassword.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Left, Right</value>
+  </data>
+  <data name="resource.Image8" type="System.Resources.ResXNullRef, System.Windows.Forms">
+    <value />
+  </data>
+  <data name="resource.Location8" type="System.Drawing.Point, System.Drawing">
+    <value>607, 2</value>
+  </data>
+  <data name="resource.Size8" type="System.Drawing.Size, System.Drawing">
+    <value>27, 27</value>
+  </data>
+  <data name="resource.TabIndex8" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="resource.Visible8" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="txtVRCPassword.Location" type="System.Drawing.Point, System.Drawing">
+    <value>186, 66</value>
+  </data>
+  <data name="txtVRCPassword.Size" type="System.Drawing.Size, System.Drawing">
+    <value>637, 32</value>
+  </data>
+  <data name="txtVRCPassword.TabIndex" type="System.Int32, mscorlib">
+    <value>93</value>
+  </data>
+  <data name="&gt;&gt;txtVRCPassword.Name" xml:space="preserve">
+    <value>txtVRCPassword</value>
+  </data>
+  <data name="&gt;&gt;txtVRCPassword.Type" xml:space="preserve">
+    <value>MetroFramework.Controls.MetroTextBox, MetroFramework, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a</value>
+  </data>
+  <data name="&gt;&gt;txtVRCPassword.Parent" xml:space="preserve">
+    <value>groupBox3</value>
+  </data>
+  <data name="&gt;&gt;txtVRCPassword.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="txtVRCUsername.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Left, Right</value>
+  </data>
+  <data name="resource.Image9" type="System.Resources.ResXNullRef, System.Windows.Forms">
+    <value />
+  </data>
+  <data name="resource.Location9" type="System.Drawing.Point, System.Drawing">
+    <value>607, 2</value>
+  </data>
+  <data name="resource.Size9" type="System.Drawing.Size, System.Drawing">
+    <value>27, 27</value>
+  </data>
+  <data name="resource.TabIndex9" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="resource.Visible9" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="txtVRCUsername.Location" type="System.Drawing.Point, System.Drawing">
+    <value>186, 28</value>
+  </data>
+  <data name="txtVRCUsername.Size" type="System.Drawing.Size, System.Drawing">
+    <value>637, 32</value>
+  </data>
+  <data name="txtVRCUsername.TabIndex" type="System.Int32, mscorlib">
+    <value>92</value>
+  </data>
+  <data name="&gt;&gt;txtVRCUsername.Name" xml:space="preserve">
+    <value>txtVRCUsername</value>
+  </data>
+  <data name="&gt;&gt;txtVRCUsername.Type" xml:space="preserve">
+    <value>MetroFramework.Controls.MetroTextBox, MetroFramework, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a</value>
+  </data>
+  <data name="&gt;&gt;txtVRCUsername.Parent" xml:space="preserve">
+    <value>groupBox3</value>
+  </data>
+  <data name="&gt;&gt;txtVRCUsername.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="metroLabel3.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="metroLabel3.Location" type="System.Drawing.Point, System.Drawing">
+    <value>14, 111</value>
+  </data>
+  <data name="metroLabel3.Size" type="System.Drawing.Size, System.Drawing">
+    <value>197, 25</value>
+  </data>
+  <data name="metroLabel3.TabIndex" type="System.Int32, mscorlib">
+    <value>89</value>
+  </data>
+  <data name="metroLabel3.Text" xml:space="preserve">
+    <value>VRChat Client Version</value>
+  </data>
+  <data name="&gt;&gt;metroLabel3.Name" xml:space="preserve">
+    <value>metroLabel3</value>
+  </data>
+  <data name="&gt;&gt;metroLabel3.Type" xml:space="preserve">
+    <value>MetroFramework.Controls.MetroLabel, MetroFramework, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a</value>
+  </data>
+  <data name="&gt;&gt;metroLabel3.Parent" xml:space="preserve">
+    <value>groupBox3</value>
+  </data>
+  <data name="&gt;&gt;metroLabel3.ZOrder" xml:space="preserve">
+    <value>6</value>
+  </data>
+  <data name="txtClientVersion.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Left, Right</value>
+  </data>
+  <data name="resource.Image10" type="System.Resources.ResXNullRef, System.Windows.Forms">
+    <value />
+  </data>
+  <data name="resource.Location10" type="System.Drawing.Point, System.Drawing">
+    <value>576, 2</value>
+  </data>
+  <data name="resource.Size10" type="System.Drawing.Size, System.Drawing">
+    <value>27, 27</value>
+  </data>
+  <data name="resource.TabIndex10" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="resource.Visible10" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="txtClientVersion.Location" type="System.Drawing.Point, System.Drawing">
+    <value>217, 104</value>
+  </data>
+  <data name="txtClientVersion.Size" type="System.Drawing.Size, System.Drawing">
+    <value>606, 32</value>
+  </data>
+  <data name="txtClientVersion.TabIndex" type="System.Int32, mscorlib">
+    <value>88</value>
+  </data>
+  <data name="&gt;&gt;txtClientVersion.Name" xml:space="preserve">
+    <value>txtClientVersion</value>
+  </data>
+  <data name="&gt;&gt;txtClientVersion.Type" xml:space="preserve">
+    <value>MetroFramework.Controls.MetroTextBox, MetroFramework, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a</value>
+  </data>
+  <data name="&gt;&gt;txtClientVersion.Parent" xml:space="preserve">
+    <value>groupBox3</value>
+  </data>
+  <data name="&gt;&gt;txtClientVersion.ZOrder" xml:space="preserve">
+    <value>7</value>
+  </data>
+  <data name="groupBox3.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 16</value>
+  </data>
+  <data name="groupBox3.Size" type="System.Drawing.Size, System.Drawing">
+    <value>834, 199</value>
+  </data>
+  <data name="groupBox3.TabIndex" type="System.Int32, mscorlib">
+    <value>92</value>
+  </data>
+  <data name="groupBox3.Text" xml:space="preserve">
+    <value>VRChat Credientials (for downloading VRCA files) (Really recommended to use a throw away account) | EMAIL 2FA NOT SUPPORTED</value>
+  </data>
+  <data name="&gt;&gt;groupBox3.Name" xml:space="preserve">
+    <value>groupBox3</value>
+  </data>
+  <data name="&gt;&gt;groupBox3.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;groupBox3.Parent" xml:space="preserve">
+    <value>metroTabPage6</value>
+  </data>
+  <data name="&gt;&gt;groupBox3.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="metroTabPage6.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 38</value>
+  </data>
+  <data name="metroTabPage6.Size" type="System.Drawing.Size, System.Drawing">
+    <value>840, 414</value>
+  </data>
+  <data name="metroTabPage6.TabIndex" type="System.Int32, mscorlib">
+    <value>6</value>
+  </data>
+  <data name="metroTabPage6.Text" xml:space="preserve">
+    <value>Accounts</value>
+  </data>
+  <data name="&gt;&gt;metroTabPage6.Name" xml:space="preserve">
+    <value>metroTabPage6</value>
+  </data>
+  <data name="&gt;&gt;metroTabPage6.Type" xml:space="preserve">
+    <value>MetroFramework.Controls.MetroTabPage, MetroFramework, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a</value>
+  </data>
+  <data name="&gt;&gt;metroTabPage6.Parent" xml:space="preserve">
+    <value>tabControl</value>
+  </data>
+  <data name="&gt;&gt;metroTabPage6.ZOrder" xml:space="preserve">
+    <value>6</value>
+  </data>
+  <data name="tabControl.Location" type="System.Drawing.Point, System.Drawing">
+    <value>28, 232</value>
+  </data>
+  <data name="tabControl.Size" type="System.Drawing.Size, System.Drawing">
+    <value>848, 456</value>
+  </data>
+  <data name="tabControl.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;tabControl.Name" xml:space="preserve">
+    <value>tabControl</value>
+  </data>
+  <data name="&gt;&gt;tabControl.Type" xml:space="preserve">
+    <value>MetroFramework.Controls.MetroTabControl, MetroFramework, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a</value>
+  </data>
+  <data name="&gt;&gt;tabControl.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;tabControl.ZOrder" xml:space="preserve">
+    <value>41</value>
+  </data>
+  <data name="chkPin.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="chkPin.Location" type="System.Drawing.Point, System.Drawing">
+    <value>148, 179</value>
+  </data>
+  <data name="chkPin.Size" type="System.Drawing.Size, System.Drawing">
+    <value>98, 19</value>
+  </data>
+  <data name="chkPin.TabIndex" type="System.Int32, mscorlib">
+    <value>72</value>
+  </data>
+  <data name="chkPin.Text" xml:space="preserve">
+    <value>Pin Locked</value>
+  </data>
+  <data name="&gt;&gt;chkPin.Name" xml:space="preserve">
+    <value>chkPin</value>
+  </data>
+  <data name="&gt;&gt;chkPin.Type" xml:space="preserve">
+    <value>MetroFramework.Controls.MetroCheckBox, MetroFramework, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a</value>
+  </data>
+  <data name="&gt;&gt;chkPin.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;chkPin.ZOrder" xml:space="preserve">
+    <value>23</value>
+  </data>
+  <data name="btnToggleFavorite.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Right</value>
+  </data>
+  <data name="btnToggleFavorite.Location" type="System.Drawing.Point, System.Drawing">
+    <value>750, 163</value>
+  </data>
+  <data name="btnToggleFavorite.Size" type="System.Drawing.Size, System.Drawing">
+    <value>120, 35</value>
+  </data>
+  <data name="btnToggleFavorite.TabIndex" type="System.Int32, mscorlib">
+    <value>71</value>
+  </data>
+  <data name="btnToggleFavorite.Text" xml:space="preserve">
+    <value>Toggle Favorite</value>
+  </data>
+  <data name="&gt;&gt;btnToggleFavorite.Name" xml:space="preserve">
+    <value>btnToggleFavorite</value>
+  </data>
+  <data name="&gt;&gt;btnToggleFavorite.Type" xml:space="preserve">
+    <value>MetroFramework.Controls.MetroButton, MetroFramework, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a</value>
+  </data>
+  <data name="&gt;&gt;btnToggleFavorite.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;btnToggleFavorite.ZOrder" xml:space="preserve">
+    <value>24</value>
+  </data>
+  <data name="btnSearchFavorites.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Right</value>
+  </data>
+  <data name="btnSearchFavorites.Location" type="System.Drawing.Point, System.Drawing">
+    <value>626, 163</value>
+  </data>
+  <data name="btnSearchFavorites.Size" type="System.Drawing.Size, System.Drawing">
+    <value>120, 35</value>
+  </data>
+  <data name="btnSearchFavorites.TabIndex" type="System.Int32, mscorlib">
+    <value>70</value>
+  </data>
+  <data name="btnSearchFavorites.Text" xml:space="preserve">
+    <value>Load Favorites</value>
+  </data>
+  <data name="&gt;&gt;btnSearchFavorites.Name" xml:space="preserve">
+    <value>btnSearchFavorites</value>
+  </data>
+  <data name="&gt;&gt;btnSearchFavorites.Type" xml:space="preserve">
+    <value>MetroFramework.Controls.MetroButton, MetroFramework, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a</value>
+  </data>
+  <data name="&gt;&gt;btnSearchFavorites.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;btnSearchFavorites.ZOrder" xml:space="preserve">
+    <value>25</value>
+  </data>
+  <data name="cbLimit.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Right</value>
+  </data>
+  <data name="cbLimit.ItemHeight" type="System.Int32, mscorlib">
+    <value>23</value>
+  </data>
+  <data name="cbLimit.Items" xml:space="preserve">
+    <value>Max</value>
+  </data>
+  <data name="cbLimit.Items1" xml:space="preserve">
+    <value>5000</value>
+  </data>
+  <data name="cbLimit.Items2" xml:space="preserve">
+    <value>1000</value>
+  </data>
+  <data name="cbLimit.Items3" xml:space="preserve">
+    <value>500</value>
+  </data>
+  <data name="cbLimit.Items4" xml:space="preserve">
+    <value>250</value>
+  </data>
+  <data name="cbLimit.Items5" xml:space="preserve">
+    <value>100</value>
+  </data>
+  <data name="cbLimit.Items6" xml:space="preserve">
+    <value>50</value>
+  </data>
+  <data name="cbLimit.Items7" xml:space="preserve">
+    <value>10</value>
+  </data>
+  <data name="cbLimit.Items8" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="cbLimit.Location" type="System.Drawing.Point, System.Drawing">
+    <value>751, 79</value>
+  </data>
+  <data name="cbLimit.Size" type="System.Drawing.Size, System.Drawing">
+    <value>119, 29</value>
+  </data>
+  <data name="cbLimit.TabIndex" type="System.Int32, mscorlib">
+    <value>69</value>
+  </data>
+  <data name="&gt;&gt;cbLimit.Name" xml:space="preserve">
+    <value>cbLimit</value>
+  </data>
+  <data name="&gt;&gt;cbLimit.Type" xml:space="preserve">
+    <value>MetroFramework.Controls.MetroComboBox, MetroFramework, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a</value>
+  </data>
+  <data name="&gt;&gt;cbLimit.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;cbLimit.ZOrder" xml:space="preserve">
+    <value>26</value>
+  </data>
+  <data name="txtSearchTerm.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Left, Right</value>
+  </data>
+  <data name="resource.Image11" type="System.Resources.ResXNullRef, System.Windows.Forms">
+    <value />
+  </data>
+  <data name="resource.Location11" type="System.Drawing.Point, System.Drawing">
+    <value>444, 1</value>
+  </data>
+  <data name="resource.Size11" type="System.Drawing.Size, System.Drawing">
+    <value>27, 27</value>
+  </data>
+  <data name="resource.TabIndex11" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="resource.Visible11" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="txtSearchTerm.Location" type="System.Drawing.Point, System.Drawing">
+    <value>148, 79</value>
+  </data>
+  <data name="txtSearchTerm.Size" type="System.Drawing.Size, System.Drawing">
+    <value>472, 29</value>
+  </data>
+  <data name="txtSearchTerm.TabIndex" type="System.Int32, mscorlib">
+    <value>68</value>
+  </data>
+  <data name="&gt;&gt;txtSearchTerm.Name" xml:space="preserve">
+    <value>txtSearchTerm</value>
+  </data>
+  <data name="&gt;&gt;txtSearchTerm.Type" xml:space="preserve">
+    <value>MetroFramework.Controls.MetroTextBox, MetroFramework, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a</value>
+  </data>
+  <data name="&gt;&gt;txtSearchTerm.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;txtSearchTerm.ZOrder" xml:space="preserve">
+    <value>27</value>
+  </data>
+  <data name="btnRipped.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Right</value>
+  </data>
+  <data name="btnRipped.Location" type="System.Drawing.Point, System.Drawing">
+    <value>500, 163</value>
+  </data>
+  <data name="btnRipped.Size" type="System.Drawing.Size, System.Drawing">
+    <value>120, 35</value>
+  </data>
+  <data name="btnRipped.TabIndex" type="System.Int32, mscorlib">
+    <value>67</value>
+  </data>
+  <data name="btnRipped.Text" xml:space="preserve">
+    <value>Search Ripped</value>
+  </data>
+  <data name="&gt;&gt;btnRipped.Name" xml:space="preserve">
+    <value>btnRipped</value>
+  </data>
+  <data name="&gt;&gt;btnRipped.Type" xml:space="preserve">
+    <value>MetroFramework.Controls.MetroButton, MetroFramework, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a</value>
+  </data>
+  <data name="&gt;&gt;btnRipped.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;btnRipped.ZOrder" xml:space="preserve">
+    <value>28</value>
+  </data>
+  <data name="btnViewDetails.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Right</value>
+  </data>
+  <data name="btnViewDetails.Location" type="System.Drawing.Point, System.Drawing">
+    <value>698, 119</value>
+  </data>
+  <data name="btnViewDetails.Size" type="System.Drawing.Size, System.Drawing">
+    <value>172, 35</value>
+  </data>
+  <data name="btnViewDetails.TabIndex" type="System.Int32, mscorlib">
+    <value>65</value>
+  </data>
+  <data name="btnViewDetails.Text" xml:space="preserve">
+    <value>View Avatar Full Details</value>
+  </data>
+  <data name="&gt;&gt;btnViewDetails.Name" xml:space="preserve">
+    <value>btnViewDetails</value>
+  </data>
+  <data name="&gt;&gt;btnViewDetails.Type" xml:space="preserve">
+    <value>MetroFramework.Controls.MetroButton, MetroFramework, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a</value>
+  </data>
+  <data name="&gt;&gt;btnViewDetails.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;btnViewDetails.ZOrder" xml:space="preserve">
+    <value>29</value>
+  </data>
+  <data name="btnSearch.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Right</value>
+  </data>
+  <data name="btnSearch.Location" type="System.Drawing.Point, System.Drawing">
+    <value>500, 119</value>
+  </data>
+  <data name="btnSearch.Size" type="System.Drawing.Size, System.Drawing">
+    <value>192, 35</value>
+  </data>
+  <data name="btnSearch.TabIndex" type="System.Int32, mscorlib">
+    <value>54</value>
+  </data>
+  <data name="btnSearch.Text" xml:space="preserve">
+    <value>Search API</value>
+  </data>
+  <data name="&gt;&gt;btnSearch.Name" xml:space="preserve">
+    <value>btnSearch</value>
+  </data>
+  <data name="&gt;&gt;btnSearch.Type" xml:space="preserve">
+    <value>MetroFramework.Controls.MetroButton, MetroFramework, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a</value>
+  </data>
+  <data name="&gt;&gt;btnSearch.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;btnSearch.ZOrder" xml:space="preserve">
+    <value>30</value>
+  </data>
+  <data name="cbSearchTerm.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Left, Right</value>
+  </data>
+  <data name="cbSearchTerm.ItemHeight" type="System.Int32, mscorlib">
+    <value>23</value>
+  </data>
+  <data name="cbSearchTerm.Items" xml:space="preserve">
+    <value>Avatar Name</value>
+  </data>
+  <data name="cbSearchTerm.Items1" xml:space="preserve">
+    <value>Author Name</value>
+  </data>
+  <data name="cbSearchTerm.Items2" xml:space="preserve">
+    <value>Avatar ID</value>
+  </data>
+  <data name="cbSearchTerm.Items3" xml:space="preserve">
+    <value>Author ID</value>
+  </data>
+  <data name="cbSearchTerm.Location" type="System.Drawing.Point, System.Drawing">
+    <value>148, 119</value>
+  </data>
+  <data name="cbSearchTerm.Size" type="System.Drawing.Size, System.Drawing">
+    <value>343, 29</value>
+  </data>
+  <data name="cbSearchTerm.TabIndex" type="System.Int32, mscorlib">
+    <value>64</value>
+  </data>
+  <data name="&gt;&gt;cbSearchTerm.Name" xml:space="preserve">
+    <value>cbSearchTerm</value>
+  </data>
+  <data name="&gt;&gt;cbSearchTerm.Type" xml:space="preserve">
+    <value>MetroFramework.Controls.MetroComboBox, MetroFramework, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a</value>
+  </data>
+  <data name="&gt;&gt;cbSearchTerm.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;cbSearchTerm.ZOrder" xml:space="preserve">
+    <value>31</value>
+  </data>
+  <data name="chkQuest.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="chkQuest.Location" type="System.Drawing.Point, System.Drawing">
+    <value>359, 154</value>
+  </data>
+  <data name="chkQuest.Size" type="System.Drawing.Size, System.Drawing">
+    <value>63, 19</value>
+  </data>
+  <data name="chkQuest.TabIndex" type="System.Int32, mscorlib">
+    <value>63</value>
+  </data>
+  <data name="chkQuest.Text" xml:space="preserve">
+    <value>Quest</value>
+  </data>
+  <data name="&gt;&gt;chkQuest.Name" xml:space="preserve">
+    <value>chkQuest</value>
+  </data>
+  <data name="&gt;&gt;chkQuest.Type" xml:space="preserve">
+    <value>MetroFramework.Controls.MetroCheckBox, MetroFramework, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a</value>
+  </data>
+  <data name="&gt;&gt;chkQuest.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;chkQuest.ZOrder" xml:space="preserve">
+    <value>32</value>
+  </data>
+  <data name="chkPC.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="chkPC.Location" type="System.Drawing.Point, System.Drawing">
+    <value>310, 154</value>
+  </data>
+  <data name="chkPC.Size" type="System.Drawing.Size, System.Drawing">
+    <value>43, 19</value>
+  </data>
+  <data name="chkPC.TabIndex" type="System.Int32, mscorlib">
+    <value>62</value>
+  </data>
+  <data name="chkPC.Text" xml:space="preserve">
+    <value>PC</value>
+  </data>
+  <data name="&gt;&gt;chkPC.Name" xml:space="preserve">
+    <value>chkPC</value>
+  </data>
+  <data name="&gt;&gt;chkPC.Type" xml:space="preserve">
+    <value>MetroFramework.Controls.MetroCheckBox, MetroFramework, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a</value>
+  </data>
+  <data name="&gt;&gt;chkPC.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;chkPC.ZOrder" xml:space="preserve">
+    <value>33</value>
+  </data>
+  <data name="chkPrivate.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="chkPrivate.Location" type="System.Drawing.Point, System.Drawing">
+    <value>231, 154</value>
+  </data>
+  <data name="chkPrivate.Size" type="System.Drawing.Size, System.Drawing">
+    <value>73, 19</value>
+  </data>
+  <data name="chkPrivate.TabIndex" type="System.Int32, mscorlib">
+    <value>61</value>
+  </data>
+  <data name="chkPrivate.Text" xml:space="preserve">
+    <value>Private</value>
+  </data>
+  <data name="&gt;&gt;chkPrivate.Name" xml:space="preserve">
+    <value>chkPrivate</value>
+  </data>
+  <data name="&gt;&gt;chkPrivate.Type" xml:space="preserve">
+    <value>MetroFramework.Controls.MetroCheckBox, MetroFramework, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a</value>
+  </data>
+  <data name="&gt;&gt;chkPrivate.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;chkPrivate.ZOrder" xml:space="preserve">
+    <value>34</value>
+  </data>
+  <data name="chkPublic.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="chkPublic.Location" type="System.Drawing.Point, System.Drawing">
+    <value>148, 154</value>
+  </data>
+  <data name="chkPublic.Size" type="System.Drawing.Size, System.Drawing">
+    <value>66, 19</value>
+  </data>
+  <data name="chkPublic.TabIndex" type="System.Int32, mscorlib">
+    <value>60</value>
+  </data>
+  <data name="chkPublic.Text" xml:space="preserve">
+    <value>Public</value>
+  </data>
+  <data name="&gt;&gt;chkPublic.Name" xml:space="preserve">
+    <value>chkPublic</value>
+  </data>
+  <data name="&gt;&gt;chkPublic.Type" xml:space="preserve">
+    <value>MetroFramework.Controls.MetroCheckBox, MetroFramework, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a</value>
+  </data>
+  <data name="&gt;&gt;chkPublic.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;chkPublic.ZOrder" xml:space="preserve">
+    <value>35</value>
+  </data>
+  <data name="lblAvatarCount.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="lblAvatarCount.Location" type="System.Drawing.Point, System.Drawing">
+    <value>96, 204</value>
+  </data>
+  <data name="lblAvatarCount.Size" type="System.Drawing.Size, System.Drawing">
+    <value>17, 19</value>
+  </data>
+  <data name="lblAvatarCount.TabIndex" type="System.Int32, mscorlib">
+    <value>59</value>
+  </data>
+  <data name="lblAvatarCount.Text" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;lblAvatarCount.Name" xml:space="preserve">
+    <value>lblAvatarCount</value>
+  </data>
+  <data name="&gt;&gt;lblAvatarCount.Type" xml:space="preserve">
+    <value>MetroFramework.Controls.MetroLabel, MetroFramework, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a</value>
+  </data>
+  <data name="&gt;&gt;lblAvatarCount.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;lblAvatarCount.ZOrder" xml:space="preserve">
+    <value>36</value>
+  </data>
+  <data name="lblCount.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="lblCount.Location" type="System.Drawing.Point, System.Drawing">
+    <value>30, 203</value>
+  </data>
+  <data name="lblCount.Size" type="System.Drawing.Size, System.Drawing">
+    <value>52, 19</value>
+  </data>
+  <data name="lblCount.TabIndex" type="System.Int32, mscorlib">
+    <value>58</value>
+  </data>
+  <data name="lblCount.Text" xml:space="preserve">
+    <value>Count:</value>
+  </data>
+  <data name="&gt;&gt;lblCount.Name" xml:space="preserve">
+    <value>lblCount</value>
+  </data>
+  <data name="&gt;&gt;lblCount.Type" xml:space="preserve">
+    <value>MetroFramework.Controls.MetroLabel, MetroFramework, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a</value>
+  </data>
+  <data name="&gt;&gt;lblCount.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;lblCount.ZOrder" xml:space="preserve">
+    <value>37</value>
+  </data>
+  <data name="lblFilter.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="lblFilter.Location" type="System.Drawing.Point, System.Drawing">
+    <value>30, 167</value>
+  </data>
+  <data name="lblFilter.Size" type="System.Drawing.Size, System.Drawing">
+    <value>48, 19</value>
+  </data>
+  <data name="lblFilter.TabIndex" type="System.Int32, mscorlib">
+    <value>57</value>
+  </data>
+  <data name="lblFilter.Text" xml:space="preserve">
+    <value>Filter:</value>
+  </data>
+  <data name="&gt;&gt;lblFilter.Name" xml:space="preserve">
+    <value>lblFilter</value>
+  </data>
+  <data name="&gt;&gt;lblFilter.Type" xml:space="preserve">
+    <value>MetroFramework.Controls.MetroLabel, MetroFramework, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a</value>
+  </data>
+  <data name="&gt;&gt;lblFilter.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;lblFilter.ZOrder" xml:space="preserve">
+    <value>38</value>
+  </data>
+  <data name="lblSearchType.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="lblSearchType.Location" type="System.Drawing.Point, System.Drawing">
+    <value>30, 123</value>
+  </data>
+  <data name="lblSearchType.Size" type="System.Drawing.Size, System.Drawing">
+    <value>94, 19</value>
+  </data>
+  <data name="lblSearchType.TabIndex" type="System.Int32, mscorlib">
+    <value>56</value>
+  </data>
+  <data name="lblSearchType.Text" xml:space="preserve">
+    <value>Search Type:</value>
+  </data>
+  <data name="&gt;&gt;lblSearchType.Name" xml:space="preserve">
+    <value>lblSearchType</value>
+  </data>
+  <data name="&gt;&gt;lblSearchType.Type" xml:space="preserve">
+    <value>MetroFramework.Controls.MetroLabel, MetroFramework, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a</value>
+  </data>
+  <data name="&gt;&gt;lblSearchType.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;lblSearchType.ZOrder" xml:space="preserve">
+    <value>39</value>
+  </data>
+  <data name="lblSearchTerm.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="lblSearchTerm.Location" type="System.Drawing.Point, System.Drawing">
+    <value>30, 79</value>
+  </data>
+  <data name="lblSearchTerm.Size" type="System.Drawing.Size, System.Drawing">
+    <value>96, 19</value>
+  </data>
+  <data name="lblSearchTerm.TabIndex" type="System.Int32, mscorlib">
+    <value>55</value>
+  </data>
+  <data name="lblSearchTerm.Text" xml:space="preserve">
+    <value>Search Term:</value>
+  </data>
+  <data name="&gt;&gt;lblSearchTerm.Name" xml:space="preserve">
+    <value>lblSearchTerm</value>
+  </data>
+  <data name="&gt;&gt;lblSearchTerm.Type" xml:space="preserve">
+    <value>MetroFramework.Controls.MetroLabel, MetroFramework, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a</value>
+  </data>
+  <data name="&gt;&gt;lblSearchTerm.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;lblSearchTerm.ZOrder" xml:space="preserve">
+    <value>40</value>
+  </data>
+  <data name="btnPreview.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Bottom, Right</value>
+  </data>
+  <data name="btnPreview.Location" type="System.Drawing.Point, System.Drawing">
+    <value>750, 758</value>
+  </data>
+  <data name="btnPreview.Size" type="System.Drawing.Size, System.Drawing">
+    <value>120, 35</value>
+  </data>
+  <data name="btnPreview.TabIndex" type="System.Int32, mscorlib">
+    <value>74</value>
+  </data>
+  <data name="btnPreview.Text" xml:space="preserve">
+    <value>Preview VRCA</value>
+  </data>
+  <data name="&gt;&gt;btnPreview.Name" xml:space="preserve">
+    <value>btnPreview</value>
+  </data>
+  <data name="&gt;&gt;btnPreview.Type" xml:space="preserve">
+    <value>MetroFramework.Controls.MetroButton, MetroFramework, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a</value>
+  </data>
+  <data name="&gt;&gt;btnPreview.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;btnPreview.ZOrder" xml:space="preserve">
+    <value>21</value>
+  </data>
+  <data name="btnDownload.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Bottom, Left</value>
+  </data>
+  <data name="btnDownload.Location" type="System.Drawing.Point, System.Drawing">
+    <value>32, 758</value>
+  </data>
+  <data name="btnDownload.Size" type="System.Drawing.Size, System.Drawing">
+    <value>245, 35</value>
+  </data>
+  <data name="btnDownload.TabIndex" type="System.Int32, mscorlib">
+    <value>73</value>
+  </data>
+  <data name="btnDownload.Text" xml:space="preserve">
+    <value>Download VRCA / VRCW</value>
+  </data>
+  <data name="&gt;&gt;btnDownload.Name" xml:space="preserve">
+    <value>btnDownload</value>
+  </data>
+  <data name="&gt;&gt;btnDownload.Type" xml:space="preserve">
+    <value>MetroFramework.Controls.MetroButton, MetroFramework, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a</value>
+  </data>
+  <data name="&gt;&gt;btnDownload.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;btnDownload.ZOrder" xml:space="preserve">
+    <value>22</value>
+  </data>
+  <data name="btnResetScene.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Bottom, Left</value>
+  </data>
+  <data name="btnResetScene.Location" type="System.Drawing.Point, System.Drawing">
+    <value>31, 708</value>
+  </data>
+  <data name="btnResetScene.Size" type="System.Drawing.Size, System.Drawing">
+    <value>120, 35</value>
+  </data>
+  <data name="btnResetScene.TabIndex" type="System.Int32, mscorlib">
+    <value>78</value>
+  </data>
+  <data name="btnResetScene.Text" xml:space="preserve">
+    <value>Reset Scene</value>
+  </data>
+  <data name="&gt;&gt;btnResetScene.Name" xml:space="preserve">
+    <value>btnResetScene</value>
+  </data>
+  <data name="&gt;&gt;btnResetScene.Type" xml:space="preserve">
+    <value>MetroFramework.Controls.MetroButton, MetroFramework, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a</value>
+  </data>
+  <data name="&gt;&gt;btnResetScene.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;btnResetScene.ZOrder" xml:space="preserve">
+    <value>17</value>
+  </data>
+  <data name="btnBrowserView.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Bottom, Right</value>
+  </data>
+  <data name="btnBrowserView.Location" type="System.Drawing.Point, System.Drawing">
+    <value>624, 758</value>
+  </data>
+  <data name="btnBrowserView.Size" type="System.Drawing.Size, System.Drawing">
+    <value>120, 35</value>
+  </data>
+  <data name="btnBrowserView.TabIndex" type="System.Int32, mscorlib">
+    <value>77</value>
+  </data>
+  <data name="btnBrowserView.Text" xml:space="preserve">
+    <value>Browser View</value>
+  </data>
+  <data name="&gt;&gt;btnBrowserView.Name" xml:space="preserve">
+    <value>btnBrowserView</value>
+  </data>
+  <data name="&gt;&gt;btnBrowserView.Type" xml:space="preserve">
+    <value>MetroFramework.Controls.MetroButton, MetroFramework, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a</value>
+  </data>
+  <data name="&gt;&gt;btnBrowserView.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;btnBrowserView.ZOrder" xml:space="preserve">
+    <value>18</value>
+  </data>
+  <data name="btnHotswap.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Bottom, Right</value>
+  </data>
+  <data name="btnHotswap.Location" type="System.Drawing.Point, System.Drawing">
+    <value>624, 708</value>
+  </data>
+  <data name="btnHotswap.Size" type="System.Drawing.Size, System.Drawing">
+    <value>120, 35</value>
+  </data>
+  <data name="btnHotswap.TabIndex" type="System.Int32, mscorlib">
+    <value>76</value>
+  </data>
+  <data name="btnHotswap.Text" xml:space="preserve">
+    <value>HotSwap</value>
+  </data>
+  <data name="&gt;&gt;btnHotswap.Name" xml:space="preserve">
+    <value>btnHotswap</value>
+  </data>
+  <data name="&gt;&gt;btnHotswap.Type" xml:space="preserve">
+    <value>MetroFramework.Controls.MetroButton, MetroFramework, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a</value>
+  </data>
+  <data name="&gt;&gt;btnHotswap.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;btnHotswap.ZOrder" xml:space="preserve">
+    <value>19</value>
+  </data>
+  <data name="btnUnity.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Bottom, Left</value>
+  </data>
+  <data name="btnUnity.Location" type="System.Drawing.Point, System.Drawing">
+    <value>157, 708</value>
+  </data>
+  <data name="btnUnity.Size" type="System.Drawing.Size, System.Drawing">
+    <value>120, 35</value>
+  </data>
+  <data name="btnUnity.TabIndex" type="System.Int32, mscorlib">
+    <value>75</value>
+  </data>
+  <data name="btnUnity.Text" xml:space="preserve">
+    <value>Open Unity</value>
+  </data>
+  <data name="&gt;&gt;btnUnity.Name" xml:space="preserve">
+    <value>btnUnity</value>
+  </data>
+  <data name="&gt;&gt;btnUnity.Type" xml:space="preserve">
+    <value>MetroFramework.Controls.MetroButton, MetroFramework, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a</value>
+  </data>
+  <data name="&gt;&gt;btnUnity.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;btnUnity.ZOrder" xml:space="preserve">
+    <value>20</value>
+  </data>
+  <data name="lblQuestVersion.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Bottom</value>
+  </data>
+  <data name="lblQuestVersion.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="lblQuestVersion.Location" type="System.Drawing.Point, System.Drawing">
+    <value>470, 691</value>
+  </data>
+  <data name="lblQuestVersion.Size" type="System.Drawing.Size, System.Drawing">
+    <value>100, 19</value>
+  </data>
+  <data name="lblQuestVersion.TabIndex" type="System.Int32, mscorlib">
+    <value>82</value>
+  </data>
+  <data name="lblQuestVersion.Text" xml:space="preserve">
+    <value>Quest Version</value>
+  </data>
+  <data name="&gt;&gt;lblQuestVersion.Name" xml:space="preserve">
+    <value>lblQuestVersion</value>
+  </data>
+  <data name="&gt;&gt;lblQuestVersion.Type" xml:space="preserve">
+    <value>MetroFramework.Controls.MetroLabel, MetroFramework, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a</value>
+  </data>
+  <data name="&gt;&gt;lblQuestVersion.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;lblQuestVersion.ZOrder" xml:space="preserve">
+    <value>13</value>
+  </data>
+  <data name="lblPCVersion.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Bottom</value>
+  </data>
+  <data name="lblPCVersion.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="lblPCVersion.Location" type="System.Drawing.Point, System.Drawing">
+    <value>329, 691</value>
+  </data>
+  <data name="lblPCVersion.Size" type="System.Drawing.Size, System.Drawing">
+    <value>80, 19</value>
+  </data>
+  <data name="lblPCVersion.TabIndex" type="System.Int32, mscorlib">
+    <value>81</value>
+  </data>
+  <data name="lblPCVersion.Text" xml:space="preserve">
+    <value>PC Version</value>
+  </data>
+  <data name="&gt;&gt;lblPCVersion.Name" xml:space="preserve">
+    <value>lblPCVersion</value>
+  </data>
+  <data name="&gt;&gt;lblPCVersion.Type" xml:space="preserve">
+    <value>MetroFramework.Controls.MetroLabel, MetroFramework, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a</value>
+  </data>
+  <data name="&gt;&gt;lblPCVersion.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;lblPCVersion.ZOrder" xml:space="preserve">
+    <value>14</value>
+  </data>
+  <data name="nmQuestVersion.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Bottom</value>
+  </data>
+  <data name="nmQuestVersion.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 12pt</value>
+  </data>
+  <data name="nmQuestVersion.Location" type="System.Drawing.Point, System.Drawing">
+    <value>465, 717</value>
+  </data>
+  <data name="nmQuestVersion.Size" type="System.Drawing.Size, System.Drawing">
+    <value>130, 26</value>
+  </data>
+  <data name="nmQuestVersion.TabIndex" type="System.Int32, mscorlib">
+    <value>80</value>
+  </data>
+  <data name="&gt;&gt;nmQuestVersion.Name" xml:space="preserve">
+    <value>nmQuestVersion</value>
+  </data>
+  <data name="&gt;&gt;nmQuestVersion.Type" xml:space="preserve">
+    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;nmQuestVersion.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;nmQuestVersion.ZOrder" xml:space="preserve">
+    <value>15</value>
+  </data>
+  <data name="nmPcVersion.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Bottom</value>
+  </data>
+  <data name="nmPcVersion.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 12pt</value>
+  </data>
+  <data name="nmPcVersion.Location" type="System.Drawing.Point, System.Drawing">
+    <value>319, 717</value>
+  </data>
+  <data name="nmPcVersion.Size" type="System.Drawing.Size, System.Drawing">
+    <value>129, 26</value>
+  </data>
+  <data name="nmPcVersion.TabIndex" type="System.Int32, mscorlib">
+    <value>79</value>
+  </data>
+  <data name="&gt;&gt;nmPcVersion.Name" xml:space="preserve">
+    <value>nmPcVersion</value>
+  </data>
+  <data name="&gt;&gt;nmPcVersion.Type" xml:space="preserve">
+    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;nmPcVersion.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;nmPcVersion.ZOrder" xml:space="preserve">
+    <value>16</value>
+  </data>
+  <data name="metroLabel2.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Right</value>
+  </data>
+  <data name="metroLabel2.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="metroLabel2.Location" type="System.Drawing.Point, System.Drawing">
+    <value>631, 85</value>
+  </data>
+  <data name="metroLabel2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>115, 19</value>
+  </data>
+  <data name="metroLabel2.TabIndex" type="System.Int32, mscorlib">
+    <value>85</value>
+  </data>
+  <data name="metroLabel2.Text" xml:space="preserve">
+    <value>Search Amount:</value>
+  </data>
+  <data name="&gt;&gt;metroLabel2.Name" xml:space="preserve">
+    <value>metroLabel2</value>
+  </data>
+  <data name="&gt;&gt;metroLabel2.Type" xml:space="preserve">
+    <value>MetroFramework.Controls.MetroLabel, MetroFramework, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a</value>
+  </data>
+  <data name="&gt;&gt;metroLabel2.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;metroLabel2.ZOrder" xml:space="preserve">
+    <value>12</value>
+  </data>
+  <metadata name="metroStyleManager1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
+  <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="$this.TrayHeight" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>67</value>
+  </metadata>
+  <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
+    <value>6, 13</value>
+  </data>
+  <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
+    <value>899, 816</value>
+  </data>
+  <data name="btnReupload.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Bottom, Right</value>
+  </data>
+  <data name="btnReupload.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="btnReupload.Location" type="System.Drawing.Point, System.Drawing">
+    <value>750, 708</value>
+  </data>
+  <data name="btnReupload.Size" type="System.Drawing.Size, System.Drawing">
+    <value>120, 35</value>
+  </data>
+  <data name="btnReupload.TabIndex" type="System.Int32, mscorlib">
+    <value>97</value>
+  </data>
+  <data name="btnReupload.Text" xml:space="preserve">
+    <value>Reupload</value>
+  </data>
+  <data name="btnReupload.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="&gt;&gt;btnReupload.Name" xml:space="preserve">
+    <value>btnReupload</value>
+  </data>
+  <data name="&gt;&gt;btnReupload.Type" xml:space="preserve">
+    <value>MetroFramework.Controls.MetroButton, MetroFramework, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a</value>
+  </data>
+  <data name="&gt;&gt;btnReupload.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;btnReupload.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="txtAvatarSizeQuest.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Bottom</value>
+  </data>
+  <data name="resource.Image12" type="System.Resources.ResXNullRef, System.Windows.Forms">
+    <value />
+  </data>
+  <data name="resource.Location12" type="System.Drawing.Point, System.Drawing">
+    <value>101, 1</value>
+  </data>
+  <data name="resource.Size12" type="System.Drawing.Size, System.Drawing">
+    <value>27, 27</value>
+  </data>
+  <data name="resource.TabIndex12" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="resource.Visible12" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="txtAvatarSizeQuest.Location" type="System.Drawing.Point, System.Drawing">
+    <value>466, 764</value>
+  </data>
+  <data name="txtAvatarSizeQuest.Size" type="System.Drawing.Size, System.Drawing">
+    <value>129, 29</value>
+  </data>
+  <data name="txtAvatarSizeQuest.TabIndex" type="System.Int32, mscorlib">
+    <value>96</value>
+  </data>
+  <data name="&gt;&gt;txtAvatarSizeQuest.Name" xml:space="preserve">
+    <value>txtAvatarSizeQuest</value>
+  </data>
+  <data name="&gt;&gt;txtAvatarSizeQuest.Type" xml:space="preserve">
+    <value>MetroFramework.Controls.MetroTextBox, MetroFramework, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a</value>
+  </data>
+  <data name="&gt;&gt;txtAvatarSizeQuest.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;txtAvatarSizeQuest.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="metroLabel9.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Bottom</value>
+  </data>
+  <data name="metroLabel9.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="metroLabel9.Location" type="System.Drawing.Point, System.Drawing">
+    <value>466, 746</value>
+  </data>
+  <data name="metroLabel9.Size" type="System.Drawing.Size, System.Drawing">
+    <value>127, 19</value>
+  </data>
+  <data name="metroLabel9.TabIndex" type="System.Int32, mscorlib">
+    <value>95</value>
+  </data>
+  <data name="metroLabel9.Text" xml:space="preserve">
+    <value>Quest Avatar Size</value>
+  </data>
+  <data name="&gt;&gt;metroLabel9.Name" xml:space="preserve">
+    <value>metroLabel9</value>
+  </data>
+  <data name="&gt;&gt;metroLabel9.Type" xml:space="preserve">
+    <value>MetroFramework.Controls.MetroLabel, MetroFramework, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a</value>
+  </data>
+  <data name="&gt;&gt;metroLabel9.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;metroLabel9.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="txtAvatarSizePc.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Bottom</value>
+  </data>
+  <data name="resource.Image13" type="System.Resources.ResXNullRef, System.Windows.Forms">
+    <value />
+  </data>
+  <data name="resource.Location13" type="System.Drawing.Point, System.Drawing">
+    <value>101, 1</value>
+  </data>
+  <data name="resource.Size13" type="System.Drawing.Size, System.Drawing">
+    <value>27, 27</value>
+  </data>
+  <data name="resource.TabIndex13" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="resource.Visible13" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="txtAvatarSizePc.Location" type="System.Drawing.Point, System.Drawing">
+    <value>319, 764</value>
+  </data>
+  <data name="txtAvatarSizePc.Size" type="System.Drawing.Size, System.Drawing">
+    <value>129, 29</value>
+  </data>
+  <data name="txtAvatarSizePc.TabIndex" type="System.Int32, mscorlib">
+    <value>94</value>
+  </data>
+  <data name="&gt;&gt;txtAvatarSizePc.Name" xml:space="preserve">
+    <value>txtAvatarSizePc</value>
+  </data>
+  <data name="&gt;&gt;txtAvatarSizePc.Type" xml:space="preserve">
+    <value>MetroFramework.Controls.MetroTextBox, MetroFramework, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a</value>
+  </data>
+  <data name="&gt;&gt;txtAvatarSizePc.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;txtAvatarSizePc.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="metroLabel8.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Bottom</value>
+  </data>
+  <data name="metroLabel8.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="metroLabel8.Location" type="System.Drawing.Point, System.Drawing">
+    <value>329, 746</value>
+  </data>
+  <data name="metroLabel8.Size" type="System.Drawing.Size, System.Drawing">
+    <value>107, 19</value>
+  </data>
+  <data name="metroLabel8.TabIndex" type="System.Int32, mscorlib">
+    <value>93</value>
+  </data>
+  <data name="metroLabel8.Text" xml:space="preserve">
+    <value>PC Avatar Size</value>
+  </data>
+  <data name="&gt;&gt;metroLabel8.Name" xml:space="preserve">
+    <value>metroLabel8</value>
+  </data>
+  <data name="&gt;&gt;metroLabel8.Type" xml:space="preserve">
+    <value>MetroFramework.Controls.MetroLabel, MetroFramework, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a</value>
+  </data>
+  <data name="&gt;&gt;metroLabel8.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;metroLabel8.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="chkAfter.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="chkAfter.Location" type="System.Drawing.Point, System.Drawing">
+    <value>263, 204</value>
+  </data>
+  <data name="chkAfter.Size" type="System.Drawing.Size, System.Drawing">
+    <value>94, 19</value>
+  </data>
+  <data name="chkAfter.TabIndex" type="System.Int32, mscorlib">
+    <value>92</value>
+  </data>
+  <data name="chkAfter.Text" xml:space="preserve">
+    <value>After Date</value>
+  </data>
+  <metadata name="metroToolTip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>348, 17</value>
+  </metadata>
+  <data name="chkAfter.ToolTip" xml:space="preserve">
+    <value>Search for avatars On or after date</value>
+  </data>
+  <data name="&gt;&gt;chkAfter.Name" xml:space="preserve">
+    <value>chkAfter</value>
+  </data>
+  <data name="&gt;&gt;chkAfter.Type" xml:space="preserve">
+    <value>MetroFramework.Controls.MetroCheckBox, MetroFramework, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a</value>
+  </data>
+  <data name="&gt;&gt;chkAfter.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;chkAfter.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="chkBefore.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="chkBefore.Location" type="System.Drawing.Point, System.Drawing">
+    <value>148, 203</value>
+  </data>
+  <data name="chkBefore.Size" type="System.Drawing.Size, System.Drawing">
+    <value>105, 19</value>
+  </data>
+  <data name="chkBefore.TabIndex" type="System.Int32, mscorlib">
+    <value>91</value>
+  </data>
+  <data name="chkBefore.Text" xml:space="preserve">
+    <value>Before Date</value>
+  </data>
+  <data name="chkBefore.ToolTip" xml:space="preserve">
+    <value>Search for avatars logged before or on date</value>
+  </data>
+  <data name="&gt;&gt;chkBefore.Name" xml:space="preserve">
+    <value>chkBefore</value>
+  </data>
+  <data name="&gt;&gt;chkBefore.Type" xml:space="preserve">
+    <value>MetroFramework.Controls.MetroCheckBox, MetroFramework, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a</value>
+  </data>
+  <data name="&gt;&gt;chkBefore.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;chkBefore.ZOrder" xml:space="preserve">
+    <value>6</value>
+  </data>
+  <data name="metroLabel6.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="metroLabel6.Location" type="System.Drawing.Point, System.Drawing">
+    <value>673, 210</value>
+  </data>
+  <data name="metroLabel6.Size" type="System.Drawing.Size, System.Drawing">
+    <value>43, 19</value>
+  </data>
+  <data name="metroLabel6.TabIndex" type="System.Int32, mscorlib">
+    <value>90</value>
+  </data>
+  <data name="metroLabel6.Text" xml:space="preserve">
+    <value>After</value>
+  </data>
+  <data name="&gt;&gt;metroLabel6.Name" xml:space="preserve">
+    <value>metroLabel6</value>
+  </data>
+  <data name="&gt;&gt;metroLabel6.Type" xml:space="preserve">
+    <value>MetroFramework.Controls.MetroLabel, MetroFramework, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a</value>
+  </data>
+  <data name="&gt;&gt;metroLabel6.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;metroLabel6.ZOrder" xml:space="preserve">
+    <value>7</value>
+  </data>
+  <data name="metroLabel5.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="metroLabel5.Location" type="System.Drawing.Point, System.Drawing">
+    <value>440, 210</value>
+  </data>
+  <data name="metroLabel5.Size" type="System.Drawing.Size, System.Drawing">
+    <value>54, 19</value>
+  </data>
+  <data name="metroLabel5.TabIndex" type="System.Int32, mscorlib">
+    <value>89</value>
+  </data>
+  <data name="metroLabel5.Text" xml:space="preserve">
+    <value>Before</value>
+  </data>
+  <data name="&gt;&gt;metroLabel5.Name" xml:space="preserve">
+    <value>metroLabel5</value>
+  </data>
+  <data name="&gt;&gt;metroLabel5.Type" xml:space="preserve">
+    <value>MetroFramework.Controls.MetroLabel, MetroFramework, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a</value>
+  </data>
+  <data name="&gt;&gt;metroLabel5.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;metroLabel5.ZOrder" xml:space="preserve">
+    <value>8</value>
+  </data>
+  <data name="dtAfter.Location" type="System.Drawing.Point, System.Drawing">
+    <value>722, 204</value>
+  </data>
+  <data name="dtAfter.MinimumSize" type="System.Drawing.Size, System.Drawing">
+    <value>0, 29</value>
+  </data>
+  <data name="dtAfter.Size" type="System.Drawing.Size, System.Drawing">
+    <value>148, 29</value>
+  </data>
+  <data name="dtAfter.TabIndex" type="System.Int32, mscorlib">
+    <value>88</value>
+  </data>
+  <data name="&gt;&gt;dtAfter.Name" xml:space="preserve">
+    <value>dtAfter</value>
+  </data>
+  <data name="&gt;&gt;dtAfter.Type" xml:space="preserve">
+    <value>MetroFramework.Controls.MetroDateTime, MetroFramework, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a</value>
+  </data>
+  <data name="&gt;&gt;dtAfter.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;dtAfter.ZOrder" xml:space="preserve">
+    <value>9</value>
+  </data>
+  <data name="dtBefore.Location" type="System.Drawing.Point, System.Drawing">
+    <value>500, 204</value>
+  </data>
+  <data name="dtBefore.MinimumSize" type="System.Drawing.Size, System.Drawing">
+    <value>0, 29</value>
+  </data>
+  <data name="dtBefore.Size" type="System.Drawing.Size, System.Drawing">
+    <value>148, 29</value>
+  </data>
+  <data name="dtBefore.TabIndex" type="System.Int32, mscorlib">
+    <value>87</value>
+  </data>
+  <data name="&gt;&gt;dtBefore.Name" xml:space="preserve">
+    <value>dtBefore</value>
+  </data>
+  <data name="&gt;&gt;dtBefore.Type" xml:space="preserve">
+    <value>MetroFramework.Controls.MetroDateTime, MetroFramework, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a</value>
+  </data>
+  <data name="&gt;&gt;dtBefore.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;dtBefore.ZOrder" xml:space="preserve">
+    <value>10</value>
+  </data>
+  <data name="chkContains.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="chkContains.Location" type="System.Drawing.Point, System.Drawing">
+    <value>263, 179</value>
+  </data>
+  <data name="chkContains.Size" type="System.Drawing.Size, System.Drawing">
+    <value>131, 19</value>
+  </data>
+  <data name="chkContains.TabIndex" type="System.Int32, mscorlib">
+    <value>86</value>
+  </data>
+  <data name="chkContains.Text" xml:space="preserve">
+    <value>Contains Search</value>
+  </data>
+  <data name="chkContains.ToolTip" xml:space="preserve">
+    <value>Makes Search term into a contains rather than exact</value>
+  </data>
+  <data name="&gt;&gt;chkContains.Name" xml:space="preserve">
+    <value>chkContains</value>
+  </data>
+  <data name="&gt;&gt;chkContains.Type" xml:space="preserve">
+    <value>MetroFramework.Controls.MetroCheckBox, MetroFramework, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a</value>
+  </data>
+  <data name="&gt;&gt;chkContains.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;chkContains.ZOrder" xml:space="preserve">
+    <value>11</value>
+  </data>
+  <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        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
+        5WjZK0NtvIfbB12PG+bcg7P2vRLZWuYbq1rWZUdFrB/sDsZUQicTExQmGnR//zt/rA7XRNurDlF7HTgA
+        XDrzZuRq2aoC8hVkFnBrtEURLEDM8JPCMRgkWAExECSFBUAGJSrD2hasiUlWCHOPTJlahrh/73HRwDtd
+        eGTRcIws3heN8WbPKDCbK25nzzJZbOj//rjN66Wd62wAgwF8DOCHnX9/Z+P4cMMXOGXSidiv9EjMmjMR
+        fE/62mV103r619oJfgIjw58Ri+hRcd/Qm3f3WfycSD3Xn+s9HPLVGPhVP7555T3wWztftz268u+KEhPC
+        Rxr/cdAVkgB+bdw7/zEE1AAaY01gheEnf2KOF8lYNALAyZRfFglBITM4JJmJw/b6vbYcNiIMLuiDhngT
+        ruzddtjq/QufhUoq6mL1Cec4C0eBD2YFOb4sNMab8eyIB3brvl5Z8z5UUtAUa4IBAzERh4E4WAjo0EEg
+        5Gq5aNZbcfegREz+G2vfA4EQMaKIchR6okBIcgwCMaHDrwTQaoRwz6Cd17j7oepHdM8qx8dVX2NF41ow
+        CxhsQCcDBgzkaNkIIJDoIaBqCOlhjB9+N274/h7k+XPRaDSBIRKbhOTCPLEBSzbvJNN1ai7nBQTpyQRN
+        cyumQE364QWb5CxgJOdgn6KhNFAMXRi4d9BNeGDxX6GSgrpYIwwhbC3dDahKIkAg25eNHfEGPDf84Tbv
+        /YvKKTiu/DDcveBxNMQbYST/lzADKIizDtOkWODLR//MnmBmXNLn7PasShISEhISEhISEhISEhISEhIS
+        EhISEhISEhISEhISEhISEhISEhISEhISEhISEhISEhISEhISEhISEhISEhISEhISEhISEhISEhISEhIS
+        EhISEhISEhISEhISEhISEhISEhISEhISEhISEhISEhISEhISEhISEhISEhISEhISEhISEhISEhISEhIS
+        EhISEhISEhISEhISEhISEhISEhISEhISEhISEhISEhISEhISEhISEhISEhISEhISEhISEhISEhISEhIS
+        EhISEhISEhISEhISEhISEhISEhISEhISEhISEhISEhISvxL+Hxeghmkw1IqfAAAAAElFTkSuQmCC
+</value>
+  </data>
+  <data name="$this.MinimumSize" type="System.Drawing.Size, System.Drawing">
+    <value>899, 516</value>
+  </data>
+  <data name="$this.Text" xml:space="preserve">
+    <value>Shrek Avatar Recovery System (S.A.R.S)</value>
+  </data>
+  <data name="&gt;&gt;picture.Name" xml:space="preserve">
+    <value>picture</value>
+  </data>
+  <data name="&gt;&gt;picture.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewImageColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;AvatarName.Name" xml:space="preserve">
+    <value>AvatarName</value>
+  </data>
+  <data name="&gt;&gt;AvatarName.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;Author.Name" xml:space="preserve">
+    <value>Author</value>
+  </data>
+  <data name="&gt;&gt;Author.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;AvatarId.Name" xml:space="preserve">
+    <value>AvatarId</value>
+  </data>
+  <data name="&gt;&gt;AvatarId.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;Logged.Name" xml:space="preserve">
+    <value>Logged</value>
+  </data>
+  <data name="&gt;&gt;Logged.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;ImageURL.Name" xml:space="preserve">
+    <value>ImageURL</value>
+  </data>
+  <data name="&gt;&gt;ImageURL.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;Ripped.Name" xml:space="preserve">
+    <value>Ripped</value>
+  </data>
+  <data name="&gt;&gt;Ripped.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewCheckBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;Favorited.Name" xml:space="preserve">
+    <value>Favorited</value>
+  </data>
+  <data name="&gt;&gt;Favorited.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewCheckBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;metroStyleManager1.Name" xml:space="preserve">
+    <value>metroStyleManager1</value>
+  </data>
+  <data name="&gt;&gt;metroStyleManager1.Type" xml:space="preserve">
+    <value>MetroFramework.Components.MetroStyleManager, MetroFramework, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a</value>
+  </data>
+  <data name="&gt;&gt;metroStyleExtender1.Name" xml:space="preserve">
+    <value>metroStyleExtender1</value>
+  </data>
+  <data name="&gt;&gt;metroStyleExtender1.Type" xml:space="preserve">
+    <value>MetroFramework.Components.MetroStyleExtender, MetroFramework, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a</value>
+  </data>
+  <data name="&gt;&gt;metroToolTip1.Name" xml:space="preserve">
+    <value>metroToolTip1</value>
+  </data>
+  <data name="&gt;&gt;metroToolTip1.Type" xml:space="preserve">
+    <value>MetroFramework.Components.MetroToolTip, MetroFramework, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a</value>
+  </data>
+  <data name="&gt;&gt;CacheMessages.Name" xml:space="preserve">
+    <value>CacheMessages</value>
+  </data>
+  <data name="&gt;&gt;CacheMessages.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Timer, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;$this.Name" xml:space="preserve">
+    <value>AvatarSystem</value>
+  </data>
+  <data name="&gt;&gt;$this.Type" xml:space="preserve">
+    <value>MetroFramework.Forms.MetroForm, MetroFramework, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a</value>
+  </data>
+  <metadata name="metroStyleExtender1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>183, 17</value>
+  </metadata>
+  <metadata name="CacheMessages.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>480, 17</value>
+  </metadata>
+</root>

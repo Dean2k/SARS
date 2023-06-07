@@ -1,0 +1,683 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{66E2170A-B249-4B64-B885-38B3DE79C21E}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>SARS</RootNamespace>
+    <AssemblyName>SARS</AssemblyName>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>x64</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>x64</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>shrek %282%29.ico</ApplicationIcon>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="AssetsTools.NET">
+      <HintPath>.\AssetsTools.NET.dll</HintPath>
+    </Reference>
+    <Reference Include="ICSharpCode.SharpZipLib, Version=0.85.4.369, Culture=neutral, PublicKeyToken=1b03e6acf1164f73, processorArchitecture=MSIL">
+      <HintPath>..\packages\ICSharpCode.SharpZipLib.dll.0.85.4.369\lib\net20\ICSharpCode.SharpZipLib.dll</HintPath>
+    </Reference>
+    <Reference Include="MaterialSkin, Version=2.3.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\MaterialSkin.2.2.3.1\lib\net48\MaterialSkin.dll</HintPath>
+    </Reference>
+    <Reference Include="MetroFramework, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a, processorArchitecture=MSIL">
+      <HintPath>..\packages\MetroModernUI.1.4.0.0\lib\net\MetroFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="MetroFramework.Design, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a, processorArchitecture=MSIL">
+      <HintPath>..\packages\MetroModernUI.1.4.0.0\lib\net\MetroFramework.Design.dll</HintPath>
+    </Reference>
+    <Reference Include="MetroFramework.Fonts, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a, processorArchitecture=MSIL">
+      <HintPath>..\packages\MetroModernUI.1.4.0.0\lib\net\MetroFramework.Fonts.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.VisualBasic" />
+    <Reference Include="Microsoft.WindowsAPICodePack, Version=1.1.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\WindowsAPICodePack-Core.1.1.1\lib\Microsoft.WindowsAPICodePack.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.WindowsAPICodePack.Shell, Version=1.1.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\WindowsAPICodePack-Shell.1.1.1\lib\Microsoft.WindowsAPICodePack.Shell.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.13.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Design" />
+    <Reference Include="System.IO.Compression.FileSystem" />
+    <Reference Include="System.IO.Compression.ZipFile, Version=4.0.2.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.IO.Compression.ZipFile.4.3.0\lib\net46\System.IO.Compression.ZipFile.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Avatar Info.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Avatar Info.Designer.cs">
+      <DependentUpon>Avatar Info.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AvatarCard.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="AvatarCard.Designer.cs">
+      <DependentUpon>AvatarCard.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AvatarSystem.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AvatarSystem.Designer.cs">
+      <DependentUpon>AvatarSystem.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Download.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Download.Designer.cs">
+      <DependentUpon>Download.cs</DependentUpon>
+    </Compile>
+    <Compile Include="HotswapConsole.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="HotswapConsole.designer.cs">
+      <DependentUpon>HotswapConsole.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Avatar.cs" />
+    <Compile Include="Models\CacheAvatar.cs" />
+    <Compile Include="Models\Config.cs" />
+    <Compile Include="Models\MatchModel.cs" />
+    <Compile Include="Models\VRCCacheScannerModel.cs" />
+    <Compile Include="Models\VRChatCacheResult.cs" />
+    <Compile Include="Modules\AvatarFunctions.cs" />
+    <Compile Include="Modules\CacheScanner.cs" />
+    <Compile Include="Modules\ConfigSave.cs" />
+    <Compile Include="Modules\FixVRC3Scripts.cs" />
+    <Compile Include="Modules\GenerateHtml.cs" />
+    <Compile Include="Modules\GrabModel.cs" />
+    <Compile Include="Modules\HotSwap.cs" />
+    <Compile Include="Modules\MessageBoxManager.cs" />
+    <Compile Include="Modules\ProgressBar.cs" />
+    <Compile Include="Modules\RandomFunctions.cs" />
+    <Compile Include="Modules\ShrekApi.cs" />
+    <Compile Include="Modules\StreamReader.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SARS.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SARS.Designer.cs">
+      <DependentUpon>SARS.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="Avatar Info.resx">
+      <DependentUpon>Avatar Info.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AvatarCard.resx">
+      <DependentUpon>AvatarCard.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AvatarSystem.resx">
+      <DependentUpon>AvatarSystem.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Download.resx">
+      <DependentUpon>Download.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="HotswapConsole.resx">
+      <DependentUpon>HotswapConsole.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <EmbeddedResource Include="SARS.resx">
+      <DependentUpon>SARS.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="AssetRipperConsole_win64\libvlc.dylib">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="AssetRipperConsole_win64\Licenses\AsmResolver.md">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="AssetRipperConsole_win64\Licenses\AssetStudio.md">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="AssetRipperConsole_win64\Licenses\Avalonia.md">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="AssetRipperConsole_win64\Licenses\Cpp2IL.md">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="AssetRipperConsole_win64\Licenses\Crunch.md">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="AssetRipperConsole_win64\Licenses\darkfx.md">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="AssetRipperConsole_win64\Licenses\Fmod5Sharp.md">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="AssetRipperConsole_win64\Licenses\ILSpy.md">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="AssetRipperConsole_win64\Licenses\ImageSharp.md">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="AssetRipperConsole_win64\Licenses\LibVLCSharp.md">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="AssetRipperConsole_win64\Licenses\Lz4.md">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="AssetRipperConsole_win64\Licenses\MessageBoxAvalonia.md">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="AssetRipperConsole_win64\Licenses\MonoCecil.md">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="AssetRipperConsole_win64\Licenses\NAudio.md">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="AssetRipperConsole_win64\Licenses\NAudioVorbis.md">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="AssetRipperConsole_win64\Licenses\NVorbis.md">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="AssetRipperConsole_win64\Licenses\SharpCompress.md">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="AssetRipperConsole_win64\Licenses\SharpGLTF.md">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="AssetRipperConsole_win64\Licenses\SharpZipLib.md">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="AssetRipperConsole_win64\Licenses\Smolv.md">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="AssetRipperConsole_win64\Licenses\SpirV.md">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="AssetRipperConsole_win64\Licenses\texgenpack.md">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="AssetRipperConsole_win64\Licenses\uTinyRipper.md">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="AssetRipperConsole_win64\Licenses\uTinyRipperExporter.md">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="AssetRipperConsole_win64\Licenses\Xiph.md">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="NewestViewer\AssetViewer_Data\app.info">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="NewestViewer\AssetViewer_Data\boot.config">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="NewestViewer\AssetViewer_Data\data.unity3d">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="NewestViewer\AssetViewer_Data\Resources\unity default resources">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="NewestViewer\MonoBleedingEdge\etc\mono\2.0\Browsers\Compat.browser">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="NewestViewer\MonoBleedingEdge\etc\mono\2.0\machine.config">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="NewestViewer\MonoBleedingEdge\etc\mono\2.0\settings.map">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="NewestViewer\MonoBleedingEdge\etc\mono\2.0\web.config">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="NewestViewer\MonoBleedingEdge\etc\mono\4.0\Browsers\Compat.browser">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="NewestViewer\MonoBleedingEdge\etc\mono\4.0\machine.config">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="NewestViewer\MonoBleedingEdge\etc\mono\4.0\settings.map">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="NewestViewer\MonoBleedingEdge\etc\mono\4.0\web.config">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="NewestViewer\MonoBleedingEdge\etc\mono\4.5\Browsers\Compat.browser">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="NewestViewer\MonoBleedingEdge\etc\mono\4.5\machine.config">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="NewestViewer\MonoBleedingEdge\etc\mono\4.5\settings.map">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="NewestViewer\MonoBleedingEdge\etc\mono\4.5\web.config">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="NewestViewer\MonoBleedingEdge\etc\mono\browscap.ini">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="NewestViewer\MonoBleedingEdge\etc\mono\config">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <None Include="SARS.zip">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Template\SampleScene.unity">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="AssetRipperConsole_win64\AssetRipper.exe">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="AssetRipperConsole_win64\av_libglesv2.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="AssetRipperConsole_win64\capstone.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="AssetRipperConsole_win64\crunch.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="AssetRipperConsole_win64\crunchunity.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="AssetRipperConsole_win64\libHarfBuzzSharp.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="AssetRipperConsole_win64\libSkiaSharp.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="AssetRipperConsole_win64\texgenpack.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="AssetRipperConsole_win64\Texture2DDecoderNative.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="css\bootstrap.min.css">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="css\intlTelInput.css">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="css\site_2.css">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="NewestViewer\AssetViewer.exe">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="NewestViewer\AssetViewer_Data\Managed\Assembly-CSharp.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="NewestViewer\AssetViewer_Data\Managed\Cinemachine.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="NewestViewer\AssetViewer_Data\Managed\Mono.Security.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="NewestViewer\AssetViewer_Data\Managed\mscorlib.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="NewestViewer\AssetViewer_Data\Managed\netstandard.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="NewestViewer\AssetViewer_Data\Managed\System.ComponentModel.Composition.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="NewestViewer\AssetViewer_Data\Managed\System.Configuration.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="NewestViewer\AssetViewer_Data\Managed\System.Core.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="NewestViewer\AssetViewer_Data\Managed\System.Data.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="NewestViewer\AssetViewer_Data\Managed\System.Diagnostics.StackTrace.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="NewestViewer\AssetViewer_Data\Managed\System.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="NewestViewer\AssetViewer_Data\Managed\System.Drawing.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="NewestViewer\AssetViewer_Data\Managed\System.EnterpriseServices.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="NewestViewer\AssetViewer_Data\Managed\System.Globalization.Extensions.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="NewestViewer\AssetViewer_Data\Managed\System.IO.Compression.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="NewestViewer\AssetViewer_Data\Managed\System.IO.Compression.FileSystem.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="NewestViewer\AssetViewer_Data\Managed\System.Net.Http.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="NewestViewer\AssetViewer_Data\Managed\System.Numerics.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="NewestViewer\AssetViewer_Data\Managed\System.Runtime.Serialization.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="NewestViewer\AssetViewer_Data\Managed\System.Runtime.Serialization.Xml.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="NewestViewer\AssetViewer_Data\Managed\System.ServiceModel.Internals.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="NewestViewer\AssetViewer_Data\Managed\System.Transactions.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="NewestViewer\AssetViewer_Data\Managed\System.Xml.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="NewestViewer\AssetViewer_Data\Managed\System.Xml.Linq.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="NewestViewer\AssetViewer_Data\Managed\System.Xml.XPath.XDocument.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="NewestViewer\AssetViewer_Data\Managed\Unity.TextMeshPro.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="NewestViewer\AssetViewer_Data\Managed\Unity.Timeline.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="NewestViewer\AssetViewer_Data\Managed\UnityEngine.AccessibilityModule.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="NewestViewer\AssetViewer_Data\Managed\UnityEngine.AIModule.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="NewestViewer\AssetViewer_Data\Managed\UnityEngine.AndroidJNIModule.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="NewestViewer\AssetViewer_Data\Managed\UnityEngine.AnimationModule.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="NewestViewer\AssetViewer_Data\Managed\UnityEngine.ARModule.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="NewestViewer\AssetViewer_Data\Managed\UnityEngine.AssetBundleModule.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="NewestViewer\AssetViewer_Data\Managed\UnityEngine.AudioModule.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="NewestViewer\AssetViewer_Data\Managed\UnityEngine.ClothModule.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="NewestViewer\AssetViewer_Data\Managed\UnityEngine.ClusterInputModule.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="NewestViewer\AssetViewer_Data\Managed\UnityEngine.ClusterRendererModule.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="NewestViewer\AssetViewer_Data\Managed\UnityEngine.CoreModule.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="NewestViewer\AssetViewer_Data\Managed\UnityEngine.CrashReportingModule.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="NewestViewer\AssetViewer_Data\Managed\UnityEngine.DirectorModule.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="NewestViewer\AssetViewer_Data\Managed\UnityEngine.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="NewestViewer\AssetViewer_Data\Managed\UnityEngine.DSPGraphModule.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="NewestViewer\AssetViewer_Data\Managed\UnityEngine.GameCenterModule.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="NewestViewer\AssetViewer_Data\Managed\UnityEngine.GridModule.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="NewestViewer\AssetViewer_Data\Managed\UnityEngine.HotReloadModule.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="NewestViewer\AssetViewer_Data\Managed\UnityEngine.ImageConversionModule.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="NewestViewer\AssetViewer_Data\Managed\UnityEngine.IMGUIModule.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="NewestViewer\AssetViewer_Data\Managed\UnityEngine.InputLegacyModule.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="NewestViewer\AssetViewer_Data\Managed\UnityEngine.InputModule.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="NewestViewer\AssetViewer_Data\Managed\UnityEngine.JSONSerializeModule.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="NewestViewer\AssetViewer_Data\Managed\UnityEngine.LocalizationModule.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="NewestViewer\AssetViewer_Data\Managed\UnityEngine.ParticleSystemModule.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="NewestViewer\AssetViewer_Data\Managed\UnityEngine.PerformanceReportingModule.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="NewestViewer\AssetViewer_Data\Managed\UnityEngine.Physics2DModule.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="NewestViewer\AssetViewer_Data\Managed\UnityEngine.PhysicsModule.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="NewestViewer\AssetViewer_Data\Managed\UnityEngine.ProfilerModule.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="NewestViewer\AssetViewer_Data\Managed\UnityEngine.ScreenCaptureModule.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="NewestViewer\AssetViewer_Data\Managed\UnityEngine.SharedInternalsModule.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="NewestViewer\AssetViewer_Data\Managed\UnityEngine.SpriteMaskModule.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="NewestViewer\AssetViewer_Data\Managed\UnityEngine.SpriteShapeModule.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="NewestViewer\AssetViewer_Data\Managed\UnityEngine.StreamingModule.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="NewestViewer\AssetViewer_Data\Managed\UnityEngine.SubstanceModule.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="NewestViewer\AssetViewer_Data\Managed\UnityEngine.SubsystemsModule.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="NewestViewer\AssetViewer_Data\Managed\UnityEngine.TerrainModule.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="NewestViewer\AssetViewer_Data\Managed\UnityEngine.TerrainPhysicsModule.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="NewestViewer\AssetViewer_Data\Managed\UnityEngine.TextCoreModule.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="NewestViewer\AssetViewer_Data\Managed\UnityEngine.TextRenderingModule.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="NewestViewer\AssetViewer_Data\Managed\UnityEngine.TilemapModule.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="NewestViewer\AssetViewer_Data\Managed\UnityEngine.TLSModule.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="NewestViewer\AssetViewer_Data\Managed\UnityEngine.UI.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="NewestViewer\AssetViewer_Data\Managed\UnityEngine.UIElementsModule.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="NewestViewer\AssetViewer_Data\Managed\UnityEngine.UIModule.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="NewestViewer\AssetViewer_Data\Managed\UnityEngine.UmbraModule.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="NewestViewer\AssetViewer_Data\Managed\UnityEngine.UNETModule.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="NewestViewer\AssetViewer_Data\Managed\UnityEngine.UnityAnalyticsModule.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="NewestViewer\AssetViewer_Data\Managed\UnityEngine.UnityConnectModule.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="NewestViewer\AssetViewer_Data\Managed\UnityEngine.UnityTestProtocolModule.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="NewestViewer\AssetViewer_Data\Managed\UnityEngine.UnityWebRequestAssetBundleModule.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="NewestViewer\AssetViewer_Data\Managed\UnityEngine.UnityWebRequestAudioModule.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="NewestViewer\AssetViewer_Data\Managed\UnityEngine.UnityWebRequestModule.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="NewestViewer\AssetViewer_Data\Managed\UnityEngine.UnityWebRequestTextureModule.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="NewestViewer\AssetViewer_Data\Managed\UnityEngine.UnityWebRequestWWWModule.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="NewestViewer\AssetViewer_Data\Managed\UnityEngine.VehiclesModule.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="NewestViewer\AssetViewer_Data\Managed\UnityEngine.VFXModule.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="NewestViewer\AssetViewer_Data\Managed\UnityEngine.VideoModule.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="NewestViewer\AssetViewer_Data\Managed\UnityEngine.VRModule.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="NewestViewer\AssetViewer_Data\Managed\UnityEngine.WindModule.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="NewestViewer\AssetViewer_Data\Managed\UnityEngine.XRModule.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="NewestViewer\MonoBleedingEdge\EmbedRuntime\mono-2.0-bdwgc.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="NewestViewer\MonoBleedingEdge\EmbedRuntime\MonoPosixHelper.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="NewestViewer\MonoBleedingEdge\etc\mono\2.0\DefaultWsdlHelpGenerator.aspx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="NewestViewer\MonoBleedingEdge\etc\mono\4.0\DefaultWsdlHelpGenerator.aspx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="NewestViewer\MonoBleedingEdge\etc\mono\4.5\DefaultWsdlHelpGenerator.aspx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="NewestViewer\MonoBleedingEdge\etc\mono\mconfig\config.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="NewestViewer\UnityCrashHandler64.exe">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="NewestViewer\UnityPlayer.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="NewestViewer\WinPixEventRuntime.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <None Include="Resources\No-Image.png" />
+    <None Include="Resources\dot.png" />
+    <None Include="Resources\Image_not_available.png" />
+    <None Include="Resources\download.png" />
+    <Content Include="shrek %282%29.ico" />
+    <Content Include="Template\shrekLogo.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="VRCA\VRCA.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="VRCW\VRCW.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="External\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\VRChatAPI-New\VRChatAPI-New.csproj">
+      <Project>{cedc4c2d-e846-4c34-99ad-7642853744f7}</Project>
+      <Name>VRChatAPI-New</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
