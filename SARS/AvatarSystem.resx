@@ -2230,7 +2230,7 @@
     <value>92</value>
   </data>
   <data name="groupBox3.Text" xml:space="preserve">
-    <value>VRChat Credientials (for downloading VRCA files) (Really recommended to use a throw away account) | EMAIL 2FA NOT SUPPORTED</value>
+    <value>VRChat Credientials (for downloading VRCA files) (Really recommended to use a throw away account)</value>
   </data>
   <data name="&gt;&gt;groupBox3.Name" xml:space="preserve">
     <value>groupBox3</value>

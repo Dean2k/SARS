@@ -181,7 +181,7 @@ namespace SARS.Modules
                 {
                     var version = pcUrl.Split('/');
                     var urlCheck = pcUrl.Replace(version[6] + "/" + version[7] + "/file", version[6]);
-                    var versionList = VRCA.GetVersions(urlCheck).Result;
+                    var versionList = VRCA.GetVersions(urlCheck);
                     if (versionList != null)
                     {
                         pcRoot = versionList;
@@ -208,7 +208,7 @@ namespace SARS.Modules
                 {
                     var version = questUrl.Split('/');
                     var urlCheck = questUrl.Replace(version[6] + "/" + version[7] + "/file", version[6]);
-                    var versionList = VRCA.GetVersions(urlCheck).Result;
+                    var versionList = VRCA.GetVersions(urlCheck);
                     if (versionList != null)
                     {
                         questRoot = versionList;

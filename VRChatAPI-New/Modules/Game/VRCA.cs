@@ -1,11 +1,8 @@
 ﻿using Newtonsoft.Json;
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Net;
-using System.Text;
 using System.Threading.Tasks;
-using VRChatAPI_New.Exception;
+using System.Windows.Forms;
 using VRChatAPI_New.Models;
 
 namespace VRChatAPI_New.Modules.Game
@@ -14,22 +11,86 @@ namespace VRChatAPI_New.Modules.Game
     {
         public static async Task DownloadVrcaFile(string url, string fileLocation, System.Windows.Forms.ProgressBar progressBar)
         {
-            StaticGameValues.CheckSetup();
-            await HttpRequests.StartDownload(url, fileLocation, progressBar);
+            WebClient webClient = new WebClient();
+            try
+            {
+                webClient.DownloadProgressChanged += (s, e) =>
+                {
+                    SafeProgress(progressBar, e.ProgressPercentage);
+                };
+                webClient.BaseAddress = "https://api.vrchat.cloud";
+                webClient.Headers.Add("Accept", $"*/*");
+                webClient.Headers.Add("Cookie", $"auth={StaticGameValues.AuthKey}; twoFactorAuth={StaticGameValues.TwoFactorKey}");
+                webClient.Headers.Add("X-MacAddress", StaticGameValues.MacAddress);
+                webClient.Headers.Add("X-Client-Version", StaticGameValues.GameVersion);
+                webClient.Headers.Add("X-Platform", "standalonewindows");
+                webClient.Headers.Add("user-agent", "VRC.Core.BestHTTP");
+                webClient.Headers.Add("X-Unity-Version", "2019.4.40f1");
+                await webClient.DownloadFileTaskAsync(new Uri(url), fileLocation);
+
+                webClient.Dispose();
+            }
+            catch (System.Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                if (ex.Message.Contains("403"))
+                {
+                    MessageBox.Show("Error downloading Avatar, its likely that the account you are using has been banned.\nPlease login with a new account or try another avatar.");
+                }
+                else if (ex.Message.Contains("404"))
+                {
+                    MessageBox.Show("Avatar has been removed from VRChat servers or this version doesn't exist");
+                }
+                else if (ex.Message.Contains("401"))
+                {
+                    MessageBox.Show("Login with a alt VRChat account in the settings page");
+                }
+                else
+                {
+                    MessageBox.Show(ex.Message);
+                }
+                webClient.Dispose();
+            }
         }
 
-        public static async Task<VRChatFileInformation> GetVersions(string url)
+        private static void SafeProgress(ProgressBar progress, int value)
         {
-            StaticGameValues.CheckSetup();
-
-            string urlWanted = url.Replace(StaticGameValues.ApiUrl.AbsoluteUri, "");
-
-            var webResponse = await HttpRequests.GetStringAsync(urlWanted).ConfigureAwait(false);
-            if (webResponse.ToLower().Contains("missing credentials"))
+            try
             {
-                throw new InvalidLogin("Invalid token");
+                if (progress.InvokeRequired)
+                {
+                    progress.Invoke((MethodInvoker)delegate
+                    {
+                        progress.Value = value;
+                    });
+                }
             }
-            return JsonConvert.DeserializeObject<VRChatFileInformation>(webResponse);
+            catch { }
+        }
+
+        public static VRChatFileInformation GetVersions(string url)
+        {
+            using WebClient webClient = new WebClient();
+            webClient.BaseAddress = "https://api.vrchat.cloud";
+            webClient.Headers.Add("Accept", $"*/*");
+            webClient.Headers.Add("Cookie", $"auth={StaticGameValues.AuthKey}; twoFactorAuth={StaticGameValues.TwoFactorKey}");
+            webClient.Headers.Add("X-MacAddress", StaticGameValues.MacAddress);
+            webClient.Headers.Add("X-Client-Version", StaticGameValues.GameVersion);
+            webClient.Headers.Add("X-Platform", "standalonewindows");
+            webClient.Headers.Add("user-agent", "VRC.Core.BestHTTP");
+            webClient.Headers.Add("X-Unity-Version", "2019.4.40f1");
+            try
+            {
+                string web = webClient.DownloadString(url);
+                VRChatFileInformation items = JsonConvert.DeserializeObject<VRChatFileInformation>(web);
+                return items;
+            }
+            catch (System.Exception ex)
+            {
+                Console.WriteLine(ex);
+                return null;
+                //skip as its likely avatar is been yeeted from VRC servers
+            }
         }
     }
 }

@@ -73,69 +73,6 @@ namespace VRChatAPI_New.Modules.Game
             }
 
             return null;
-
-        }
-
-        public static async Task StartDownload(string fileUrl, string fileLocation, ProgressBar progressBar)
-        {
-            string urlWanted = fileUrl.Replace(StaticGameValues.ApiUrl.AbsoluteUri, "");
-            using var response = await StaticGameValues.HttpClient.GetAsync(urlWanted, HttpCompletionOption.ResponseHeadersRead);
-            await DownloadFileFromHttpResponseMessage(response, fileLocation, progressBar);
-        }
-
-        private static async Task DownloadFileFromHttpResponseMessage(HttpResponseMessage response, string fileLocation, ProgressBar progressBar)
-        {
-            response.EnsureSuccessStatusCode();
-
-            var totalBytes = response.Content.Headers.ContentLength;
-
-            using var contentStream = await response.Content.ReadAsStreamAsync();
-            await ProcessContentStream(totalBytes, contentStream, fileLocation, progressBar);
-        }
-
-        private static void SafeProgress(ProgressBar progress, int value)
-        {
-            try
-            {
-                if (progress.InvokeRequired)
-                {
-                    progress.Invoke((MethodInvoker)delegate
-                    {
-                        progress.Value = value;
-                    });
-                }
-            } catch { }
-        }
-
-        private static async Task ProcessContentStream(long? totalDownloadSize, Stream contentStream, string fileLocation, ProgressBar progressBar)
-        {
-            var totalBytesRead = 0L;
-            var readCount = 0L;
-            var buffer = new byte[1024];
-            var isMoreToRead = true;
-
-            using var fileStream = new FileStream(fileLocation, FileMode.Create, FileAccess.Write, FileShare.None);
-            do
-            {
-                var bytesRead = await contentStream.ReadAsync(buffer, 0, buffer.Length);
-                if (bytesRead == 0)
-                {
-                    isMoreToRead = false;
-                    SafeProgress(progressBar, Convert.ToInt32(Math.Round(totalBytesRead / (double)totalDownloadSize * 100)));
-                    continue;
-                }
-
-                await fileStream.WriteAsync(buffer, 0, bytesRead);
-
-                totalBytesRead += bytesRead;
-                readCount += 1;
-
-                if (readCount % 100 == 0)
-                {
-                    SafeProgress(progressBar, Convert.ToInt32(Math.Round(totalBytesRead / (double)totalDownloadSize * 100)));
-                }
-            }
-            while (isMoreToRead);
         }
     }
 }
