@@ -8,6 +8,7 @@ namespace VRChatAPI_New
 {
     public class StaticGameValues
     {
+        public static bool LoggedInOnce { get; set; }
         public static string AuthKey { get; set; }
         public static string TwoFactorKey { get; set; }
         public static string MacAddress { get; set; }

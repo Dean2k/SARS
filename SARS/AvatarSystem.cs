@@ -1003,7 +1003,7 @@ namespace SARS
 
         private async Task<bool> Download()
         {
-            if (string.IsNullOrEmpty(configSave.Config.UserId))
+            if (string.IsNullOrEmpty(configSave.Config.AuthKey))
             {
                 MessageBox.Show("Please Login with an alt first.");
                 return false;

@@ -24,6 +24,7 @@ namespace VRChatAPI_New
             StaticGameValues.UnityVersion = SetupUnityGameVersion();
             StaticGameValues.CookieContainer = new CookieContainer();
             SARSGameClient.SetupClient(macAddress, StaticGameValues.GameVersion, StaticGameValues.UnityVersion);
+            StaticGameValues.LoggedInOnce = false;
         }
 
         private static string SetupGameVersion()

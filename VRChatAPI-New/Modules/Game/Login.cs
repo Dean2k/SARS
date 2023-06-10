@@ -26,7 +26,7 @@ namespace VRChatAPI_New.Modules.Game
             StaticGameValues.CookieContainer.Add(StaticGameValues.ApiUrl, new Cookie("auth", auth));
             StaticGameValues.AuthKey = auth;
 
-            var webResponse = await HttpRequests.GetStringAsync("auth/user?organization=vrchat").ConfigureAwait(false);
+            var webResponse = await HttpRequests.GetStringAsync($"auth/user{ApiKeyAndOrg()}").ConfigureAwait(false);
             if (webResponse.ToLower().Contains("missing credentials"))
             {
                 throw new InvalidLogin("Invalid token");
@@ -37,6 +37,7 @@ namespace VRChatAPI_New.Modules.Game
                 AuthKey = auth,
                 TwoFactorKey = twoFactorAuth
             };
+            StaticGameValues.LoggedInOnce = true;
             return info;
         }
 
@@ -46,7 +47,7 @@ namespace VRChatAPI_New.Modules.Game
 
             StaticGameValues.HttpClient.DefaultRequestHeaders.Remove("Authorization");
             StaticGameValues.HttpClient.DefaultRequestHeaders.Add("Authorization", $"Basic {Convert.ToBase64String(Encoding.UTF8.GetBytes($"{Uri.EscapeDataString(username)}:{Uri.EscapeDataString(password)}"))}");
-            var webResponse = await HttpRequests.GetStringAsync("auth/user?organization=vrchat").ConfigureAwait(false);
+            var webResponse = await HttpRequests.GetStringAsync($"auth/user{ApiKeyAndOrg()}").ConfigureAwait(false);
             if (webResponse.ToLower().Contains("missing credentials") || webResponse.ToLower().Contains("invalid username/email"))
             {
                 throw new InvalidLogin("Invalid user credentials");
@@ -69,7 +70,7 @@ namespace VRChatAPI_New.Modules.Game
 
                 StaticGameValues.HttpClient.DefaultRequestHeaders.Authorization = null;
                 var twoFactor = JsonConvert.SerializeObject(new _2FACode(twoFactorCode));
-                var twoFactorResponse = await HttpRequests.PostAsync($"auth/twofactorauth/{twoFactorType}/verify?organization=vrchat", StaticGameValues.JsonToHtmlContent(twoFactor)).ConfigureAwait(false);
+                var twoFactorResponse = await HttpRequests.PostAsync($"auth/twofactorauth/{twoFactorType}/verify{ApiKeyAndOrg()}", StaticGameValues.JsonToHtmlContent(twoFactor)).ConfigureAwait(false);
                 if(twoFactorResponse == null)
                 {
                     StaticGameValues.HttpClient.DefaultRequestHeaders.Remove("Authorization");
@@ -81,10 +82,11 @@ namespace VRChatAPI_New.Modules.Game
                     throw new NoTwoFactor("Couldn't verify 2FA!");
                 }
             }
-            var authedResponse = await HttpRequests.GetStringAsync("auth/user?organization=vrchat").ConfigureAwait(false);
+            var authedResponse = await HttpRequests.GetStringAsync($"auth/user{ApiKeyAndOrg()}").ConfigureAwait(false);
             ProcessCookies();
             VRChatUserInfo info = JsonConvert.DeserializeObject<VRChatUserInfo>(authedResponse);
             info.Details = new LoginAuth { AuthKey = StaticGameValues.AuthKey, TwoFactorKey = StaticGameValues.TwoFactorKey };
+            StaticGameValues.LoggedInOnce = true;
             return info;
         }
 
@@ -102,12 +104,19 @@ namespace VRChatAPI_New.Modules.Game
                 }
             }
         }
+        private static string ApiKeyAndOrg()
+        {
+            return "?apiKey=JlE5Jldo5Jibnk5O5hTx6XVqsJu4WJ26&organization=vrchat";
+        }
 
         public async static void Logout()
         {
-            StaticGameValues.AuthKey = null;
-            StaticGameValues.TwoFactorKey = null;
-            await HttpRequests.PutAsync("logout?organization=vrchat", new StringContent("{}", Encoding.UTF8, "application/json")).ConfigureAwait(false);
+            if (StaticGameValues.LoggedInOnce)
+            {
+                StaticGameValues.AuthKey = null;
+                StaticGameValues.TwoFactorKey = null;
+                await HttpRequests.PutAsync($"logout{ApiKeyAndOrg()}", new StringContent("{}", Encoding.UTF8, "application/json")).ConfigureAwait(false);
+            }
         }
 
         private static string AskInputAuthCode(string twoFactorType)
