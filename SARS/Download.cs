@@ -30,15 +30,7 @@ namespace SARS
 
         private void timer1_Tick(object sender, EventArgs e)
         {
-            //Console.WriteLine(downloadProgress.Value);
-            if (downloadProgress.Value == 100)
-            {
-                this.Close();
-            }
-            if (error)
-            {
-                this.Close();
-            }
+           
         }
     }
 }

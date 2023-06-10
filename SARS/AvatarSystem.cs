@@ -725,17 +725,19 @@ namespace SARS
                     }
                     else
                     {
-                        Download download = new Download();
-                        download.Show();
+                       
                         try
                         {
                             Image myImg = (row.Cells[0].Value as Image);
                             myImg.Save(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location) +
                                         $"\\{configSave.Config.HotSwapName}\\Assets\\Shrek SMART\\Resources\\shrekLogo.png", ImageFormat.Png);
-                            avatar = avatars.FirstOrDefault(x => x.avatar.avatarId == row.Cells[3].Value);
+                            avatar = avatars.FirstOrDefault(x => x.avatar.avatarId == row.Cells[3].Value);                            
                         }
                         catch { }
-                        await Task.Run(() => AvatarFunctions.DownloadVrcaAsync(avatar, nmPcVersion.Value, nmQuestVersion.Value));
+                        Download download = new Download { Text = $"{avatar.avatar.avatarName} - {avatar.avatar.avatarId}" };
+                        download.Show();
+                        await Task.Run(() => AvatarFunctions.DownloadVrcaAsync(avatar, nmPcVersion.Value, nmQuestVersion.Value, download));
+                        download.Close();
                     }
                 }
                 if (AvatarFunctions.pcDownload)
@@ -1008,13 +1010,15 @@ namespace SARS
             }
             if (avatarGrid.SelectedRows.Count > 1)
             {
-                Download download = new Download();
-                download.Show();
+                
                 Avatar avatar = null;
                 foreach (DataGridViewRow row in avatarGrid.SelectedRows)
                 {
                     avatar = avatars.FirstOrDefault(x => x.avatar.avatarId == row.Cells[3].Value);
-                    await Task.Run(() => AvatarFunctions.DownloadVrcaAsync(avatar, 0, 0));
+                    Download download = new Download { Text = $"{avatar.avatar.avatarName} - {avatar.avatar.avatarId}" };
+                    download.Show();
+                    await Task.Run(() => AvatarFunctions.DownloadVrcaAsync(avatar, 0, 0, download));
+                    download.Close();
                 }
             }
             else
@@ -1022,10 +1026,11 @@ namespace SARS
                 Avatar avatar = null;
                 foreach (DataGridViewRow row in avatarGrid.SelectedRows)
                 {
-                    Download download = new Download();
-                    download.Show();
                     avatar = avatars.FirstOrDefault(x => x.avatar.avatarId == row.Cells[3].Value);
-                    await Task.Run(() => AvatarFunctions.DownloadVrcaAsync(avatar, nmPcVersion.Value, nmQuestVersion.Value));
+                    Download download = new Download { Text = $"{avatar.avatar.avatarName} - {avatar.avatar.avatarId}" };
+                    download.Show();
+                    await Task.Run(() => AvatarFunctions.DownloadVrcaAsync(avatar, nmPcVersion.Value, nmQuestVersion.Value, download));
+                    download.Close();
                 }
             }
             return true;
@@ -1039,11 +1044,12 @@ namespace SARS
                 Avatar avatar = null;
                 if (vrcaLocation == "")
                 {
-                    Download download = new Download();
-                    download.Show();
                     avatar = avatars.FirstOrDefault(x => x.avatar.avatarId == avatarGrid.SelectedRows[0].Cells[3].Value);
-                    if (await Task.Run(() => AvatarFunctions.DownloadVrcaAsync(avatar,nmPcVersion.Value, nmQuestVersion.Value)) == false) return;
+                    Download download = new Download { Text = $"{avatar.avatar.avatarName} - {avatar.avatar.avatarId}" };
+                    download.Show();
+                    if (await Task.Run(() => AvatarFunctions.DownloadVrcaAsync(avatar,nmPcVersion.Value, nmQuestVersion.Value, download)) == false) return;
                     avatarFile = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location) + $"\\VRCA\\{avatar.avatar.avatarName}-{avatar.avatar.avatarId}_pc.vrca";
+                    download.Close();
                 }
                 else
                 {
@@ -1221,13 +1227,16 @@ namespace SARS
                 }
                 bool downloaded = false;
                 Avatar avatar = null;
+                Download download = null;
                 foreach (DataGridViewRow row in avatarGrid.SelectedRows)
                 {
-                    Download download = new Download();
-                    download.Show();
+                    
                     avatar = avatars.FirstOrDefault(x => x.avatar.avatarId == row.Cells[3].Value);
-                    await Task.Run(() => AvatarFunctions.DownloadVrcaAsync(avatar, nmPcVersion.Value, nmQuestVersion.Value));
+                    download = new Download() {Text = $"{avatar.avatar.avatarName} - {avatar.avatar.avatarId}" };
+                    download.Show();
+                    await Task.Run(() => AvatarFunctions.DownloadVrcaAsync(avatar, nmPcVersion.Value, nmQuestVersion.Value, download));
                 }
+                download.Close();
                 fileLocation = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location) + $"\\VRCA\\{RandomFunctions.ReplaceInvalidChars(avatar.avatar.avatarName)}-{avatar.avatar.avatarId}_pc.vrca";
             }
             else

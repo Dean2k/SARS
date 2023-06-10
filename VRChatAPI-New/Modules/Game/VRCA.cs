@@ -12,10 +12,10 @@ namespace VRChatAPI_New.Modules.Game
 {
     public static class VRCA
     {
-        public static async Task DownloadVrcaFile(string url, string fileLocation)
+        public static async Task DownloadVrcaFile(string url, string fileLocation, System.Windows.Forms.ProgressBar progressBar)
         {
             StaticGameValues.CheckSetup();
-            HttpRequests.DownloadFile(url, fileLocation);
+            await HttpRequests.StartDownload(url, fileLocation, progressBar);
         }
 
         public static async Task<VRChatFileInformation> GetVersions(string url)

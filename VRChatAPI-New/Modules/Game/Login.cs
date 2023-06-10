@@ -70,6 +70,11 @@ namespace VRChatAPI_New.Modules.Game
                 StaticGameValues.HttpClient.DefaultRequestHeaders.Authorization = null;
                 var twoFactor = JsonConvert.SerializeObject(new _2FACode(twoFactorCode));
                 var twoFactorResponse = await HttpRequests.PostAsync($"auth/twofactorauth/{twoFactorType}/verify?organization=vrchat", StaticGameValues.JsonToHtmlContent(twoFactor)).ConfigureAwait(false);
+                if(twoFactorResponse == null)
+                {
+                    StaticGameValues.HttpClient.DefaultRequestHeaders.Remove("Authorization");
+                    throw new NoTwoFactor("Couldn't verify 2FA!");
+                }
                 if (twoFactorResponse.ToLower().Contains("false"))
                 {
                     StaticGameValues.HttpClient.DefaultRequestHeaders.Remove("Authorization");
