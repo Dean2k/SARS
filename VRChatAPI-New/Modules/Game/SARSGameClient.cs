@@ -32,14 +32,15 @@ namespace VRChatAPI_New.Modules.Game
         {
             var requestHeaders = StaticGameValues.HttpClient.DefaultRequestHeaders;
             requestHeaders.Clear();
-            requestHeaders.UserAgent.ParseAdd("VRC.Core.BestHTTP");
+            
             requestHeaders.AcceptEncoding.ParseAdd("identity");
             requestHeaders.TE.ParseAdd("identity");
             requestHeaders.Host = "api.vrchat.cloud";
-            requestHeaders.Add("X-Client-Version", gameVersion);
-            requestHeaders.Add("X-Unity-Version", unityVersion);
-            requestHeaders.Add("X-Platform", "standalonewindows");
             requestHeaders.Add("X-MacAddress", macAddress);
+            requestHeaders.Add("X-Client-Version", gameVersion);          
+            requestHeaders.Add("X-Platform", "standalonewindows");           
+            requestHeaders.UserAgent.ParseAdd("VRC.Core.BestHTTP");
+            requestHeaders.Add("X-Unity-Version", unityVersion);
         }
     }
 }
