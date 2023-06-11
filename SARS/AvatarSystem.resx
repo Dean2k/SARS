@@ -1005,6 +1005,66 @@
   <data name="&gt;&gt;metroTabPage2.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
+  <data name="lblDownload.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="lblDownload.Location" type="System.Drawing.Point, System.Drawing">
+    <value>581, 66</value>
+  </data>
+  <data name="lblDownload.Size" type="System.Drawing.Size, System.Drawing">
+    <value>165, 19</value>
+  </data>
+  <data name="lblDownload.TabIndex" type="System.Int32, mscorlib">
+    <value>98</value>
+  </data>
+  <data name="lblDownload.Text" xml:space="preserve">
+    <value>(Open Download Page)</value>
+  </data>
+  <data name="&gt;&gt;lblDownload.Name" xml:space="preserve">
+    <value>lblDownload</value>
+  </data>
+  <data name="&gt;&gt;lblDownload.Type" xml:space="preserve">
+    <value>MetroFramework.Controls.MetroLabel, MetroFramework, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a</value>
+  </data>
+  <data name="&gt;&gt;lblDownload.Parent" xml:space="preserve">
+    <value>metroTabPage4</value>
+  </data>
+  <data name="&gt;&gt;lblDownload.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="chkReassignShaders.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="chkReassignShaders.Location" type="System.Drawing.Point, System.Drawing">
+    <value>199, 66</value>
+  </data>
+  <data name="chkReassignShaders.Size" type="System.Drawing.Size, System.Drawing">
+    <value>376, 19</value>
+  </data>
+  <data name="chkReassignShaders.TabIndex" type="System.Int32, mscorlib">
+    <value>98</value>
+  </data>
+  <data name="chkReassignShaders.Text" xml:space="preserve">
+    <value>Reassign all shaders to Poiyomi Toon Shader 8.1.166</value>
+  </data>
+  <metadata name="metroToolTip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>348, 17</value>
+  </metadata>
+  <data name="chkReassignShaders.ToolTip" xml:space="preserve">
+    <value>This could break some of the avatar material looks</value>
+  </data>
+  <data name="&gt;&gt;chkReassignShaders.Name" xml:space="preserve">
+    <value>chkReassignShaders</value>
+  </data>
+  <data name="&gt;&gt;chkReassignShaders.Type" xml:space="preserve">
+    <value>MetroFramework.Controls.MetroCheckBox, MetroFramework, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a</value>
+  </data>
+  <data name="&gt;&gt;chkReassignShaders.Parent" xml:space="preserve">
+    <value>metroTabPage4</value>
+  </data>
+  <data name="&gt;&gt;chkReassignShaders.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
   <data name="btnUnityLoc.Location" type="System.Drawing.Point, System.Drawing">
     <value>3, 99</value>
   </data>
@@ -1027,7 +1087,7 @@
     <value>metroTabPage4</value>
   </data>
   <data name="&gt;&gt;btnUnityLoc.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>4</value>
   </data>
   <data name="toggleWorld.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Right</value>
@@ -1057,7 +1117,7 @@
     <value>metroTabPage4</value>
   </data>
   <data name="&gt;&gt;toggleWorld.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>5</value>
   </data>
   <data name="toggleAvatar.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Right</value>
@@ -1087,7 +1147,7 @@
     <value>metroTabPage4</value>
   </data>
   <data name="&gt;&gt;toggleAvatar.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>6</value>
   </data>
   <data name="btnWorldOut.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Right</value>
@@ -1114,7 +1174,7 @@
     <value>metroTabPage4</value>
   </data>
   <data name="&gt;&gt;btnWorldOut.ZOrder" xml:space="preserve">
-    <value>5</value>
+    <value>7</value>
   </data>
   <data name="txtWorldOutput.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Left, Right</value>
@@ -1153,7 +1213,7 @@
     <value>metroTabPage4</value>
   </data>
   <data name="&gt;&gt;txtWorldOutput.ZOrder" xml:space="preserve">
-    <value>6</value>
+    <value>8</value>
   </data>
   <data name="metroLabel14.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -1180,7 +1240,7 @@
     <value>metroTabPage4</value>
   </data>
   <data name="&gt;&gt;metroLabel14.ZOrder" xml:space="preserve">
-    <value>7</value>
+    <value>9</value>
   </data>
   <data name="btnAvatarOut.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Right</value>
@@ -1207,7 +1267,7 @@
     <value>metroTabPage4</value>
   </data>
   <data name="&gt;&gt;btnAvatarOut.ZOrder" xml:space="preserve">
-    <value>8</value>
+    <value>10</value>
   </data>
   <data name="metroLabel13.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -1234,7 +1294,7 @@
     <value>metroTabPage4</value>
   </data>
   <data name="&gt;&gt;metroLabel13.ZOrder" xml:space="preserve">
-    <value>9</value>
+    <value>11</value>
   </data>
   <data name="txtAvatarOutput.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Left, Right</value>
@@ -1273,7 +1333,7 @@
     <value>metroTabPage4</value>
   </data>
   <data name="&gt;&gt;txtAvatarOutput.ZOrder" xml:space="preserve">
-    <value>10</value>
+    <value>12</value>
   </data>
   <data name="btnExtractVRCA.Location" type="System.Drawing.Point, System.Drawing">
     <value>3, 58</value>
@@ -1297,7 +1357,7 @@
     <value>metroTabPage4</value>
   </data>
   <data name="&gt;&gt;btnExtractVRCA.ZOrder" xml:space="preserve">
-    <value>11</value>
+    <value>13</value>
   </data>
   <data name="btnLoadVRCA.Location" type="System.Drawing.Point, System.Drawing">
     <value>3, 17</value>
@@ -1321,7 +1381,7 @@
     <value>metroTabPage4</value>
   </data>
   <data name="&gt;&gt;btnLoadVRCA.ZOrder" xml:space="preserve">
-    <value>12</value>
+    <value>14</value>
   </data>
   <data name="metroTabPage4.Location" type="System.Drawing.Point, System.Drawing">
     <value>4, 38</value>
@@ -3333,9 +3393,6 @@
   <data name="chkAfter.Text" xml:space="preserve">
     <value>After Date</value>
   </data>
-  <metadata name="metroToolTip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>348, 17</value>
-  </metadata>
   <data name="chkAfter.ToolTip" xml:space="preserve">
     <value>Search for avatars On or after date</value>
   </data>

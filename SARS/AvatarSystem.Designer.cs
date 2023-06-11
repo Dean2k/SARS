@@ -165,6 +165,8 @@
             this.metroLabel9 = new MetroFramework.Controls.MetroLabel();
             this.btnReupload = new MetroFramework.Controls.MetroButton();
             this.CacheMessages = new System.Windows.Forms.Timer(this.components);
+            this.chkReassignShaders = new MetroFramework.Controls.MetroCheckBox();
+            this.lblDownload = new MetroFramework.Controls.MetroLabel();
             this.tabControl.SuspendLayout();
             this.metroTabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.avatarGrid)).BeginInit();
@@ -198,7 +200,7 @@
             this.tabControl.Controls.Add(this.metroTabPage6);
             this.tabControl.FontWeight = MetroFramework.MetroTabControlWeight.Bold;
             this.tabControl.Name = "tabControl";
-            this.tabControl.SelectedIndex = 6;
+            this.tabControl.SelectedIndex = 2;
             this.tabControl.UseSelectable = true;
             this.tabControl.SelectedIndexChanged += new System.EventHandler(this.tabControl_SelectedIndexChanged);
             // 
@@ -661,6 +663,8 @@
             // 
             // metroTabPage4
             // 
+            this.metroTabPage4.Controls.Add(this.lblDownload);
+            this.metroTabPage4.Controls.Add(this.chkReassignShaders);
             this.metroTabPage4.Controls.Add(this.btnUnityLoc);
             this.metroTabPage4.Controls.Add(this.toggleWorld);
             this.metroTabPage4.Controls.Add(this.toggleAvatar);
@@ -1726,6 +1730,26 @@
             // 
             this.CacheMessages.Tick += new System.EventHandler(this.CacheMessages_Tick);
             // 
+            // chkReassignShaders
+            // 
+            resources.ApplyResources(this.chkReassignShaders, "chkReassignShaders");
+            this.chkReassignShaders.Checked = true;
+            this.chkReassignShaders.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.chkReassignShaders.FontSize = MetroFramework.MetroCheckBoxSize.Medium;
+            this.chkReassignShaders.FontWeight = MetroFramework.MetroCheckBoxWeight.Bold;
+            this.chkReassignShaders.Name = "chkReassignShaders";
+            this.metroToolTip1.SetToolTip(this.chkReassignShaders, resources.GetString("chkReassignShaders.ToolTip"));
+            this.chkReassignShaders.UseSelectable = true;
+            this.chkReassignShaders.UseStyleColors = true;
+            // 
+            // lblDownload
+            // 
+            resources.ApplyResources(this.lblDownload, "lblDownload");
+            this.lblDownload.FontWeight = MetroFramework.MetroLabelWeight.Bold;
+            this.lblDownload.Name = "lblDownload";
+            this.lblDownload.UseStyleColors = true;
+            this.lblDownload.Click += new System.EventHandler(this.lblDownload_Click);
+            // 
             // AvatarSystem
             // 
             resources.ApplyResources(this, "$this");
@@ -1935,6 +1959,8 @@
         public MetroFramework.Controls.MetroButton btnLoadResults;
         public MetroFramework.Controls.MetroButton btnNewPreview;
         public MetroFramework.Controls.MetroButton btnParseImages;
+        public MetroFramework.Controls.MetroLabel lblDownload;
+        public MetroFramework.Controls.MetroCheckBox chkReassignShaders;
     }
 }
 

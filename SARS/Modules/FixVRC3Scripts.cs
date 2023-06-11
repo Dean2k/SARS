@@ -37,7 +37,7 @@ namespace FACS01.Utilities
         private int fixedFilesCount;
         private string output_print;
 
-        public void FixScripts(string directory)
+        public string FixScripts(string directory)
         {
             fixedFilesCount = 0;
             output_print = "";
@@ -70,7 +70,7 @@ namespace FACS01.Utilities
             }
 
             GenerateResults();
-            MessageBox.Show(output_print);
+            return(output_print);
         }
 
         private void GenerateResults()

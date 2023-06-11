@@ -5,9 +5,11 @@ using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices;
+using System.Runtime.InteropServices.ComTypes;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace SARS.Modules
 {
@@ -23,60 +25,23 @@ namespace SARS.Modules
         {
             try
             {
-                using (BinaryReader reader = new BinaryReader(File.Open(filePath, FileMode.Open), Encoding.ASCII))
+                string stringToFind = "avtr_";
+                Regex avatarIdRegEx = new Regex(@"avtr_[\w]{8}-[\w]{4}-[\w]{4}-[\w]{4}-[\w]{12}");
+
+                foreach (var str in File.ReadLines(filePath).Where(s => s.Contains(stringToFind)))
                 {
-                    string prefab = "prefab-id-v1";
-                    Regex avatarIdRegEx = new Regex(@"avtr_[\w]{8}-[\w]{4}-[\w]{4}-[\w]{4}-[\w]{12}");
-                    var buffer = new StringBuilder();
-                    bool foundEndOfLine = false;
-                    char character;
-                    while (!foundEndOfLine)
+                    string[] stringSeparators = new string[] { "avtr_" };
+                    string[] words = str.Split(stringSeparators, StringSplitOptions.None);
+                    string avatarId = "avtr_"  + words[1].Substring(0, 36);
+                    Console.WriteLine(avatarId);
+                    if (avatarIdRegEx.IsMatch(avatarId))
                     {
-                        try
-                        {
-                            character = reader.ReadChar();
-                            buffer.Append(character);
-                            if (buffer.Length > prefab.Length)
-                            {
-                                buffer.Remove(0, 1);
-                            }
-                            if (buffer.ToString() == prefab)
-                            {
-                                bool endRead = false;
-                                var avatarIdBuilder = new StringBuilder();
-                                int underscores = 0;
-                                while (!endRead)
-                                {
-                                    character = reader.ReadChar();
-                                    avatarIdBuilder.Append(character);
-                                    if (character == '_')
-                                    {
-                                        underscores++;
-                                        if (underscores >= 3)
-                                        {
-                                            string avatarId = "avtr_" + avatarIdBuilder.ToString().Split('_')[2];
-                                            if (avatarIdRegEx.IsMatch(avatarId))
-                                            {
-                                                CacheAvatar cacheAvatar = new CacheAvatar { AvatarId = avatarId.Trim(), FileLocation = filePath, AvatarDetected = File.GetCreationTime(filePath) };
-                                                if (!avatarIds.Contains(cacheAvatar) && avatarId.Length == 41)
-                                                {
-                                                    avatarIds.Add(cacheAvatar);
-                                                    NewMessage($"Avatar found: {avatarId}{Environment.NewLine}");
-                                                }
-                                            }
-                                            return;
-                                        }
-                                    }
-                                }
-                                return;
-                            }
-                        }
-                        catch (EndOfStreamException)
-                        {
-                            return;
-                        }
+                        CacheAvatar cacheAvatar = new CacheAvatar { AvatarId = avatarId.Trim(), FileLocation = filePath, AvatarDetected = File.GetCreationTime(filePath) };
+                        avatarIds.Add(cacheAvatar);
+                        NewMessage($"Avatar found: {avatarId}{Environment.NewLine}");
+                        break;
                     }
-                    return;
+                    
                 }
             }
             catch (IOException e)
@@ -86,6 +51,10 @@ namespace SARS.Modules
                     NewMessage($"File is locked (VRChat open?){Environment.NewLine}");
                 }
                 return;
+            }
+            catch (Exception e)
+            {
+                NewMessage($"Some other error occurred {e.Message} {Environment.NewLine}");
             }
         }
 

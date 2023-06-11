@@ -124,6 +124,7 @@
     <Compile Include="Modules\AvatarFunctions.cs" />
     <Compile Include="Modules\CacheScanner.cs" />
     <Compile Include="Modules\ConfigSave.cs" />
+    <Compile Include="Modules\FixVRCMaterials.cs" />
     <Compile Include="Modules\FixVRC3Scripts.cs" />
     <Compile Include="Modules\GenerateHtml.cs" />
     <Compile Include="Modules\GrabModel.cs" />
