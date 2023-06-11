@@ -11,6 +11,7 @@ namespace VRChatAPI_New.Modules.Game
     {
         public static async Task DownloadVrcaFile(string url, string fileLocation, System.Windows.Forms.ProgressBar progressBar)
         {
+            url += "?apiKey=JlE5Jldo5Jibnk5O5hTx6XVqsJu4WJ26&organization=vrchat";
             WebClient webClient = new WebClient();
             try
             {
@@ -20,7 +21,7 @@ namespace VRChatAPI_New.Modules.Game
                 };
                 webClient.BaseAddress = "https://api.vrchat.cloud";
                 webClient.Headers.Add("Accept", $"*/*");
-                webClient.Headers.Add("Cookie", $"auth={StaticGameValues.AuthKey}; twoFactorAuth={StaticGameValues.TwoFactorKey}");
+                webClient.Headers.Add("Cookie", $"auth={StaticGameValues.AuthKey}; twoFactorAuth={StaticGameValues.TwoFactorKey}; apiKey=JlE5Jldo5Jibnk5O5hTx6XVqsJu4WJ26");
                 webClient.Headers.Add("X-MacAddress", StaticGameValues.MacAddress);
                 webClient.Headers.Add("X-Client-Version", StaticGameValues.GameVersion);
                 webClient.Headers.Add("X-Platform", "standalonewindows");

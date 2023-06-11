@@ -1,5 +1,6 @@
 ﻿using System.Net;
 using System.Net.Http;
+using System.Security.Cryptography;
 
 namespace VRChatAPI_New.Modules.Game
 {
@@ -32,15 +33,14 @@ namespace VRChatAPI_New.Modules.Game
         {
             var requestHeaders = StaticGameValues.HttpClient.DefaultRequestHeaders;
             requestHeaders.Clear();
-            
-            requestHeaders.AcceptEncoding.ParseAdd("identity");
+            requestHeaders.UserAgent.ParseAdd("VRC.Core.BestHTTP");
+            requestHeaders.AcceptEncoding.ParseAdd("gzip, identity");
             requestHeaders.TE.ParseAdd("identity");
             requestHeaders.Host = "api.vrchat.cloud";
-            requestHeaders.Add("X-MacAddress", macAddress);
-            requestHeaders.Add("X-Client-Version", gameVersion);          
-            requestHeaders.Add("X-Platform", "standalonewindows");           
-            requestHeaders.UserAgent.ParseAdd("VRC.Core.BestHTTP");
+            requestHeaders.Add("X-Client-Version", gameVersion);
             requestHeaders.Add("X-Unity-Version", unityVersion);
+            requestHeaders.Add("X-Platform", "standalonewindows");
+            requestHeaders.Add("X-MacAddress", macAddress);
         }
     }
 }

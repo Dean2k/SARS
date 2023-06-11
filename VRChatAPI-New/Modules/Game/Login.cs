@@ -26,6 +26,8 @@ namespace VRChatAPI_New.Modules.Game
             StaticGameValues.CookieContainer.Add(StaticGameValues.ApiUrl, new Cookie("auth", auth));
             StaticGameValues.AuthKey = auth;
 
+            StaticGameValues.CookieContainer.Add(StaticGameValues.ApiUrl, new Cookie("apiKey", "JlE5Jldo5Jibnk5O5hTx6XVqsJu4WJ26"));
+
             var webResponse = await HttpRequests.GetStringAsync($"auth/user{ApiKeyAndOrg()}").ConfigureAwait(false);
             if (webResponse.ToLower().Contains("missing credentials"))
             {
@@ -87,6 +89,7 @@ namespace VRChatAPI_New.Modules.Game
             VRChatUserInfo info = JsonConvert.DeserializeObject<VRChatUserInfo>(authedResponse);
             info.Details = new LoginAuth { AuthKey = StaticGameValues.AuthKey, TwoFactorKey = StaticGameValues.TwoFactorKey };
             StaticGameValues.LoggedInOnce = true;
+            StaticGameValues.HttpClient.DefaultRequestHeaders.Remove("Authorization");
             return info;
         }
 
