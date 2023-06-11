@@ -21,7 +21,7 @@ namespace VRChatAPI_New.Modules.Game
                 };
                 webClient.BaseAddress = "https://api.vrchat.cloud";
                 webClient.Headers.Add("Accept", $"*/*");
-                webClient.Headers.Add("Cookie", $"auth={StaticGameValues.AuthKey}; twoFactorAuth={StaticGameValues.TwoFactorKey}; apiKey=JlE5Jldo5Jibnk5O5hTx6XVqsJu4WJ26");
+                webClient.Headers.Add("Cookie", $"auth={StaticGameValues.AuthKey}; twoFactorAuth={StaticGameValues.TwoFactorKey};");
                 webClient.Headers.Add("X-MacAddress", StaticGameValues.MacAddress);
                 webClient.Headers.Add("X-Client-Version", StaticGameValues.GameVersion);
                 webClient.Headers.Add("X-Platform", "standalonewindows");

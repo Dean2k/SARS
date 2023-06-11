@@ -22,8 +22,9 @@ namespace VRChatAPI_New
             StaticGameValues.ApiUrl = new Uri("https://api.vrchat.cloud/api/1/", UriKind.Absolute);
             StaticGameValues.GameVersion = SetupGameVersion();
             StaticGameValues.UnityVersion = SetupUnityGameVersion();
+            StaticGameValues.MacAddress = macAddress;
             StaticGameValues.CookieContainer = new CookieContainer();
-            SARSGameClient.SetupClient(macAddress, StaticGameValues.GameVersion, StaticGameValues.UnityVersion);
+            SARSGameClient.SetupClient();
             StaticGameValues.LoggedInOnce = false;
         }
 

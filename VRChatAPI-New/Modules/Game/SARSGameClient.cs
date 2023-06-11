@@ -7,14 +7,14 @@ namespace VRChatAPI_New.Modules.Game
     public static class SARSGameClient
     {
 
-        public static void SetupClient(string macAddress, string gameVersion, string unityVersion)
+        public static void SetupClient()
         {
             HttpClientHandler handler = SetupClientHandler();
             StaticGameValues.HttpClient = new HttpClient(handler)
             {
                 BaseAddress = StaticGameValues.ApiUrl
             };
-            SetupRequestHeaders(macAddress, gameVersion, unityVersion);
+            SetupRequestHeaders();
         }
 
         public static HttpClientHandler SetupClientHandler()
@@ -29,7 +29,7 @@ namespace VRChatAPI_New.Modules.Game
             return httpClientHandler;
         }
 
-        public static void SetupRequestHeaders(string macAddress, string gameVersion, string unityVersion)
+        public static void SetupRequestHeaders()
         {
             var requestHeaders = StaticGameValues.HttpClient.DefaultRequestHeaders;
             requestHeaders.Clear();
@@ -37,10 +37,10 @@ namespace VRChatAPI_New.Modules.Game
             requestHeaders.AcceptEncoding.ParseAdd("gzip, identity");
             requestHeaders.TE.ParseAdd("identity");
             requestHeaders.Host = "api.vrchat.cloud";
-            requestHeaders.Add("X-Client-Version", gameVersion);
-            requestHeaders.Add("X-Unity-Version", unityVersion);
+            requestHeaders.Add("X-Client-Version", StaticGameValues.GameVersion);
+            requestHeaders.Add("X-Unity-Version", StaticGameValues.UnityVersion);
             requestHeaders.Add("X-Platform", "standalonewindows");
-            requestHeaders.Add("X-MacAddress", macAddress);
+            requestHeaders.Add("X-MacAddress", StaticGameValues.MacAddress);
         }
     }
 }
