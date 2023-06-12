@@ -470,7 +470,7 @@ namespace SARS
             foreach (DataGridViewRow row in avatarGrid.SelectedRows)
             {
                 Avatar info = avatars.FirstOrDefault(x => x.avatar.avatarId == row.Cells[3].Value.ToString().Trim());
-                if(info == null)
+                if (info == null)
                 {
                     info = cacheList.FirstOrDefault(x => x.avatar.avatarId == row.Cells[3].Value.ToString().Trim());
                 }
@@ -891,7 +891,7 @@ namespace SARS
             if (avatarGrid.SelectedRows.Count == 1)
             {
                 Avatar info = avatars.FirstOrDefault(x => x.avatar.avatarId == avatarGrid.SelectedRows[0].Cells[3].Value.ToString());
-                if(info == null || info.avatar.authorId == "Unknown Cache")
+                if (info == null || info.avatar.authorId == "Unknown Cache")
                 {
                     nmPcVersion.Value = 0;
                     nmQuestVersion.Value = 0;
@@ -1817,6 +1817,75 @@ namespace SARS
             }
             return null;
         }
+        private int FromApi = 0;
+        private VRChatCacheResult GetDetailsApi(string avatarId)
+        {
+            AvatarSearch avatarSearch = new AvatarSearch { Key = configSave.Config.ApiKey, Amount = 1, PrivateAvatars = true, PublicAvatars = true, ContainsSearch = false, DebugMode = true, PcAvatars = true, QuestAvatars = chkQuest.Checked, AvatarId = avatarId };
+            var httpWebRequest = (HttpWebRequest)WebRequest.Create("https://unlocked.modvrc.com/Avatar/GetKeyAvatar");
+            httpWebRequest.ContentType = "application/json";
+            httpWebRequest.Method = "POST";
+            httpWebRequest.UserAgent = $"SARS" + Assembly.GetExecutingAssembly().GetName().Version.ToString();
+            string jsonPost = JsonConvert.SerializeObject(avatarSearch);
+            using (var streamWriter = new StreamWriter(httpWebRequest.GetRequestStream()))
+            {
+                streamWriter.Write(jsonPost);
+            }
+            try
+            {
+                var httpResponse = (HttpWebResponse)httpWebRequest.GetResponse();
+                using (var streamReader = new StreamReader(httpResponse.GetResponseStream()))
+                {
+                    var result = streamReader.ReadToEnd();
+                    AvatarResponse avatarResponse = JsonConvert.DeserializeObject<AvatarResponse>(result);
+                    if (avatarResponse.banned)
+                    {
+                        MessageBox.Show("Your key has been banned");
+                    }
+                    else if (!avatarResponse.authorized)
+                    {
+                        MessageBox.Show("The key you have entered is invalid");
+                    }
+                    if (avatarResponse.avatars.Count > 0)
+                    {
+                        VRChatCacheResult vRChatCacheResult = new VRChatCacheResult
+                        {
+                            assetUrl = avatarResponse.avatars.FirstOrDefault().avatar.pcAssetUrl,
+                            authorId = avatarResponse.avatars.FirstOrDefault().avatar.authorId,
+                            authorName = avatarResponse.avatars.FirstOrDefault().avatar.authorName,
+                            created_at = avatarResponse.avatars.FirstOrDefault().avatar.recordCreated,
+                            description = avatarResponse.avatars.FirstOrDefault().avatar.avatarDescription,
+                            featured = false,
+                            id = avatarId,
+                            imageUrl = avatarResponse.avatars.FirstOrDefault().avatar.imageUrl,
+                            name = avatarResponse.avatars.FirstOrDefault().avatar.avatarName,
+                            releaseStatus = avatarResponse.avatars.FirstOrDefault().avatar.releaseStatus,
+                            tags = new List<string>(),
+                            thumbnailImageUrl = avatarResponse.avatars.FirstOrDefault().avatar.thumbnailUrl,
+                            unityPackages = new List<UnityPackage> { new UnityPackage { assetUrl = avatarResponse.avatars.FirstOrDefault().avatar.pcAssetUrl, platform = "standalonewindows" } },
+                            unityPackageUrl = "",
+                            updated_at = avatarResponse.avatars.FirstOrDefault().avatar.recordCreated,
+                            version = 1
+                        };
+                        FromApi++;
+                        return vRChatCacheResult;
+                    }
+                    return null;
+                }
+            }
+            catch (Exception ex)
+            {
+                if (ex.Message.Contains("403"))
+                {
+                    MessageBox.Show("ERROR KEY INVALID");
+                }
+                else
+                {
+                    MessageBox.Show($"Unknown Error: {ex.Message}");
+                }
+                return null;
+            }
+
+        }
 
         private void UploadCacheResult(VRChatCacheResult model)
         {
@@ -1878,10 +1947,12 @@ namespace SARS
                             bool avatarResponse = JsonConvert.DeserializeObject<bool>(result);
                             if (avatarResponse)
                             {
+                                uploadedAvatars++;
                                 Console.WriteLine("Avatar Added");
                             }
                             else if (!avatarResponse)
                             {
+                                alreadyOnApi++;
                                 Console.WriteLine("Avatar already on API");
                             }
                         }
@@ -1912,9 +1983,13 @@ namespace SARS
                 }
             }
         }
-
+        int uploadedAvatars = 0;
+        int alreadyOnApi = 0;
         private void btnParseImages_Click(object sender, EventArgs e)
         {
+            uploadedAvatars = 0;
+            alreadyOnApi = 0;
+            FromApi = 0;
             if (string.IsNullOrEmpty(configSave.Config.AuthKey))
             {
                 MessageBox.Show("Requires VRChat login details");
@@ -1932,85 +2007,20 @@ namespace SARS
                             if (avatarGrid.Rows[i].Cells[3].Value != null)
                             {
                                 VRChatCacheResult vRChatCacheResult = GetDetails(avatarGrid.Rows[i].Cells[3].Value.ToString());
+
                                 if (vRChatCacheResult != null)
                                 {
-                                    var temp = avatars.FirstOrDefault(x => x.avatar.avatarId == avatarGrid.Rows[i].Cells[3].Value);
-                                    avatars.Remove(temp);
-                                    Avatar avatar = new Avatar
+                                    GetAvatarInfo(vRChatCacheResult, avatarGrid.Rows[i].Cells[3].Value.ToString(), avatarGrid.Rows[i]);
+                                    UploadCacheResult(vRChatCacheResult);
+                                }
+                                if (vRChatCacheResult == null)
+                                {
+                                    if (string.IsNullOrEmpty(configSave.Config.ApiKey))
                                     {
-                                        avatar = new AvatarDetails
+                                        vRChatCacheResult = GetDetailsApi(avatarGrid.Rows[i].Cells[3].Value.ToString());
+                                        if (vRChatCacheResult != null)
                                         {
-                                            avatarId = avatarGrid.Rows[i].Cells[3].Value.ToString(),
-                                            authorId = vRChatCacheResult.authorId,
-                                            authorName = vRChatCacheResult.authorName,
-                                            avatarDescription = vRChatCacheResult.description,
-                                            avatarName = vRChatCacheResult.name,
-                                            imageUrl = vRChatCacheResult.imageUrl,
-                                            thumbnailUrl = vRChatCacheResult.thumbnailImageUrl,
-                                            pcAssetUrl = temp.avatar.pcAssetUrl,
-                                            questAssetUrl = temp.avatar.questAssetUrl,
-                                            recordCreated = temp.avatar.recordCreated,
-                                            releaseStatus = vRChatCacheResult.releaseStatus,
-                                            unityVersion = ""
-                                        },
-                                        tags = new List<string>()
-                                    };
-
-                                    if (vRChatCacheResult.unityPackages != null)
-                                    {
-                                        if (vRChatCacheResult.unityPackages.FirstOrDefault(x => x.platform.ToLower() == "android") != null)
-                                        {
-                                            avatar.avatar.questAssetUrl = vRChatCacheResult.unityPackages.FirstOrDefault(x => x.platform.ToLower() == "android").assetUrl;
-                                            avatar.avatar.unityVersion = vRChatCacheResult.unityPackages.FirstOrDefault(x => x.platform.ToLower() == "android").unityVersion;
-                                        }
-                                        else
-                                        {
-                                            avatar.avatar.questAssetUrl = "None";
-                                        }
-                                    }
-
-                                    cacheList.Add(avatar);
-                                    avatarGrid.Rows[i].Cells[1].Value = vRChatCacheResult.name;
-                                    avatarGrid.Rows[i].Cells[2].Value = vRChatCacheResult.authorName;
-                                    avatarGrid.Rows[i].Cells[5].Value = vRChatCacheResult.imageUrl;
-                                    try
-                                    {
-                                        UploadCacheResult(vRChatCacheResult);
-                                    }
-                                    catch (Exception ex) { Console.WriteLine(ex.ToString()); }
-                                    if (avatarGrid.Rows[i].Cells[5].Value != null)
-                                    {
-                                        if (!string.IsNullOrEmpty(avatarGrid.Rows[i].Cells[5].Value.ToString().Trim()))
-                                        {
-                                            try
-                                            {
-                                                HttpWebRequest myRequest = (HttpWebRequest)WebRequest.Create(avatarGrid.Rows[i].Cells[5].Value.ToString());
-                                                myRequest.Method = "GET";
-                                                myRequest.UserAgent = userAgent;
-                                                using (HttpWebResponse myResponse = (HttpWebResponse)myRequest.GetResponse())
-                                                {
-                                                    if (myResponse.StatusCode == HttpStatusCode.OK)
-                                                    {
-                                                        Bitmap bmp = new Bitmap(myResponse.GetResponseStream());
-                                                        avatarGrid.Rows[i].Cells[0].Value = bmp;
-                                                    }
-                                                    else
-                                                    {
-                                                        Bitmap bmp = new Bitmap(Resources.No_Image);
-                                                        avatarGrid.Rows[i].Cells[0].Value = bmp;
-                                                    }
-                                                }
-                                            }
-                                            catch (Exception ex)
-                                            {
-                                                Console.WriteLine(ex.ToString());
-                                                try
-                                                {
-                                                    Bitmap bmp = new Bitmap(Resources.No_Image);
-                                                    avatarGrid.Rows[i].Cells[0].Value = bmp;
-                                                }
-                                                catch (Exception exc) { Console.WriteLine(exc.Message); }
-                                            }
+                                            GetAvatarInfo(vRChatCacheResult, avatarGrid.Rows[i].Cells[3].Value.ToString(), avatarGrid.Rows[i]);
                                         }
                                     }
                                 }
@@ -2019,8 +2029,87 @@ namespace SARS
                     }
                     catch { }
                 }
-                MessageBox.Show("Finished Getting avatar information");
+                MessageBox.Show($"Finished Getting avatar information\nNewly added avatars {uploadedAvatars}\nAlready On API {alreadyOnApi}\nTotal Public + Self Private Found {uploadedAvatars + alreadyOnApi}\nTotal Private Found {FromApi}\nTotal left not able to grab details {(avatars.Count() + cacheList.Count()) - uploadedAvatars - alreadyOnApi - FromApi}");
             });
+        }
+
+        private void GetAvatarInfo(VRChatCacheResult vRChatCacheResult, string avatarId, DataGridViewRow row)
+        {
+            var temp = avatars.FirstOrDefault(x => x.avatar.avatarId == avatarId);
+            avatars.Remove(temp);
+            Avatar avatar = new Avatar
+            {
+                avatar = new AvatarDetails
+                {
+                    avatarId = avatarId,
+                    authorId = vRChatCacheResult.authorId,
+                    authorName = vRChatCacheResult.authorName,
+                    avatarDescription = vRChatCacheResult.description,
+                    avatarName = vRChatCacheResult.name,
+                    imageUrl = vRChatCacheResult.imageUrl,
+                    thumbnailUrl = vRChatCacheResult.thumbnailImageUrl,
+                    pcAssetUrl = temp.avatar.pcAssetUrl,
+                    questAssetUrl = temp.avatar.questAssetUrl,
+                    recordCreated = temp.avatar.recordCreated,
+                    releaseStatus = vRChatCacheResult.releaseStatus,
+                    unityVersion = ""
+                },
+                tags = new List<string>()
+            };
+
+
+            if (vRChatCacheResult.unityPackages != null)
+            {
+                if (vRChatCacheResult.unityPackages.FirstOrDefault(x => x.platform.ToLower() == "android") != null)
+                {
+                    avatar.avatar.questAssetUrl = vRChatCacheResult.unityPackages.FirstOrDefault(x => x.platform.ToLower() == "android").assetUrl;
+                    avatar.avatar.unityVersion = vRChatCacheResult.unityPackages.FirstOrDefault(x => x.platform.ToLower() == "android").unityVersion;
+                }
+                else
+                {
+                    avatar.avatar.questAssetUrl = "None";
+                }
+            }
+            cacheList.Add(avatar);
+            row.Cells[1].Value = vRChatCacheResult.name;
+            row.Cells[2].Value = vRChatCacheResult.authorName;
+            row.Cells[5].Value = vRChatCacheResult.thumbnailImageUrl;
+
+            if (row.Cells[5].Value != null)
+            {
+                if (!string.IsNullOrEmpty(row.Cells[5].Value.ToString().Trim()))
+                {
+                    try
+                    {
+                        HttpWebRequest myRequest = (HttpWebRequest)WebRequest.Create(row.Cells[5].Value.ToString());
+                        myRequest.Method = "GET";
+                        myRequest.UserAgent = userAgent;
+                        using (HttpWebResponse myResponse = (HttpWebResponse)myRequest.GetResponse())
+                        {
+                            if (myResponse.StatusCode == HttpStatusCode.OK)
+                            {
+                                Bitmap bmp = new Bitmap(myResponse.GetResponseStream());
+                                row.Cells[0].Value = bmp;
+                            }
+                            else
+                            {
+                                Bitmap bmp = new Bitmap(Resources.No_Image);
+                                row.Cells[0].Value = bmp;
+                            }
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(ex.ToString());
+                        try
+                        {
+                            Bitmap bmp = new Bitmap(Resources.No_Image);
+                            row.Cells[0].Value = bmp;
+                        }
+                        catch (Exception exc) { Console.WriteLine(exc.Message); }
+                    }
+                }
+            }
         }
 
         private void lblDownload_Click(object sender, EventArgs e)
