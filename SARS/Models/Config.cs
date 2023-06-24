@@ -24,9 +24,11 @@ namespace SARS.Models
         public bool LightMode { get; set; }
         public string ThemeColor { get; set; }
         public string HotSwapName { get; set; }
+        public string HotSwapWorldName { get; set; }
         public string MacAddress { get; set; }
         public string ReuploaderMacAddress { get; set; }
         public int HsbVersion { get; set; }
+        public int HsbWorldVersion { get; set; }
         public bool AltAPI { get; set; }
         public bool Tls10 { get; set; }
         public bool Tls11 { get; set; }

@@ -44,7 +44,7 @@ namespace SARS.Modules
         /// </summary>
         /// <param name="avatar"></param>
         /// <returns></returns>
-        public List<Avatar> AvatarSearch(AvatarSearch avatar, bool altApi, string customApi)
+        public List<Avatar> AvatarSearch(AvatarSearch avatar, bool altApi, string customApi, bool avatarSearch)
         {
             string apiUrl = "https://unlocked.modvrc.com/Avatar/GetKeyAvatar";
             if (altApi)
@@ -54,6 +54,11 @@ namespace SARS.Modules
             if(!string.IsNullOrEmpty(customApi))
             {
                 apiUrl = customApi;
+            }
+
+            if (!avatarSearch)
+            {
+                apiUrl = "https://unlocked.modvrc.com/Avatar/GetLazyWorlds";
             }
             var httpWebRequest = (HttpWebRequest)WebRequest.Create(apiUrl);
             httpWebRequest.ContentType = "application/json";

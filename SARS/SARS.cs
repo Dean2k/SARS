@@ -53,7 +53,7 @@ namespace SARS
                 _configSave.Config.UserAgent = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/104.0.5112.79 Safari/537.36";
             }
             AvatarSearch avatarSearch = new AvatarSearch { AvatarName = "test", Key = _configSave.Config.ApiKey, Amount = Convert.ToInt32(1000), PrivateAvatars = true, PublicAvatars = true, ContainsSearch = true, DebugMode = true, PcAvatars = true, QuestAvatars = false };
-            _avatars = shrekApi.AvatarSearch(avatarSearch, false, null);
+            _avatars = shrekApi.AvatarSearch(avatarSearch, false, null, true);
             ClearFlowPanel2();
             int buttonCount = _avatars.Count / _pageAmount;
             for (int i = 0; i < buttonCount; i++)

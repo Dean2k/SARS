@@ -189,6 +189,174 @@ namespace SARS.Modules
             }
         }
 
+        public static async void HotswapWorldProcess(HotswapConsole hotSwapConsole, AvatarSystem avatarSystem, string worldFile, string customWorldId = null)
+        {
+            var filePath = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
+            var fileDecompressed = filePath + @"\decompressed.vrcw";
+            var fileDecompressed2 = filePath + @"\decompressed1.vrcw";
+            var fileDecompressedFinal = filePath + @"\finalDecompressed.vrcw";
+            var fileDummy = filePath + @"\dummy.vrcw";
+            var fileTarget = filePath + @"\target.vrcw";
+            var tempFolder = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData)
+                .Replace("\\Roaming", "");
+            var unityVrcw = tempFolder + $"\\LocalLow\\VRChat\\VRChat\\Worlds\\scene-StandaloneWindows64-Scene.vrcw";
+            var regexId = @"wrld_[\w]{8}-[\w]{4}-[\w]{4}-[\w]{4}-[\w]{12}";
+            var regexUnity = @"20[\d]{2}\.[\d]\.[\d]{2}f[\d]";
+            var worldIdRegex = new Regex(regexId);
+            var unityRegex = new Regex(regexUnity);
+
+            RandomFunctions.tryDelete(fileDecompressed);
+            RandomFunctions.tryDelete(fileDecompressed2);
+            RandomFunctions.tryDelete(fileDecompressedFinal);
+            RandomFunctions.tryDelete(fileDummy);
+            RandomFunctions.tryDelete(fileTarget);
+            MatchModel matchModelNew = null;
+            if (customWorldId == null)
+            {
+                try
+                {
+                    File.Copy(unityVrcw, fileDummy);
+                }
+                catch
+                {
+                    MessageBox.Show("Make sure you've started the build and publish on unity", "ERROR",
+                        MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    if (hotSwapConsole.InvokeRequired)
+                        hotSwapConsole.Invoke((MethodInvoker)delegate { hotSwapConsole.Close(); });
+                    return;
+                }
+
+                try
+                {
+                    DecompressToFileStr(fileDummy, fileDecompressed, hotSwapConsole);
+                }
+                catch (Exception ex)
+                {
+                    //CoreFunctions.WriteLog(string.Format("{0}", ex.Message), this);
+                    MessageBox.Show("Error decompressing VRCW file" + ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    if (hotSwapConsole.InvokeRequired)
+                        hotSwapConsole.Invoke((MethodInvoker)delegate { hotSwapConsole.Close(); });
+                    return;
+                }
+
+                matchModelNew = getMatchesWorld(fileDecompressed, worldIdRegex, unityRegex);
+            }
+
+            try
+            {
+                DecompressToFileStr(worldFile, fileDecompressed2, hotSwapConsole);
+            }
+            catch (Exception ex)
+            {
+                //CoreFunctions.WriteLog(string.Format("{0}", ex.Message), this);
+                MessageBox.Show("Error decompressing VRCW file" + ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                if (hotSwapConsole.InvokeRequired)
+                    hotSwapConsole.Invoke((MethodInvoker)delegate { hotSwapConsole.Close(); });
+                return;
+            }
+
+            var matchModelOld = getMatchesWorld(fileDecompressed2, worldIdRegex, unityRegex);
+            if (matchModelOld.UnityVersion == null)
+            {
+                var dialogResult = MessageBox.Show("Possible risky hotswap detected", "Risky Upload",
+                    MessageBoxButtons.OKCancel, MessageBoxIcon.Error);
+                if (dialogResult == DialogResult.Cancel)
+                {
+                    if (hotSwapConsole.InvokeRequired)
+                        hotSwapConsole.Invoke((MethodInvoker)delegate { hotSwapConsole.Close(); });
+                    return;
+                }
+            }
+
+            if (matchModelOld.UnityVersion != null)
+                if (matchModelOld.UnityVersion.Contains("2017.") || matchModelOld.UnityVersion.Contains("2018."))
+                {
+                    var dialogResult = MessageBox.Show(
+                        "Replace 2017-2018 unity version, replacing this can cause issues but not replacing it can also increase a ban chance (Press OK to replace and cancel to skip replacements)",
+                        "Possible 2017-2018 unity issue", MessageBoxButtons.OKCancel, MessageBoxIcon.Error);
+                    if (dialogResult == DialogResult.Cancel) matchModelOld.UnityVersion = null;
+                }
+
+            if (matchModelNew == null)
+            {
+                matchModelNew = new MatchModel
+                {
+                    UnityVersion = "2019.4.31f1",//BaseUploader._unityVersion;
+                    AvatarId = customWorldId
+                };
+            }
+
+            GetReadyForCompressWorld(fileDecompressed2, fileDecompressedFinal, matchModelOld, matchModelNew);
+
+            try
+            {
+                CompressBundle(fileDecompressedFinal, fileTarget, hotSwapConsole);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error compressing VRCW file\n{ex.Message}");
+                if (hotSwapConsole.InvokeRequired)
+                    hotSwapConsole.Invoke((MethodInvoker)delegate { hotSwapConsole.Close(); });
+                return;
+            }
+
+            try
+            {
+                File.Copy(fileTarget, unityVrcw, true);
+            }
+            catch
+            {
+            }
+
+            string[] sizes = { "B", "KB", "MB", "GB", "TB" };
+            double len = new FileInfo(fileTarget).Length;
+            var order = 0;
+            while (len >= 1024 && order < sizes.Length - 1)
+            {
+                order++;
+                len = len / 1024;
+            }
+
+            var compressedSize = $"{len:0.##} {sizes[order]}";
+
+            len = new FileInfo(fileDecompressed2).Length;
+            order = 0;
+            while (len >= 1024 && order < sizes.Length - 1)
+            {
+                order++;
+                len = len / 1024;
+            }
+
+            var uncompressedSize = $"{len:0.##} {sizes[order]}";
+
+            if (avatarSystem.avatars != null)
+            {
+                var avatar = avatarSystem.avatars.FirstOrDefault(x => x.avatar.avatarId == matchModelOld.AvatarId);
+                if (avatar != default && avatar != null)
+                {
+                    avatarSystem.rippedList.Config.Add(avatar);
+                    avatarSystem.rippedList.Save();
+                }
+            }
+
+            RandomFunctions.tryDelete(fileDecompressed);
+            RandomFunctions.tryDelete(fileDecompressed2);
+            RandomFunctions.tryDelete(fileDecompressedFinal);
+            RandomFunctions.tryDelete(fileDummy);
+            if (customWorldId == null)
+            {
+                RandomFunctions.tryDelete(fileTarget);
+            }
+
+            if (hotSwapConsole.InvokeRequired)
+                hotSwapConsole.Invoke((MethodInvoker)delegate { hotSwapConsole.Close(); });
+
+            if (customWorldId == null)
+            {
+                MessageBox.Show($"Got file sizes, comp:{compressedSize}, decomp:{uncompressedSize}", "Info",
+                    MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
         private static string RandomString(int length, string allowedChars = "abcdefghijklmnopqrstuvwxyz0123456789")
         {
             if (length < 0) throw new ArgumentOutOfRangeException("length", "length cannot be less than zero.");
@@ -257,6 +425,34 @@ namespace SARS.Modules
             if (unityMatch != null) matchModel.UnityVersion = unityMatch[0].Value;
             return matchModel;
         }
+        private static MatchModel getMatchesWorld(string file, Regex worldId, Regex unityVersion)
+        {
+            MatchCollection avatarIdMatch = null;
+            MatchCollection unityMatch = null;
+            var unityCount = 0;
+
+            foreach (var line in File.ReadLines(file))
+            {
+                var tempId = worldId.Matches(line);
+                var tempUnity = unityVersion.Matches(line);
+
+                if (tempId.Count > 0) avatarIdMatch = tempId;
+
+                if (tempUnity.Count > 0)
+                {
+                    unityMatch = tempUnity;
+                    unityCount++;
+                }
+            }
+
+            var matchModel = new MatchModel
+            {
+                AvatarId = avatarIdMatch[0].Value
+            };
+
+            if (unityMatch != null) matchModel.UnityVersion = unityMatch[0].Value;
+            return matchModel;
+        }
 
         private static void GetReadyForCompress(string oldFile, string newFile, MatchModel old, MatchModel newModel)
         {
@@ -281,6 +477,33 @@ namespace SARS.Modules
             if (edited.Contains(old.AvatarAssetId)) edited = edited.Replace(old.AvatarAssetId, newModel.AvatarAssetId);
             if (edited.Contains(old.AvatarId)) edited = edited.Replace(old.AvatarId, newModel.AvatarId);
             if (edited.Contains(old.AvatarCab)) edited = edited.Replace(old.AvatarCab, newModel.AvatarCab);
+            if (old.UnityVersion != null)
+                if (edited.Contains(old.UnityVersion))
+                    edited = edited.Replace(old.UnityVersion, newModel.UnityVersion);
+            return edited;
+        }
+
+        private static void GetReadyForCompressWorld(string oldFile, string newFile, MatchModel old, MatchModel newModel)
+        {
+            var enc = Encoding.GetEncoding(28591);
+            using (var vReader = new StreamReaderOver(oldFile, enc))
+            {
+                using (var vWriter = new StreamWriter(newFile, false, enc))
+                {
+                    while (!vReader.EndOfStream)
+                    {
+                        var vLine = vReader.ReadLine();
+                        var replace = CheckAndReplaceLineWorld(vLine, old, newModel);
+                        vWriter.Write(replace);
+                    }
+                }
+            }
+        }
+
+        private static string CheckAndReplaceLineWorld(string line, MatchModel old, MatchModel newModel)
+        {
+            var edited = line;
+            if (edited.Contains(old.AvatarId)) edited = edited.Replace(old.AvatarId, newModel.AvatarId);
             if (old.UnityVersion != null)
                 if (edited.Contains(old.UnityVersion))
                     edited = edited.Replace(old.UnityVersion, newModel.UnityVersion);

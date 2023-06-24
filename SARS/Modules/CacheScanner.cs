@@ -21,27 +21,46 @@ namespace SARS.Modules
 
         public static List<CacheAvatar> avatarIds = new List<CacheAvatar>();
 
-        public static void ReadUntilAvatarId(string filePath)
+        public static void ReadUntilId(string filePath)
         {
             try
             {
                 string stringToFind = "avtr_";
+                string stringToFindWorld = "wrld_";
                 Regex avatarIdRegEx = new Regex(@"avtr_[\w]{8}-[\w]{4}-[\w]{4}-[\w]{4}-[\w]{12}");
+                Regex worldIdRegEx = new Regex(@"wrld_[\w]{8}-[\w]{4}-[\w]{4}-[\w]{4}-[\w]{12}");
 
-                foreach (var str in File.ReadLines(filePath).Where(s => s.Contains(stringToFind)))
+                foreach (var str in File.ReadLines(filePath).Where(s => s.Contains(stringToFind) || s.Contains(stringToFindWorld)))
                 {
-                    string[] stringSeparators = new string[] { "avtr_" };
-                    string[] words = str.Split(stringSeparators, StringSplitOptions.None);
-                    string avatarId = "avtr_"  + words[1].Substring(0, 36);
-                    Console.WriteLine(avatarId);
-                    if (avatarIdRegEx.IsMatch(avatarId))
+                    if (str.Contains(stringToFind))
                     {
-                        CacheAvatar cacheAvatar = new CacheAvatar { AvatarId = avatarId.Trim(), FileLocation = filePath, AvatarDetected = File.GetCreationTime(filePath) };
-                        avatarIds.Add(cacheAvatar);
-                        NewMessage($"Avatar found: {avatarId}{Environment.NewLine}");
-                        break;
+                        string[] stringSeparators = new string[] { stringToFind };
+                        string[] words = str.Split(stringSeparators, StringSplitOptions.None);
+                        string avatarId = stringToFind + words[1].Substring(0, 36);
+                        if (avatarIdRegEx.IsMatch(avatarId))
+                        {
+                            CacheAvatar cacheAvatar = new CacheAvatar { AvatarId = avatarId.Trim(), FileLocation = filePath, AvatarDetected = File.GetCreationTime(filePath) };
+                            avatarIds.Add(cacheAvatar);
+                            NewMessage($"Avatar found: {avatarId}{Environment.NewLine}");
+                            break;
+
+                        }
                     }
-                    
+
+                    if (str.Contains(stringToFindWorld))
+                    {
+                        string[] stringSeparatorsWorld = new string[] { stringToFindWorld };
+                        string[] wordsWorlds = str.Split(stringSeparatorsWorld, StringSplitOptions.None);
+                        string worldId = stringToFindWorld + wordsWorlds[1].Substring(0, 36);
+                        Console.WriteLine(worldId);
+                        if (worldIdRegEx.IsMatch(worldId))
+                        {
+                            CacheAvatar cacheAvatar = new CacheAvatar { AvatarId = worldId.Trim(), FileLocation = filePath, AvatarDetected = File.GetCreationTime(filePath) };
+                            avatarIds.Add(cacheAvatar);
+                            NewMessage($"World found: {worldId}{Environment.NewLine}");
+                            break;
+                        }
+                    }
                 }
             }
             catch (IOException e)
@@ -69,6 +88,7 @@ namespace SARS.Modules
         }
 
         private static int avatarsFound = 0;
+        private static int worldsFound = 0;
         private static Stopwatch stop = new Stopwatch();
 
         private static bool IsFileLocked(IOException exception)
@@ -85,29 +105,44 @@ namespace SARS.Modules
 
         private static async Task ScanFunction(string cacheLocation)
         {
+            avatarIds = new List<CacheAvatar>();
             List<Task> tasks = new List<Task>();
             List<string> locations = GetCacheLocations(cacheLocation);
 
             foreach (string cache in locations)
             {
-                tasks.Add(Task.Run(() => ReadUntilAvatarId(cache)));
+                tasks.Add(Task.Run(() => ReadUntilId(cache)));
             }
             Task.WaitAll(tasks.ToArray());
 
+
             string outputBuffer = "";
+            string outputBufferWorld = "";
 
             avatarIds = avatarIds.Distinct().ToList();
 
             foreach (var item in avatarIds)
             {
-                outputBuffer += $"{item.AvatarId};\n";
-
-                avatarsFound++;
+                try
+                {
+                    if (item.AvatarId.Contains("avtr_"))
+                    {
+                        outputBuffer += $"{item.AvatarId};\n";
+                        avatarsFound++;
+                    }
+                    else
+                    {
+                        outputBufferWorld += $"{item.AvatarId};\n";
+                        worldsFound++;
+                    }
+                }
+                catch { }
             }
             File.WriteAllText("avatarLog.txt", outputBuffer);
+            File.WriteAllText("worldLog.txt", outputBufferWorld);
             stop.Stop();
             string timeRan = TimeSpan.FromMilliseconds(stop.ElapsedMilliseconds).TotalSeconds.ToString();
-            NewMessage($"Found {avatarsFound} avatars in {timeRan} seconds{Environment.NewLine}");
+            NewMessage($"Found {avatarsFound} avatars & {worldsFound} Worlds in {timeRan} seconds{Environment.NewLine}");
         }
 
         public static List<string> GetCacheLocations(string path)

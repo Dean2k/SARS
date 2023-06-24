@@ -5,6 +5,7 @@ using System.IO.Compression;
 using System.Linq;
 using System.Reflection;
 using System.Threading.Tasks;
+using System.Web.Configuration;
 using System.Windows.Forms;
 using VRChatAPI_New.Models;
 using VRChatAPI_New.Modules.Game;
@@ -19,6 +20,22 @@ namespace SARS.Modules
             if (!Directory.Exists(filePath + $"\\{hotSwapName}\\"))
             {
                 ZipFile.ExtractToDirectory(filePath + @"\SARS.zip", filePath + $"\\{hotSwapName}");
+                try
+                {
+                    string text = File.ReadAllText(filePath + $"\\{hotSwapName}\\ProjectSettings\\ProjectSettings.asset");
+                    text = text.Replace("SARS", hotSwapName);
+                    File.WriteAllText(filePath + $"\\{hotSwapName}\\ProjectSettings\\ProjectSettings.asset", text);
+                }
+                catch { }
+            }
+        }
+
+        public static void ExtractWorldHSB(string hotSwapName)
+        {
+            string filePath = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
+            if (!Directory.Exists(filePath + $"\\{hotSwapName}\\"))
+            {
+                ZipFile.ExtractToDirectory(filePath + @"\SARSWorld.zip", filePath + $"\\{hotSwapName}");
                 try
                 {
                     string text = File.ReadAllText(filePath + $"\\{hotSwapName}\\ProjectSettings\\ProjectSettings.asset");
@@ -167,6 +184,29 @@ namespace SARS.Modules
                 return false;
             }
             return true;
+        }
+
+        public static async Task<bool> DownloadVrcwAsync(Avatar avatar, decimal pcVersion, Download download)
+        {
+            var filePath = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location) + $"\\VRCW\\{RandomFunctions.ReplaceInvalidChars(avatar.avatar.avatarName)}-{avatar.avatar.avatarId}.vrcw";
+            //download.Text = $"{avatar.avatar.avatarName} - {avatar.avatar.avatarId}";
+            if (avatar.avatar.pcAssetUrl.ToLower() != "none" && avatar.avatar.pcAssetUrl != null)
+            {
+                try
+                {
+                    var version = avatar.avatar.pcAssetUrl.Split('/');
+                    if (pcVersion > 0)
+                    {
+                        version[7] = pcVersion.ToString();
+                    }
+                    await Task.Run(() => VRCA.DownloadVrcaFile(string.Join("/", version), filePath.Replace(".vrcw", "_pc.vrcw"), download.downloadProgress));
+                }
+                catch { await Task.Run(() => VRCA.DownloadVrcaFile(avatar.avatar.pcAssetUrl, filePath.Replace(".vrcw", "_pc.vrcw"), download.downloadProgress)); }
+                pcDownload = false;
+                return true;
+
+            }
+            return false;
         }
 
         public static Tuple<int, int, VRChatFileInformation, VRChatFileInformation> GetVersion(string pcUrl, string questUrl)

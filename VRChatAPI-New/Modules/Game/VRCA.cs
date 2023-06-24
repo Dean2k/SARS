@@ -1,5 +1,6 @@
 ﻿using Newtonsoft.Json;
 using System;
+using System.IO;
 using System.Net;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -9,10 +10,10 @@ namespace VRChatAPI_New.Modules.Game
 {
     public static class VRCA
     {
-        public static async Task DownloadVrcaFile(string url, string fileLocation, System.Windows.Forms.ProgressBar progressBar)
+        public static async Task DownloadVrcaFile(string url, string fileLocation, ProgressBar progressBar)
         {
             url += "?apiKey=JlE5Jldo5Jibnk5O5hTx6XVqsJu4WJ26&organization=vrchat";
-            WebClient webClient = new WebClient();
+            using WebClient webClient = new WebClient();
             try
             {
                 webClient.DownloadProgressChanged += (s, e) =>
@@ -28,8 +29,6 @@ namespace VRChatAPI_New.Modules.Game
                 webClient.Headers.Add("user-agent", "VRC.Core.BestHTTP");
                 webClient.Headers.Add("X-Unity-Version", "2019.4.40f1");
                 await webClient.DownloadFileTaskAsync(new Uri(url), fileLocation);
-
-                webClient.Dispose();
             }
             catch (System.Exception ex)
             {
@@ -50,7 +49,11 @@ namespace VRChatAPI_New.Modules.Game
                 {
                     MessageBox.Show(ex.Message);
                 }
-                webClient.Dispose();
+                try
+                {
+                    File.Delete(fileLocation);
+                }
+                catch { }
             }
         }
 
