@@ -1029,6 +1029,11 @@ namespace SARS
                         MessageBox.Show("Login failed");
                         return;
                     }
+                    if (string.IsNullOrEmpty(info.DisplayName))
+                    {
+                        MessageBox.Show("Login failed");
+                        return;
+                    }
                     configSave.Config.UserId = info.Id;
                     configSave.Config.AuthKey = info.Details.AuthKey;
                     configSave.Config.TwoFactor = info.Details.TwoFactorKey;
@@ -1049,14 +1054,8 @@ namespace SARS
 
         private async Task<bool> Download()
         {
-            if (string.IsNullOrEmpty(configSave.Config.AuthKey))
-            {
-                MessageBox.Show("Please Login with an alt first.");
-                return false;
-            }
             if (avatarGrid.SelectedRows.Count > 1)
             {
-
                 Avatar avatar = null;
                 foreach (DataGridViewRow row in avatarGrid.SelectedRows)
                 {
@@ -1071,7 +1070,8 @@ namespace SARS
                                 File.Copy(avatar.avatar.pcAssetUrl, Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location) + $"\\VRCA\\{RandomFunctions.ReplaceInvalidChars(avatar.avatar.avatarName)}-{avatar.avatar.avatarId}_pc.vrca");
                             }
                             AvatarFunctions.pcDownload = true;
-                        } else
+                        }
+                        else
                         {
                             if (!File.Exists(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location) + $"\\VRCW\\{RandomFunctions.ReplaceInvalidChars(avatar.avatar.avatarName)}-{avatar.avatar.avatarId}_pc.vrcw"))
                             {
@@ -1082,7 +1082,12 @@ namespace SARS
                     }
                     else
                     {
-                        Download download = new Download { Text = $"{avatar.avatar.avatarName} - {avatar.avatar.avatarId}"};
+                        if (string.IsNullOrEmpty(configSave.Config.AuthKey))
+                        {
+                            MessageBox.Show("Please Login with an alt first.");
+                            return false;
+                        }
+                        Download download = new Download { Text = $"{avatar.avatar.avatarName} - {avatar.avatar.avatarId}" };
                         download.Show();
                         if ((bool)row.Cells[8].Value)
                         {
@@ -1102,17 +1107,39 @@ namespace SARS
                 foreach (DataGridViewRow row in avatarGrid.SelectedRows)
                 {
                     avatar = avatars.FirstOrDefault(x => x.avatar.avatarId == row.Cells[3].Value);
-                    Download download = new Download { Text = $"{avatar.avatar.avatarName} - {avatar.avatar.avatarId}"};
-                    download.Show();
-                    if ((bool)row.Cells[8].Value)
+                    if (avatar.avatar.authorId == "Unknown Cache")
                     {
-                        await Task.Run(() => AvatarFunctions.DownloadVrcaAsync(avatar, nmPcVersion.Value, nmQuestVersion.Value, download));
+                        if ((bool)row.Cells[8].Value)
+                        {
+                            if (!File.Exists(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location) + $"\\VRCA\\{RandomFunctions.ReplaceInvalidChars(avatar.avatar.avatarName)}-{avatar.avatar.avatarId}_pc.vrca"))
+                            {
+                                File.Copy(avatar.avatar.pcAssetUrl, Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location) + $"\\VRCA\\{RandomFunctions.ReplaceInvalidChars(avatar.avatar.avatarName)}-{avatar.avatar.avatarId}_pc.vrca");
+                            }
+                            AvatarFunctions.pcDownload = true;
+                        }
+                        else
+                        {
+                            if (!File.Exists(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location) + $"\\VRCW\\{RandomFunctions.ReplaceInvalidChars(avatar.avatar.avatarName)}-{avatar.avatar.avatarId}_pc.vrcw"))
+                            {
+                                File.Copy(avatar.avatar.pcAssetUrl, Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location) + $"\\VRCW\\{RandomFunctions.ReplaceInvalidChars(avatar.avatar.avatarName)}-{avatar.avatar.avatarId}_pc.vrcw");
+                            }
+                            AvatarFunctions.pcDownload = true;
+                        }
                     }
                     else
                     {
-                        await Task.Run(() => AvatarFunctions.DownloadVrcwAsync(avatar, nmPcVersion.Value, download));
+                        Download download = new Download { Text = $"{avatar.avatar.avatarName} - {avatar.avatar.avatarId}" };
+                        download.Show();
+                        if ((bool)row.Cells[8].Value)
+                        {
+                            await Task.Run(() => AvatarFunctions.DownloadVrcaAsync(avatar, nmPcVersion.Value, nmQuestVersion.Value, download));
+                        }
+                        else
+                        {
+                            await Task.Run(() => AvatarFunctions.DownloadVrcwAsync(avatar, nmPcVersion.Value, download));
+                        }
+                        download.Close();
                     }
-                    download.Close();
                 }
             }
             return true;
@@ -2551,7 +2578,8 @@ namespace SARS
             if (chkWorldHotswapping.Checked)
             {
                 btnHotswapWorld.Enabled = true;
-            } else
+            }
+            else
             {
                 btnHotswapWorld.Enabled = false;
             }
