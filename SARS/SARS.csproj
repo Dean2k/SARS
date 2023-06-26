@@ -684,6 +684,9 @@
     <None Include="Resources\Image_not_available.png" />
     <None Include="Resources\download.png" />
     <Content Include="shrek %282%29.ico" />
+    <Content Include="SQLite.Interop.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Template\shrekLogo.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
