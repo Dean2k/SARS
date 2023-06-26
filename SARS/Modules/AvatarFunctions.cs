@@ -76,6 +76,7 @@ namespace SARS.Modules
                             await Task.Run(() => VRCA.DownloadVrcaFile(string.Join("/", version), filePath.Replace(".vrca", "_quest.vrca"), download.downloadProgress));
                         }
                         catch { await Task.Run(() => VRCA.DownloadVrcaFile(avatar.avatar.questAssetUrl, filePath.Replace(".vrca", "_quest.vrca"), download.downloadProgress)); }
+                        ShowSelectedInExplorer.FileOrFolder(filePath.Replace(".vrca", "_quest.vrca"));
                     }
                     Console.WriteLine("QUEST DOWNLOAD");
                     if (avatar.avatar.pcAssetUrl.ToLower() != "none")
@@ -90,6 +91,7 @@ namespace SARS.Modules
                             await Task.Run(() => VRCA.DownloadVrcaFile(string.Join("/", version), filePath.Replace(".vrca", "_pc.vrca"), download.downloadProgress));
                         }
                         catch { await Task.Run(() => VRCA.DownloadVrcaFile(avatar.avatar.pcAssetUrl, filePath.Replace(".vrca", "_pc.vrca"), download.downloadProgress)); }
+                        ShowSelectedInExplorer.FileOrFolder(filePath.Replace(".vrca", "_pc.vrca"));
                     }
                     Console.WriteLine("PC DOWNLOAD");
                     return true;
@@ -113,6 +115,7 @@ namespace SARS.Modules
                                 await Task.Run(() => VRCA.DownloadVrcaFile(string.Join("/", version), filePath.Replace(".vrca", "_quest.vrca"), download.downloadProgress));
                             }
                             catch { await Task.Run(() => VRCA.DownloadVrcaFile(avatar.avatar.questAssetUrl, filePath.Replace(".vrca", "_quest.vrca"), download.downloadProgress)); }
+                            ShowSelectedInExplorer.FileOrFolder(filePath.Replace(".vrca", "_quest.vrca"));
                             pcDownload = false;
                         }
                         else
@@ -136,6 +139,7 @@ namespace SARS.Modules
                                 await Task.Run(() => VRCA.DownloadVrcaFile(string.Join("/", version), filePath.Replace(".vrca", "_pc.vrca"), download.downloadProgress));
                             }
                             catch { await Task.Run(() => VRCA.DownloadVrcaFile(avatar.avatar.pcAssetUrl, filePath.Replace(".vrca", "_pc.vrca"), download.downloadProgress)); }
+                            ShowSelectedInExplorer.FileOrFolder(filePath.Replace(".vrca", "_pc.vrca"));
                             pcDownload = true;
                         }
                         else
@@ -163,6 +167,7 @@ namespace SARS.Modules
                     await Task.Run(() => VRCA.DownloadVrcaFile(string.Join("/", version), filePath.Replace(".vrca", "_pc.vrca"), download.downloadProgress));
                 }
                 catch { await Task.Run(() => VRCA.DownloadVrcaFile(avatar.avatar.pcAssetUrl, filePath.Replace(".vrca", "_pc.vrca"), download.downloadProgress)); }
+                ShowSelectedInExplorer.FileOrFolder(filePath.Replace(".vrca", "_pc.vrca"));
                 pcDownload = true;
             }
             else if (avatar.avatar.questAssetUrl.ToLower() != "none" && avatar.avatar.questAssetUrl != null)
@@ -177,6 +182,7 @@ namespace SARS.Modules
                     await Task.Run(() => VRCA.DownloadVrcaFile(string.Join("/", version), filePath.Replace(".vrca", "_quest.vrca"), download.downloadProgress));
                 }
                 catch { await Task.Run(() => VRCA.DownloadVrcaFile(avatar.avatar.questAssetUrl, filePath.Replace(".vrca", "_quest.vrca"), download.downloadProgress)); }
+                ShowSelectedInExplorer.FileOrFolder(filePath.Replace(".vrca", "_quest.vrca"));
                 pcDownload = false;
             }
             else
@@ -202,6 +208,7 @@ namespace SARS.Modules
                     await Task.Run(() => VRCA.DownloadVrcaFile(string.Join("/", version), filePath.Replace(".vrcw", "_pc.vrcw"), download.downloadProgress));
                 }
                 catch { await Task.Run(() => VRCA.DownloadVrcaFile(avatar.avatar.pcAssetUrl, filePath.Replace(".vrcw", "_pc.vrcw"), download.downloadProgress)); }
+                ShowSelectedInExplorer.FileOrFolder(filePath.Replace(".vrcw", "_pc.vrcw"));
                 pcDownload = false;
                 return true;
 

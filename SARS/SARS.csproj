@@ -153,6 +153,7 @@
     <Compile Include="Modules\MessageBoxManager.cs" />
     <Compile Include="Modules\ProgressBar.cs" />
     <Compile Include="Modules\RandomFunctions.cs" />
+    <Compile Include="Modules\SHOpenFolderAndSelectItems.cs" />
     <Compile Include="Modules\ShrekApi.cs" />
     <Compile Include="Modules\SQLite.cs" />
     <Compile Include="Modules\StreamReader.cs" />

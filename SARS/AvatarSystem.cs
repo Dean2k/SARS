@@ -1060,22 +1060,26 @@ namespace SARS
                 foreach (DataGridViewRow row in avatarGrid.SelectedRows)
                 {
                     avatar = avatars.FirstOrDefault(x => x.avatar.avatarId == row.Cells[3].Value);
-
+                   
                     if (avatar.avatar.authorId == "Unknown Cache")
                     {
                         if ((bool)row.Cells[8].Value)
                         {
+                            string path = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location) + $"\\VRCA\\{RandomFunctions.ReplaceInvalidChars(avatar.avatar.avatarName)}-{avatar.avatar.avatarId}_pc.vrca";
                             if (!File.Exists(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location) + $"\\VRCA\\{RandomFunctions.ReplaceInvalidChars(avatar.avatar.avatarName)}-{avatar.avatar.avatarId}_pc.vrca"))
                             {
-                                File.Copy(avatar.avatar.pcAssetUrl, Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location) + $"\\VRCA\\{RandomFunctions.ReplaceInvalidChars(avatar.avatar.avatarName)}-{avatar.avatar.avatarId}_pc.vrca");
+                                File.Copy(avatar.avatar.pcAssetUrl, path);
+                                ShowSelectedInExplorer.FileOrFolder(path);
                             }
                             AvatarFunctions.pcDownload = true;
                         }
                         else
                         {
-                            if (!File.Exists(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location) + $"\\VRCW\\{RandomFunctions.ReplaceInvalidChars(avatar.avatar.avatarName)}-{avatar.avatar.avatarId}_pc.vrcw"))
+                            string path = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location) + $"\\VRCW\\{RandomFunctions.ReplaceInvalidChars(avatar.avatar.avatarName)}-{avatar.avatar.avatarId}_pc.vrcw";
+                            if (!File.Exists(path))
                             {
-                                File.Copy(avatar.avatar.pcAssetUrl, Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location) + $"\\VRCW\\{RandomFunctions.ReplaceInvalidChars(avatar.avatar.avatarName)}-{avatar.avatar.avatarId}_pc.vrcw");
+                                File.Copy(avatar.avatar.pcAssetUrl, path);
+                                ShowSelectedInExplorer.FileOrFolder(path);
                             }
                             AvatarFunctions.pcDownload = true;
                         }
@@ -1111,17 +1115,21 @@ namespace SARS
                     {
                         if ((bool)row.Cells[8].Value)
                         {
-                            if (!File.Exists(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location) + $"\\VRCA\\{RandomFunctions.ReplaceInvalidChars(avatar.avatar.avatarName)}-{avatar.avatar.avatarId}_pc.vrca"))
+                            string path = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location) + $"\\VRCA\\{RandomFunctions.ReplaceInvalidChars(avatar.avatar.avatarName)}-{avatar.avatar.avatarId}_pc.vrca";
+                            if (!File.Exists(path))
                             {
-                                File.Copy(avatar.avatar.pcAssetUrl, Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location) + $"\\VRCA\\{RandomFunctions.ReplaceInvalidChars(avatar.avatar.avatarName)}-{avatar.avatar.avatarId}_pc.vrca");
+                                File.Copy(avatar.avatar.pcAssetUrl, path);
+                                ShowSelectedInExplorer.FileOrFolder(path);
                             }
                             AvatarFunctions.pcDownload = true;
                         }
                         else
                         {
-                            if (!File.Exists(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location) + $"\\VRCW\\{RandomFunctions.ReplaceInvalidChars(avatar.avatar.avatarName)}-{avatar.avatar.avatarId}_pc.vrcw"))
+                            string path = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location) + $"\\VRCW\\{RandomFunctions.ReplaceInvalidChars(avatar.avatar.avatarName)}-{avatar.avatar.avatarId}_pc.vrcw";
+                            if (!File.Exists(path))
                             {
-                                File.Copy(avatar.avatar.pcAssetUrl, Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location) + $"\\VRCW\\{RandomFunctions.ReplaceInvalidChars(avatar.avatar.avatarName)}-{avatar.avatar.avatarId}_pc.vrcw");
+                                File.Copy(avatar.avatar.pcAssetUrl, path);
+                                ShowSelectedInExplorer.FileOrFolder(path);
                             }
                             AvatarFunctions.pcDownload = true;
                         }
