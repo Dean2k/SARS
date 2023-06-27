@@ -2204,7 +2204,11 @@ namespace SARS
                             if (avatarGrid.Rows[i].Cells[3].Value != null && (bool)avatarGrid.Rows[i].Cells[8].Value == true)
                             {
                                 string avatarId = avatarGrid.Rows[i].Cells[3].Value.ToString();
-                                VRChatCacheResult local = DbCheckAvatar(avatarId);
+                                VRChatCacheResult local = null;
+                                try
+                                {
+                                    local = DbCheckAvatar(avatarId);
+                                } catch { }
                                 VRChatCacheResult vRChatCacheResult = null;
                                 if (local == null)
                                 {
@@ -2244,7 +2248,11 @@ namespace SARS
                             if (avatarGrid.Rows[i].Cells[3].Value != null && (bool)avatarGrid.Rows[i].Cells[8].Value == false)
                             {
                                 string worldId = avatarGrid.Rows[i].Cells[3].Value.ToString();
-                                VRChatCacheResultWorld local = DbCheckWorld(worldId);
+                                VRChatCacheResultWorld local = null;
+                                try
+                                {
+                                    local = DbCheckWorld(worldId);
+                                } catch { }
                                 VRChatCacheResultWorld vRChatCacheResult = null;
                                 if (local == null)
                                 {

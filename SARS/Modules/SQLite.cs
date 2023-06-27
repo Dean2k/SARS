@@ -4,15 +4,17 @@ using System.Data;
 using System.Data.SQLite;
 using System.IO;
 using System.Net;
+using System.Reflection;
 using System.Xml.Linq;
 
 namespace SARS.Modules
 {
     public static class SQLite
     {
+        private static string _databaseLocation = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location) + "\\SARS.db3";
         public static void Setup()
         {
-            if (!File.Exists("SARS.db3"))
+            if (!File.Exists(_databaseLocation))
             {
                 // This is the query which will create a new table in our database file with three columns. An auto increment column called "ID", and two NVARCHAR type columns with the names "Key" and "Value"
                 string createTableQuery = @"CREATE TABLE IF NOT EXISTS [Avatars] (
@@ -23,8 +25,8 @@ namespace SARS.Modules
                           [Id] INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
                           [WorldId] NVARCHAR(50) NOT NULL,
                           [WorldData] TEXT NOT NULL)";
-                SQLiteConnection.CreateFile("SARS.db3");      
-                using (SQLiteConnection con = new SQLiteConnection("data source=SARS.db3"))
+                SQLiteConnection.CreateFile(_databaseLocation);      
+                using (SQLiteConnection con = new SQLiteConnection($"data source='{_databaseLocation}'"))
                 {
                     using (SQLiteCommand com = new SQLiteCommand(con))
                     {
@@ -41,7 +43,7 @@ namespace SARS.Modules
 
         public static string ReadDataAvatar(string avatarId)
         {
-            using (SQLiteConnection con = new SQLiteConnection("data source=SARS.db3"))
+            using (SQLiteConnection con = new SQLiteConnection($"data source='{_databaseLocation}'"))
             {
                 using (SQLiteCommand com = new SQLiteCommand(con))
                 {
@@ -64,7 +66,7 @@ namespace SARS.Modules
 
         public static string ReadDataWorld(string worldId)
         {
-            using (SQLiteConnection con = new SQLiteConnection("data source=SARS.db3"))
+            using (SQLiteConnection con = new SQLiteConnection($"data source='{_databaseLocation}'"))
             {
                 using (SQLiteCommand com = new SQLiteCommand(con))
                 {
@@ -87,7 +89,7 @@ namespace SARS.Modules
 
         public static void WriteDataAvatar(string avatarId, string jsonData)
         {
-            using (var conn = new SQLiteConnection($"data source=SARS.db3"))
+            using (var conn = new SQLiteConnection($"data source='{_databaseLocation}'"))
             {
                 conn.Open();
 
@@ -115,7 +117,7 @@ namespace SARS.Modules
 
         public static void WriteDataWorld(string worldId, string jsonData)
         {
-            using (var conn = new SQLiteConnection($"data source=SARS.db3"))
+            using (var conn = new SQLiteConnection($"data source='{_databaseLocation}'"))
             {
                 conn.Open();
 
