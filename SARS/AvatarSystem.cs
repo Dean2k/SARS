@@ -103,7 +103,7 @@ namespace SARS
                 File.Delete(filePath + "\\favNew.cfg");
                 favList = new ConfigSave<List<Avatar>>(filePath + "\\favNew.cfg");
                 Console.WriteLine("Error with fav list");
-            }
+            }           
 
             tabControl.SelectedIndex = 0;
             try
@@ -118,6 +118,9 @@ namespace SARS
                 configSave.Save();
             }
 
+            CheckFav();
+            CheckRipped();
+
             if (string.IsNullOrEmpty(configSave.Config.HotSwapWorldName))
             {
                 int randomAmount = RandomFunctions.random.Next(12);
@@ -130,6 +133,18 @@ namespace SARS
             MessageBoxManager.Yes = "PC";
             MessageBoxManager.No = "Quest";
             MessageBoxManager.Register();
+        }
+
+        private void CheckFav()
+        {
+            favList.Config.RemoveAll(x => x == null);
+            favList.Save();
+        }
+
+        private void CheckRipped()
+        {
+            rippedList.Config.RemoveAll(x => x == null);
+            rippedList.Save();
         }
 
         private void GetLatestVersion()
