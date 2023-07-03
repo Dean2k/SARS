@@ -358,10 +358,12 @@ namespace SARS
             }
             else if (cbSearchTerm.Text == "World Name")
             {
+                avatarSearch.AvatarName = txtSearchTerm.Text;
                 avatar = false;
             }
             else if (cbSearchTerm.Text == "World ID")
             {
+                avatarSearch.AvatarId = txtSearchTerm.Text;
                 avatar = false;
             }
             string customApi = "";
