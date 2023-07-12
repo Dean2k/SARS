@@ -953,7 +953,8 @@ namespace SARS
                 {
                     nmPcVersion.Value = 0;
                     nmQuestVersion.Value = 0;
-                    txtAvatarSizePc.Text = "LOCAL FILE";
+                    System.IO.FileInfo fi = new System.IO.FileInfo(info.avatar.pcAssetUrl);
+                    txtAvatarSizePc.Text = FormatSize(fi.Length);
                     txtAvatarSizeQuest.Text = "";
                     return;
                 }
