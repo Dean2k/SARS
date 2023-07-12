@@ -16,6 +16,7 @@ using System.Drawing.Imaging;
 using System.IO;
 using System.Linq;
 using System.Net;
+using System.Net.NetworkInformation;
 using System.Reflection;
 using System.Runtime.InteropServices;
 using System.Threading;
@@ -24,6 +25,7 @@ using System.Windows.Forms;
 using VRChatAPI_New;
 using VRChatAPI_New.Models;
 using VRChatAPI_New.Modules.Game;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.Window;
 
 namespace SARS
 {
@@ -103,7 +105,7 @@ namespace SARS
                 File.Delete(filePath + "\\favNew.cfg");
                 favList = new ConfigSave<List<Avatar>>(filePath + "\\favNew.cfg");
                 Console.WriteLine("Error with fav list");
-            }           
+            }
 
             tabControl.SelectedIndex = 0;
             try
@@ -207,7 +209,7 @@ namespace SARS
             }
             if (!string.IsNullOrEmpty(configSave.Config.PreSelectedWorldLocation))
             {
-                txtAvatarOutput.Text = configSave.Config.PreSelectedWorldLocation;
+                txtWorldOutput.Text = configSave.Config.PreSelectedWorldLocation;
             }
 
             if (configSave.Config.PreSelectedAvatarLocationChecked != null)
@@ -449,6 +451,10 @@ namespace SARS
 
         private void LoadImages()
         {
+            if (!Directory.Exists(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location) + "\\images"))
+            {
+                Directory.CreateDirectory(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location) + "\\images");
+            }
             ThreadPool.QueueUserWorkItem(delegate
             {
                 for (int i = 0; i < avatarGrid.Rows.Count; i++)
@@ -457,40 +463,49 @@ namespace SARS
                     {
                         if (avatarGrid.Rows[i] != null)
                         {
-                            if (avatarGrid.Rows[i].Cells[5].Value != null)
+                            string fileName = $"{Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location)}\\images\\{avatarGrid.Rows[i].Cells[3].Value}.png";
+                            if (!File.Exists(fileName))
                             {
-                                if (!string.IsNullOrEmpty(avatarGrid.Rows[i].Cells[5].Value.ToString().Trim()))
+                                if (avatarGrid.Rows[i].Cells[5].Value != null)
                                 {
-                                    try
+                                    if (!string.IsNullOrEmpty(avatarGrid.Rows[i].Cells[5].Value.ToString().Trim()))
                                     {
-                                        HttpWebRequest myRequest = (HttpWebRequest)WebRequest.Create(avatarGrid.Rows[i].Cells[5].Value.ToString());
-                                        myRequest.Method = "GET";
-                                        myRequest.UserAgent = userAgent;
-                                        using (HttpWebResponse myResponse = (HttpWebResponse)myRequest.GetResponse())
+                                        try
                                         {
-                                            if (myResponse.StatusCode == HttpStatusCode.OK)
+                                            HttpWebRequest myRequest = (HttpWebRequest)WebRequest.Create(avatarGrid.Rows[i].Cells[5].Value.ToString());
+                                            myRequest.Method = "GET";
+                                            myRequest.UserAgent = userAgent;
+                                            using (HttpWebResponse myResponse = (HttpWebResponse)myRequest.GetResponse())
                                             {
-                                                Bitmap bmp = new Bitmap(myResponse.GetResponseStream());
-                                                avatarGrid.Rows[i].Cells[0].Value = bmp;
+                                                if (myResponse.StatusCode == HttpStatusCode.OK)
+                                                {
+                                                    Bitmap bmp = new Bitmap(myResponse.GetResponseStream());
+                                                    avatarGrid.Rows[i].Cells[0].Value = bmp;
+                                                    bmp.Save(fileName, ImageFormat.Png);
+                                                }
+                                                else
+                                                {
+                                                    Bitmap bmp = new Bitmap(Resources.No_Image);
+                                                    avatarGrid.Rows[i].Cells[0].Value = bmp;
+                                                }
                                             }
-                                            else
+                                        }
+                                        catch (Exception ex)
+                                        {
+                                            Console.WriteLine(ex.ToString());
+                                            try
                                             {
                                                 Bitmap bmp = new Bitmap(Resources.No_Image);
                                                 avatarGrid.Rows[i].Cells[0].Value = bmp;
                                             }
+                                            catch { }
                                         }
-                                    }
-                                    catch (Exception ex)
-                                    {
-                                        Console.WriteLine(ex.ToString());
-                                        try
-                                        {
-                                            Bitmap bmp = new Bitmap(Resources.No_Image);
-                                            avatarGrid.Rows[i].Cells[0].Value = bmp;
-                                        }
-                                        catch { }
                                     }
                                 }
+                            } else
+                            {
+                                Bitmap bmp = new Bitmap(fileName);
+                                avatarGrid.Rows[i].Cells[0].Value = bmp;
                             }
                         }
                     }
@@ -909,7 +924,7 @@ namespace SARS
             using (var openFileDialog = new OpenFileDialog())
             {
                 openFileDialog.InitialDirectory = "c:\\";
-                openFileDialog.Filter = "vrca files (*.vrca)|*.vrca";
+                openFileDialog.Filter = "vrca files (*.vrca)|*.vrca|vrcw files (*.vrcw)|*.vrcw";
                 openFileDialog.RestoreDirectory = true;
 
                 if (openFileDialog.ShowDialog() == DialogResult.OK)
@@ -1077,7 +1092,7 @@ namespace SARS
                 foreach (DataGridViewRow row in avatarGrid.SelectedRows)
                 {
                     avatar = avatars.FirstOrDefault(x => x.avatar.avatarId == row.Cells[3].Value);
-                   
+
                     if (avatar.avatar.authorId == "Unknown Cache")
                     {
                         if ((bool)row.Cells[8].Value)
@@ -1176,21 +1191,36 @@ namespace SARS
             {
                 string avatarFile;
                 Avatar avatar = null;
+                bool worldFile = false;
                 if (vrcaLocation == "")
                 {
                     avatar = avatars.FirstOrDefault(x => x.avatar.avatarId == avatarGrid.SelectedRows[0].Cells[3].Value);
                     Download download = new Download { Text = $"{avatar.avatar.avatarName} - {avatar.avatar.avatarId}" };
                     download.Show();
-                    if (await Task.Run(() => AvatarFunctions.DownloadVrcaAsync(avatar, nmPcVersion.Value, nmQuestVersion.Value, download)) == false) return;
-                    avatarFile = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location) + $"\\VRCA\\{avatar.avatar.avatarName}-{avatar.avatar.avatarId}_pc.vrca";
-                    download.Close();
+                    if (avatar.avatar.avatarId.StartsWith("avtr_"))
+                    {
+                        worldFile = false;
+                        if (await Task.Run(() => AvatarFunctions.DownloadVrcaAsync(avatar, nmPcVersion.Value, nmQuestVersion.Value, download)) == false) return;
+                        avatarFile = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location) + $"\\VRCA\\{avatar.avatar.avatarName}-{avatar.avatar.avatarId}_pc.vrca";
+                        download.Close();
+                    } else
+                    {
+                        worldFile = true;
+                        if (await Task.Run(() => AvatarFunctions.DownloadVrcwAsync(avatar, nmPcVersion.Value, download)) == false) return;
+                        avatarFile = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location) + $"\\VRCW\\{avatar.avatar.avatarName}-{avatar.avatar.avatarId}_pc.vrcw";
+                        download.Close();
+                    }
                 }
                 else
                 {
                     avatarFile = vrcaLocation;
+                    if (vrcaLocation.EndsWith(".vrcw"))
+                    {
+                        worldFile = true;
+                    }
                 }
-
-                if (File.Exists(avatarFile) && File.Exists(avatarFile.Replace("_pc", "_quest")))
+                string questFile = avatarFile.Replace("_pc", "_quest");
+                if (File.Exists(avatarFile) && File.Exists(questFile) && avatarFile != questFile)
                 {
                     var dlgResult = MessageBox.Show("Select which version to extract", "VRCA Select",
                        MessageBoxButtons.YesNo, MessageBoxIcon.Information);
@@ -1222,11 +1252,21 @@ namespace SARS
                 };
                 // Show the FolderBrowserDialog.
                 var result = DialogResult.OK;
-                if (!toggleAvatar.Checked || txtAvatarOutput.Text == "")
-                    result = folderDlg.ShowDialog();
-                else
+                if (toggleAvatar.Checked && txtAvatarOutput.Text != "" && !worldFile)
+                {
                     folderDlg.SelectedPath = txtAvatarOutput.Text;
-                if (result == DialogResult.OK || toggleAvatar.Checked && txtAvatarOutput.Text != "")
+                }
+                else if(toggleWorld.Checked && txtWorldOutput.Text != "" && worldFile)
+                {
+                    folderDlg.SelectedPath = txtWorldOutput.Text;
+                }
+                else
+                {                
+                    result = folderDlg.ShowDialog();
+                }
+
+
+                if (result == DialogResult.OK || toggleAvatar.Checked && txtAvatarOutput.Text != "" && !worldFile || toggleWorld.Checked && txtWorldOutput.Text != "" && worldFile)
                 {
                     var filePath = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
                     var invalidFileNameChars = Path.GetInvalidFileNameChars();
@@ -2225,7 +2265,8 @@ namespace SARS
                                 try
                                 {
                                     local = DbCheckAvatar(avatarId);
-                                } catch { }
+                                }
+                                catch { }
                                 VRChatCacheResult vRChatCacheResult = null;
                                 if (local == null)
                                 {
@@ -2269,7 +2310,8 @@ namespace SARS
                                 try
                                 {
                                     local = DbCheckWorld(worldId);
-                                } catch { }
+                                }
+                                catch { }
                                 VRChatCacheResultWorld vRChatCacheResult = null;
                                 if (local == null)
                                 {
@@ -2341,6 +2383,10 @@ namespace SARS
         {
             var temp = avatars.FirstOrDefault(x => x.avatar.avatarId == avatarId);
             avatars.Remove(temp);
+            if (!Directory.Exists(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location) + "\\images"))
+            {
+                Directory.CreateDirectory(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location) + "\\images");
+            }
             Avatar avatar = new Avatar
             {
                 avatar = new AvatarDetails
@@ -2379,32 +2425,47 @@ namespace SARS
             row.Cells[2].Value = vRChatCacheResult.authorName;
             row.Cells[5].Value = vRChatCacheResult.thumbnailImageUrl;
 
-            if (row.Cells[5].Value != null)
+            string fileName = $"{Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location)}\\images\\{avatar.avatar.avatarId}.png";
+            if (!File.Exists(fileName))
             {
-                if (!string.IsNullOrEmpty(row.Cells[5].Value.ToString().Trim()))
+                if (row.Cells[5].Value != null)
                 {
-                    try
+                    if (!string.IsNullOrEmpty(row.Cells[5].Value.ToString().Trim()) && row.Cells[5].Value != "https://ares-mod.com/avatars/Image_not_available.png")
                     {
-                        HttpWebRequest myRequest = (HttpWebRequest)WebRequest.Create(row.Cells[5].Value.ToString());
-                        myRequest.Method = "GET";
-                        myRequest.UserAgent = userAgent;
-                        using (HttpWebResponse myResponse = (HttpWebResponse)myRequest.GetResponse())
+                        try
                         {
-                            if (myResponse.StatusCode == HttpStatusCode.OK)
+
+                            HttpWebRequest myRequest = (HttpWebRequest)WebRequest.Create(row.Cells[5].Value.ToString());
+                            myRequest.Method = "GET";
+                            myRequest.UserAgent = userAgent;
+                            using (HttpWebResponse myResponse = (HttpWebResponse)myRequest.GetResponse())
                             {
-                                Bitmap bmp = new Bitmap(myResponse.GetResponseStream());
-                                row.Cells[0].Value = bmp;
+                                if (myResponse.StatusCode == HttpStatusCode.OK)
+                                {
+                                    Bitmap bmp = new Bitmap(myResponse.GetResponseStream());
+                                    row.Cells[0].Value = bmp;
+                                    bmp.Save(fileName, ImageFormat.Png);
+                                }
+                                else
+                                {
+                                    Bitmap bmp = new Bitmap(Resources.No_Image);
+                                    row.Cells[0].Value = bmp;
+                                }
                             }
-                            else
+
+                        }
+                        catch (Exception ex)
+                        {
+                            Console.WriteLine(ex.ToString());
+                            try
                             {
                                 Bitmap bmp = new Bitmap(Resources.No_Image);
                                 row.Cells[0].Value = bmp;
                             }
+                            catch (Exception exc) { Console.WriteLine(exc.Message); }
                         }
-                    }
-                    catch (Exception ex)
+                    } else
                     {
-                        Console.WriteLine(ex.ToString());
                         try
                         {
                             Bitmap bmp = new Bitmap(Resources.No_Image);
@@ -2413,6 +2474,10 @@ namespace SARS
                         catch (Exception exc) { Console.WriteLine(exc.Message); }
                     }
                 }
+            } else
+            {
+                Bitmap bmp = new Bitmap(fileName);
+                row.Cells[0].Value = bmp;
             }
         }
 

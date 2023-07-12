@@ -2513,7 +2513,7 @@
     <value>36</value>
   </data>
   <data name="btnExtractVRCA.Text" xml:space="preserve">
-    <value>Extract VRCA</value>
+    <value>Extract VRCA/VRCW</value>
   </data>
   <data name="&gt;&gt;btnExtractVRCA.Name" xml:space="preserve">
     <value>btnExtractVRCA</value>
@@ -2537,7 +2537,7 @@
     <value>35</value>
   </data>
   <data name="btnLoadVRCA.Text" xml:space="preserve">
-    <value>Load VRCA</value>
+    <value>Load VRCA/VRCW</value>
   </data>
   <data name="&gt;&gt;btnLoadVRCA.Name" xml:space="preserve">
     <value>btnLoadVRCA</value>
