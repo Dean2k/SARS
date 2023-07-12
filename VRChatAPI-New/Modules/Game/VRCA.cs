@@ -2,6 +2,7 @@
 using System;
 using System.IO;
 using System.Net;
+using System.Reflection;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using VRChatAPI_New.Models;
@@ -12,48 +13,58 @@ namespace VRChatAPI_New.Modules.Game
     {
         public static async Task DownloadVrcaFile(string url, string fileLocation, ProgressBar progressBar)
         {
-            url += "?apiKey=JlE5Jldo5Jibnk5O5hTx6XVqsJu4WJ26&organization=vrchat";
-            using WebClient webClient = new WebClient();
-            try
+            if (url.StartsWith("http"))
             {
-                webClient.DownloadProgressChanged += (s, e) =>
-                {
-                    SafeProgress(progressBar, e.ProgressPercentage);
-                };
-                webClient.BaseAddress = "https://api.vrchat.cloud";
-                webClient.Headers.Add("Accept", $"*/*");
-                webClient.Headers.Add("Cookie", $"auth={StaticGameValues.AuthKey}; twoFactorAuth={StaticGameValues.TwoFactorKey};");
-                webClient.Headers.Add("X-MacAddress", StaticGameValues.MacAddress);
-                webClient.Headers.Add("X-Client-Version", StaticGameValues.GameVersion);
-                webClient.Headers.Add("X-Platform", "standalonewindows");
-                webClient.Headers.Add("user-agent", "VRC.Core.BestHTTP");
-                webClient.Headers.Add("X-Unity-Version", "2019.4.40f1");
-                await webClient.DownloadFileTaskAsync(new Uri(url), fileLocation);
-            }
-            catch (System.Exception ex)
-            {
-                Console.WriteLine(ex.Message);
-                if (ex.Message.Contains("403"))
-                {
-                    MessageBox.Show("Error downloading Avatar, its likely that the account you are using has been banned.\nPlease login with a new account or try another avatar.");
-                }
-                else if (ex.Message.Contains("404"))
-                {
-                    MessageBox.Show("Avatar has been removed from VRChat servers or this version doesn't exist");
-                }
-                else if (ex.Message.Contains("401"))
-                {
-                    MessageBox.Show("Login with a alt VRChat account in the settings page");
-                }
-                else
-                {
-                    MessageBox.Show(ex.Message);
-                }
+                url += "?apiKey=JlE5Jldo5Jibnk5O5hTx6XVqsJu4WJ26&organization=vrchat";
+                using WebClient webClient = new WebClient();
                 try
                 {
-                    File.Delete(fileLocation);
+                    webClient.DownloadProgressChanged += (s, e) =>
+                    {
+                        SafeProgress(progressBar, e.ProgressPercentage);
+                    };
+                    webClient.BaseAddress = "https://api.vrchat.cloud";
+                    webClient.Headers.Add("Accept", $"*/*");
+                    webClient.Headers.Add("Cookie", $"auth={StaticGameValues.AuthKey}; twoFactorAuth={StaticGameValues.TwoFactorKey};");
+                    webClient.Headers.Add("X-MacAddress", StaticGameValues.MacAddress);
+                    webClient.Headers.Add("X-Client-Version", StaticGameValues.GameVersion);
+                    webClient.Headers.Add("X-Platform", "standalonewindows");
+                    webClient.Headers.Add("user-agent", "VRC.Core.BestHTTP");
+                    webClient.Headers.Add("X-Unity-Version", "2019.4.40f1");
+                    await webClient.DownloadFileTaskAsync(new Uri(url), fileLocation);
                 }
-                catch { }
+                catch (System.Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                    if (ex.Message.Contains("403"))
+                    {
+                        MessageBox.Show("Error downloading Avatar, its likely that the account you are using has been banned.\nPlease login with a new account or try another avatar.");
+                    }
+                    else if (ex.Message.Contains("404"))
+                    {
+                        MessageBox.Show("Avatar has been removed from VRChat servers or this version doesn't exist");
+                    }
+                    else if (ex.Message.Contains("401"))
+                    {
+                        MessageBox.Show("Login with a alt VRChat account in the settings page");
+                    }
+                    else
+                    {
+                        MessageBox.Show(ex.Message);
+                    }
+                    try
+                    {
+                        File.Delete(fileLocation);
+                    }
+                    catch { }
+                }
+            } else
+            {
+                if (!File.Exists(fileLocation))
+                {
+                    File.Copy(url, fileLocation);
+                    ShowSelectedInExplorer.FileOrFolder(fileLocation);
+                }
             }
         }
 

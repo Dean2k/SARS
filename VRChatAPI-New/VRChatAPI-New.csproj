@@ -63,6 +63,7 @@
     <Compile Include="Modules\Game\Login.cs" />
     <Compile Include="Modules\Game\SARSGameClient.cs" />
     <Compile Include="Modules\Game\VRCA.cs" />
+    <Compile Include="Modules\SHOpenFolderAndSelectItems.cs" />
     <Compile Include="StartUp.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="StaticUnityValues.cs" />
