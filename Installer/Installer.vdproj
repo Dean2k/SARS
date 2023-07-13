@@ -2085,6 +2085,12 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_AE128416D7984A4A9C648442968E61E7"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_AEC15D8BE32B4EF79A76225B29C071FE"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -2140,6 +2146,12 @@
         "Entry"
         {
         "MsmKey" = "8:_B30D8C5ED8C04D2292C876CD52B127BE"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_B416108CFAB641789DA6A6CD0E75788F"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -9228,6 +9240,26 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_AE128416D7984A4A9C648442968E61E7"
+            {
+            "SourcePath" = "8:..\\SARS\\bin\\Release\\SARSWorld.zip"
+            "TargetName" = "8:SARSWorld.zip"
+            "Tag" = "8:"
+            "Folder" = "8:_F638F9820B244DB9B46B903B9370FECF"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
             "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_AEC15D8BE32B4EF79A76225B29C071FE"
             {
             "AssemblyRegister" = "3:1"
@@ -9462,6 +9494,26 @@
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_9C6B4C0DF2D34AEF86D351888B81F7A1"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_B416108CFAB641789DA6A6CD0E75788F"
+            {
+            "SourcePath" = "8:..\\SARS\\bin\\Release\\SARS.zip"
+            "TargetName" = "8:SARS.zip"
+            "Tag" = "8:"
+            "Folder" = "8:_F638F9820B244DB9B46B903B9370FECF"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
@@ -11723,7 +11775,7 @@
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:SARS"
         "ProductCode" = "8:{D69489CC-D956-4196-88EA-3C42914C5567}"
-        "PackageCode" = "8:{5866ED2D-2B8E-4943-9F33-ABAECAD5099A}"
+        "PackageCode" = "8:{9BEA8468-9128-45F6-95CB-019B84DBE23E}"
         "UpgradeCode" = "8:{E03648F1-FF6A-44A2-B9C9-57FE29CE61D9}"
         "AspNetVersion" = "8:2.0.50727.0"
         "RestartWWWService" = "11:FALSE"
