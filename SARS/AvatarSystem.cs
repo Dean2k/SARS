@@ -965,12 +965,17 @@ namespace SARS
                     nmPcVersion.Value = versions.Item1;
                     txtAvatarSizePc.Text = FormatSize(avatarVersionPc.Versions.FirstOrDefault(x => x.Version == nmPcVersion.Value).File.SizeInBytes);
                 }
-                else
+                else if(!info.avatar.pcAssetUrl.StartsWith("http"))
                 {
                     nmPcVersion.Maximum = 1;
                     nmPcVersion.Value = 1;
                     System.IO.FileInfo fi = new System.IO.FileInfo(info.avatar.pcAssetUrl);
                     txtAvatarSizePc.Text = FormatSize(fi.Length);
+                } else
+                {
+                    nmPcVersion.Maximum = 1;
+                    nmPcVersion.Value = 1;
+                    txtAvatarSizePc.Text = "Error";
                 }
                 if (avatarVersionQuest != null)
                 {

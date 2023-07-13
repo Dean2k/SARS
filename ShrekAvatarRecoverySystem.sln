@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SARS", "SARS\SARS.csproj", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VRChatAPI-New", "VRChatAPI-New\VRChatAPI-New.csproj", "{CEDC4C2D-E846-4C34-99AD-7642853744F7}"
 EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "Installer", "Installer\Installer.vdproj", "{8E90F3A8-AABA-44DC-A78E-E9104D715CE8}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,8 @@ Global
 		{CEDC4C2D-E846-4C34-99AD-7642853744F7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CEDC4C2D-E846-4C34-99AD-7642853744F7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CEDC4C2D-E846-4C34-99AD-7642853744F7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8E90F3A8-AABA-44DC-A78E-E9104D715CE8}.Debug|Any CPU.ActiveCfg = Debug
+		{8E90F3A8-AABA-44DC-A78E-E9104D715CE8}.Release|Any CPU.ActiveCfg = Release
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
