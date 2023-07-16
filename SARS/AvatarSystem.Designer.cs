@@ -1739,7 +1739,7 @@
             this.tabControl.Controls.Add(this.metroTabPage6);
             this.tabControl.FontWeight = MetroFramework.MetroTabControlWeight.Bold;
             this.tabControl.Name = "tabControl";
-            this.tabControl.SelectedIndex = 2;
+            this.tabControl.SelectedIndex = 1;
             this.tabControl.UseSelectable = true;
             this.tabControl.SelectedIndexChanged += new System.EventHandler(this.tabControl_SelectedIndexChanged);
             // 
@@ -1754,8 +1754,8 @@
             // 
             // AvatarSystem
             // 
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             resources.ApplyResources(this, "$this");
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.btnWorldUnity);
             this.Controls.Add(this.btnHotswapWorld);
             this.Controls.Add(this.txtAvatarSizeQuest);

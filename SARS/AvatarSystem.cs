@@ -341,6 +341,11 @@ namespace SARS
             {
                 limit = "500";
             }
+            if (string.IsNullOrEmpty(configSave.Config.ApiKey))
+            {
+                MessageBox.Show("Please enter your API key first.");
+                return;
+            }
             AvatarSearch avatarSearch = new AvatarSearch { Key = configSave.Config.ApiKey, Amount = Convert.ToInt32(limit), PrivateAvatars = chkPrivate.Checked, PublicAvatars = chkPublic.Checked, ContainsSearch = chkContains.Checked, DebugMode = true, PcAvatars = chkPC.Checked, QuestAvatars = chkQuest.Checked };
             if (cbSearchTerm.Text == "Avatar Name")
             {

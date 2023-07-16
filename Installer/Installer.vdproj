@@ -21,7 +21,19 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_03DAD9E0D3454D0983BAC8BB3E798F87"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_04D7EAA96BB843BDACE38441BC21B5E6"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_0749128028354E99A1962DBE6C0DB7AD"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -89,6 +101,12 @@
         {
         "MsmKey" = "8:_0F7C341BCEE70FBE5A86B70EED8750C1"
         "OwnerKey" = "8:_9F8E647C7E424B3A84C1BDDEC42AA087"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_13DA4C79CA374E6CA17FDC81DCA60A97"
+        "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -225,6 +243,12 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_1F8C01D283D1AC30AB579FF4EC4A923C"
+        "OwnerKey" = "8:_9F8E647C7E424B3A84C1BDDEC42AA087"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_20562F0388DA46DDBCFD15E5E9A8E6A5"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -275,6 +299,12 @@
         {
         "MsmKey" = "8:_266002635D630466CF3423D95C362ED3"
         "OwnerKey" = "8:_FB69A1DC9AC5671DEB7DBB69E246C077"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_271B1EFECDFF4AED91993DB232E52AEF"
+        "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -495,7 +525,19 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_2E7E4B1C4CE1481BBC41168ACE5DD90C"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_2ECDA8344A7045E391D15F08F322B4F2"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_3077334CA1A74A7EB1971E93D8DFEE82"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -574,6 +616,12 @@
         "Entry"
         {
         "MsmKey" = "8:_3B55E36FAAE54C93A880F63FA1DC6E07"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_3C2214019E9A41E2AF943CC7979CF61D"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -731,6 +779,12 @@
         {
         "MsmKey" = "8:_452F94BD2392C40163D6FF963EC6C57E"
         "OwnerKey" = "8:_9F8E647C7E424B3A84C1BDDEC42AA087"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_45F8DCD02EBD48CA9032F4FDC756EBB2"
+        "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -1413,12 +1467,6 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_509120FDDF3DED0259DCE802272628F1"
-        "OwnerKey" = "8:_9F8E647C7E424B3A84C1BDDEC42AA087"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
         "MsmKey" = "8:_512AF686B0B360B635237D2F51594A46"
         "OwnerKey" = "8:_D67BF6FD2C78458A9AA0EDA156F5C5EC"
         "MsmSig" = "8:_UNDEFINED"
@@ -1611,8 +1659,20 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_6D763D2C32DC48779B603238ED3F01BA"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_6E3B3F5B5DE709204E9CE7E19864EACC"
         "OwnerKey" = "8:_9B358BAB35234B118C5C03C01CB98DE7"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_6E4274A658734DD4B5A1F8623D5ED76A"
+        "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -1803,6 +1863,12 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_7FE7103F5381418AABD3AB714ABDA3E9"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_80D83B3ABA7C4865801C0092186F8B04"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -1875,6 +1941,12 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_8B29BA774ACC4DDD9576FB56B8D3286B"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_8BCD4E75A7F24A6A886840E13E2DC3B9"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -1923,6 +1995,12 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_92C49B6D6CB644BABF5A5D56E1E034C8"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_92FCA2AE84B14A7680703DB18447AE73"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -1959,7 +2037,19 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_99A7FDFE08144EE4A72D303B056A4928"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_9A3F42DEA89D46E2946AC44675F98B7D"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_9A565146E8944DC183CE9F03325D1190"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -2062,12 +2152,18 @@
         "Entry"
         {
         "MsmKey" = "8:_A505168C871119669E091C9DDF6CA2AB"
-        "OwnerKey" = "8:_509120FDDF3DED0259DCE802272628F1"
+        "OwnerKey" = "8:_1F8C01D283D1AC30AB579FF4EC4A923C"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_A57B702CFE5B4035A7385D805C44625A"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_A5F9DB76B33E4237BBAC9135BC64A4B4"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -2092,6 +2188,12 @@
         "Entry"
         {
         "MsmKey" = "8:_AEC15D8BE32B4EF79A76225B29C071FE"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_B01F720B436C47DF9CABB745D1C876E7"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -2211,6 +2313,12 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_BCCA66931F9B452D9F51B18F5562C85D"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_BDBE8C09036B43AB8703BD7454B074CA"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -2218,6 +2326,12 @@
         "Entry"
         {
         "MsmKey" = "8:_BF77D6CB5B8844D880C8B59D9AB9E6E0"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_BFE0F18D5B9040AABA0F30096589A514"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -2319,6 +2433,12 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_C937B179A6F34F2B9FD850BF63A25FAF"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_C94FEF60A99A4C0A995757E651F9B9A1"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -2339,6 +2459,12 @@
         {
         "MsmKey" = "8:_CAC562D919F85BA14C09471BB15C2697"
         "OwnerKey" = "8:_491A1E5402B0F5F9A050FC4CAE333A51"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_CBF5875D7DFA49A281B636BF10927355"
+        "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -2380,7 +2506,7 @@
         "Entry"
         {
         "MsmKey" = "8:_CF542E297B66B74C8B6A9EFD719066A9"
-        "OwnerKey" = "8:_509120FDDF3DED0259DCE802272628F1"
+        "OwnerKey" = "8:_1F8C01D283D1AC30AB579FF4EC4A923C"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -4546,13 +4672,19 @@
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_0749128028354E99A1962DBE6C0DB7AD"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
         "OwnerKey" = "8:_9F8E647C7E424B3A84C1BDDEC42AA087"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_509120FDDF3DED0259DCE802272628F1"
+        "OwnerKey" = "8:_1F8C01D283D1AC30AB579FF4EC4A923C"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -4705,7 +4837,7 @@
         "PackageFilesAs" = "3:2"
         "PackageFileSize" = "3:-2147483648"
         "CabType" = "3:1"
-        "Compression" = "3:2"
+        "Compression" = "3:3"
         "SignOutput" = "11:FALSE"
         "CertificateFile" = "8:"
         "PrivateKeyFile" = "8:"
@@ -4718,6 +4850,14 @@
             "PrerequisitesLocation" = "2:1"
             "Url" = "8:"
             "ComponentsUrl" = "8:"
+                "Items"
+                {
+                    "{EDC2488A-8267-493A-A98E-7D9C3B36CDF3}:.NETFramework,Version=v4.7.2"
+                    {
+                    "Name" = "8:Microsoft .NET Framework 4.7.2 (x86 and x64)"
+                    "ProductCode" = "8:.NETFramework,Version=v4.7.2"
+                    }
+                }
             }
         }
         "Release"
@@ -4729,7 +4869,7 @@
         "PackageFilesAs" = "3:2"
         "PackageFileSize" = "3:-2147483648"
         "CabType" = "3:1"
-        "Compression" = "3:2"
+        "Compression" = "3:3"
         "SignOutput" = "11:FALSE"
         "CertificateFile" = "8:"
         "PrivateKeyFile" = "8:"
@@ -4811,12 +4951,63 @@
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_03DAD9E0D3454D0983BAC8BB3E798F87"
+            {
+            "SourcePath" = "8:..\\SARS\\bin\\Release\\NewestViewer\\MonoBleedingEdge\\etc\\mono\\4.0\\web.config"
+            "TargetName" = "8:web.config"
+            "Tag" = "8:"
+            "Folder" = "8:_FDF3C72DD93B41F8A8B61D34C49314C8"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_04D7EAA96BB843BDACE38441BC21B5E6"
             {
             "SourcePath" = "8:..\\SARS\\bin\\Release\\AssetRipperConsole_win64\\Licenses\\NVorbis.md"
             "TargetName" = "8:NVorbis.md"
             "Tag" = "8:"
             "Folder" = "8:_DA7772F19CDA459BB87EB08D6AA624EA"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_0749128028354E99A1962DBE6C0DB7AD"
+            {
+            "AssemblyRegister" = "3:1"
+            "AssemblyIsInGAC" = "11:FALSE"
+            "AssemblyAsmDisplayName" = "8:System.Core, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e, processorArchitecture=MSIL"
+                "ScatterAssemblies"
+                {
+                    "_0749128028354E99A1962DBE6C0DB7AD"
+                    {
+                    "Name" = "8:System.Core.dll"
+                    "Attributes" = "3:512"
+                    }
+                }
+            "SourcePath" = "8:..\\SARS\\bin\\Release\\System.Core.dll"
+            "TargetName" = "8:"
+            "Tag" = "8:"
+            "Folder" = "8:_F638F9820B244DB9B46B903B9370FECF"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
@@ -5044,6 +5235,26 @@
             "Register" = "3:1"
             "Exclude" = "11:FALSE"
             "IsDependency" = "11:TRUE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_13DA4C79CA374E6CA17FDC81DCA60A97"
+            {
+            "SourcePath" = "8:..\\SARS\\bin\\Release\\NewestViewer\\MonoBleedingEdge\\etc\\mono\\4.0\\settings.map"
+            "TargetName" = "8:settings.map"
+            "Tag" = "8:"
+            "Folder" = "8:_FDF3C72DD93B41F8A8B61D34C49314C8"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_155D8BD5153A4057AE148E1AAE4E0C73"
@@ -5407,6 +5618,37 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_1F8C01D283D1AC30AB579FF4EC4A923C"
+            {
+            "AssemblyRegister" = "3:1"
+            "AssemblyIsInGAC" = "11:FALSE"
+            "AssemblyAsmDisplayName" = "8:VRChatAPI-New, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL"
+                "ScatterAssemblies"
+                {
+                    "_1F8C01D283D1AC30AB579FF4EC4A923C"
+                    {
+                    "Name" = "8:VRChatAPI-New.dll"
+                    "Attributes" = "3:512"
+                    }
+                }
+            "SourcePath" = "8:VRChatAPI-New.dll"
+            "TargetName" = "8:"
+            "Tag" = "8:"
+            "Folder" = "8:_F638F9820B244DB9B46B903B9370FECF"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:TRUE"
+            "IsolateTo" = "8:"
+            }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_20562F0388DA46DDBCFD15E5E9A8E6A5"
             {
             "SourcePath" = "8:..\\SARS\\bin\\Release\\NewestViewer\\AssetViewer_Data\\boot.config"
@@ -5507,6 +5749,26 @@
             "Register" = "3:1"
             "Exclude" = "11:FALSE"
             "IsDependency" = "11:TRUE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_271B1EFECDFF4AED91993DB232E52AEF"
+            {
+            "SourcePath" = "8:..\\SARS\\bin\\Release\\NewestViewer\\MonoBleedingEdge\\etc\\mono\\2.0\\Browsers\\Compat.browser"
+            "TargetName" = "8:Compat.browser"
+            "Tag" = "8:"
+            "Folder" = "8:_9FC179B90528482F86ED0809F94C51F7"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
             "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_284068A7602421FBAE87B502AD738C99"
@@ -5890,12 +6152,52 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_2E7E4B1C4CE1481BBC41168ACE5DD90C"
+            {
+            "SourcePath" = "8:..\\SARS\\bin\\Release\\NewestViewer\\MonoBleedingEdge\\etc\\mono\\4.0\\machine.config"
+            "TargetName" = "8:machine.config"
+            "Tag" = "8:"
+            "Folder" = "8:_FDF3C72DD93B41F8A8B61D34C49314C8"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_2ECDA8344A7045E391D15F08F322B4F2"
             {
             "SourcePath" = "8:..\\SARS\\bin\\Release\\AssetRipperConsole_win64\\Licenses\\MessageBoxAvalonia.md"
             "TargetName" = "8:MessageBoxAvalonia.md"
             "Tag" = "8:"
             "Folder" = "8:_DA7772F19CDA459BB87EB08D6AA624EA"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_3077334CA1A74A7EB1971E93D8DFEE82"
+            {
+            "SourcePath" = "8:..\\SARS\\bin\\Release\\NewestViewer\\MonoBleedingEdge\\etc\\mono\\mconfig\\config.xml"
+            "TargetName" = "8:config.xml"
+            "Tag" = "8:"
+            "Folder" = "8:_E42B93778769402984A7734F33ED0DFE"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
@@ -6164,6 +6466,26 @@
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_9C6B4C0DF2D34AEF86D351888B81F7A1"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_3C2214019E9A41E2AF943CC7979CF61D"
+            {
+            "SourcePath" = "8:..\\SARS\\bin\\Release\\NewestViewer\\MonoBleedingEdge\\EmbedRuntime\\MonoPosixHelper.dll"
+            "TargetName" = "8:MonoPosixHelper.dll"
+            "Tag" = "8:"
+            "Folder" = "8:_CDCB34A67415479BBE1FCF5E71FD1224"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
@@ -6590,6 +6912,26 @@
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_45F8DCD02EBD48CA9032F4FDC756EBB2"
+            {
+            "SourcePath" = "8:..\\SARS\\bin\\Release\\NewestViewer\\MonoBleedingEdge\\etc\\mono\\2.0\\web.config"
+            "TargetName" = "8:web.config"
+            "Tag" = "8:"
+            "Folder" = "8:_3D4E3A992DA24007B199E8EBC444EC06"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
             "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_486714A3A278721366109465A69A5C4F"
             {
             "AssemblyRegister" = "3:1"
@@ -6825,37 +7167,6 @@
             "Register" = "3:1"
             "Exclude" = "11:FALSE"
             "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_509120FDDF3DED0259DCE802272628F1"
-            {
-            "AssemblyRegister" = "3:1"
-            "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:VRChatAPI-New, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL"
-                "ScatterAssemblies"
-                {
-                    "_509120FDDF3DED0259DCE802272628F1"
-                    {
-                    "Name" = "8:VRChatAPI-New.dll"
-                    "Attributes" = "3:512"
-                    }
-                }
-            "SourcePath" = "8:VRChatAPI-New.dll"
-            "TargetName" = "8:"
-            "Tag" = "8:"
-            "Folder" = "8:_F638F9820B244DB9B46B903B9370FECF"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
             "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_512AF686B0B360B635237D2F51594A46"
@@ -7547,6 +7858,26 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_6D763D2C32DC48779B603238ED3F01BA"
+            {
+            "SourcePath" = "8:..\\SARS\\VRCW\\VRCW.txt"
+            "TargetName" = "8:VRCW.txt"
+            "Tag" = "8:"
+            "Folder" = "8:_AA6E280ECD6148BC91AE46F36BED9EC5"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
             "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_6E3B3F5B5DE709204E9CE7E19864EACC"
             {
             "AssemblyRegister" = "3:1"
@@ -7576,6 +7907,26 @@
             "Register" = "3:1"
             "Exclude" = "11:FALSE"
             "IsDependency" = "11:TRUE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_6E4274A658734DD4B5A1F8623D5ED76A"
+            {
+            "SourcePath" = "8:..\\SARS\\bin\\Release\\NewestViewer\\MonoBleedingEdge\\etc\\mono\\config"
+            "TargetName" = "8:config"
+            "Tag" = "8:"
+            "Folder" = "8:_9799D66B3B74463285B5B90822ED08BA"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
             "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_6F73623D186E08498231939C464DF5BE"
@@ -8050,6 +8401,26 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_7FE7103F5381418AABD3AB714ABDA3E9"
+            {
+            "SourcePath" = "8:..\\SARS\\bin\\Release\\NewestViewer\\MonoBleedingEdge\\etc\\mono\\2.0\\machine.config"
+            "TargetName" = "8:machine.config"
+            "Tag" = "8:"
+            "Folder" = "8:_3D4E3A992DA24007B199E8EBC444EC06"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_80D83B3ABA7C4865801C0092186F8B04"
             {
             "SourcePath" = "8:..\\SARS\\bin\\Release\\NewestViewer\\AssetViewer_Data\\Resources\\unity default resources"
@@ -8389,6 +8760,26 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_8B29BA774ACC4DDD9576FB56B8D3286B"
+            {
+            "SourcePath" = "8:..\\SARS\\bin\\Release\\NewestViewer\\MonoBleedingEdge\\etc\\mono\\4.0\\DefaultWsdlHelpGenerator.aspx"
+            "TargetName" = "8:DefaultWsdlHelpGenerator.aspx"
+            "Tag" = "8:"
+            "Folder" = "8:_FDF3C72DD93B41F8A8B61D34C49314C8"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_8BCD4E75A7F24A6A886840E13E2DC3B9"
             {
             "SourcePath" = "8:..\\SARS\\bin\\Release\\x86\\SQLite.Interop.dll"
@@ -8604,6 +8995,26 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_92C49B6D6CB644BABF5A5D56E1E034C8"
+            {
+            "SourcePath" = "8:..\\SARS\\bin\\Release\\NewestViewer\\MonoBleedingEdge\\etc\\mono\\2.0\\DefaultWsdlHelpGenerator.aspx"
+            "TargetName" = "8:DefaultWsdlHelpGenerator.aspx"
+            "Tag" = "8:"
+            "Folder" = "8:_3D4E3A992DA24007B199E8EBC444EC06"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
             "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_92FCA2AE84B14A7680703DB18447AE73"
             {
             "AssemblyRegister" = "3:1"
@@ -8779,12 +9190,52 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_99A7FDFE08144EE4A72D303B056A4928"
+            {
+            "SourcePath" = "8:..\\SARS\\bin\\Release\\NewestViewer\\MonoBleedingEdge\\EmbedRuntime\\mono-2.0-bdwgc.dll"
+            "TargetName" = "8:mono-2.0-bdwgc.dll"
+            "Tag" = "8:"
+            "Folder" = "8:_CDCB34A67415479BBE1FCF5E71FD1224"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_9A3F42DEA89D46E2946AC44675F98B7D"
             {
             "SourcePath" = "8:..\\SARS\\bin\\Release\\css\\site_2.css"
             "TargetName" = "8:site_2.css"
             "Tag" = "8:"
             "Folder" = "8:_212F91DDB9DF48029EAF1061FC3A038B"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_9A565146E8944DC183CE9F03325D1190"
+            {
+            "SourcePath" = "8:..\\SARS\\bin\\Release\\SQLite.Interop.dll"
+            "TargetName" = "8:SQLite.Interop.dll"
+            "Tag" = "8:"
+            "Folder" = "8:_F638F9820B244DB9B46B903B9370FECF"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
@@ -9189,6 +9640,26 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_A5F9DB76B33E4237BBAC9135BC64A4B4"
+            {
+            "SourcePath" = "8:..\\SARS\\bin\\Release\\NewestViewer\\MonoBleedingEdge\\etc\\mono\\2.0\\settings.map"
+            "TargetName" = "8:settings.map"
+            "Tag" = "8:"
+            "Folder" = "8:_3D4E3A992DA24007B199E8EBC444EC06"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
             "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_A9E5F7B8CFEBCE6FD7EC7215C13C3D40"
             {
             "AssemblyRegister" = "3:1"
@@ -9277,6 +9748,26 @@
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_9C6B4C0DF2D34AEF86D351888B81F7A1"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_B01F720B436C47DF9CABB745D1C876E7"
+            {
+            "SourcePath" = "8:..\\SARS\\bin\\Release\\NewestViewer\\MonoBleedingEdge\\etc\\mono\\browscap.ini"
+            "TargetName" = "8:browscap.ini"
+            "Tag" = "8:"
+            "Folder" = "8:_9799D66B3B74463285B5B90822ED08BA"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
@@ -9723,6 +10214,26 @@
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_BCCA66931F9B452D9F51B18F5562C85D"
+            {
+            "SourcePath" = "8:..\\SARS\\shrek (2).ico"
+            "TargetName" = "8:shrek (2).ico"
+            "Tag" = "8:"
+            "Folder" = "8:_F638F9820B244DB9B46B903B9370FECF"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
             "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_BDBE8C09036B43AB8703BD7454B074CA"
             {
             "AssemblyRegister" = "3:1"
@@ -9771,6 +10282,26 @@
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_9C6B4C0DF2D34AEF86D351888B81F7A1"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_BFE0F18D5B9040AABA0F30096589A514"
+            {
+            "SourcePath" = "8:..\\SARS\\bin\\Release\\NewestViewer\\MonoBleedingEdge\\etc\\mono\\4.5\\Browsers\\Compat.browser"
+            "TargetName" = "8:Compat.browser"
+            "Tag" = "8:"
+            "Folder" = "8:_5979192BADC1419FB92B302C267927C9"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
@@ -10093,6 +10624,26 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_C937B179A6F34F2B9FD850BF63A25FAF"
+            {
+            "SourcePath" = "8:..\\SARS\\bin\\Release\\NewestViewer\\MonoBleedingEdge\\etc\\mono\\4.0\\Browsers\\Compat.browser"
+            "TargetName" = "8:Compat.browser"
+            "Tag" = "8:"
+            "Folder" = "8:_32BDD953B9EC409689DE6133E114E7E8"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
             "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_C94FEF60A99A4C0A995757E651F9B9A1"
             {
             "AssemblyRegister" = "3:1"
@@ -10153,6 +10704,26 @@
             "Register" = "3:1"
             "Exclude" = "11:FALSE"
             "IsDependency" = "11:TRUE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_CBF5875D7DFA49A281B636BF10927355"
+            {
+            "SourcePath" = "8:..\\SARS\\VRCA\\VRCA.txt"
+            "TargetName" = "8:VRCA.txt"
+            "Tag" = "8:"
+            "Folder" = "8:_B3B984B763EC473EB3FE4B58D51F9558"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_CC8567B61AD347D2919EF966B687328F"
@@ -11699,6 +12270,127 @@
                                     }
                                 }
                             }
+                            "{9EF0B969-E518-4E46-987F-47570745A589}:_E23C7FDA3230497D9368F9785F8A812B"
+                            {
+                            "Name" = "8:MonoBleedingEdge"
+                            "AlwaysCreate" = "11:FALSE"
+                            "Condition" = "8:"
+                            "Transitive" = "11:FALSE"
+                            "Property" = "8:_7EB5484DC7C04FEFA0DA335BE507E2E0"
+                                "Folders"
+                                {
+                                    "{9EF0B969-E518-4E46-987F-47570745A589}:_3491521469C1449AAF364661110AC5A3"
+                                    {
+                                    "Name" = "8:etc"
+                                    "AlwaysCreate" = "11:FALSE"
+                                    "Condition" = "8:"
+                                    "Transitive" = "11:FALSE"
+                                    "Property" = "8:_F5F00957D980433182F37134E6D245D2"
+                                        "Folders"
+                                        {
+                                            "{9EF0B969-E518-4E46-987F-47570745A589}:_9799D66B3B74463285B5B90822ED08BA"
+                                            {
+                                            "Name" = "8:mono"
+                                            "AlwaysCreate" = "11:FALSE"
+                                            "Condition" = "8:"
+                                            "Transitive" = "11:FALSE"
+                                            "Property" = "8:_5152B67A19E64DB49C18627795C068E2"
+                                                "Folders"
+                                                {
+                                                    "{9EF0B969-E518-4E46-987F-47570745A589}:_39D48E26663F40D5ABCC3C13925813DC"
+                                                    {
+                                                    "Name" = "8:4.5"
+                                                    "AlwaysCreate" = "11:FALSE"
+                                                    "Condition" = "8:"
+                                                    "Transitive" = "11:FALSE"
+                                                    "Property" = "8:_27D8CFE06C254F4E9E15881A8ECA713E"
+                                                        "Folders"
+                                                        {
+                                                            "{9EF0B969-E518-4E46-987F-47570745A589}:_5979192BADC1419FB92B302C267927C9"
+                                                            {
+                                                            "Name" = "8:Browsers"
+                                                            "AlwaysCreate" = "11:FALSE"
+                                                            "Condition" = "8:"
+                                                            "Transitive" = "11:FALSE"
+                                                            "Property" = "8:_472137F3B53F41A4BCE61276CB6BFD94"
+                                                                "Folders"
+                                                                {
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                    "{9EF0B969-E518-4E46-987F-47570745A589}:_3D4E3A992DA24007B199E8EBC444EC06"
+                                                    {
+                                                    "Name" = "8:2.0"
+                                                    "AlwaysCreate" = "11:FALSE"
+                                                    "Condition" = "8:"
+                                                    "Transitive" = "11:FALSE"
+                                                    "Property" = "8:_27F1A0607D0241A88C2F0A74019B2980"
+                                                        "Folders"
+                                                        {
+                                                            "{9EF0B969-E518-4E46-987F-47570745A589}:_9FC179B90528482F86ED0809F94C51F7"
+                                                            {
+                                                            "Name" = "8:Browsers"
+                                                            "AlwaysCreate" = "11:FALSE"
+                                                            "Condition" = "8:"
+                                                            "Transitive" = "11:FALSE"
+                                                            "Property" = "8:_C4A625337A4B47C3A6E1E16CC64D3A32"
+                                                                "Folders"
+                                                                {
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                    "{9EF0B969-E518-4E46-987F-47570745A589}:_E42B93778769402984A7734F33ED0DFE"
+                                                    {
+                                                    "Name" = "8:mconfig"
+                                                    "AlwaysCreate" = "11:FALSE"
+                                                    "Condition" = "8:"
+                                                    "Transitive" = "11:FALSE"
+                                                    "Property" = "8:_95E41688ADDC43799FB9D08E0CA5A5FE"
+                                                        "Folders"
+                                                        {
+                                                        }
+                                                    }
+                                                    "{9EF0B969-E518-4E46-987F-47570745A589}:_FDF3C72DD93B41F8A8B61D34C49314C8"
+                                                    {
+                                                    "Name" = "8:4.0"
+                                                    "AlwaysCreate" = "11:FALSE"
+                                                    "Condition" = "8:"
+                                                    "Transitive" = "11:FALSE"
+                                                    "Property" = "8:_475D7270709D469BB601155B8729C54B"
+                                                        "Folders"
+                                                        {
+                                                            "{9EF0B969-E518-4E46-987F-47570745A589}:_32BDD953B9EC409689DE6133E114E7E8"
+                                                            {
+                                                            "Name" = "8:Browsers"
+                                                            "AlwaysCreate" = "11:FALSE"
+                                                            "Condition" = "8:"
+                                                            "Transitive" = "11:FALSE"
+                                                            "Property" = "8:_B98D38114DCB4CF799BECB01DDF7FE02"
+                                                                "Folders"
+                                                                {
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                    "{9EF0B969-E518-4E46-987F-47570745A589}:_CDCB34A67415479BBE1FCF5E71FD1224"
+                                    {
+                                    "Name" = "8:EmbedRuntime"
+                                    "AlwaysCreate" = "11:FALSE"
+                                    "Condition" = "8:"
+                                    "Transitive" = "11:FALSE"
+                                    "Property" = "8:_4461F78447E647ECAE2293807EDA8791"
+                                        "Folders"
+                                        {
+                                        }
+                                    }
+                                }
+                            }
                         }
                     }
                     "{9EF0B969-E518-4E46-987F-47570745A589}:_73BC6687C2ED41928168946D9CB91226"
@@ -11774,15 +12466,15 @@
         {
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:SARS"
-        "ProductCode" = "8:{D69489CC-D956-4196-88EA-3C42914C5567}"
-        "PackageCode" = "8:{9BEA8468-9128-45F6-95CB-019B84DBE23E}"
+        "ProductCode" = "8:{2C806AC5-6BDC-4F40-9301-3E643EE11C64}"
+        "PackageCode" = "8:{1E7ABA6A-BAE4-44F0-AA9C-406EE6CD4572}"
         "UpgradeCode" = "8:{E03648F1-FF6A-44A2-B9C9-57FE29CE61D9}"
         "AspNetVersion" = "8:2.0.50727.0"
         "RestartWWWService" = "11:FALSE"
         "RemovePreviousVersions" = "11:FALSE"
         "DetectNewerInstalledVersion" = "11:TRUE"
-        "InstallAllUsers" = "11:FALSE"
-        "ProductVersion" = "8:1.9.1"
+        "InstallAllUsers" = "11:TRUE"
+        "ProductVersion" = "8:1.9.2"
         "Manufacturer" = "8:Shrek Tech"
         "ARPHELPTELEPHONE" = "8:"
         "ARPHELPLINK" = "8:"
@@ -11792,7 +12484,7 @@
         "Keywords" = "8:"
         "ARPCOMMENTS" = "8:"
         "ARPURLINFOABOUT" = "8:"
-        "ARPPRODUCTICON" = "8:"
+        "ARPPRODUCTICON" = "8:_BCCA66931F9B452D9F51B18F5562C85D"
         "ARPIconIndex" = "3:0"
         "SearchPath" = "8:"
         "UseSystemSearchPath" = "11:TRUE"
