@@ -970,13 +970,14 @@ namespace SARS
                     nmPcVersion.Value = versions.Item1;
                     txtAvatarSizePc.Text = FormatSize(avatarVersionPc.Versions.FirstOrDefault(x => x.Version == nmPcVersion.Value).File.SizeInBytes);
                 }
-                else if(!info.avatar.pcAssetUrl.StartsWith("http"))
+                else if (!info.avatar.pcAssetUrl.StartsWith("http"))
                 {
                     nmPcVersion.Maximum = 1;
                     nmPcVersion.Value = 1;
                     System.IO.FileInfo fi = new System.IO.FileInfo(info.avatar.pcAssetUrl);
                     txtAvatarSizePc.Text = FormatSize(fi.Length);
-                } else
+                }
+                else
                 {
                     nmPcVersion.Maximum = 1;
                     nmPcVersion.Value = 1;
@@ -1598,6 +1599,11 @@ namespace SARS
 
         private void btnScanCacheFolder_Click(object sender, EventArgs e)
         {
+            ScanCacheAvatar();
+        }
+
+        private async Task<bool> ScanCacheAvatar()
+        {
             string cachePath = $"{Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData)}Low\\VRChat\\VRChat\\Cache-WindowsPlayer";
 
             CommonOpenFileDialog dialog = new CommonOpenFileDialog { IsFolderPicker = true };
@@ -1611,12 +1617,133 @@ namespace SARS
             if (dialog.ShowDialog() != CommonFileDialogResult.Ok)
             {
                 MessageBox.Show("No Folder selected");
-                return;
+                return false;
             }
 
             cachePath = dialog.FileName;
             CacheMessages.Enabled = true;
-            CacheScanner.ScanCache(cachePath);
+            await CacheScanner.ScanCache(cachePath);
+
+            List<Avatar> list = new List<Avatar>();
+            foreach (var item in CacheScanner.avatarIds)
+            {
+                Avatar avatar = new Avatar { tags = new List<string>(), avatar = new AvatarDetails { thumbnailUrl = "https://ares-mod.com/avatars/Image_not_available.png", imageUrl = "https://ares-mod.com/avatars/Image_not_available.png", pcAssetUrl = item.FileLocation, avatarId = item.AvatarId, avatarName = "From cache no names", avatarDescription = "Avatar is from the game cache no names are located", recordCreated = item.AvatarDetected, releaseStatus = "????", unityVersion = "????", questAssetUrl = "None", authorName = "Unknown", authorId = "Unknown Cache" } };
+                list.Add(avatar);
+            }
+            avatars = list;
+            avatarGrid.Rows.Clear();
+            if (avatars != null)
+            {
+                SendMessage(avatarGrid.Handle, WM_SETREDRAW, false, 0);
+                LoadData(true);
+                SendMessage(avatarGrid.Handle, WM_SETREDRAW, true, 0);
+                avatarGrid.Refresh();
+            }
+
+            uploadedAvatars = 0;
+            alreadyOnApi = 0;
+            FromApi = 0;
+            if (string.IsNullOrEmpty(configSave.Config.AuthKey))
+            {
+                return false;
+            }
+            SQLite.Setup();
+            ThreadPool.QueueUserWorkItem(delegate
+            {
+                cacheList = new List<Avatar>();
+                for (int i = 0; i < avatarGrid.Rows.Count; i++)
+                {
+                    try
+                    {
+                        if (avatarGrid.Rows[i] != null)
+                        {
+                            if (avatarGrid.Rows[i].Cells[3].Value != null && (bool)avatarGrid.Rows[i].Cells[8].Value == true)
+                            {
+                                string avatarId = avatarGrid.Rows[i].Cells[3].Value.ToString();
+                                VRChatCacheResult local = null;
+                                try
+                                {
+                                    local = DbCheckAvatar(avatarId);
+                                }
+                                catch { }
+                                VRChatCacheResult vRChatCacheResult = null;
+                                if (local == null)
+                                {
+                                    vRChatCacheResult = GetDetails(avatarId);
+                                }
+                                else
+                                {
+                                    vRChatCacheResult = local;
+                                }
+
+                                if (vRChatCacheResult != null)
+                                {
+                                    if (local == null)
+                                    {
+                                        SaveAvatarData(vRChatCacheResult);
+                                        UploadCacheResultAvatar(vRChatCacheResult);
+                                    }
+                                    GetAvatarInfo(vRChatCacheResult, avatarId, avatarGrid.Rows[i]);
+
+                                }
+                                if (vRChatCacheResult == null)
+                                {
+                                    if (string.IsNullOrEmpty(configSave.Config.ApiKey))
+                                    {
+                                        vRChatCacheResult = GetDetailsApi(avatarId);
+                                        if (vRChatCacheResult != null)
+                                        {
+                                            if (local == null)
+                                            {
+                                                SaveAvatarData(vRChatCacheResult);
+                                            }
+                                            GetAvatarInfo(vRChatCacheResult, avatarId, avatarGrid.Rows[i]);
+                                        }
+                                    }
+                                }
+                            }
+                            if (avatarGrid.Rows[i].Cells[3].Value != null && (bool)avatarGrid.Rows[i].Cells[8].Value == false)
+                            {
+                                string worldId = avatarGrid.Rows[i].Cells[3].Value.ToString();
+                                VRChatCacheResultWorld local = null;
+                                try
+                                {
+                                    local = DbCheckWorld(worldId);
+                                }
+                                catch { }
+                                VRChatCacheResultWorld vRChatCacheResult = null;
+                                if (local == null)
+                                {
+                                    vRChatCacheResult = GetDetailsWorlds(worldId);
+                                }
+                                else
+                                {
+                                    vRChatCacheResult = local;
+                                }
+
+                                if (vRChatCacheResult != null)
+                                {
+                                    if (local == null)
+                                    {
+                                        SaveWorldData(vRChatCacheResult);
+                                        UploadCacheResultWorld(vRChatCacheResult);
+                                    }
+                                    GetWorldInfo(vRChatCacheResult, worldId, avatarGrid.Rows[i]);
+
+                                }
+                            }
+                        }
+                    }
+                    catch { }
+                }
+                try
+                {
+                    MessageBox.Show($"Finished Getting avatar information\nNewly added avatars {uploadedAvatars}\nAlready On API {alreadyOnApi}\nTotal Public + Self Private Found {uploadedAvatars + alreadyOnApi}\nTotal Private Found {FromApi}\nTotal left not able to grab details {avatars.Count() - uploadedAvatars - alreadyOnApi - FromApi}");
+                }
+                catch { }
+            });
+
+            return true;
         }
 
         private void btnReupload_Click(object sender, EventArgs e)
@@ -1866,21 +1993,7 @@ namespace SARS
 
         private void btnLoadResults_Click(object sender, EventArgs e)
         {
-            List<Avatar> list = new List<Avatar>();
-            foreach (var item in CacheScanner.avatarIds)
-            {
-                Avatar avatar = new Avatar { tags = new List<string>(), avatar = new AvatarDetails { thumbnailUrl = "https://ares-mod.com/avatars/Image_not_available.png", imageUrl = "https://ares-mod.com/avatars/Image_not_available.png", pcAssetUrl = item.FileLocation, avatarId = item.AvatarId, avatarName = "From cache no names", avatarDescription = "Avatar is from the game cache no names are located", recordCreated = item.AvatarDetected, releaseStatus = "????", unityVersion = "????", questAssetUrl = "None", authorName = "Unknown", authorId = "Unknown Cache" } };
-                list.Add(avatar);
-            }
-            avatars = list;
-            avatarGrid.Rows.Clear();
-            if (avatars != null)
-            {
-                SendMessage(avatarGrid.Handle, WM_SETREDRAW, false, 0);
-                LoadData(true);
-                SendMessage(avatarGrid.Handle, WM_SETREDRAW, true, 0);
-                avatarGrid.Refresh();
-            }
+
         }
 
         private void txtClientVersion_TextChanged(object sender, EventArgs e)
@@ -2207,109 +2320,7 @@ namespace SARS
         int alreadyOnApi = 0;
         private void btnParseImages_Click(object sender, EventArgs e)
         {
-            uploadedAvatars = 0;
-            alreadyOnApi = 0;
-            FromApi = 0;
-            if (string.IsNullOrEmpty(configSave.Config.AuthKey))
-            {
-                MessageBox.Show("Requires VRChat login details");
-                return;
-            }
-            SQLite.Setup();
-            ThreadPool.QueueUserWorkItem(delegate
-            {
-                cacheList = new List<Avatar>();
-                for (int i = 0; i < avatarGrid.Rows.Count; i++)
-                {
-                    try
-                    {
-                        if (avatarGrid.Rows[i] != null)
-                        {
-                            if (avatarGrid.Rows[i].Cells[3].Value != null && (bool)avatarGrid.Rows[i].Cells[8].Value == true)
-                            {
-                                string avatarId = avatarGrid.Rows[i].Cells[3].Value.ToString();
-                                VRChatCacheResult local = null;
-                                try
-                                {
-                                    local = DbCheckAvatar(avatarId);
-                                }
-                                catch { }
-                                VRChatCacheResult vRChatCacheResult = null;
-                                if (local == null)
-                                {
-                                    vRChatCacheResult = GetDetails(avatarId);
-                                }
-                                else
-                                {
-                                    vRChatCacheResult = local;
-                                }
 
-                                if (vRChatCacheResult != null)
-                                {
-                                    if (local == null)
-                                    {
-                                        SaveAvatarData(vRChatCacheResult);
-                                        UploadCacheResultAvatar(vRChatCacheResult);
-                                    }
-                                    GetAvatarInfo(vRChatCacheResult, avatarId, avatarGrid.Rows[i]);
-
-                                }
-                                if (vRChatCacheResult == null)
-                                {
-                                    if (string.IsNullOrEmpty(configSave.Config.ApiKey))
-                                    {
-                                        vRChatCacheResult = GetDetailsApi(avatarId);
-                                        if (vRChatCacheResult != null)
-                                        {
-                                            if (local == null)
-                                            {
-                                                SaveAvatarData(vRChatCacheResult);
-                                            }
-                                            GetAvatarInfo(vRChatCacheResult, avatarId, avatarGrid.Rows[i]);
-                                        }
-                                    }
-                                }
-                            }
-                            if (avatarGrid.Rows[i].Cells[3].Value != null && (bool)avatarGrid.Rows[i].Cells[8].Value == false)
-                            {
-                                string worldId = avatarGrid.Rows[i].Cells[3].Value.ToString();
-                                VRChatCacheResultWorld local = null;
-                                try
-                                {
-                                    local = DbCheckWorld(worldId);
-                                }
-                                catch { }
-                                VRChatCacheResultWorld vRChatCacheResult = null;
-                                if (local == null)
-                                {
-                                    vRChatCacheResult = GetDetailsWorlds(worldId);
-                                }
-                                else
-                                {
-                                    vRChatCacheResult = local;
-                                }
-
-                                if (vRChatCacheResult != null)
-                                {
-                                    if (local == null)
-                                    {
-                                        SaveWorldData(vRChatCacheResult);
-                                        UploadCacheResultWorld(vRChatCacheResult);
-                                    }
-                                    GetWorldInfo(vRChatCacheResult, worldId, avatarGrid.Rows[i]);
-
-                                }
-                            }
-                        }
-                    }
-                    catch { }
-                }
-                try
-                {
-                    MessageBox.Show($"Finished Getting avatar information\nNewly added avatars {uploadedAvatars}\nAlready On API {alreadyOnApi}\nTotal Public + Self Private Found {uploadedAvatars + alreadyOnApi}\nTotal Private Found {FromApi}\nTotal left not able to grab details {(avatars.Count() + cacheList.Count()) - uploadedAvatars - alreadyOnApi - FromApi}");
-                }
-                catch { }
-            });
         }
 
         private VRChatCacheResult DbCheckAvatar(string avatarId)
@@ -2663,6 +2674,78 @@ namespace SARS
             else
             {
                 btnHotswapWorld.Enabled = false;
+            }
+        }
+
+        private void avatarGrid_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (avatarGrid.SelectedRows.Count == 1)
+            {
+                AvatarPreview avatarImage = new AvatarPreview((Bitmap)avatarGrid.SelectedRows[0].Cells[0].Value);
+                avatarImage.Show();
+            }
+        }
+
+        private void avatarGrid_MouseClick(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Right)
+            {
+                ContextMenu m = new ContextMenu();
+                m.MenuItems.Add(new MenuItem("Copy Avatar ID", new System.EventHandler(CopyAvatarId)));
+                m.MenuItems.Add(new MenuItem("Preview Image", new System.EventHandler(previewImage)));
+                m.MenuItems.Add(new MenuItem("Preview VRCA", new System.EventHandler(previewVRCA)));
+                m.MenuItems.Add(new MenuItem("Hotswap", new System.EventHandler(hotswapRC)));               
+
+                int currentMouseOverRow = avatarGrid.HitTest(e.X, e.Y).RowIndex;
+
+                avatarGrid.ClearSelection();
+                avatarGrid.Rows[currentMouseOverRow].Selected = true;
+                m.Show(avatarGrid, new Point(e.X, e.Y));
+
+            }
+        }
+
+        private void previewImage(Object sender, EventArgs e)
+        {
+            if (avatarGrid.GetCellCount(DataGridViewElementStates.Selected) > 0)
+            {
+                AvatarPreview avatarImage = new AvatarPreview((Bitmap)avatarGrid.SelectedRows[0].Cells[0].Value);
+                avatarImage.Show();
+            }
+        }
+
+        private void previewVRCA(Object sender, EventArgs e)
+        {
+            if (avatarGrid.GetCellCount(DataGridViewElementStates.Selected) > 0)
+            {
+                Preview();
+            }
+        }
+
+        private void hotswapRC(Object sender, EventArgs e)
+        {
+            if (avatarGrid.GetCellCount(DataGridViewElementStates.Selected) > 0)
+            {
+                if (avatarGrid.SelectedRows[0].Cells[3].Value.ToString().StartsWith("avtr_"))
+                {
+                    hotSwap();
+                }
+                else
+                {
+                    hotSwapWorld();
+                }
+            }
+        }
+
+        private void CopyAvatarId(Object sender, EventArgs e)
+        {
+            try
+            {
+                Clipboard.SetDataObject(avatarGrid.SelectedRows[0].Cells[3].Value);
+            }
+            catch (System.Runtime.InteropServices.ExternalException)
+            {
+                MessageBox.Show("Clipboard could not be accessed. Please try again.");
             }
         }
     }

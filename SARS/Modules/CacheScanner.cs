@@ -100,7 +100,7 @@ namespace SARS.Modules
         public static async Task ScanCache(string cacheLocation)
         {
             stop.Start();
-            Task.Run(() => ScanFunction(cacheLocation));
+            await Task.Run(() => ScanFunction(cacheLocation));
         }
 
         private static async Task ScanFunction(string cacheLocation)

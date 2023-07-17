@@ -111,6 +111,12 @@
     <Compile Include="Avatar Info.Designer.cs">
       <DependentUpon>Avatar Info.cs</DependentUpon>
     </Compile>
+    <Compile Include="AvatarPreview.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AvatarPreview.Designer.cs">
+      <DependentUpon>AvatarPreview.cs</DependentUpon>
+    </Compile>
     <Compile Include="AvatarCard.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -167,6 +173,9 @@
     </Compile>
     <EmbeddedResource Include="Avatar Info.resx">
       <DependentUpon>Avatar Info.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AvatarPreview.resx">
+      <DependentUpon>AvatarPreview.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="AvatarCard.resx">
       <DependentUpon>AvatarCard.cs</DependentUpon>

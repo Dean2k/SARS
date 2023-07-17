@@ -74,6 +74,7 @@
             this.chkContains = new MetroFramework.Controls.MetroCheckBox();
             this.metroToolTip1 = new MetroFramework.Components.MetroToolTip();
             this.btnWorldUnity = new MetroFramework.Controls.MetroButton();
+            this.btnScanCacheFolder = new MetroFramework.Controls.MetroButton();
             this.metroLabel8 = new MetroFramework.Controls.MetroLabel();
             this.txtAvatarSizePc = new MetroFramework.Controls.MetroTextBox();
             this.txtAvatarSizeQuest = new MetroFramework.Controls.MetroTextBox();
@@ -96,9 +97,6 @@
             this.metroLabel3 = new MetroFramework.Controls.MetroLabel();
             this.txtClientVersion = new MetroFramework.Controls.MetroTextBox();
             this.btnScanCache = new MetroFramework.Controls.MetroTabPage();
-            this.btnParseImages = new MetroFramework.Controls.MetroButton();
-            this.btnLoadResults = new MetroFramework.Controls.MetroButton();
-            this.btnScanCacheFolder = new MetroFramework.Controls.MetroButton();
             this.txtCacheScannerLog = new MetroFramework.Controls.MetroTextBox();
             this.metroTabPage5 = new MetroFramework.Controls.MetroTabPage();
             this.faq = new System.Windows.Forms.WebBrowser();
@@ -154,6 +152,8 @@
             this.metroLabel12 = new MetroFramework.Controls.MetroLabel();
             this.metroTabPage1 = new MetroFramework.Controls.MetroTabPage();
             this.avatarGrid = new System.Windows.Forms.DataGridView();
+            this.tabControl = new MetroFramework.Controls.MetroTabControl();
+            this.btnHotswapWorld = new MetroFramework.Controls.MetroButton();
             this.picture = new System.Windows.Forms.DataGridViewImageColumn();
             this.AvatarName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Author = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -163,8 +163,6 @@
             this.Ripped = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.Favorited = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.Avatar = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.tabControl = new MetroFramework.Controls.MetroTabControl();
-            this.btnHotswapWorld = new MetroFramework.Controls.MetroButton();
             ((System.ComponentModel.ISupportInitialize)(this.nmQuestVersion)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nmPcVersion)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.metroStyleManager1)).BeginInit();
@@ -519,6 +517,16 @@
             this.btnWorldUnity.UseStyleColors = true;
             this.btnWorldUnity.Click += new System.EventHandler(this.btnWorldUnity_Click);
             // 
+            // btnScanCacheFolder
+            // 
+            resources.ApplyResources(this.btnScanCacheFolder, "btnScanCacheFolder");
+            this.btnScanCacheFolder.FontSize = MetroFramework.MetroButtonSize.Medium;
+            this.btnScanCacheFolder.Name = "btnScanCacheFolder";
+            this.metroToolTip1.SetToolTip(this.btnScanCacheFolder, resources.GetString("btnScanCacheFolder.ToolTip"));
+            this.btnScanCacheFolder.UseSelectable = true;
+            this.btnScanCacheFolder.UseStyleColors = true;
+            this.btnScanCacheFolder.Click += new System.EventHandler(this.btnScanCacheFolder_Click);
+            // 
             // metroLabel8
             // 
             resources.ApplyResources(this.metroLabel8, "metroLabel8");
@@ -872,8 +880,6 @@
             // 
             // btnScanCache
             // 
-            this.btnScanCache.Controls.Add(this.btnParseImages);
-            this.btnScanCache.Controls.Add(this.btnLoadResults);
             this.btnScanCache.Controls.Add(this.btnScanCacheFolder);
             this.btnScanCache.Controls.Add(this.txtCacheScannerLog);
             this.btnScanCache.HorizontalScrollbarBarColor = true;
@@ -884,33 +890,6 @@
             this.btnScanCache.VerticalScrollbarBarColor = true;
             this.btnScanCache.VerticalScrollbarHighlightOnWheel = false;
             this.btnScanCache.VerticalScrollbarSize = 10;
-            // 
-            // btnParseImages
-            // 
-            resources.ApplyResources(this.btnParseImages, "btnParseImages");
-            this.btnParseImages.FontSize = MetroFramework.MetroButtonSize.Medium;
-            this.btnParseImages.Name = "btnParseImages";
-            this.btnParseImages.UseSelectable = true;
-            this.btnParseImages.UseStyleColors = true;
-            this.btnParseImages.Click += new System.EventHandler(this.btnParseImages_Click);
-            // 
-            // btnLoadResults
-            // 
-            resources.ApplyResources(this.btnLoadResults, "btnLoadResults");
-            this.btnLoadResults.FontSize = MetroFramework.MetroButtonSize.Medium;
-            this.btnLoadResults.Name = "btnLoadResults";
-            this.btnLoadResults.UseSelectable = true;
-            this.btnLoadResults.UseStyleColors = true;
-            this.btnLoadResults.Click += new System.EventHandler(this.btnLoadResults_Click);
-            // 
-            // btnScanCacheFolder
-            // 
-            resources.ApplyResources(this.btnScanCacheFolder, "btnScanCacheFolder");
-            this.btnScanCacheFolder.FontSize = MetroFramework.MetroButtonSize.Medium;
-            this.btnScanCacheFolder.Name = "btnScanCacheFolder";
-            this.btnScanCacheFolder.UseSelectable = true;
-            this.btnScanCacheFolder.UseStyleColors = true;
-            this.btnScanCacheFolder.Click += new System.EventHandler(this.btnScanCacheFolder_Click);
             // 
             // txtCacheScannerLog
             // 
@@ -1635,13 +1614,39 @@
             this.avatarGrid.RowHeadersDefaultCellStyle = dataGridViewCellStyle10;
             this.avatarGrid.RowHeadersVisible = false;
             this.avatarGrid.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
-            this.avatarGrid.RowTemplate.Height = 150;
+            this.avatarGrid.RowTemplate.Height = 80;
             this.avatarGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.avatarGrid.ShowEditingIcon = false;
             this.avatarGrid.ShowRowErrors = false;
-            this.avatarGrid.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.avatarGrid_CellClick);
-            this.avatarGrid.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.avatarGrid_CellContentClick);
-            this.avatarGrid.CellPainting += new System.Windows.Forms.DataGridViewCellPaintingEventHandler(this.avatarGrid_CellPainting);
+            this.avatarGrid.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.avatarGrid_CellClick);
+            this.avatarGrid.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.avatarGrid_CellContentClick);
+            this.avatarGrid.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.avatarGrid_CellDoubleClick);
+            this.avatarGrid.MouseClick += new System.Windows.Forms.MouseEventHandler(this.avatarGrid_MouseClick);
+            // 
+            // tabControl
+            // 
+            resources.ApplyResources(this.tabControl, "tabControl");
+            this.tabControl.Controls.Add(this.metroTabPage1);
+            this.tabControl.Controls.Add(this.metroTabPage2);
+            this.tabControl.Controls.Add(this.metroTabPage4);
+            this.tabControl.Controls.Add(this.metroTabPage3);
+            this.tabControl.Controls.Add(this.metroTabPage5);
+            this.tabControl.Controls.Add(this.btnScanCache);
+            this.tabControl.Controls.Add(this.metroTabPage6);
+            this.tabControl.FontWeight = MetroFramework.MetroTabControlWeight.Bold;
+            this.tabControl.Name = "tabControl";
+            this.tabControl.SelectedIndex = 0;
+            this.tabControl.UseSelectable = true;
+            this.tabControl.SelectedIndexChanged += new System.EventHandler(this.tabControl_SelectedIndexChanged);
+            // 
+            // btnHotswapWorld
+            // 
+            resources.ApplyResources(this.btnHotswapWorld, "btnHotswapWorld");
+            this.btnHotswapWorld.FontSize = MetroFramework.MetroButtonSize.Medium;
+            this.btnHotswapWorld.Name = "btnHotswapWorld";
+            this.btnHotswapWorld.UseSelectable = true;
+            this.btnHotswapWorld.UseStyleColors = true;
+            this.btnHotswapWorld.Click += new System.EventHandler(this.btnHotswapWorld_Click);
             // 
             // picture
             // 
@@ -1649,7 +1654,7 @@
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopCenter;
             dataGridViewCellStyle2.NullValue = null;
             this.picture.DefaultCellStyle = dataGridViewCellStyle2;
-            this.picture.FillWeight = 45.91548F;
+            this.picture.FillWeight = 45F;
             resources.ApplyResources(this.picture, "picture");
             this.picture.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Stretch;
             this.picture.Name = "picture";
@@ -1660,7 +1665,7 @@
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopCenter;
             dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.AvatarName.DefaultCellStyle = dataGridViewCellStyle3;
-            this.AvatarName.FillWeight = 19.27644F;
+            this.AvatarName.FillWeight = 7.274075F;
             resources.ApplyResources(this.AvatarName, "AvatarName");
             this.AvatarName.Name = "AvatarName";
             // 
@@ -1669,7 +1674,7 @@
             dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopCenter;
             dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.Author.DefaultCellStyle = dataGridViewCellStyle4;
-            this.Author.FillWeight = 19.27644F;
+            this.Author.FillWeight = 7.274075F;
             resources.ApplyResources(this.Author, "Author");
             this.Author.Name = "Author";
             // 
@@ -1678,7 +1683,7 @@
             dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopCenter;
             dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.AvatarId.DefaultCellStyle = dataGridViewCellStyle5;
-            this.AvatarId.FillWeight = 19.27644F;
+            this.AvatarId.FillWeight = 7.274075F;
             resources.ApplyResources(this.AvatarId, "AvatarId");
             this.AvatarId.Name = "AvatarId";
             // 
@@ -1687,7 +1692,7 @@
             dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopCenter;
             dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.Logged.DefaultCellStyle = dataGridViewCellStyle6;
-            this.Logged.FillWeight = 19.27644F;
+            this.Logged.FillWeight = 7.274075F;
             resources.ApplyResources(this.Logged, "Logged");
             this.Logged.Name = "Logged";
             // 
@@ -1703,7 +1708,7 @@
             dataGridViewCellStyle7.NullValue = false;
             this.Ripped.DefaultCellStyle = dataGridViewCellStyle7;
             this.Ripped.FalseValue = "false";
-            this.Ripped.FillWeight = 13.86727F;
+            this.Ripped.FillWeight = 2.505246F;
             resources.ApplyResources(this.Ripped, "Ripped");
             this.Ripped.Name = "Ripped";
             this.Ripped.Resizable = System.Windows.Forms.DataGridViewTriState.True;
@@ -1716,7 +1721,7 @@
             dataGridViewCellStyle8.NullValue = false;
             this.Favorited.DefaultCellStyle = dataGridViewCellStyle8;
             this.Favorited.FalseValue = "false";
-            this.Favorited.FillWeight = 13.86727F;
+            this.Favorited.FillWeight = 2.505246F;
             resources.ApplyResources(this.Favorited, "Favorited");
             this.Favorited.Name = "Favorited";
             this.Favorited.TrueValue = "true";
@@ -1726,31 +1731,6 @@
             this.Avatar.FillWeight = 5F;
             resources.ApplyResources(this.Avatar, "Avatar");
             this.Avatar.Name = "Avatar";
-            // 
-            // tabControl
-            // 
-            resources.ApplyResources(this.tabControl, "tabControl");
-            this.tabControl.Controls.Add(this.metroTabPage1);
-            this.tabControl.Controls.Add(this.metroTabPage2);
-            this.tabControl.Controls.Add(this.metroTabPage4);
-            this.tabControl.Controls.Add(this.metroTabPage3);
-            this.tabControl.Controls.Add(this.metroTabPage5);
-            this.tabControl.Controls.Add(this.btnScanCache);
-            this.tabControl.Controls.Add(this.metroTabPage6);
-            this.tabControl.FontWeight = MetroFramework.MetroTabControlWeight.Bold;
-            this.tabControl.Name = "tabControl";
-            this.tabControl.SelectedIndex = 1;
-            this.tabControl.UseSelectable = true;
-            this.tabControl.SelectedIndexChanged += new System.EventHandler(this.tabControl_SelectedIndexChanged);
-            // 
-            // btnHotswapWorld
-            // 
-            resources.ApplyResources(this.btnHotswapWorld, "btnHotswapWorld");
-            this.btnHotswapWorld.FontSize = MetroFramework.MetroButtonSize.Medium;
-            this.btnHotswapWorld.Name = "btnHotswapWorld";
-            this.btnHotswapWorld.UseSelectable = true;
-            this.btnHotswapWorld.UseStyleColors = true;
-            this.btnHotswapWorld.Click += new System.EventHandler(this.btnHotswapWorld_Click);
             // 
             // AvatarSystem
             // 
@@ -1922,8 +1902,6 @@
         private MetroFramework.Controls.MetroTabPage metroTabPage5;
         private System.Windows.Forms.WebBrowser faq;
         private MetroFramework.Controls.MetroTabPage btnScanCache;
-        public MetroFramework.Controls.MetroButton btnParseImages;
-        public MetroFramework.Controls.MetroButton btnLoadResults;
         public MetroFramework.Controls.MetroButton btnScanCacheFolder;
         public MetroFramework.Controls.MetroTextBox txtCacheScannerLog;
         private MetroFramework.Controls.MetroTabPage metroTabPage6;
@@ -1942,6 +1920,10 @@
         public MetroFramework.Controls.MetroTextBox txtVRCUsername;
         private MetroFramework.Controls.MetroLabel metroLabel3;
         public MetroFramework.Controls.MetroTextBox txtClientVersion;
+        public MetroFramework.Controls.MetroButton btnHotswapWorld;
+        public MetroFramework.Controls.MetroButton btnWorldUnity;
+        private MetroFramework.Controls.MetroButton btnCleanWorld;
+        private MetroFramework.Controls.MetroCheckBox chkWorldHotswapping;
         private System.Windows.Forms.DataGridViewImageColumn picture;
         private System.Windows.Forms.DataGridViewTextBoxColumn AvatarName;
         private System.Windows.Forms.DataGridViewTextBoxColumn Author;
@@ -1951,10 +1933,6 @@
         private System.Windows.Forms.DataGridViewCheckBoxColumn Ripped;
         private System.Windows.Forms.DataGridViewCheckBoxColumn Favorited;
         private System.Windows.Forms.DataGridViewCheckBoxColumn Avatar;
-        public MetroFramework.Controls.MetroButton btnHotswapWorld;
-        public MetroFramework.Controls.MetroButton btnWorldUnity;
-        private MetroFramework.Controls.MetroButton btnCleanWorld;
-        private MetroFramework.Controls.MetroCheckBox chkWorldHotswapping;
     }
 }
 
