@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 
 namespace SARS.Models
@@ -6,49 +7,105 @@ namespace SARS.Models
 
     public class AvatarDetails
     {
-        public string avatarId { get; set; }
-        public string avatarName { get; set; }
-        public string avatarDescription { get; set; }
-        public string authorId { get; set; }
-        public string authorName { get; set; }
-        public string imageUrl { get; set; }
-        public string thumbnailUrl { get; set; }
-        public string questAssetUrl { get; set; }
-        public string pcAssetUrl { get; set; }
-        public string releaseStatus { get; set; }
-        public string unityVersion { get; set; }
-        public DateTime recordCreated { get; set; }
+        [JsonProperty("avatarId")]
+        public string AvatarId { get; set; }
+
+        [JsonProperty("avatarName")]
+        public string AvatarName { get; set; }
+
+        [JsonProperty("avatarDescription")]
+        public string AvatarDescription { get; set; }
+
+        [JsonProperty("authorId")]
+        public string AuthorId { get; set; }
+
+        [JsonProperty("authorName")]
+        public string AuthorName { get; set; }
+
+        [JsonProperty("imageUrl")]
+        public string ImageUrl { get; set; }
+
+        [JsonProperty("thumbnailUrl")]
+        public string ThumbnailUrl { get; set; }
+
+        [JsonProperty("questAssetUrl")]
+        public string QuestAssetUrl { get; set; }
+
+        [JsonProperty("pcAssetUrl")]
+        public string PcAssetUrl { get; set; }
+
+        [JsonProperty("releaseStatus")]
+        public string ReleaseStatus { get; set; }
+
+        [JsonProperty("unityVersion")]
+        public string UnityVersion { get; set; }
+
+        [JsonProperty("recordCreated")]
+        public DateTime RecordCreated { get; set; }
     }
 
     public class AvatarDetailsSend
     {
-        public string avatarId { get; set; }
-        public string avatarName { get; set; }
-        public string avatarDescription { get; set; }
-        public string authorId { get; set; }
-        public string authorName { get; set; }
-        public string imageUrl { get; set; }
-        public string thumbnailUrl { get; set; }
-        public string questAssetUrl { get; set; }
-        public string pcAssetUrl { get; set; }
-        public string releaseStatus { get; set; }
-        public string unityVersion { get; set; }
-        public string tags { get; set; }
-        public DateTime recordCreated { get; set; }
+        [JsonProperty("avatarId")]
+        public string AvatarId { get; set; }
+
+        [JsonProperty("avatarName")]
+        public string AvatarName { get; set; }
+
+        [JsonProperty("avatarDescription")]
+        public string AvatarDescription { get; set; }
+
+        [JsonProperty("authorId")]
+        public string AuthorId { get; set; }
+
+        [JsonProperty("authorName")]
+        public string AuthorName { get; set; }
+
+        [JsonProperty("imageUrl")]
+        public string ImageUrl { get; set; }
+
+        [JsonProperty("thumbnailUrl")]
+        public string ThumbnailUrl { get; set; }
+
+        [JsonProperty("questAssetUrl")]
+        public string QuestAssetUrl { get; set; }
+
+        [JsonProperty("pcAssetUrl")]
+        public string PcAssetUrl { get; set; }
+
+        [JsonProperty("releaseStatus")]
+        public string ReleaseStatus { get; set; }
+
+        [JsonProperty("unityVersion")]
+        public string UnityVersion { get; set; }
+
+        [JsonProperty("tags")]
+        public string Tags{ get; set; }
+
+        [JsonProperty("recordCreated")]
+        public DateTime RecordCreated { get; set; }
     }
 
 
-    public class Avatar
+    public class AvatarModel
     {
-        public AvatarDetails avatar { get; set; }
-        public List<string> tags { get; set; }
+        [JsonProperty("avatar")]
+        public AvatarDetails Avatar { get; set; }
+
+        [JsonProperty("tags")]
+        public List<string> Tags { get; set; }
     }
 
     public class AvatarResponse
     {
-        public List<Avatar> avatars { get; set; }
-        public bool authorized { get; set; }
-        public bool banned { get; set; }
+        [JsonProperty("avatars")]
+        public List<AvatarModel> Avatars { get; set; }
+
+        [JsonProperty("authorized")]
+        public bool Authorized { get; set; }
+
+        [JsonProperty("banned")]
+        public bool Banned { get; set; }
     }
 
 

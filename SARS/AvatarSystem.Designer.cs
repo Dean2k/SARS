@@ -40,7 +40,6 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
-            this.chkPin = new MetroFramework.Controls.MetroCheckBox();
             this.btnToggleFavorite = new MetroFramework.Controls.MetroButton();
             this.btnSearchFavorites = new MetroFramework.Controls.MetroButton();
             this.cbLimit = new MetroFramework.Controls.MetroComboBox();
@@ -152,8 +151,6 @@
             this.metroLabel12 = new MetroFramework.Controls.MetroLabel();
             this.metroTabPage1 = new MetroFramework.Controls.MetroTabPage();
             this.avatarGrid = new System.Windows.Forms.DataGridView();
-            this.tabControl = new MetroFramework.Controls.MetroTabControl();
-            this.btnHotswapWorld = new MetroFramework.Controls.MetroButton();
             this.picture = new System.Windows.Forms.DataGridViewImageColumn();
             this.AvatarName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Author = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -163,6 +160,8 @@
             this.Ripped = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.Favorited = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.Avatar = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.tabControl = new MetroFramework.Controls.MetroTabControl();
+            this.btnHotswapWorld = new MetroFramework.Controls.MetroButton();
             ((System.ComponentModel.ISupportInitialize)(this.nmQuestVersion)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nmPcVersion)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.metroStyleManager1)).BeginInit();
@@ -183,15 +182,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.avatarGrid)).BeginInit();
             this.tabControl.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // chkPin
-            // 
-            resources.ApplyResources(this.chkPin, "chkPin");
-            this.chkPin.FontSize = MetroFramework.MetroCheckBoxSize.Medium;
-            this.chkPin.FontWeight = MetroFramework.MetroCheckBoxWeight.Bold;
-            this.chkPin.Name = "chkPin";
-            this.chkPin.UseSelectable = true;
-            this.chkPin.UseStyleColors = true;
             // 
             // btnToggleFavorite
             // 
@@ -1623,31 +1613,6 @@
             this.avatarGrid.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.avatarGrid_CellDoubleClick);
             this.avatarGrid.MouseClick += new System.Windows.Forms.MouseEventHandler(this.avatarGrid_MouseClick);
             // 
-            // tabControl
-            // 
-            resources.ApplyResources(this.tabControl, "tabControl");
-            this.tabControl.Controls.Add(this.metroTabPage1);
-            this.tabControl.Controls.Add(this.metroTabPage2);
-            this.tabControl.Controls.Add(this.metroTabPage4);
-            this.tabControl.Controls.Add(this.metroTabPage3);
-            this.tabControl.Controls.Add(this.metroTabPage5);
-            this.tabControl.Controls.Add(this.btnScanCache);
-            this.tabControl.Controls.Add(this.metroTabPage6);
-            this.tabControl.FontWeight = MetroFramework.MetroTabControlWeight.Bold;
-            this.tabControl.Name = "tabControl";
-            this.tabControl.SelectedIndex = 0;
-            this.tabControl.UseSelectable = true;
-            this.tabControl.SelectedIndexChanged += new System.EventHandler(this.tabControl_SelectedIndexChanged);
-            // 
-            // btnHotswapWorld
-            // 
-            resources.ApplyResources(this.btnHotswapWorld, "btnHotswapWorld");
-            this.btnHotswapWorld.FontSize = MetroFramework.MetroButtonSize.Medium;
-            this.btnHotswapWorld.Name = "btnHotswapWorld";
-            this.btnHotswapWorld.UseSelectable = true;
-            this.btnHotswapWorld.UseStyleColors = true;
-            this.btnHotswapWorld.Click += new System.EventHandler(this.btnHotswapWorld_Click);
-            // 
             // picture
             // 
             this.picture.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
@@ -1732,6 +1697,31 @@
             resources.ApplyResources(this.Avatar, "Avatar");
             this.Avatar.Name = "Avatar";
             // 
+            // tabControl
+            // 
+            resources.ApplyResources(this.tabControl, "tabControl");
+            this.tabControl.Controls.Add(this.metroTabPage1);
+            this.tabControl.Controls.Add(this.metroTabPage2);
+            this.tabControl.Controls.Add(this.metroTabPage4);
+            this.tabControl.Controls.Add(this.metroTabPage3);
+            this.tabControl.Controls.Add(this.metroTabPage5);
+            this.tabControl.Controls.Add(this.btnScanCache);
+            this.tabControl.Controls.Add(this.metroTabPage6);
+            this.tabControl.FontWeight = MetroFramework.MetroTabControlWeight.Bold;
+            this.tabControl.Name = "tabControl";
+            this.tabControl.SelectedIndex = 0;
+            this.tabControl.UseSelectable = true;
+            this.tabControl.SelectedIndexChanged += new System.EventHandler(this.tabControl_SelectedIndexChanged);
+            // 
+            // btnHotswapWorld
+            // 
+            resources.ApplyResources(this.btnHotswapWorld, "btnHotswapWorld");
+            this.btnHotswapWorld.FontSize = MetroFramework.MetroButtonSize.Medium;
+            this.btnHotswapWorld.Name = "btnHotswapWorld";
+            this.btnHotswapWorld.UseSelectable = true;
+            this.btnHotswapWorld.UseStyleColors = true;
+            this.btnHotswapWorld.Click += new System.EventHandler(this.btnHotswapWorld_Click);
+            // 
             // AvatarSystem
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -1754,7 +1744,6 @@
             this.Controls.Add(this.btnUnity);
             this.Controls.Add(this.btnPreview);
             this.Controls.Add(this.btnDownload);
-            this.Controls.Add(this.chkPin);
             this.Controls.Add(this.btnToggleFavorite);
             this.Controls.Add(this.btnSearchFavorites);
             this.Controls.Add(this.cbLimit);
@@ -1810,7 +1799,6 @@
         }
 
         #endregion
-        public MetroFramework.Controls.MetroCheckBox chkPin;
         public MetroFramework.Controls.MetroButton btnToggleFavorite;
         public MetroFramework.Controls.MetroButton btnSearchFavorites;
         public MetroFramework.Controls.MetroComboBox cbLimit;

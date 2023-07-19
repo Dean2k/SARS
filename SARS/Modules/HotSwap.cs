@@ -162,7 +162,7 @@ namespace SARS.Modules
 
             if (avatarSystem.avatars != null)
             {
-                var avatar = avatarSystem.avatars.FirstOrDefault(x => x.avatar.avatarId == matchModelOld.AvatarId);
+                var avatar = avatarSystem.avatars.FirstOrDefault(x => x.Avatar.AvatarId == matchModelOld.AvatarId);
                 if (avatar != default && avatar != null)
                 {
                     avatarSystem.rippedList.Config.Add(avatar);
@@ -331,7 +331,7 @@ namespace SARS.Modules
 
             if (avatarSystem.avatars != null)
             {
-                var avatar = avatarSystem.avatars.FirstOrDefault(x => x.avatar.avatarId == matchModelOld.AvatarId);
+                var avatar = avatarSystem.avatars.FirstOrDefault(x => x.Avatar.AvatarId == matchModelOld.AvatarId);
                 if (avatar != default && avatar != null)
                 {
                     avatarSystem.rippedList.Config.Add(avatar);

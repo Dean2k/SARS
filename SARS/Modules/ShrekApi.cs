@@ -44,7 +44,7 @@ namespace SARS.Modules
         /// </summary>
         /// <param name="avatar"></param>
         /// <returns></returns>
-        public List<Avatar> AvatarSearch(AvatarSearch avatar, bool altApi, string customApi, bool avatarSearch)
+        public List<AvatarModel> AvatarSearch(AvatarSearch avatar, bool altApi, string customApi, bool avatarSearch)
         {
             string apiUrl = "https://unlocked.modvrc.com/Avatar/GetKeyAvatar";
             if (altApi)
@@ -76,16 +76,16 @@ namespace SARS.Modules
                 {
                     var result = streamReader.ReadToEnd();
                     AvatarResponse avatarResponse = JsonConvert.DeserializeObject<AvatarResponse>(result);
-                    if (avatarResponse.banned)
+                    if (avatarResponse.Banned)
                     {
                         MessageBox.Show("Your key has been banned");
                     }
-                    else if(!avatarResponse.authorized)
+                    else if(!avatarResponse.Authorized)
                     {
                         MessageBox.Show("The key you have entered is invalid");
                     }
 
-                    return avatarResponse.avatars;
+                    return avatarResponse.Avatars;
                 }
             }
             catch (Exception ex)
@@ -98,7 +98,7 @@ namespace SARS.Modules
                 {
                     MessageBox.Show($"Unknown Error: {ex.Message}");
                 }
-                return new List<Avatar>();
+                return new List<AvatarModel>();
             }
         }
     }

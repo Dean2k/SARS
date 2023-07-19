@@ -17,24 +17,24 @@ namespace SARS
     public partial class AvatarCard : UserControl
     {
         public bool ControlDisposed = false;
-        public AvatarCard(Avatar avatar)
+        public AvatarCard(AvatarModel avatar)
         {           
             InitializeComponent();
-            lblTitle.Text = avatar.avatar.avatarName;
-            toolTip1.SetToolTip(lblTitle, avatar.avatar.avatarName);
-            lblBody.Text = avatar.avatar.avatarDescription;
-            toolTip1.SetToolTip(lblBody, avatar.avatar.avatarDescription);
-            lblAvatarId.Text = avatar.avatar.avatarId;
-            toolTip1.SetToolTip(lblAvatarId, avatar.avatar.avatarId);
-            if (avatar.avatar.imageUrl != null)
+            lblTitle.Text = avatar.Avatar.AvatarName;
+            toolTip1.SetToolTip(lblTitle, avatar.Avatar.AvatarName);
+            lblBody.Text = avatar.Avatar.AvatarDescription;
+            toolTip1.SetToolTip(lblBody, avatar.Avatar.AvatarDescription);
+            lblAvatarId.Text = avatar.Avatar.AvatarId;
+            toolTip1.SetToolTip(lblAvatarId, avatar.Avatar.AvatarId);
+            if (avatar.Avatar.ImageUrl != null)
             {
-                Task.Run(() => LoadImage(avatar.avatar.thumbnailUrl));               
+                Task.Run(() => LoadImage(avatar.Avatar.ThumbnailUrl));               
             }
-            if(avatar.avatar.questAssetUrl.ToLower().Trim() == "none")
+            if(avatar.Avatar.QuestAssetUrl.ToLower().Trim() == "none")
             {
                 lblQuest.Visible = false;
             }
-            if (avatar.avatar.pcAssetUrl.ToLower().Trim() == "none")
+            if (avatar.Avatar.PcAssetUrl.ToLower().Trim() == "none")
             {
                 lblPc.Visible = false;
             }

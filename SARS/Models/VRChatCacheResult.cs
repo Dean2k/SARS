@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -9,34 +10,80 @@ namespace SARS.Models
 
     public class VRChatCacheResult
     {
-        public string assetUrl { get; set; }
-        public string authorId { get; set; }
-        public string authorName { get; set; }
-        public DateTime created_at { get; set; }
-        public string description { get; set; }
-        public bool featured { get; set; }
-        public string id { get; set; }
-        public string imageUrl { get; set; }
-        public string name { get; set; }
-        public string releaseStatus { get; set; }
-        public List<string> tags { get; set; }
-        public string thumbnailImageUrl { get; set; }
-        public string unityPackageUrl { get; set; }
-        public List<UnityPackage> unityPackages { get; set; }
-        public DateTime updated_at { get; set; }
-        public int version { get; set; }
+        [JsonProperty("assetUrl")]
+        public string AssetUrl { get; set; }
+
+        [JsonProperty("authorId")]
+        public string AuthorId { get; set; }
+
+        [JsonProperty("authorName")]
+        public string AuthorName { get; set; }
+
+        [JsonProperty("created_at")]
+        public DateTime CreatedAt { get; set; }
+
+        [JsonProperty("description")]
+        public string Description { get; set; }
+
+        [JsonProperty("featured")]
+        public bool Featured { get; set; }
+
+        [JsonProperty("id")]
+        public string Id { get; set; }
+
+        [JsonProperty("imageUrl")]
+        public string ImageUrl { get; set; }
+
+        [JsonProperty("name")]
+        public string Name { get; set; }
+
+        [JsonProperty("releaseStatus")]
+        public string ReleaseStatus { get; set; }
+
+        [JsonProperty("tags")]
+        public List<string> Tags { get; set; }
+
+        [JsonProperty("thumbnailImageUrl")]
+        public string ThumbnailImageUrl { get; set; }
+
+        [JsonProperty("unityPackageUrl")]
+        public string UnityPackageUrl { get; set; }
+
+        [JsonProperty("unityPackages")]
+        public List<UnityPackage> UnityPackages { get; set; }
+
+        [JsonProperty("updated_at")]
+        public DateTime UpdatedAt { get; set; }
+
+        [JsonProperty("version")]
+        public int Version { get; set; }
     }
 
     public class UnityPackage
     {
-        public string assetUrl { get; set; }
-        public int assetVersion { get; set; }
-        public DateTime created_at { get; set; }
-        public string id { get; set; }
-        public string platform { get; set; }
-        public string pluginUrl { get; set; }
-        public long unitySortNumber { get; set; }
-        public string unityVersion { get; set; }
+        [JsonProperty("assetUrl")]
+        public string AssetUrl { get; set; }
+
+        [JsonProperty("assetVersion")]
+        public int AssetVersion { get; set; }
+
+        [JsonProperty("created_at")]
+        public DateTime CreatedAt { get; set; }
+
+        [JsonProperty("id")]
+        public string Id { get; set; }
+
+        [JsonProperty("platform")]
+        public string Platform { get; set; }
+
+        [JsonProperty("pluginUrl")]
+        public string PluginUrl { get; set; }
+
+        [JsonProperty("unitySortNumber")]
+        public long UnitySortNumber { get; set; }
+
+        [JsonProperty("unityVersion")]
+        public string UnityVersion { get; set; }
     }
 
 

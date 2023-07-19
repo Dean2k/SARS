@@ -9,7 +9,7 @@ namespace SARS
 {
     public partial class Avatar_Info : MetroForm
     {
-        public Avatar _selectedAvatar;
+        public AvatarModel _selectedAvatar;
         public Avatar_Info()
         {
             InitializeComponent();
@@ -23,91 +23,91 @@ namespace SARS
         {
             if (cbCopy.Text == "Time Detected")
             {
-                Clipboard.SetText(_selectedAvatar.avatar.recordCreated.ToString());
+                Clipboard.SetText(_selectedAvatar.Avatar.RecordCreated.ToString());
                 MessageBox.Show(this, "information copied to clipboard.", "Copied", MessageBoxButtons.OK,
                     MessageBoxIcon.Information);
             }
 
             if (cbCopy.Text == "Avatar ID")
             {
-                Clipboard.SetText(_selectedAvatar.avatar.avatarId);
+                Clipboard.SetText(_selectedAvatar.Avatar.AvatarId);
                 MessageBox.Show(this, "information copied to clipboard.", "Copied", MessageBoxButtons.OK,
                     MessageBoxIcon.Information);
             }
 
             if (cbCopy.Text == "Avatar Name")
             {
-                Clipboard.SetText(_selectedAvatar.avatar.avatarName);
+                Clipboard.SetText(_selectedAvatar.Avatar.AvatarName);
                 MessageBox.Show(this, "information copied to clipboard.", "Copied", MessageBoxButtons.OK,
                     MessageBoxIcon.Information);
             }
 
             if (cbCopy.Text == "Avatar Description")
             {
-                Clipboard.SetText(_selectedAvatar.avatar.avatarDescription);
+                Clipboard.SetText(_selectedAvatar.Avatar.AvatarDescription);
                 MessageBox.Show(this, "information copied to clipboard.", "Copied", MessageBoxButtons.OK,
                     MessageBoxIcon.Information);
             }
 
             if (cbCopy.Text == "Author ID")
             {
-                Clipboard.SetText(_selectedAvatar.avatar.authorId);
+                Clipboard.SetText(_selectedAvatar.Avatar.AuthorId);
                 MessageBox.Show(this, "information copied to clipboard.", "Copied", MessageBoxButtons.OK,
                     MessageBoxIcon.Information);
             }
 
             if (cbCopy.Text == "Author Name")
             {
-                Clipboard.SetText(_selectedAvatar.avatar.authorName);
+                Clipboard.SetText(_selectedAvatar.Avatar.AuthorName);
                 MessageBox.Show(this, "information copied to clipboard.", "Copied", MessageBoxButtons.OK,
                     MessageBoxIcon.Information);
             }
 
             if (cbCopy.Text == "PC Asset URL")
             {
-                Clipboard.SetText(_selectedAvatar.avatar.pcAssetUrl);
+                Clipboard.SetText(_selectedAvatar.Avatar.PcAssetUrl);
                 MessageBox.Show(this, "information copied to clipboard.", "Copied", MessageBoxButtons.OK,
                     MessageBoxIcon.Information);
             }
 
             if (cbCopy.Text == "Quest Asset URL")
             {
-                Clipboard.SetText(_selectedAvatar.avatar.questAssetUrl);
+                Clipboard.SetText(_selectedAvatar.Avatar.QuestAssetUrl);
                 MessageBox.Show(this, "information copied to clipboard.", "Copied", MessageBoxButtons.OK,
                     MessageBoxIcon.Information);
             }
 
             if (cbCopy.Text == "Image URL")
             {
-                Clipboard.SetText(_selectedAvatar.avatar.imageUrl);
+                Clipboard.SetText(_selectedAvatar.Avatar.ImageUrl);
                 MessageBox.Show(this, "information copied to clipboard.", "Copied", MessageBoxButtons.OK,
                     MessageBoxIcon.Information);
             }
 
             if (cbCopy.Text == "Thumbnail URL")
             {
-                Clipboard.SetText(_selectedAvatar.avatar.thumbnailUrl);
+                Clipboard.SetText(_selectedAvatar.Avatar.ThumbnailUrl);
                 MessageBox.Show(this, "information copied to clipboard.", "Copied", MessageBoxButtons.OK,
                     MessageBoxIcon.Information);
             }
 
             if (cbCopy.Text == "Unity Version")
             {
-                Clipboard.SetText(_selectedAvatar.avatar.unityVersion);
+                Clipboard.SetText(_selectedAvatar.Avatar.UnityVersion);
                 MessageBox.Show(this, "information copied to clipboard.", "Copied", MessageBoxButtons.OK,
                     MessageBoxIcon.Information);
             }
 
             if (cbCopy.Text == "Release Status")
             {
-                Clipboard.SetText(_selectedAvatar.avatar.releaseStatus);
+                Clipboard.SetText(_selectedAvatar.Avatar.ReleaseStatus);
                 MessageBox.Show(this, "information copied to clipboard.", "Copied", MessageBoxButtons.OK,
                     MessageBoxIcon.Information);
             }
 
             if (cbCopy.Text == "Tags")
             {               
-                Clipboard.SetText(String.Join(", ", _selectedAvatar.tags.Select(p => p.ToString()).ToArray()));
+                Clipboard.SetText(String.Join(", ", _selectedAvatar.Tags.Select(p => p.ToString()).ToArray()));
                 MessageBox.Show(this, "information copied to clipboard.", "Copied", MessageBoxButtons.OK,
                     MessageBoxIcon.Information);
             }

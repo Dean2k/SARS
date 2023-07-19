@@ -7,7 +7,7 @@ namespace SARS.Modules
 {
     public static class GenerateHtml
     {
-        public static void GenerateHtmlPage(List<Avatar> avatars)
+        public static void GenerateHtmlPage(List<AvatarModel> avatars)
         {
             string assetTypes = "";
             string htmlLayout = @"<!DOCTYPE html>
@@ -123,11 +123,11 @@ namespace SARS.Modules
             string buildString = "";
             for (int i = 0; i < avatars.Count - 1; i++)
             {
-                if (avatars[i].avatar.pcAssetUrl.Trim() != "None")
+                if (avatars[i].Avatar.PcAssetUrl.Trim() != "None")
                 {
                     assetTypes = "PC";
                 }
-                if (avatars[i].avatar.questAssetUrl.Trim() != "None")
+                if (avatars[i].Avatar.QuestAssetUrl.Trim() != "None")
                 {
                     if (assetTypes != null)
                     {
@@ -156,7 +156,7 @@ namespace SARS.Modules
                                                                                        </div>
                                                                </div>
                                                    </div> </a> </div>
-                                                                                ", avatars[i].avatar.releaseStatus, avatars[i].avatar.imageUrl, avatars[i].avatar.avatarName, avatars[i].avatar.authorName, avatars[i].avatar.avatarId, avatars[i].avatar.recordCreated, assetTypes);
+                                                                                ", avatars[i].Avatar.ReleaseStatus, avatars[i].Avatar.ImageUrl, avatars[i].Avatar.AvatarName, avatars[i].Avatar.AuthorName, avatars[i].Avatar.AvatarId, avatars[i].Avatar.RecordCreated, assetTypes);
                 buildString += avatarSection;
             }
 

@@ -20,7 +20,7 @@ namespace SARS
     public partial class SARS : MaterialForm
     {
 
-        public List<Avatar> _avatars;
+        public List<AvatarModel> _avatars;
         public ConfigSave<Config> _configSave;
         public int _pageAmount = 30;
 
@@ -93,7 +93,7 @@ namespace SARS
             return true;
         }
 
-        public void AddControl(Avatar avatar)
+        public void AddControl(AvatarModel avatar)
         {
             if (flowLayoutPanel1.InvokeRequired)
             {
