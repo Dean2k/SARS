@@ -10,6 +10,7 @@ using SARS.Modules;
 using SARS.Properties;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity.Core.Common.CommandTrees.ExpressionBuilder;
 using System.Diagnostics;
 using System.Drawing;
 using System.Drawing.Imaging;
@@ -1701,6 +1702,11 @@ namespace SARS
                                         }
                                     }
                                 }
+                                // just incase images are already took
+                                if (vRChatCacheResult == null)
+                                {
+                                    LoadImageCache(avatarId, avatarGrid.Rows[i]);
+                                }
                             }
                             if (avatarGrid.Rows[i].Cells[3].Value != null && (bool)avatarGrid.Rows[i].Cells[8].Value == false)
                             {
@@ -2357,6 +2363,16 @@ namespace SARS
             SQLite.WriteDataWorld(result.Id, strJson);
         }
 
+        private void LoadImageCache(string avatarId, DataGridViewRow row)
+        {
+            string fileName = $"{Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location)}\\images\\{avatarId}.png";
+            if (File.Exists(fileName))
+            {
+                Bitmap bmp = new Bitmap(fileName);
+                row.Cells[0].Value = bmp;
+            }
+        }
+
         private void GetAvatarInfo(VRChatCacheResult vRChatCacheResult, string avatarId, DataGridViewRow row)
         {
             var temp = avatars.FirstOrDefault(x => x.Avatar.AvatarId == avatarId);
@@ -2694,7 +2710,7 @@ namespace SARS
                 m.MenuItems.Add(new MenuItem("Copy Avatar ID", new System.EventHandler(CopyAvatarId)));
                 m.MenuItems.Add(new MenuItem("Preview Image", new System.EventHandler(previewImage)));
                 m.MenuItems.Add(new MenuItem("Preview VRCA", new System.EventHandler(previewVRCA)));
-                m.MenuItems.Add(new MenuItem("Hotswap", new System.EventHandler(hotswapRC)));               
+                m.MenuItems.Add(new MenuItem("Hotswap", new System.EventHandler(hotswapRC)));
 
                 int currentMouseOverRow = avatarGrid.HitTest(e.X, e.Y).RowIndex;
 
@@ -2743,10 +2759,71 @@ namespace SARS
             {
                 Clipboard.SetDataObject(avatarGrid.SelectedRows[0].Cells[3].Value);
             }
-            catch (System.Runtime.InteropServices.ExternalException)
+            catch (ExternalException)
             {
                 MessageBox.Show("Clipboard could not be accessed. Please try again.");
             }
+        }
+
+        private void btnGetScreenshots_Click(object sender, EventArgs e)
+        {
+            ScreenshotTaker();
+        }
+
+        private async Task<bool> ScreenshotTaker()
+        {
+            ThreadPool.QueueUserWorkItem(delegate
+            {
+                foreach (DataGridViewRow item in avatarGrid.Rows)
+                {
+                    if (item.Cells[1] != null)
+                    {
+                        string avatarName = item.Cells[1].Value.ToString();
+                        string avatarId = item.Cells[3].Value.ToString();
+                        string fileName = $"{Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location)}\\images\\{avatarId}.png";
+                        if (item.Cells[1].Value.ToString() == avatarName)
+                        {
+                            if (!File.Exists(fileName))
+                            {
+                                AvatarModel avatar = avatars.FirstOrDefault(x => x.Avatar.AvatarId == avatarId);
+                                try
+                                {
+                                    
+                                    string commands = string.Format($"\"{avatar.Avatar.PcAssetUrl}\" \"screen.shot\"");
+                                    Console.WriteLine(commands);
+                                    Process p = new Process();
+                                    ProcessStartInfo psi = new ProcessStartInfo
+                                    {
+                                        FileName = "AssetViewer.exe",
+                                        Arguments = commands,
+                                        WorkingDirectory = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location) + @"\NewestViewer\",
+                                    };
+                                    p.StartInfo = psi;
+                                    p.Start();
+                                    p.WaitForExit();
+                                }
+                                catch (Exception ex) { Console.WriteLine(ex.Message); }
+                                Console.WriteLine("testing");
+                                string screenshotLocation = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location) + @"\NewestViewer\AssetViewer_Data\avatarscreen.png";
+                                string screenshotLocationNew = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location) + $"\\images\\{avatar.Avatar.AvatarId}.png";
+                                if (File.Exists(screenshotLocation))
+                                {
+                                    try
+                                    {
+                                        File.Move(screenshotLocation, screenshotLocationNew);
+                                        Bitmap bmp = new Bitmap(fileName);
+                                        item.Cells[0].Value = bmp;
+                                    }
+                                    catch { }
+                                }
+                            }
+                        }
+                    }
+                }
+                MessageBox.Show("Screenshots done.");
+            });
+            
+            return true;
         }
     }
 }

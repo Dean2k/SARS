@@ -162,6 +162,7 @@
             this.Avatar = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.tabControl = new MetroFramework.Controls.MetroTabControl();
             this.btnHotswapWorld = new MetroFramework.Controls.MetroButton();
+            this.btnGetScreenshots = new MetroFramework.Controls.MetroButton();
             ((System.ComponentModel.ISupportInitialize)(this.nmQuestVersion)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nmPcVersion)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.metroStyleManager1)).BeginInit();
@@ -870,6 +871,7 @@
             // 
             // btnScanCache
             // 
+            this.btnScanCache.Controls.Add(this.btnGetScreenshots);
             this.btnScanCache.Controls.Add(this.btnScanCacheFolder);
             this.btnScanCache.Controls.Add(this.txtCacheScannerLog);
             this.btnScanCache.HorizontalScrollbarBarColor = true;
@@ -1709,7 +1711,7 @@
             this.tabControl.Controls.Add(this.metroTabPage6);
             this.tabControl.FontWeight = MetroFramework.MetroTabControlWeight.Bold;
             this.tabControl.Name = "tabControl";
-            this.tabControl.SelectedIndex = 0;
+            this.tabControl.SelectedIndex = 5;
             this.tabControl.UseSelectable = true;
             this.tabControl.SelectedIndexChanged += new System.EventHandler(this.tabControl_SelectedIndexChanged);
             // 
@@ -1721,6 +1723,16 @@
             this.btnHotswapWorld.UseSelectable = true;
             this.btnHotswapWorld.UseStyleColors = true;
             this.btnHotswapWorld.Click += new System.EventHandler(this.btnHotswapWorld_Click);
+            // 
+            // btnGetScreenshots
+            // 
+            resources.ApplyResources(this.btnGetScreenshots, "btnGetScreenshots");
+            this.btnGetScreenshots.FontSize = MetroFramework.MetroButtonSize.Medium;
+            this.btnGetScreenshots.Name = "btnGetScreenshots";
+            this.metroToolTip1.SetToolTip(this.btnGetScreenshots, resources.GetString("btnGetScreenshots.ToolTip"));
+            this.btnGetScreenshots.UseSelectable = true;
+            this.btnGetScreenshots.UseStyleColors = true;
+            this.btnGetScreenshots.Click += new System.EventHandler(this.btnGetScreenshots_Click);
             // 
             // AvatarSystem
             // 
@@ -1921,6 +1933,7 @@
         private System.Windows.Forms.DataGridViewCheckBoxColumn Ripped;
         private System.Windows.Forms.DataGridViewCheckBoxColumn Favorited;
         private System.Windows.Forms.DataGridViewCheckBoxColumn Avatar;
+        public MetroFramework.Controls.MetroButton btnGetScreenshots;
     }
 }
 

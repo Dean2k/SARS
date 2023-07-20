@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Reflection;
 
 namespace SARS.Modules
 {
@@ -138,6 +139,11 @@ namespace SARS.Modules
                         assetTypes = "Quest";
                     }
                 }
+                string imageLink = avatars[i].Avatar.ImageUrl;
+                string fileName = $"{Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location)}\\images\\{avatars[i].Avatar.AvatarId}.png";
+                if (File.Exists(fileName)) {
+                    imageLink = fileName;
+                }
                 string avatarSection = string.Format(@"
                                                     <div class='k-card'>
 					                                        <div class='k-card-body shadow'>
@@ -156,7 +162,7 @@ namespace SARS.Modules
                                                                                        </div>
                                                                </div>
                                                    </div> </a> </div>
-                                                                                ", avatars[i].Avatar.ReleaseStatus, avatars[i].Avatar.ImageUrl, avatars[i].Avatar.AvatarName, avatars[i].Avatar.AuthorName, avatars[i].Avatar.AvatarId, avatars[i].Avatar.RecordCreated, assetTypes);
+                                                                                ", avatars[i].Avatar.ReleaseStatus, imageLink, avatars[i].Avatar.AvatarName, avatars[i].Avatar.AuthorName, avatars[i].Avatar.AvatarId, avatars[i].Avatar.RecordCreated, assetTypes);
                 buildString += avatarSection;
             }
 
