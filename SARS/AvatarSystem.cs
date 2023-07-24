@@ -40,7 +40,7 @@ namespace SARS
         public ConfigSave<List<AvatarModel>> favList;
         private HotswapConsole hotSwapConsole;
         private Thread _vrcaThread;
-        private string userAgent = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/104.0.5112.79 Safari/537.36";
+        private string userAgent = "UnityPlayer/2019.4.40f1 (UnityWebRequest/1.0, libcurl/7.80.0-DEV)";
         private string vrcaLocation = "";
         private string SystemName;
         private VRChatFileInformation avatarVersionPc;
@@ -481,6 +481,8 @@ namespace SARS
                                             HttpWebRequest myRequest = (HttpWebRequest)WebRequest.Create(avatarGrid.Rows[i].Cells[5].Value.ToString());
                                             myRequest.Method = "GET";
                                             myRequest.UserAgent = userAgent;
+                                            myRequest.Accept = "*/*";
+                                            myRequest.Headers["X-Unity-Version"] = "2019.4.40f1";
                                             using (HttpWebResponse myResponse = (HttpWebResponse)myRequest.GetResponse())
                                             {
                                                 if (myResponse.StatusCode == HttpStatusCode.OK)
@@ -812,7 +814,7 @@ namespace SARS
             hotSwapConsole = new HotswapConsole();
             hotSwapConsole.Show();
 
-            _vrcaThread = new Thread(() => HotSwap.HotswapProcess(hotSwapConsole, this, fileLocation, customAvatarId, imgFileLocation, avatarName, null));
+            _vrcaThread = new Thread(() => HotSwap.HotswapProcess(hotSwapConsole, this, fileLocation, customAvatarId, imgFileLocation, avatarName, null, chkUnityReplace.Checked));
             _vrcaThread.Start();
 
             return true;

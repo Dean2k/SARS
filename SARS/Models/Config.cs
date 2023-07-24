@@ -37,5 +37,6 @@ namespace SARS.Models
         public string CustomApi { get; set; }
         public bool CustomApiUse { get; set; }
         public string UserAgent { get; set; }
+        public bool ReplaceUnityVersion { get; set; }
     }
 }

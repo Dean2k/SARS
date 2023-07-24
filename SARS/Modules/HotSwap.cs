@@ -14,7 +14,7 @@ namespace SARS.Modules
 {
     public static class HotSwap
     {
-        public static async void HotswapProcess(HotswapConsole hotSwapConsole, AvatarSystem avatarSystem, string avatarFile, string customAvatarId = null, string imgFileLocation = null, string avatarName = null, string ReuploaderVrChat = null)
+        public static async void HotswapProcess(HotswapConsole hotSwapConsole, AvatarSystem avatarSystem, string avatarFile, string customAvatarId = null, string imgFileLocation = null, string avatarName = null, string ReuploaderVrChat = null, bool replaceUnityVer = false)
         {
             var filePath = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
             var fileDecompressed = filePath + @"\decompressed.vrca";
@@ -107,17 +107,18 @@ namespace SARS.Modules
                         "Possible 2017-2018 unity issue", MessageBoxButtons.OKCancel, MessageBoxIcon.Error);
                     if (dialogResult == DialogResult.Cancel) matchModelOld.UnityVersion = null;
                 }
-
             if (matchModelNew == null)
             {
-                matchModelNew = new MatchModel();
-                matchModelNew.UnityVersion = "2019.4.31f1";//BaseUploader._unityVersion;
-                matchModelNew.AvatarAssetId = "prefab-id-v1_" + customAvatarId + "_" + RandomString(10) + ".prefab";
-                matchModelNew.AvatarCab = "CAB-" + RandomString(32);
-                matchModelNew.AvatarId = customAvatarId;
+                matchModelNew = new MatchModel
+                {
+                    UnityVersion = "2019.4.31f1",//BaseUploader._unityVersion;
+                    AvatarAssetId = "prefab-id-v1_" + customAvatarId + "_" + RandomString(10) + ".prefab",
+                    AvatarCab = "CAB-" + RandomString(32),
+                    AvatarId = customAvatarId
+                };
             }
 
-            GetReadyForCompress(fileDecompressed2, fileDecompressedFinal, matchModelOld, matchModelNew);
+            GetReadyForCompress(fileDecompressed2, fileDecompressedFinal, matchModelOld, matchModelNew, replaceUnityVer);
 
             try
             {
@@ -155,7 +156,7 @@ namespace SARS.Modules
             while (len >= 1024 && order < sizes.Length - 1)
             {
                 order++;
-                len = len / 1024;
+                len /= 1024;
             }
 
             var uncompressedSize = $"{len:0.##} {sizes[order]}";
@@ -454,7 +455,7 @@ namespace SARS.Modules
             return matchModel;
         }
 
-        private static void GetReadyForCompress(string oldFile, string newFile, MatchModel old, MatchModel newModel)
+        private static void GetReadyForCompress(string oldFile, string newFile, MatchModel old, MatchModel newModel, bool unityReplace = false)
         {
             var enc = Encoding.GetEncoding(28591);
             using (var vReader = new StreamReaderOver(oldFile, enc))
@@ -464,16 +465,20 @@ namespace SARS.Modules
                     while (!vReader.EndOfStream)
                     {
                         var vLine = vReader.ReadLine();
-                        var replace = CheckAndReplaceLine(vLine, old, newModel);
+                        var replace = CheckAndReplaceLine(vLine, old, newModel, unityReplace);
                         vWriter.Write(replace);
                     }
                 }
             }
         }
 
-        private static string CheckAndReplaceLine(string line, MatchModel old, MatchModel newModel)
+        private static string CheckAndReplaceLine(string line, MatchModel old, MatchModel newModel, bool unityReplace = false)
         {
             var edited = line;
+            if (unityReplace)
+            {
+                if (edited.Contains("2019.4.40f1")) edited = edited.Replace("2019.4.40f1", "2019.4.31f1");
+            }
             if (edited.Contains(old.AvatarAssetId)) edited = edited.Replace(old.AvatarAssetId, newModel.AvatarAssetId);
             if (edited.Contains(old.AvatarId)) edited = edited.Replace(old.AvatarId, newModel.AvatarId);
             if (edited.Contains(old.AvatarCab)) edited = edited.Replace(old.AvatarCab, newModel.AvatarCab);
@@ -521,8 +526,8 @@ namespace SARS.Modules
                 {
                     SafeWrite(hotSwap.txtStatusText, $"33.3% Loaded file to bundle stream!" + Environment.NewLine);
                     SafeProgress(hotSwap.pbProgress, 33);
-                    var progressBar = new SZProgress(hotSwap);
-                    bundle.Unpack(bundle.reader, new AssetsFileWriter(bs), progressBar);
+                    //var progressBar = new SZProgress(hotSwap);
+                    bundle.Unpack(bundle.reader, new AssetsFileWriter(bs));
                     SafeWrite(hotSwap.txtStatusText, $"44.4% Unpack stream complete!" + Environment.NewLine);
                     SafeProgress(hotSwap.pbProgress, 44);
                     bundleStream.Position = 0;
@@ -578,18 +583,24 @@ namespace SARS.Modules
         //Creates function to compress asset bundles
         private static void CompressBundle(string file, string compFile, HotswapConsole hotSwap)
         {
-            using (var stream = new AssetsFileWriter(compFile))
-            {
-                var am = new AssetsManager();
-                SafeWrite(hotSwap.txtStatusText, $"25% Declared new asset manager!" + Environment.NewLine);
-                var bun = am.LoadBundleFile(file, false);
-                SafeWrite(hotSwap.txtStatusText, $"50% Bundle file initialized!" + Environment.NewLine);
-                var progressBar = new SZProgress(hotSwap);
-                bun.file.Pack(bun.file.reader, stream, AssetBundleCompressionType.LZMA, progressBar);
+            
+                //var am = new AssetsManager();
+                
+                //var bun = am.LoadBundleFile(file, false);
+
+                var newUncompressedBundle = new AssetBundleFile();
+                newUncompressedBundle.Read(new AssetsFileReader(File.OpenRead(file)));
+
+                SafeWrite(hotSwap.txtStatusText, $"25% Opened Asset!" + Environment.NewLine);
+
+                using (AssetsFileWriter writer = new AssetsFileWriter(compFile))
+                {
+                    newUncompressedBundle.Pack(newUncompressedBundle.reader, writer, AssetBundleCompressionType.LZMA);
+                }
+                //var progressBar = new SZProgress(hotSwap);
+                //newUncompressedBundle.Pack(newUncompressedBundle, stream, AssetBundleCompressionType.LZMA, progressBar);
                 SafeWrite(hotSwap.txtStatusText, $"100% Compressed file packing complete!" + Environment.NewLine);
-                am.UnloadAll();
-                bun = null;
-            }
+            
         }
     }
 }

@@ -9,14 +9,11 @@ namespace SARS.Models
         [JsonProperty("id")]
         public string Id { get; set; }
 
-
         [JsonProperty("name")]
         public string Name { get; set; }
 
-
         [JsonProperty("description")]
         public string Description { get; set; }
-
 
         [JsonProperty("featured")]
         public bool Featured { get; set; }
@@ -52,16 +49,16 @@ namespace SARS.Models
         public int Version { get; set; }
 
         [JsonProperty("created_at")]
-        public DateTime CreatedAt { get; set; }
+        public DateTime? CreatedAt { get; set; }
 
         [JsonProperty("updated_at")]
-        public DateTime UpdatedAt { get; set; }
+        public DateTime? UpdatedAt { get; set; }
 
         [JsonProperty("publicationDate")]
-        public DateTime PublicationDate { get; set; }
+        public DateTime? PublicationDate { get; set; }
 
         [JsonProperty("labsPublicationDate")]
-        public DateTime LabsPublicationDate { get; set; }
+        public DateTime? LabsPublicationDate { get; set; }
 
     }
 
@@ -86,6 +83,6 @@ namespace SARS.Models
         public string Platform { get; set; }
 
         [JsonProperty("created_at")]
-        public DateTime CreatedAt { get; set; }
+        public DateTime? CreatedAt { get; set; }
     }
 }
