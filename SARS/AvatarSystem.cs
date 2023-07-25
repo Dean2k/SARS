@@ -478,7 +478,8 @@ namespace SARS
                                     {
                                         try
                                         {
-                                            HttpWebRequest myRequest = (HttpWebRequest)WebRequest.Create(avatarGrid.Rows[i].Cells[5].Value.ToString());
+                                            AvatarModel info = avatars.FirstOrDefault(x => x.Avatar.AvatarId == avatarGrid.Rows[i].Cells[3].Value.ToString().Trim());
+                                            HttpWebRequest myRequest = (HttpWebRequest)WebRequest.Create(info.Avatar.ThumbnailUrl);
                                             myRequest.Method = "GET";
                                             myRequest.UserAgent = userAgent;
                                             myRequest.Accept = "*/*";
@@ -493,8 +494,23 @@ namespace SARS
                                                 }
                                                 else
                                                 {
-                                                    Bitmap bmp = new Bitmap(Resources.No_Image);
-                                                    avatarGrid.Rows[i].Cells[0].Value = bmp;
+
+                                                    myRequest = (HttpWebRequest)WebRequest.Create(info.Avatar.ImageUrl);                                                 
+                                                    using (HttpWebResponse myResponse2 = (HttpWebResponse)myRequest.GetResponse())
+                                                    {
+                                                        if (myResponse2.StatusCode == HttpStatusCode.OK)
+                                                        {
+                                                            Bitmap bmp = new Bitmap(myResponse2.GetResponseStream());
+                                                            avatarGrid.Rows[i].Cells[0].Value = bmp;
+                                                            bmp.Save(fileName, ImageFormat.Png);
+                                                        }
+                                                        else
+                                                        {
+
+                                                            Bitmap bmp = new Bitmap(Resources.No_Image);
+                                                            avatarGrid.Rows[i].Cells[0].Value = bmp;
+                                                        }
+                                                    }
                                                 }
                                             }
                                         }

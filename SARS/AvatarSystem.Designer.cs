@@ -30,16 +30,16 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AvatarSystem));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle31 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle39 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle40 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle32 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle33 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle34 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle35 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle36 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle37 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle38 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
             this.btnToggleFavorite = new MetroFramework.Controls.MetroButton();
             this.btnSearchFavorites = new MetroFramework.Controls.MetroButton();
             this.cbLimit = new MetroFramework.Controls.MetroComboBox();
@@ -75,6 +75,7 @@
             this.btnWorldUnity = new MetroFramework.Controls.MetroButton();
             this.btnScanCacheFolder = new MetroFramework.Controls.MetroButton();
             this.btnGetScreenshots = new MetroFramework.Controls.MetroButton();
+            this.chkUnityReplace = new MetroFramework.Controls.MetroCheckBox();
             this.metroLabel8 = new MetroFramework.Controls.MetroLabel();
             this.txtAvatarSizePc = new MetroFramework.Controls.MetroTextBox();
             this.txtAvatarSizeQuest = new MetroFramework.Controls.MetroTextBox();
@@ -163,7 +164,6 @@
             this.Avatar = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.tabControl = new MetroFramework.Controls.MetroTabControl();
             this.btnHotswapWorld = new MetroFramework.Controls.MetroButton();
-            this.chkUnityReplace = new MetroFramework.Controls.MetroCheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.nmQuestVersion)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nmPcVersion)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.metroStyleManager1)).BeginInit();
@@ -528,6 +528,17 @@
             this.btnGetScreenshots.UseSelectable = true;
             this.btnGetScreenshots.UseStyleColors = true;
             this.btnGetScreenshots.Click += new System.EventHandler(this.btnGetScreenshots_Click);
+            // 
+            // chkUnityReplace
+            // 
+            resources.ApplyResources(this.chkUnityReplace, "chkUnityReplace");
+            this.chkUnityReplace.Checked = true;
+            this.chkUnityReplace.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.chkUnityReplace.FontWeight = MetroFramework.MetroCheckBoxWeight.Bold;
+            this.chkUnityReplace.Name = "chkUnityReplace";
+            this.metroToolTip1.SetToolTip(this.chkUnityReplace, resources.GetString("chkUnityReplace.ToolTip"));
+            this.chkUnityReplace.UseSelectable = true;
+            this.chkUnityReplace.UseStyleColors = true;
             // 
             // metroLabel8
             // 
@@ -1577,14 +1588,14 @@
             this.avatarGrid.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
             this.avatarGrid.ClipboardCopyMode = System.Windows.Forms.DataGridViewClipboardCopyMode.Disable;
             this.avatarGrid.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle31.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle31.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(219)))), ((int)(((byte)(0)))), ((int)(((byte)(60)))));
-            dataGridViewCellStyle31.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            dataGridViewCellStyle31.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle31.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(219)))), ((int)(((byte)(0)))), ((int)(((byte)(60)))));
-            dataGridViewCellStyle31.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(219)))), ((int)(((byte)(0)))), ((int)(((byte)(60)))));
-            dataGridViewCellStyle31.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.avatarGrid.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle31;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(219)))), ((int)(((byte)(0)))), ((int)(((byte)(60)))));
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(219)))), ((int)(((byte)(0)))), ((int)(((byte)(60)))));
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(219)))), ((int)(((byte)(0)))), ((int)(((byte)(60)))));
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.avatarGrid.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.avatarGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.avatarGrid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.picture,
@@ -1596,26 +1607,26 @@
             this.Ripped,
             this.Favorited,
             this.Avatar});
-            dataGridViewCellStyle39.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle39.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle39.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            dataGridViewCellStyle39.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(136)))), ((int)(((byte)(136)))), ((int)(((byte)(136)))));
-            dataGridViewCellStyle39.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
-            dataGridViewCellStyle39.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
-            dataGridViewCellStyle39.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.avatarGrid.DefaultCellStyle = dataGridViewCellStyle39;
+            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle9.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            dataGridViewCellStyle9.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(136)))), ((int)(((byte)(136)))), ((int)(((byte)(136)))));
+            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
+            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
+            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.avatarGrid.DefaultCellStyle = dataGridViewCellStyle9;
             this.avatarGrid.EnableHeadersVisualStyles = false;
             this.avatarGrid.GridColor = System.Drawing.Color.Silver;
             this.avatarGrid.Name = "avatarGrid";
             this.avatarGrid.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle40.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle40.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(174)))), ((int)(((byte)(219)))));
-            dataGridViewCellStyle40.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            dataGridViewCellStyle40.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle40.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
-            dataGridViewCellStyle40.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
-            dataGridViewCellStyle40.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.avatarGrid.RowHeadersDefaultCellStyle = dataGridViewCellStyle40;
+            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle10.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(174)))), ((int)(((byte)(219)))));
+            dataGridViewCellStyle10.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            dataGridViewCellStyle10.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
+            dataGridViewCellStyle10.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
+            dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.avatarGrid.RowHeadersDefaultCellStyle = dataGridViewCellStyle10;
             this.avatarGrid.RowHeadersVisible = false;
             this.avatarGrid.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.avatarGrid.RowTemplate.Height = 80;
@@ -1630,9 +1641,9 @@
             // picture
             // 
             this.picture.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            dataGridViewCellStyle32.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopCenter;
-            dataGridViewCellStyle32.NullValue = null;
-            this.picture.DefaultCellStyle = dataGridViewCellStyle32;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopCenter;
+            dataGridViewCellStyle2.NullValue = null;
+            this.picture.DefaultCellStyle = dataGridViewCellStyle2;
             this.picture.FillWeight = 45F;
             resources.ApplyResources(this.picture, "picture");
             this.picture.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Stretch;
@@ -1641,36 +1652,36 @@
             // 
             // AvatarName
             // 
-            dataGridViewCellStyle33.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopCenter;
-            dataGridViewCellStyle33.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.AvatarName.DefaultCellStyle = dataGridViewCellStyle33;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopCenter;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.AvatarName.DefaultCellStyle = dataGridViewCellStyle3;
             this.AvatarName.FillWeight = 7.274075F;
             resources.ApplyResources(this.AvatarName, "AvatarName");
             this.AvatarName.Name = "AvatarName";
             // 
             // Author
             // 
-            dataGridViewCellStyle34.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopCenter;
-            dataGridViewCellStyle34.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.Author.DefaultCellStyle = dataGridViewCellStyle34;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopCenter;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.Author.DefaultCellStyle = dataGridViewCellStyle4;
             this.Author.FillWeight = 7.274075F;
             resources.ApplyResources(this.Author, "Author");
             this.Author.Name = "Author";
             // 
             // AvatarId
             // 
-            dataGridViewCellStyle35.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopCenter;
-            dataGridViewCellStyle35.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.AvatarId.DefaultCellStyle = dataGridViewCellStyle35;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopCenter;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.AvatarId.DefaultCellStyle = dataGridViewCellStyle5;
             this.AvatarId.FillWeight = 7.274075F;
             resources.ApplyResources(this.AvatarId, "AvatarId");
             this.AvatarId.Name = "AvatarId";
             // 
             // Logged
             // 
-            dataGridViewCellStyle36.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopCenter;
-            dataGridViewCellStyle36.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.Logged.DefaultCellStyle = dataGridViewCellStyle36;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopCenter;
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.Logged.DefaultCellStyle = dataGridViewCellStyle6;
             this.Logged.FillWeight = 7.274075F;
             resources.ApplyResources(this.Logged, "Logged");
             this.Logged.Name = "Logged";
@@ -1683,9 +1694,9 @@
             // 
             // Ripped
             // 
-            dataGridViewCellStyle37.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopLeft;
-            dataGridViewCellStyle37.NullValue = false;
-            this.Ripped.DefaultCellStyle = dataGridViewCellStyle37;
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopLeft;
+            dataGridViewCellStyle7.NullValue = false;
+            this.Ripped.DefaultCellStyle = dataGridViewCellStyle7;
             this.Ripped.FalseValue = "false";
             this.Ripped.FillWeight = 2.505246F;
             resources.ApplyResources(this.Ripped, "Ripped");
@@ -1696,9 +1707,9 @@
             // 
             // Favorited
             // 
-            dataGridViewCellStyle38.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopCenter;
-            dataGridViewCellStyle38.NullValue = false;
-            this.Favorited.DefaultCellStyle = dataGridViewCellStyle38;
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopCenter;
+            dataGridViewCellStyle8.NullValue = false;
+            this.Favorited.DefaultCellStyle = dataGridViewCellStyle8;
             this.Favorited.FalseValue = "false";
             this.Favorited.FillWeight = 2.505246F;
             resources.ApplyResources(this.Favorited, "Favorited");
@@ -1723,7 +1734,7 @@
             this.tabControl.Controls.Add(this.metroTabPage6);
             this.tabControl.FontWeight = MetroFramework.MetroTabControlWeight.Bold;
             this.tabControl.Name = "tabControl";
-            this.tabControl.SelectedIndex = 1;
+            this.tabControl.SelectedIndex = 0;
             this.tabControl.UseSelectable = true;
             this.tabControl.SelectedIndexChanged += new System.EventHandler(this.tabControl_SelectedIndexChanged);
             // 
@@ -1735,17 +1746,6 @@
             this.btnHotswapWorld.UseSelectable = true;
             this.btnHotswapWorld.UseStyleColors = true;
             this.btnHotswapWorld.Click += new System.EventHandler(this.btnHotswapWorld_Click);
-            // 
-            // chkUnityReplace
-            // 
-            resources.ApplyResources(this.chkUnityReplace, "chkUnityReplace");
-            this.chkUnityReplace.Checked = true;
-            this.chkUnityReplace.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.chkUnityReplace.FontWeight = MetroFramework.MetroCheckBoxWeight.Bold;
-            this.chkUnityReplace.Name = "chkUnityReplace";
-            this.metroToolTip1.SetToolTip(this.chkUnityReplace, resources.GetString("chkUnityReplace.ToolTip"));
-            this.chkUnityReplace.UseSelectable = true;
-            this.chkUnityReplace.UseStyleColors = true;
             // 
             // AvatarSystem
             // 

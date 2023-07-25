@@ -58,6 +58,7 @@ namespace SARS.Modules
 
                 try
                 {
+                    SafeWrite(hotSwapConsole.txtStatusText, $"Step 1 - Decompressing Unity temp VRCA!{Environment.NewLine}");
                     DecompressToFileStr(fileDummy, fileDecompressed, hotSwapConsole);
                 }
                 catch (Exception ex)
@@ -75,6 +76,7 @@ namespace SARS.Modules
 
             try
             {
+                SafeWrite(hotSwapConsole.txtStatusText, $"Step 2 - Decompressing selected VRCA!{Environment.NewLine}");
                 DecompressToFileStr(avatarFile, fileDecompressed2, hotSwapConsole);
             }
             catch (Exception ex)
@@ -522,9 +524,9 @@ namespace SARS.Modules
             var bunInst = manager.LoadBundleFile(filePath, false);
             using (var bunStream = File.Open(savePath, FileMode.Create))
             {
-                //var progressBar = new SZProgress(hotSwap);
+                var progressBar = new SZProgress(hotSwap);
                 SafeWrite(hotSwap.txtStatusText, $"Decompressing Asset, this may take a while!{Environment.NewLine}");
-                bunInst.file = BundleHelper.UnpackBundleToStream(bunInst.file, bunStream);
+                bunInst.file = BundleHelper.UnpackBundleToStream(bunInst.file, bunStream, progressBar);
             }
 
             SafeWrite(hotSwap.txtStatusText, $"----------------------------------------------------------{Environment.NewLine}Asset Decompressed!{Environment.NewLine}");
@@ -567,11 +569,11 @@ namespace SARS.Modules
             var newUncompressedBundle = new AssetBundleFile();
             newUncompressedBundle.Read(new AssetsFileReader(File.OpenRead(file)));
 
-            SafeWrite(hotSwap.txtStatusText, $"Final Step, compressing file!{Environment.NewLine}");
-            //var progressBar = new SZProgress(hotSwap);
+            SafeWrite(hotSwap.txtStatusText, $"Final Step, Compressing File, this will take a while!{Environment.NewLine}");
+            var progressBar = new SZProgress(hotSwap);
             using (AssetsFileWriter writer = new AssetsFileWriter(compFile))
             {
-                newUncompressedBundle.Pack(newUncompressedBundle.Reader, writer, AssetBundleCompressionType.LZMA);
+                newUncompressedBundle.Pack(newUncompressedBundle.reader, writer, AssetBundleCompressionType.LZMA, progressBar);
             }
             SafeWrite(hotSwap.txtStatusText, $"Compressed file packing complete!{Environment.NewLine}");
 

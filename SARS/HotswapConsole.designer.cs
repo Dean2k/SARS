@@ -45,7 +45,7 @@ namespace SARS
             this.txtStatusText.Multiline = true;
             this.txtStatusText.Name = "txtStatusText";
             this.txtStatusText.ReadOnly = true;
-            this.txtStatusText.Size = new System.Drawing.Size(776, 395);
+            this.txtStatusText.Size = new System.Drawing.Size(469, 191);
             this.txtStatusText.TabIndex = 0;
             this.txtStatusText.TextChanged += new System.EventHandler(this.txtStatusText_TextChanged);
             // 
@@ -56,9 +56,9 @@ namespace SARS
             // 
             // pbProgress
             // 
-            this.pbProgress.Location = new System.Drawing.Point(12, 415);
+            this.pbProgress.Location = new System.Drawing.Point(12, 209);
             this.pbProgress.Name = "pbProgress";
-            this.pbProgress.Size = new System.Drawing.Size(776, 23);
+            this.pbProgress.Size = new System.Drawing.Size(469, 23);
             this.pbProgress.TabIndex = 2;
             // 
             // HotswapConsole
@@ -66,7 +66,7 @@ namespace SARS
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(489, 242);
             this.Controls.Add(this.pbProgress);
             this.Controls.Add(this.txtStatusText);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
