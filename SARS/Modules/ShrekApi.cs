@@ -7,6 +7,7 @@ using System.Linq;
 using System.Net;
 using System.Reflection;
 using System.Windows.Forms;
+using VRChatAPI_New;
 
 namespace SARS.Modules
 {
@@ -16,27 +17,6 @@ namespace SARS.Modules
 
         public ShrekApi()
         {
-        }
-
-        public void checkLogin()
-        {
-            //HttpWebRequest webReq = (HttpWebRequest)WebRequest.Create(apiUrl + "&size=1");
-            //webReq.UserAgent = $"SARS V" + coreApiVersion;
-            //webReq.Method = "POST";
-            //webReq.Headers.Add("X-API-Key: " + apiKey);
-            //HttpWebResponse webResp = null;
-            //try
-            //{
-            //    webResp = (HttpWebResponse)webReq.GetResponse();
-            //}
-            //catch (Exception ex)
-            //{
-            //    if (ex.Message.Contains("403"))
-            //    {
-            //        MessageBox.Show("API Key Invalid");
-            //    }
-            //    return;
-            //}
         }
 
         /// <summary>
@@ -100,6 +80,24 @@ namespace SARS.Modules
                 }
                 return new List<AvatarModel>();
             }
+        }
+
+        public DatabaseStats DatabaseStats()
+        {
+            using (WebClient webClient = new WebClient())
+            {
+                try
+                {
+                    string jsonString = webClient.DownloadString(new Uri($"https://unlocked.modvrc.com/Avatar/DatabaseStats"));
+                    DatabaseStats vrChatCacheResult = JsonConvert.DeserializeObject<DatabaseStats>(jsonString);
+                    return vrChatCacheResult;
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                }
+            }
+            return null;
         }
     }
 }

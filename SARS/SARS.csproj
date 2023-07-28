@@ -145,6 +145,7 @@
     <Compile Include="Models\Avatar.cs" />
     <Compile Include="Models\CacheAvatar.cs" />
     <Compile Include="Models\Config.cs" />
+    <Compile Include="Models\DatabaseStats.cs" />
     <Compile Include="Models\MatchModel.cs" />
     <Compile Include="Models\VRCCacheScannerModel.cs" />
     <Compile Include="Models\VRChatCacheResultWorld.cs" />

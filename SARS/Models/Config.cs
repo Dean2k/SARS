@@ -38,5 +38,8 @@ namespace SARS.Models
         public bool CustomApiUse { get; set; }
         public string UserAgent { get; set; }
         public bool ReplaceUnityVersion { get; set; }
+        public bool IndexAdded { get; set; }
+        public int AvatarsInLocalDatabase { get; set; }
+        public int AvatarsLoggedToApi { get; set; }
     }
 }

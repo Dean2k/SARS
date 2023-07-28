@@ -11,7 +11,7 @@ namespace SARS.Modules
 {
     public static class SQLite
     {
-        private static string _databaseLocation = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location) + "\\SARS.db3";
+        public static string _databaseLocation = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location) + "\\SARS.db3";
         public static void Setup()
         {
             if (!File.Exists(_databaseLocation))
@@ -37,6 +37,36 @@ namespace SARS.Modules
                         com.ExecuteNonQuery();
                         con.Close();     
                     }
+                }
+            }
+        }
+
+        public static void CreateIndex() {
+
+            string sqlCommand = "CREATE INDEX idx_avatarId ON Avatars (AvatarId);";
+            using (SQLiteConnection con = new SQLiteConnection($"data source='{_databaseLocation}'"))
+            {
+                using (SQLiteCommand com = new SQLiteCommand(con))
+                {
+                    con.Open();
+                    com.CommandText = sqlCommand;
+                    com.ExecuteNonQuery();
+                    con.Close();
+                }
+            }
+        }
+
+        public static int CountAvatars()
+        {
+            using (SQLiteConnection con = new SQLiteConnection($"data source='{_databaseLocation}'"))
+            {
+                using (SQLiteCommand com = new SQLiteCommand(con))
+                {
+                    con.Open();
+                    com.CommandText = $"SELECT COUNT(*) FROM [Avatars];";
+                    int RowCount = Convert.ToInt32(com.ExecuteScalar());
+                    con.Close();
+                    return RowCount;
                 }
             }
         }

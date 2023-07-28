@@ -64,6 +64,9 @@ namespace VRChatAPI_New.Modules.Game
                 {
                     File.Copy(url, fileLocation);
                     ShowSelectedInExplorer.FileOrFolder(fileLocation);
+                } else
+                {
+
                 }
             }
         }
