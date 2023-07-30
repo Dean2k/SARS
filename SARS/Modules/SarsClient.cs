@@ -1,5 +1,6 @@
 ﻿using MetroFramework.Controls;
 using Microsoft.Win32;
+using Newtonsoft.Json;
 using SARS.Models;
 using SARS.Properties;
 using System;
@@ -153,7 +154,9 @@ namespace SARS.Modules
                 {
                     nmPcVersion.Maximum = versions.Item1;
                     nmPcVersion.Value = versions.Item1;
-                    txtAvatarSizePc.Text = FormatSize(avatarVersionPc.Versions.FirstOrDefault(x => x.Version == nmPcVersion.Value).File.SizeInBytes);
+                    long fileSize = avatarVersionPc.Versions.FirstOrDefault(x => x.Version == nmPcVersion.Value).File.SizeInBytes;
+                    txtAvatarSizePc.Text = FormatSize(fileSize);
+                    UpdateFileSize(info.Avatar.AvatarId, fileSize);
                 }
                 else if (!info.Avatar.PcAssetUrl.StartsWith("http"))
                 {
@@ -287,6 +290,71 @@ namespace SARS.Modules
                     catch { }
                 }
             });
+        }
+
+        public static void CleanHsb(ConfigSave<Config> configSave)
+        {
+            var programLocation = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
+            RandomFunctions.KillProcess("Unity Hub.exe");
+            RandomFunctions.KillProcess("Unity.exe");
+            RandomFunctions.tryDeleteDirectory(programLocation + $"\\{configSave.Config.HotSwapName}");
+            RandomFunctions.tryDeleteDirectory(@"C:\Users\" + Environment.UserName + $"\\AppData\\Local\\Temp\\DefaultCompany\\{configSave.Config.HotSwapName}");
+            RandomFunctions.tryDeleteDirectory(@"C:\Users\" + Environment.UserName + $"\\AppData\\LocalLow\\DefaultCompany\\{configSave.Config.HotSwapName}");
+        }
+
+        public static void CleanWorldHsb(ConfigSave<Config> configSave)
+        {
+            var programLocation = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
+            RandomFunctions.KillProcess("Unity Hub.exe");
+            RandomFunctions.KillProcess("Unity.exe");
+            RandomFunctions.tryDeleteDirectory(programLocation + $"\\{configSave.Config.HotSwapWorldName}");
+            RandomFunctions.tryDeleteDirectory(@"C:\Users\" + Environment.UserName + $"\\AppData\\Local\\Temp\\DefaultCompany\\{configSave.Config.HotSwapWorldName}");
+            RandomFunctions.tryDeleteDirectory(@"C:\Users\" + Environment.UserName + $"\\AppData\\LocalLow\\DefaultCompany\\{configSave.Config.HotSwapWorldName}");
+        }
+
+        public static void CopyFiles(ConfigSave<Config> configSave)
+        {
+            try
+            {
+                var programLocation = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
+                File.Copy(programLocation + @"\Template\SampleScene.unity", programLocation + $"\\{configSave.Config.HotSwapName}\\Assets\\Scenes\\SampleScene.unity", true);
+                File.Copy(programLocation + @"\Template\shrekLogo.png", programLocation + $"\\{configSave.Config.HotSwapName}\\Assets\\Shrek SMART\\Resources\\shrekLogo.png", true);
+            }
+            catch { }
+        }
+
+        public static void UpdateFileSize(string avatarId, long size)
+        {
+            try
+            {
+                string apiUrl = "https://unlocked.modvrc.com/Avatar/AddSize";
+                var httpWebRequest = (HttpWebRequest)WebRequest.Create(apiUrl);
+                httpWebRequest.ContentType = "application/json";
+                httpWebRequest.Method = "POST";
+                httpWebRequest.UserAgent = $"SARS" + Assembly.GetExecutingAssembly().GetName().Version.ToString();
+                FileSizeUpdate fileSize = new FileSizeUpdate { AvatarId = avatarId, Size = size };
+                string jsonPost = JsonConvert.SerializeObject(fileSize);
+                using (var streamWriter = new StreamWriter(httpWebRequest.GetRequestStream()))
+                {
+                    streamWriter.Write(jsonPost);
+                }
+                try
+                {
+                    var httpResponse = (HttpWebResponse)httpWebRequest.GetResponse();
+                    using (var streamReader = new StreamReader(httpResponse.GetResponseStream()))
+                    {
+                        var result = streamReader.ReadToEnd();
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine($"Unknown Error: {ex.Message}");
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.ToString());
+            }
         }
     }
 }

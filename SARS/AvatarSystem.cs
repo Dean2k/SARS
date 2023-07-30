@@ -19,6 +19,7 @@ using System.Linq;
 using System.Net;
 using System.Reflection;
 using System.Runtime.InteropServices;
+using System.Runtime.InteropServices.ComTypes;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -161,7 +162,7 @@ namespace SARS
             rippedList.Save();
         }
 
-       
+
 
         private void LoadSettings()
         {
@@ -171,7 +172,7 @@ namespace SARS
             {
                 metroStyleManager1.Theme = MetroThemeStyle.Light;
             }
-            SarsClient.GetClientVersion(txtClientVersion,configSave);
+            SarsClient.GetClientVersion(txtClientVersion, configSave);
             SarsClient.GetLatestVersion();
 
             if (string.IsNullOrEmpty(configSave.Config.UnityLocation))
@@ -231,9 +232,9 @@ namespace SARS
             }
         }
 
-        
 
-        
+
+
 
 
         [DllImport("user32.dll")]
@@ -706,26 +707,17 @@ namespace SARS
 
             if (configSave.Config.HsbVersion != 2)
             {
-                CleanHsb();
+                SarsClient.CleanHsb(configSave);
                 configSave.Config.HsbVersion = 2;
                 configSave.Save();
             }
 
             AvatarFunctions.ExtractHSB(configSave.Config.HotSwapName);
-            CopyFiles();
+            SarsClient.CopyFiles(configSave);
             RandomFunctions.OpenUnity(configSave.Config.UnityLocation, configSave.Config.HotSwapName);
         }
 
-        private void CopyFiles()
-        {
-            try
-            {
-                var programLocation = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
-                File.Copy(programLocation + @"\Template\SampleScene.unity", programLocation + $"\\{configSave.Config.HotSwapName}\\Assets\\Scenes\\SampleScene.unity", true);
-                File.Copy(programLocation + @"\Template\shrekLogo.png", programLocation + $"\\{configSave.Config.HotSwapName}\\Assets\\Shrek SMART\\Resources\\shrekLogo.png", true);
-            }
-            catch { }
-        }
+
 
         private void avatarGrid_CellPainting(object sender, DataGridViewCellPaintingEventArgs e)
         {
@@ -757,33 +749,15 @@ namespace SARS
 
         private void btnResetScene_Click(object sender, EventArgs e)
         {
-            CopyFiles();
+            SarsClient.CopyFiles(configSave);
         }
 
         private void btnHsbClean_Click(object sender, EventArgs e)
         {
-            CleanHsb();
+            SarsClient.CleanHsb(configSave);
         }
 
-        private void CleanHsb()
-        {
-            var programLocation = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
-            RandomFunctions.KillProcess("Unity Hub.exe");
-            RandomFunctions.KillProcess("Unity.exe");
-            RandomFunctions.tryDeleteDirectory(programLocation + $"\\{configSave.Config.HotSwapName}");
-            RandomFunctions.tryDeleteDirectory(@"C:\Users\" + Environment.UserName + $"\\AppData\\Local\\Temp\\DefaultCompany\\{configSave.Config.HotSwapName}");
-            RandomFunctions.tryDeleteDirectory(@"C:\Users\" + Environment.UserName + $"\\AppData\\LocalLow\\DefaultCompany\\{configSave.Config.HotSwapName}");
-        }
 
-        private void CleanWorldHsb()
-        {
-            var programLocation = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
-            RandomFunctions.KillProcess("Unity Hub.exe");
-            RandomFunctions.KillProcess("Unity.exe");
-            RandomFunctions.tryDeleteDirectory(programLocation + $"\\{configSave.Config.HotSwapWorldName}");
-            RandomFunctions.tryDeleteDirectory(@"C:\Users\" + Environment.UserName + $"\\AppData\\Local\\Temp\\DefaultCompany\\{configSave.Config.HotSwapWorldName}");
-            RandomFunctions.tryDeleteDirectory(@"C:\Users\" + Environment.UserName + $"\\AppData\\LocalLow\\DefaultCompany\\{configSave.Config.HotSwapWorldName}");
-        }
 
         private void btnLoadVRCA_Click(object sender, EventArgs e)
         {
@@ -819,10 +793,7 @@ namespace SARS
             this.Text = SystemName;
             this.Update();
             this.Refresh();
-            
         }
-
-        
 
         private void DeleteLoginInfo()
         {
@@ -897,7 +868,8 @@ namespace SARS
                 {
                     MessageBox.Show("Login Failed");
                 }
-            }else
+            }
+            else
             {
                 MessageBox.Show("Please enter your Username/Password and make sure the client version has been filled");
             }
@@ -1978,6 +1950,7 @@ namespace SARS
                 return null;
             }
         }
+        
 
         private void UploadCacheResultWorld(VRChatCacheResultWorld model)
         {
@@ -2066,8 +2039,17 @@ namespace SARS
                 RecordCreated = DateTime.Now,
                 ReleaseStatus = model.ReleaseStatus,
                 ThumbnailUrl = model.ThumbnailImageUrl,
-                Tags = String.Join(",", model.Tags)
+                Tags = String.Join(",", model.Tags),
+                FileSize = 0
             };
+
+            var fileSize = avatars.SingleOrDefault(x => x.Avatar.AvatarId == model.Id);
+
+            if (fileSize != null)
+            {
+                avatarDetails.FileSize = new System.IO.FileInfo(fileSize.Avatar.PcAssetUrl).Length;
+            }
+
             if (model.UnityPackages != null)
             {
                 if (model.UnityPackages.FirstOrDefault(x => x.Platform.ToLower() == "standalonewindows") != null)
@@ -2123,6 +2105,7 @@ namespace SARS
                             {
                                 alreadyOnApi++;
                                 Console.WriteLine("Avatar already on API");
+                                SarsClient.UpdateFileSize(avatarDetails.AvatarId, avatarDetails.FileSize);
                             }
                         }
                     }
@@ -2496,19 +2479,19 @@ namespace SARS
 
             if (configSave.Config.HsbWorldVersion != 1)
             {
-                CleanWorldHsb();
+                SarsClient.CleanWorldHsb(configSave);
                 configSave.Config.HsbWorldVersion = 1;
                 configSave.Save();
             }
 
             AvatarFunctions.ExtractWorldHSB(configSave.Config.HotSwapWorldName);
-            CopyFiles();
+            SarsClient.CopyFiles(configSave);
             RandomFunctions.OpenUnity(configSave.Config.UnityLocation, configSave.Config.HotSwapWorldName);
         }
 
         private void btnCleanWorld_Click(object sender, EventArgs e)
         {
-            CleanWorldHsb();
+            SarsClient.CleanWorldHsb(configSave);
         }
 
         private void chkWorldHotswapping_CheckedChanged(object sender, EventArgs e)
@@ -2547,11 +2530,11 @@ namespace SARS
                 avatarGrid.ClearSelection();
                 avatarGrid.Rows[currentMouseOverRow].Selected = true;
                 m.Show(avatarGrid, new Point(e.X, e.Y));
-                SarsClient.AvatarSizeAndVersions(avatarGrid, avatars, nmPcVersion, nmQuestVersion, txtAvatarSizePc, txtAvatarSizeQuest);
-            } 
-            if(e.Button == MouseButtons.Left)
+
+            }
+            if (e.Button == MouseButtons.Left)
             {
-                SarsClient.AvatarSizeAndVersions(avatarGrid, avatars, nmPcVersion, nmQuestVersion, txtAvatarSizePc, txtAvatarSizeQuest);
+                //SarsClient.AvatarSizeAndVersions(avatarGrid, avatars, nmPcVersion, nmQuestVersion, txtAvatarSizePc, txtAvatarSizeQuest);
             }
         }
 
@@ -2681,6 +2664,11 @@ namespace SARS
 
         private void txtCacheScannerLog_Click(object sender, EventArgs e)
         {
+        }
+
+        private void avatarGrid_Row(object sender, DataGridViewCellEventArgs e)
+        {
+            SarsClient.AvatarSizeAndVersions(avatarGrid, avatars, nmPcVersion, nmQuestVersion, txtAvatarSizePc, txtAvatarSizeQuest);
         }
     }
 }

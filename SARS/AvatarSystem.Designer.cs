@@ -1676,9 +1676,10 @@
             this.avatarGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.avatarGrid.ShowEditingIcon = false;
             this.avatarGrid.ShowRowErrors = false;
-            this.avatarGrid.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.avatarGrid_CellClick);
+            this.avatarGrid.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.avatarGrid_CellContentClick);
             this.avatarGrid.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.avatarGrid_CellContentClick);
             this.avatarGrid.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.avatarGrid_CellDoubleClick);
+            this.avatarGrid.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.avatarGrid_Row);
             this.avatarGrid.MouseClick += new System.Windows.Forms.MouseEventHandler(this.avatarGrid_MouseClick);
             // 
             // picture

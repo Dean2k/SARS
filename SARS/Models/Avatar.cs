@@ -86,7 +86,7 @@ namespace SARS.Models
         public string Tags{ get; set; }
 
         [JsonProperty("fileSize")]
-        public int? FileSize{ get; set; }
+        public long FileSize{ get; set; }
 
         [JsonProperty("recordCreated")]
         public DateTime RecordCreated { get; set; }
