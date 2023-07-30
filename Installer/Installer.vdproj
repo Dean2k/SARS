@@ -243,12 +243,6 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_1F8C01D283D1AC30AB579FF4EC4A923C"
-        "OwnerKey" = "8:_9F8E647C7E424B3A84C1BDDEC42AA087"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
         "MsmKey" = "8:_20562F0388DA46DDBCFD15E5E9A8E6A5"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -1473,6 +1467,12 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_509120FDDF3DED0259DCE802272628F1"
+        "OwnerKey" = "8:_9F8E647C7E424B3A84C1BDDEC42AA087"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_512AF686B0B360B635237D2F51594A46"
         "OwnerKey" = "8:_D67BF6FD2C78458A9AA0EDA156F5C5EC"
         "MsmSig" = "8:_UNDEFINED"
@@ -2164,7 +2164,7 @@
         "Entry"
         {
         "MsmKey" = "8:_A505168C871119669E091C9DDF6CA2AB"
-        "OwnerKey" = "8:_1F8C01D283D1AC30AB579FF4EC4A923C"
+        "OwnerKey" = "8:_509120FDDF3DED0259DCE802272628F1"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -2518,7 +2518,7 @@
         "Entry"
         {
         "MsmKey" = "8:_CF542E297B66B74C8B6A9EFD719066A9"
-        "OwnerKey" = "8:_1F8C01D283D1AC30AB579FF4EC4A923C"
+        "OwnerKey" = "8:_509120FDDF3DED0259DCE802272628F1"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -3766,6 +3766,12 @@
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_509120FDDF3DED0259DCE802272628F1"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
         "OwnerKey" = "8:_F9BF6B1A489746BAB53773BE404A2CE8"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -4691,12 +4697,6 @@
         {
         "MsmKey" = "8:_UNDEFINED"
         "OwnerKey" = "8:_9F8E647C7E424B3A84C1BDDEC42AA087"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_1F8C01D283D1AC30AB579FF4EC4A923C"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -5628,37 +5628,6 @@
             "Register" = "3:1"
             "Exclude" = "11:FALSE"
             "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_1F8C01D283D1AC30AB579FF4EC4A923C"
-            {
-            "AssemblyRegister" = "3:1"
-            "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:VRChatAPI-New, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL"
-                "ScatterAssemblies"
-                {
-                    "_1F8C01D283D1AC30AB579FF4EC4A923C"
-                    {
-                    "Name" = "8:VRChatAPI-New.dll"
-                    "Attributes" = "3:512"
-                    }
-                }
-            "SourcePath" = "8:VRChatAPI-New.dll"
-            "TargetName" = "8:"
-            "Tag" = "8:"
-            "Folder" = "8:_F638F9820B244DB9B46B903B9370FECF"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_20562F0388DA46DDBCFD15E5E9A8E6A5"
@@ -7179,6 +7148,37 @@
             "Register" = "3:1"
             "Exclude" = "11:FALSE"
             "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_509120FDDF3DED0259DCE802272628F1"
+            {
+            "AssemblyRegister" = "3:1"
+            "AssemblyIsInGAC" = "11:FALSE"
+            "AssemblyAsmDisplayName" = "8:VRChatAPI-New, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL"
+                "ScatterAssemblies"
+                {
+                    "_509120FDDF3DED0259DCE802272628F1"
+                    {
+                    "Name" = "8:VRChatAPI-New.dll"
+                    "Attributes" = "3:512"
+                    }
+                }
+            "SourcePath" = "8:VRChatAPI-New.dll"
+            "TargetName" = "8:"
+            "Tag" = "8:"
+            "Folder" = "8:_F638F9820B244DB9B46B903B9370FECF"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
             "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_512AF686B0B360B635237D2F51594A46"
@@ -12478,15 +12478,15 @@
         {
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:SARS"
-        "ProductCode" = "8:{5C027A03-9345-4CD3-86FC-B7734E901AD9}"
-        "PackageCode" = "8:{8C3D75DF-9729-4BE3-B1DD-64E5456B181E}"
+        "ProductCode" = "8:{E9256F54-09D8-406B-91E3-7C5E1F64F01A}"
+        "PackageCode" = "8:{7B27712E-1122-4C79-AF34-624E3BA6A68A}"
         "UpgradeCode" = "8:{E03648F1-FF6A-44A2-B9C9-57FE29CE61D9}"
         "AspNetVersion" = "8:2.0.50727.0"
         "RestartWWWService" = "11:FALSE"
-        "RemovePreviousVersions" = "11:FALSE"
+        "RemovePreviousVersions" = "11:TRUE"
         "DetectNewerInstalledVersion" = "11:TRUE"
         "InstallAllUsers" = "11:TRUE"
-        "ProductVersion" = "8:1.10.0"
+        "ProductVersion" = "8:1.11.1"
         "Manufacturer" = "8:Shrek Tech"
         "ARPHELPTELEPHONE" = "8:"
         "ARPHELPLINK" = "8:"

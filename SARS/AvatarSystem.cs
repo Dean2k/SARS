@@ -916,7 +916,7 @@ namespace SARS
 
                     Download download = new Download { Text = $"{avatar.Avatar.AvatarName} - {avatar.Avatar.AvatarId}" };
                     download.Show();
-                    if ((bool)row.Cells[8].Value)
+                    if ((bool)row.Cells[9].Value)
                     {
                         await Task.Run(() => AvatarFunctions.DownloadVrcaAsync(avatar, nmPcVersion.Value, nmQuestVersion.Value, download));
                     }
