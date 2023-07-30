@@ -10,6 +10,7 @@ namespace SARS.Models
     {
         public string FileLocation { get; set; }
         public string AvatarId { get; set; }
+        public long FileSize { get; set; }
         public DateTime AvatarDetected { get; set;}
     }
 }

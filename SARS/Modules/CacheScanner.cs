@@ -49,7 +49,7 @@ namespace SARS.Modules
                                     string avatarId = stringToFind + words[1].Substring(0, 36);
                                     if (avatarIdRegEx.IsMatch(avatarId))
                                     {
-                                        CacheAvatar cacheAvatar = new CacheAvatar { AvatarId = avatarId.Trim(), FileLocation = filePath, AvatarDetected = File.GetCreationTime(filePath) };
+                                        CacheAvatar cacheAvatar = new CacheAvatar { AvatarId = avatarId.Trim(), FileLocation = filePath, AvatarDetected = File.GetCreationTime(filePath), FileSize = new FileInfo(filePath).Length };
                                         avatarIds.Add(cacheAvatar);
                                         autoAvatarIds.Add(cacheAvatar);
                                         NewMessage($"Avatar found: {avatarId}{Environment.NewLine}");
@@ -71,7 +71,7 @@ namespace SARS.Modules
                                     string worldId = stringToFindWorld + wordsWorlds[1].Substring(0, 36);
                                     if (worldIdRegEx.IsMatch(worldId))
                                     {
-                                        CacheAvatar cacheAvatar = new CacheAvatar { AvatarId = worldId.Trim(), FileLocation = filePath, AvatarDetected = File.GetCreationTime(filePath) };
+                                        CacheAvatar cacheAvatar = new CacheAvatar { AvatarId = worldId.Trim(), FileLocation = filePath, AvatarDetected = File.GetCreationTime(filePath), FileSize = new FileInfo(filePath).Length };
                                         avatarIds.Add(cacheAvatar);
                                         autoAvatarIds.Add(cacheAvatar);
                                         NewMessage($"World found: {worldId}{Environment.NewLine}");
@@ -229,7 +229,6 @@ namespace SARS.Modules
 
         }
 
-
         public static List<string> GetCacheLocations(string path)
         {
             List<string> dataLocations = new List<string>();
@@ -245,7 +244,6 @@ namespace SARS.Modules
                         string cacheDataPath = dataFolders[0] + "\\__data";
                         if (File.Exists(cacheDataPath))
                         {
-                            FileInfo info = new FileInfo(cacheDataPath);
                             dataLocations.Add(cacheDataPath);
                         }
                     }

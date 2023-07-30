@@ -30,7 +30,6 @@ namespace SARS.Models
         public int HsbVersion { get; set; }
         public int HsbWorldVersion { get; set; }
         public bool AltAPI { get; set; }
-        public bool Tls10 { get; set; }
         public bool Tls11 { get; set; }
         public bool Tls12 { get; set; }
         public bool Tls13 { get; set; }

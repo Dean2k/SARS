@@ -17,17 +17,14 @@ using System.Drawing.Imaging;
 using System.IO;
 using System.Linq;
 using System.Net;
-using System.Net.NetworkInformation;
 using System.Reflection;
 using System.Runtime.InteropServices;
 using System.Threading;
 using System.Threading.Tasks;
-using System.Timers;
 using System.Windows.Forms;
 using VRChatAPI_New;
 using VRChatAPI_New.Models;
 using VRChatAPI_New.Modules.Game;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement.Window;
 
 namespace SARS
 {
@@ -44,8 +41,6 @@ namespace SARS
         private string userAgent = "UnityPlayer/2019.4.40f1 (UnityWebRequest/1.0, libcurl/7.80.0-DEV)";
         private string vrcaLocation = "";
         private string SystemName;
-        private VRChatFileInformation avatarVersionPc;
-        private VRChatFileInformation avatarVersionQuest;
 
         public AvatarSystem()
         {
@@ -61,7 +56,7 @@ namespace SARS
             {
                 return true;
             };
-            ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls | SecurityProtocolType.Tls11 | SecurityProtocolType.Tls12 | SecurityProtocolType.Tls13;
+            ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls11 | SecurityProtocolType.Tls12 | SecurityProtocolType.Tls13;
             if (filePath.ToLower().Contains("\\local\\temp"))
             {
                 MessageBox.Show("EXTRACT THE PROGRAM FIRST");
@@ -166,31 +161,7 @@ namespace SARS
             rippedList.Save();
         }
 
-        private void GetLatestVersion()
-        {
-            System.Net.WebClient wc = new System.Net.WebClient();
-            byte[] raw = wc.DownloadData("https://ares-mod.com/Latest.txt");
-
-            string version = System.Text.Encoding.UTF8.GetString(raw);
-            if (Assembly.GetExecutingAssembly().GetName().Version.ToString() != version)
-            {
-                MessageBox.Show($"You are running an out of date version of SARS please update to stay secure\nYour Version: {Assembly.GetExecutingAssembly().GetName().Version.ToString()}\nLatest Version: {version}");
-            }
-        }
-
-        private void GetClientVersion()
-        {
-            System.Net.WebClient wc = new System.Net.WebClient();
-            byte[] raw = wc.DownloadData("https://ares-mod.com/Version.txt");
-
-            txtClientVersion.Text = System.Text.Encoding.UTF8.GetString(raw);
-            configSave.Config.ClientVersion = txtClientVersion.Text;
-
-            raw = wc.DownloadData("https://ares-mod.com/VersionUpdated.txt");
-
-            configSave.Config.ClientVersionLastUpdated = Convert.ToDateTime(System.Text.Encoding.UTF8.GetString(raw));
-            configSave.Save();
-        }
+       
 
         private void LoadSettings()
         {
@@ -200,12 +171,12 @@ namespace SARS
             {
                 metroStyleManager1.Theme = MetroThemeStyle.Light;
             }
-            GetClientVersion();
-            GetLatestVersion();
+            SarsClient.GetClientVersion(txtClientVersion,configSave);
+            SarsClient.GetLatestVersion();
 
             if (string.IsNullOrEmpty(configSave.Config.UnityLocation))
             {
-                UnitySetup();
+                SarsClient.UnitySetup(configSave);
             }
 
             if (string.IsNullOrEmpty(configSave.Config.MacAddress))
@@ -239,7 +210,6 @@ namespace SARS
                 toggleWorld.Checked = configSave.Config.PreSelectedWorldLocationChecked;
             }
 
-            chkTls10.Checked = configSave.Config.Tls10;
             chkTls11.Checked = configSave.Config.Tls11;
             chkTls12.Checked = configSave.Config.Tls12;
             chkTls13.Checked = configSave.Config.Tls13;
@@ -261,83 +231,10 @@ namespace SARS
             }
         }
 
-        private void UnitySetup()
-        {
-            var unityPath = UnityRegistry();
-            if (unityPath != null)
-            {
-                var dlgResult =
-                    MessageBox.Show(
-                        $"Possible unity path found, Location: '{unityPath + @"\Editor\Unity.exe"}' is this correct?",
-                        "Unity", MessageBoxButtons.YesNo);
-                if (dlgResult == DialogResult.Yes)
-                {
-                    if (File.Exists(unityPath + @"\Editor\Unity.exe"))
-                    {
-                        configSave.Config.UnityLocation = unityPath + @"\Editor\Unity.exe";
-                        configSave.Save();
-                        MessageBox.Show(
-                            "Leave the command window open it will close by itself after the unity setup is complete");
-                    }
-                    else
-                    {
-                        MessageBox.Show("Someone didn't check because that file doesn't exist!");
-                        SelectFile();
-                    }
-                }
-                else
-                {
-                    MessageBox.Show(
-                        "Please select unity.exe, after doing this leave the command window open it will close by itself after setup is complete");
-                    SelectFile();
-                }
-            }
-            else
-            {
-                MessageBox.Show(
-                    "Please select unity.exe, after doing this leave the command window open it will close by itself after setup is complete");
-                SelectFile();
-            }
-        }
+        
 
-        private void SelectFile()
-        {
-            var filePath = string.Empty;
+        
 
-            using (var openFileDialog = new OpenFileDialog())
-            {
-                openFileDialog.InitialDirectory = "c:\\";
-                openFileDialog.Filter = "Unity (Unity.exe)|Unity.exe";
-                openFileDialog.RestoreDirectory = true;
-                openFileDialog.Title = "Select Unity exe";
-
-                if (openFileDialog.ShowDialog() == DialogResult.OK)
-                    //Get the path of specified file
-                    filePath = openFileDialog.FileName;
-            }
-
-            configSave.Config.UnityLocation = filePath;
-            configSave.Save();
-        }
-
-        private string UnityRegistry()
-        {
-            try
-            {
-                using (var key = Registry.CurrentUser.OpenSubKey(@"SOFTWARE\Unity Technologies\Installer\Unity"))
-                {
-                    if (key == null) return null;
-                    var o = key.GetValue("Location x64");
-                    if (o != null) return o.ToString();
-                }
-
-                return null;
-            }
-            catch
-            {
-                return null;
-            }
-        }
 
         [DllImport("user32.dll")]
         private static extern int SendMessage(IntPtr hWnd, Int32 wMsg, bool wParam, Int32 lParam);
@@ -410,7 +307,9 @@ namespace SARS
                 LoadImages();
             }
         }
+
         private List<string> _loadedAvatars = new List<string>();
+
         private void LoadData(bool local = false, bool avatar = false)
         {
             Bitmap bitmap2 = null;
@@ -453,27 +352,28 @@ namespace SARS
                             row.Cells[3].Value = avatars[i].Avatar.AvatarId;
                             row.Cells[4].Value = avatars[i].Avatar.RecordCreated;
                             row.Cells[5].Value = avatars[i].Avatar.ThumbnailUrl;
+                            row.Cells[6].Value = SarsClient.FormatSize(avatars[i].Avatar.FileSize);
                             if (rippedList.Config.Any(x => x.Avatar.AvatarId == avatars[i].Avatar.AvatarId))
-                            {
-                                row.Cells[6].Value = true;
-                            }
-                            if (favList.Config.Any(x => x.Avatar.AvatarId == avatars[i].Avatar.AvatarId))
                             {
                                 row.Cells[7].Value = true;
                             }
+                            if (favList.Config.Any(x => x.Avatar.AvatarId == avatars[i].Avatar.AvatarId))
+                            {
+                                row.Cells[8].Value = true;
+                            }
                             if (!local)
                             {
-                                row.Cells[8].Value = avatar;
+                                row.Cells[9].Value = avatar;
                             }
                             else
                             {
                                 if (avatars[i].Avatar.AvatarId.Contains("wrld_"))
                                 {
-                                    row.Cells[8].Value = false;
+                                    row.Cells[9].Value = false;
                                 }
                                 else
                                 {
-                                    row.Cells[8].Value = true;
+                                    row.Cells[9].Value = true;
                                 }
                             }
                             avatarGrid.Rows.Add(row);
@@ -499,82 +399,7 @@ namespace SARS
             {
                 Directory.CreateDirectory(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location) + "\\images");
             }
-            ThreadPool.QueueUserWorkItem(delegate
-            {
-                for (int i = 0; i < avatarGrid.Rows.Count; i++)
-                {
-                    try
-                    {
-                        if (avatarGrid.Rows[i] != null)
-                        {
-                            string fileName = $"{Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location)}\\images\\{avatarGrid.Rows[i].Cells[3].Value}.png";
-                            if (!File.Exists(fileName))
-                            {
-                                if (avatarGrid.Rows[i].Cells[5].Value != null)
-                                {
-                                    if (!string.IsNullOrEmpty(avatarGrid.Rows[i].Cells[5].Value.ToString().Trim()))
-                                    {
-                                        try
-                                        {
-                                            AvatarModel info = avatars.FirstOrDefault(x => x.Avatar.AvatarId == avatarGrid.Rows[i].Cells[3].Value.ToString().Trim());
-                                            HttpWebRequest myRequest = (HttpWebRequest)WebRequest.Create(info.Avatar.ThumbnailUrl);
-                                            myRequest.Method = "GET";
-                                            myRequest.UserAgent = userAgent;
-                                            myRequest.Accept = "*/*";
-                                            myRequest.Headers["X-Unity-Version"] = "2019.4.40f1";
-                                            using (HttpWebResponse myResponse = (HttpWebResponse)myRequest.GetResponse())
-                                            {
-                                                if (myResponse.StatusCode == HttpStatusCode.OK)
-                                                {
-                                                    Bitmap bmp = new Bitmap(myResponse.GetResponseStream());
-                                                    avatarGrid.Rows[i].Cells[0].Value = bmp;
-                                                    bmp.Save(fileName, ImageFormat.Png);
-                                                }
-                                                else
-                                                {
-
-                                                    myRequest = (HttpWebRequest)WebRequest.Create(info.Avatar.ImageUrl);
-                                                    using (HttpWebResponse myResponse2 = (HttpWebResponse)myRequest.GetResponse())
-                                                    {
-                                                        if (myResponse2.StatusCode == HttpStatusCode.OK)
-                                                        {
-                                                            Bitmap bmp = new Bitmap(myResponse2.GetResponseStream());
-                                                            avatarGrid.Rows[i].Cells[0].Value = bmp;
-                                                            bmp.Save(fileName, ImageFormat.Png);
-                                                        }
-                                                        else
-                                                        {
-
-                                                            Bitmap bmp = new Bitmap(Resources.No_Image);
-                                                            avatarGrid.Rows[i].Cells[0].Value = bmp;
-                                                        }
-                                                    }
-                                                }
-                                            }
-                                        }
-                                        catch (Exception ex)
-                                        {
-                                            Console.WriteLine(ex.ToString());
-                                            try
-                                            {
-                                                Bitmap bmp = new Bitmap(Resources.No_Image);
-                                                avatarGrid.Rows[i].Cells[0].Value = bmp;
-                                            }
-                                            catch { }
-                                        }
-                                    }
-                                }
-                            }
-                            else
-                            {
-                                Bitmap bmp = new Bitmap(fileName);
-                                avatarGrid.Rows[i].Cells[0].Value = bmp;
-                            }
-                        }
-                    }
-                    catch { }
-                }
-            });
+            SarsClient.ThreadLoadImages(userAgent, avatarGrid, avatars);
         }
 
         private void btnViewDetails_Click(object sender, EventArgs e)
@@ -841,7 +666,6 @@ namespace SARS
                     download.Show();
                     await Task.Run(() => AvatarFunctions.DownloadVrcaAsync(avatar, nmPcVersion.Value, nmQuestVersion.Value, download));
                     download.Close();
-
                 }
                 if (AvatarFunctions.pcDownload)
                 {
@@ -995,83 +819,10 @@ namespace SARS
             this.Text = SystemName;
             this.Update();
             this.Refresh();
-            if (avatarGrid.SelectedRows.Count == 1)
-            {
-                AvatarModel info = avatars.FirstOrDefault(x => x.Avatar.AvatarId == avatarGrid.SelectedRows[0].Cells[3].Value.ToString().Trim());
-                if (info == null || info.Avatar.AuthorId == "Unknown Cache")
-                {
-                    nmPcVersion.Value = 0;
-                    nmQuestVersion.Value = 0;
-                    try
-                    {
-                        System.IO.FileInfo fi = new System.IO.FileInfo(info.Avatar.PcAssetUrl);
-                        txtAvatarSizePc.Text = FormatSize(fi.Length);
-                    }
-                    catch
-                    {
-                        txtAvatarSizePc.Text = "Local PC";
-                    }
-                    txtAvatarSizeQuest.Text = "";
-                    return;
-                }
-                var versions = AvatarFunctions.GetVersion(info.Avatar.PcAssetUrl, info.Avatar.QuestAssetUrl);
-                avatarVersionPc = versions.Item3;
-                avatarVersionQuest = versions.Item4;
-                if (avatarVersionPc != null && info.Avatar.PcAssetUrl.StartsWith("http"))
-                {
-                    nmPcVersion.Maximum = versions.Item1;
-                    nmPcVersion.Value = versions.Item1;
-                    txtAvatarSizePc.Text = FormatSize(avatarVersionPc.Versions.FirstOrDefault(x => x.Version == nmPcVersion.Value).File.SizeInBytes);
-                }
-                else if (!info.Avatar.PcAssetUrl.StartsWith("http"))
-                {
-                    nmPcVersion.Maximum = 1;
-                    nmPcVersion.Value = 1;
-                    System.IO.FileInfo fi = new System.IO.FileInfo(info.Avatar.PcAssetUrl);
-                    txtAvatarSizePc.Text = FormatSize(fi.Length);
-                }
-                else
-                {
-                    nmPcVersion.Maximum = 1;
-                    nmPcVersion.Value = 1;
-                    txtAvatarSizePc.Text = "Error";
-                }
-                if (avatarVersionQuest != null)
-                {
-                    nmQuestVersion.Maximum = versions.Item2;
-                    nmQuestVersion.Value = versions.Item2;
-                    txtAvatarSizeQuest.Text = FormatSize(avatarVersionQuest.Versions.FirstOrDefault(x => x.Version == nmQuestVersion.Value).File.SizeInBytes);
-                }
-                else
-                {
-                    nmQuestVersion.Maximum = 1;
-                    txtAvatarSizeQuest.Text = "0MB";
-                }
-            }
+            
         }
 
-        // Load all suffixes in an array
-        private static readonly string[] suffixes =
-        { "Bytes", "KB", "MB", "GB", "TB", "PB" };
-
-        public string FormatSize(Int64 bytes)
-        {
-            try
-            {
-                int counter = 0;
-                decimal number = (decimal)bytes;
-                while (Math.Round(number / 1024) >= 1)
-                {
-                    number = number / 1024;
-                    counter++;
-                }
-                return string.Format("{0:n1}{1}", number, suffixes[counter]);
-            }
-            catch
-            {
-                return "0MB";
-            }
-        }
+        
 
         private void DeleteLoginInfo()
         {
@@ -1109,7 +860,7 @@ namespace SARS
             catch
             {
             }
-            if (txtVRCUsername.Text != "" && txtVRCPassword.Text != "")
+            if (txtVRCUsername.Text != "" && txtVRCPassword.Text != "" && txtClientVersion.Text != "")
             {
                 VRChatUserInfo info = null;
                 try
@@ -1146,6 +897,9 @@ namespace SARS
                 {
                     MessageBox.Show("Login Failed");
                 }
+            }else
+            {
+                MessageBox.Show("Please enter your Username/Password and make sure the client version has been filled");
             }
         }
 
@@ -1179,7 +933,6 @@ namespace SARS
                         await Task.Run(() => AvatarFunctions.DownloadVrcwAsync(avatar, 0, download));
                     }
                     download.Close();
-
                 }
             }
             else
@@ -1267,31 +1020,30 @@ namespace SARS
                     }
                 }
 
-                var folderDlg = new FolderBrowserDialog
+                var folderDlg = new CommonOpenFileDialog
                 {
-                    ShowNewFolderButton = true
+                    IsFolderPicker = true
                 };
                 // Show the FolderBrowserDialog.
-                var result = DialogResult.OK;
+                CommonFileDialogResult result = CommonFileDialogResult.Ok;
                 if (toggleAvatar.Checked && txtAvatarOutput.Text != "" && !worldFile)
                 {
-                    folderDlg.SelectedPath = txtAvatarOutput.Text;
+                    folderDlg.InitialDirectory = txtAvatarOutput.Text;
                 }
                 else if (toggleWorld.Checked && txtWorldOutput.Text != "" && worldFile)
                 {
-                    folderDlg.SelectedPath = txtWorldOutput.Text;
+                    folderDlg.InitialDirectory = txtWorldOutput.Text;
                 }
                 else
                 {
                     result = folderDlg.ShowDialog();
                 }
 
-
-                if (result == DialogResult.OK || toggleAvatar.Checked && txtAvatarOutput.Text != "" && !worldFile || toggleWorld.Checked && txtWorldOutput.Text != "" && worldFile)
+                if (result == CommonFileDialogResult.Ok || toggleAvatar.Checked && txtAvatarOutput.Text != "" && !worldFile || toggleWorld.Checked && txtWorldOutput.Text != "" && worldFile)
                 {
                     var filePath = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
                     var invalidFileNameChars = Path.GetInvalidFileNameChars();
-                    var folderExtractLocation = folderDlg.SelectedPath + @"\" + Path.GetFileNameWithoutExtension(avatarFile);
+                    var folderExtractLocation = folderDlg.FileName + @"\" + Path.GetFileNameWithoutExtension(avatarFile);
                     if (!Directory.Exists(folderExtractLocation)) Directory.CreateDirectory(folderExtractLocation);
                     var commands =
                         string.Format(
@@ -1365,7 +1117,7 @@ namespace SARS
 
         private void btnUnityLoc_Click(object sender, EventArgs e)
         {
-            SelectFile();
+            SarsClient.SelectFile(configSave);
         }
 
         private void btnPreview_Click(object sender, EventArgs e)
@@ -1430,7 +1182,6 @@ namespace SARS
                 Download download = null;
                 foreach (DataGridViewRow row in avatarGrid.SelectedRows)
                 {
-
                     avatar = avatars.FirstOrDefault(x => x.Avatar.AvatarId == row.Cells[3].Value);
                     download = new Download() { Text = $"{avatar.Avatar.AvatarName} - {avatar.Avatar.AvatarId}" };
                     download.Show();
@@ -1567,7 +1318,7 @@ namespace SARS
 
         private void btnUnityLoc_Click_1(object sender, EventArgs e)
         {
-            SelectFile();
+            SarsClient.SelectFile(configSave);
         }
 
         private void chkTls13_CheckedChanged(object sender, EventArgs e)
@@ -1575,7 +1326,6 @@ namespace SARS
             if (chkTls13.Checked)
             {
                 ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls13;
-                chkTls10.Checked = false;
                 chkTls11.Checked = false;
                 chkTls12.Checked = false;
             }
@@ -1588,7 +1338,6 @@ namespace SARS
             if (chkTls12.Checked)
             {
                 ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
-                chkTls10.Checked = false;
                 chkTls11.Checked = false;
                 chkTls13.Checked = false;
             }
@@ -1601,24 +1350,10 @@ namespace SARS
             if (chkTls11.Checked)
             {
                 ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls11;
-                chkTls10.Checked = false;
                 chkTls13.Checked = false;
                 chkTls12.Checked = false;
             }
             configSave.Config.Tls11 = chkTls11.Checked;
-            configSave.Save();
-        }
-
-        private void chkTls10_CheckedChanged(object sender, EventArgs e)
-        {
-            if (chkTls10.Checked)
-            {
-                ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls;
-                chkTls13.Checked = false;
-                chkTls11.Checked = false;
-                chkTls12.Checked = false;
-            }
-            configSave.Config.Tls10 = chkTls10.Checked;
             configSave.Save();
         }
 
@@ -1636,17 +1371,17 @@ namespace SARS
 
         private void nmPcVersion_ValueChanged(object sender, EventArgs e)
         {
-            if (avatarVersionPc != null && nmPcVersion.Value > 0)
+            if (SarsClient.avatarVersionPc != null && nmPcVersion.Value > 0)
             {
-                txtAvatarSizePc.Text = FormatSize(avatarVersionPc.Versions.FirstOrDefault(x => x.Version == nmPcVersion.Value).File.SizeInBytes);
+                txtAvatarSizePc.Text = SarsClient.FormatSize(SarsClient.avatarVersionPc.Versions.FirstOrDefault(x => x.Version == nmPcVersion.Value).File.SizeInBytes);
             }
         }
 
         private void nmQuestVersion_ValueChanged(object sender, EventArgs e)
         {
-            if (avatarVersionQuest != null && nmQuestVersion.Value > 0)
+            if (SarsClient.avatarVersionQuest != null && nmQuestVersion.Value > 0)
             {
-                txtAvatarSizeQuest.Text = FormatSize(avatarVersionQuest.Versions.FirstOrDefault(x => x.Version == nmQuestVersion.Value).File.SizeInBytes);
+                txtAvatarSizeQuest.Text = SarsClient.FormatSize(SarsClient.avatarVersionQuest.Versions.FirstOrDefault(x => x.Version == nmQuestVersion.Value).File.SizeInBytes);
             }
         }
 
@@ -1658,6 +1393,7 @@ namespace SARS
 
         private string cacheFolderAuto = null;
         private List<string> loadedImage = new List<string>();
+
         private async Task<bool> ScanCacheAvatar(bool bypassLoaded)
         {
             if (!bypassLoaded)
@@ -1692,7 +1428,7 @@ namespace SARS
                 {
                     if (item != null)
                     {
-                        AvatarModel avatar = new AvatarModel { Tags = new List<string>(), Avatar = new AvatarDetails { ThumbnailUrl = "https://ares-mod.com/avatars/Image_not_available.png", ImageUrl = "https://ares-mod.com/avatars/Image_not_available.png", PcAssetUrl = item.FileLocation, AvatarId = item.AvatarId, AvatarName = "From cache no names", AvatarDescription = "Avatar is from the game cache no names are located", RecordCreated = item.AvatarDetected, ReleaseStatus = "????", UnityVersion = "????", QuestAssetUrl = "None", AuthorName = "Unknown", AuthorId = "Unknown Cache" } };
+                        AvatarModel avatar = new AvatarModel { Tags = new List<string>(), Avatar = new AvatarDetails { ThumbnailUrl = "https://ares-mod.com/avatars/Image_not_available.png", ImageUrl = "https://ares-mod.com/avatars/Image_not_available.png", PcAssetUrl = item.FileLocation, AvatarId = item.AvatarId, AvatarName = "From cache no names", AvatarDescription = "Avatar is from the game cache no names are located", RecordCreated = item.AvatarDetected, ReleaseStatus = "????", UnityVersion = "????", QuestAssetUrl = "None", AuthorName = "Unknown", AuthorId = "Unknown Cache", FileSize = item.FileSize } };
                         list.Add(avatar);
                     }
                 }
@@ -1706,7 +1442,7 @@ namespace SARS
                 {
                     if (item != null)
                     {
-                        AvatarModel avatar = new AvatarModel { Tags = new List<string>(), Avatar = new AvatarDetails { ThumbnailUrl = "https://ares-mod.com/avatars/Image_not_available.png", ImageUrl = "https://ares-mod.com/avatars/Image_not_available.png", PcAssetUrl = item.FileLocation, AvatarId = item.AvatarId, AvatarName = "From cache no names", AvatarDescription = "Avatar is from the game cache no names are located", RecordCreated = item.AvatarDetected, ReleaseStatus = "????", UnityVersion = "????", QuestAssetUrl = "None", AuthorName = "Unknown", AuthorId = "Unknown Cache" } };
+                        AvatarModel avatar = new AvatarModel { Tags = new List<string>(), Avatar = new AvatarDetails { ThumbnailUrl = "https://ares-mod.com/avatars/Image_not_available.png", ImageUrl = "https://ares-mod.com/avatars/Image_not_available.png", PcAssetUrl = item.FileLocation, AvatarId = item.AvatarId, AvatarName = "From cache no names", AvatarDescription = "Avatar is from the game cache no names are located", RecordCreated = item.AvatarDetected, ReleaseStatus = "????", UnityVersion = "????", QuestAssetUrl = "None", AuthorName = "Unknown", AuthorId = "Unknown Cache", FileSize = item.FileSize } };
                         list.Add(avatar);
                     }
                 }
@@ -1747,7 +1483,7 @@ namespace SARS
                         {
                             if (avatarGrid.Rows[i] != null)
                             {
-                                if (avatarGrid.Rows[i].Cells[3].Value != null && (bool)avatarGrid.Rows[i].Cells[8].Value == true)
+                                if (avatarGrid.Rows[i].Cells[3].Value != null && (bool)avatarGrid.Rows[i].Cells[9].Value == true)
                                 {
                                     string avatarId = avatarGrid.Rows[i].Cells[3].Value.ToString();
                                     VRChatCacheResult local = null;
@@ -1774,7 +1510,6 @@ namespace SARS
                                             UploadCacheResultAvatar(vRChatCacheResult);
                                         }
                                         GetAvatarInfo(vRChatCacheResult, avatarId, avatarGrid.Rows[i]);
-
                                     }
                                     if (vRChatCacheResult == null)
                                     {
@@ -1797,7 +1532,7 @@ namespace SARS
                                         LoadImageCache(avatarId, avatarGrid.Rows[i]);
                                     }
                                 }
-                                if (avatarGrid.Rows[i].Cells[3].Value != null && (bool)avatarGrid.Rows[i].Cells[8].Value == false)
+                                if (avatarGrid.Rows[i].Cells[3].Value != null && (bool)avatarGrid.Rows[i].Cells[9].Value == false)
                                 {
                                     string worldId = avatarGrid.Rows[i].Cells[3].Value.ToString();
                                     VRChatCacheResultWorld local = null;
@@ -1824,7 +1559,6 @@ namespace SARS
                                             UploadCacheResultWorld(vRChatCacheResult);
                                         }
                                         GetWorldInfo(vRChatCacheResult, worldId, avatarGrid.Rows[i]);
-
                                     }
                                 }
                             }
@@ -2095,7 +1829,6 @@ namespace SARS
 
         private void btnLoadResults_Click(object sender, EventArgs e)
         {
-
         }
 
         private void txtClientVersion_TextChanged(object sender, EventArgs e)
@@ -2177,6 +1910,7 @@ namespace SARS
         }
 
         private int FromApi = 0;
+
         private VRChatCacheResult GetDetailsApi(string avatarId)
         {
             AvatarSearch avatarSearch = new AvatarSearch { Key = configSave.Config.ApiKey, Amount = 1, PrivateAvatars = true, PublicAvatars = true, ContainsSearch = false, DebugMode = true, PcAvatars = true, QuestAvatars = chkQuest.Checked, AvatarId = avatarId };
@@ -2243,7 +1977,6 @@ namespace SARS
                 }
                 return null;
             }
-
         }
 
         private void UploadCacheResultWorld(VRChatCacheResultWorld model)
@@ -2420,12 +2153,12 @@ namespace SARS
             }
         }
 
-        int uploadedAvatars = 0;
-        int uploadedWorlds = 0;
-        int alreadyOnApi = 0;
+        private int uploadedAvatars = 0;
+        private int uploadedWorlds = 0;
+        private int alreadyOnApi = 0;
+
         private void btnParseImages_Click(object sender, EventArgs e)
         {
-
         }
 
         private VRChatCacheResult DbCheckAvatar(string avatarId)
@@ -2433,6 +2166,7 @@ namespace SARS
             string data = SQLite.ReadDataAvatar(avatarId);
             if (data != null)
             {
+                alreadyOnApi++;
                 return JsonConvert.DeserializeObject<VRChatCacheResult>(data);
             }
 
@@ -2444,6 +2178,7 @@ namespace SARS
             string data = SQLite.ReadDataWorld(worldId);
             if (data != null)
             {
+                alreadyOnApi++;
                 return JsonConvert.DeserializeObject<VRChatCacheResultWorld>(data);
             }
 
@@ -2502,7 +2237,6 @@ namespace SARS
                 Tags = new List<string>()
             };
 
-
             if (vRChatCacheResult.UnityPackages != null)
             {
                 if (vRChatCacheResult.UnityPackages.FirstOrDefault(x => x.Platform.ToLower() == "android") != null)
@@ -2536,7 +2270,6 @@ namespace SARS
                     {
                         try
                         {
-
                             HttpWebRequest myRequest = (HttpWebRequest)WebRequest.Create(row.Cells[5].Value.ToString());
                             myRequest.Method = "GET";
                             myRequest.UserAgent = userAgent;
@@ -2554,7 +2287,6 @@ namespace SARS
                                     row.Cells[0].Value = bmp;
                                 }
                             }
-
                         }
                         catch (Exception ex)
                         {
@@ -2609,7 +2341,6 @@ namespace SARS
                 Tags = new List<string>()
             };
 
-
             if (vRChatCacheResult.UnityPackages != null)
             {
                 if (vRChatCacheResult.UnityPackages.FirstOrDefault(x => x.Platform.ToLower() == "android") != null)
@@ -2627,7 +2358,6 @@ namespace SARS
             {
                 avatars[index] = avatar;
             }
-
 
             cacheList.Add(avatar);
             row.Cells[1].Value = vRChatCacheResult.Name;
@@ -2719,7 +2449,6 @@ namespace SARS
                     }
                     else
                     {
-
                         try
                         {
                             Image myImg = (row.Cells[0].Value as Image);
@@ -2818,7 +2547,11 @@ namespace SARS
                 avatarGrid.ClearSelection();
                 avatarGrid.Rows[currentMouseOverRow].Selected = true;
                 m.Show(avatarGrid, new Point(e.X, e.Y));
-
+                SarsClient.AvatarSizeAndVersions(avatarGrid, avatars, nmPcVersion, nmQuestVersion, txtAvatarSizePc, txtAvatarSizeQuest);
+            } 
+            if(e.Button == MouseButtons.Left)
+            {
+                SarsClient.AvatarSizeAndVersions(avatarGrid, avatars, nmPcVersion, nmQuestVersion, txtAvatarSizePc, txtAvatarSizeQuest);
             }
         }
 
@@ -2889,7 +2622,6 @@ namespace SARS
                                 AvatarModel avatar = avatars.FirstOrDefault(x => x.Avatar.AvatarId == avatarId);
                                 try
                                 {
-
                                     string commands = string.Format($"\"{avatar.Avatar.PcAssetUrl}\" \"screen.shot\"");
                                     Console.WriteLine(commands);
                                     Process p = new Process();
@@ -2945,6 +2677,10 @@ namespace SARS
             Console.WriteLine("Scanning Cache");
             CacheScanner.NewMessage($"Auto Scanning Cache{Environment.NewLine}");
             ScanCacheAvatar(true);
+        }
+
+        private void txtCacheScannerLog_Click(object sender, EventArgs e)
+        {
         }
     }
 }

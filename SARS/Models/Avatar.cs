@@ -40,6 +40,9 @@ namespace SARS.Models
         [JsonProperty("unityVersion")]
         public string UnityVersion { get; set; }
 
+        [JsonProperty("fileSize")]
+        public long FileSize { get; set; }
+
         [JsonProperty("recordCreated")]
         public DateTime RecordCreated { get; set; }
     }
@@ -81,6 +84,9 @@ namespace SARS.Models
 
         [JsonProperty("tags")]
         public string Tags{ get; set; }
+
+        [JsonProperty("fileSize")]
+        public int? FileSize{ get; set; }
 
         [JsonProperty("recordCreated")]
         public DateTime RecordCreated { get; set; }
