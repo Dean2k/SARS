@@ -2,7 +2,6 @@
 using System;
 using System.IO;
 using System.Net;
-using System.Reflection;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using VRChatAPI_New.Models;
@@ -15,22 +14,14 @@ namespace VRChatAPI_New.Modules.Game
         {
             if (url.StartsWith("http"))
             {
-                url += "?apiKey=JlE5Jldo5Jibnk5O5hTx6XVqsJu4WJ26&organization=vrchat";
-                using WebClient webClient = new WebClient();
+                url += "?organization=vrchat";
+                using WebClient webClient = SetupWebClient();
                 try
                 {
                     webClient.DownloadProgressChanged += (s, e) =>
                     {
                         SafeProgress(progressBar, e.ProgressPercentage);
                     };
-                    webClient.BaseAddress = "https://api.vrchat.cloud";
-                    webClient.Headers.Add("Accept", $"*/*");
-                    webClient.Headers.Add("Cookie", $"auth={StaticGameValues.AuthKey}; twoFactorAuth={StaticGameValues.TwoFactorKey};");
-                    webClient.Headers.Add("X-MacAddress", StaticGameValues.MacAddress);
-                    webClient.Headers.Add("X-Client-Version", StaticGameValues.GameVersion);
-                    webClient.Headers.Add("X-Platform", "standalonewindows");
-                    webClient.Headers.Add("user-agent", "VRC.Core.BestHTTP");
-                    webClient.Headers.Add("X-Unity-Version", "2019.4.40f1");
                     await webClient.DownloadFileTaskAsync(new Uri(url), fileLocation);
                 }
                 catch (System.Exception ex)
@@ -58,15 +49,16 @@ namespace VRChatAPI_New.Modules.Game
                     }
                     catch { }
                 }
-            } else
+            }
+            else
             {
                 if (!File.Exists(fileLocation))
                 {
                     File.Copy(url, fileLocation);
                     ShowSelectedInExplorer.FileOrFolder(fileLocation);
-                } else
+                }
+                else
                 {
-
                 }
             }
         }
@@ -88,15 +80,7 @@ namespace VRChatAPI_New.Modules.Game
 
         public static VRChatFileInformation GetVersions(string url)
         {
-            using WebClient webClient = new WebClient();
-            webClient.BaseAddress = "https://api.vrchat.cloud";
-            webClient.Headers.Add("Accept", $"*/*");
-            webClient.Headers.Add("Cookie", $"auth={StaticGameValues.AuthKey}; twoFactorAuth={StaticGameValues.TwoFactorKey}");
-            webClient.Headers.Add("X-MacAddress", StaticGameValues.MacAddress);
-            webClient.Headers.Add("X-Client-Version", StaticGameValues.GameVersion);
-            webClient.Headers.Add("X-Platform", "standalonewindows");
-            webClient.Headers.Add("user-agent", "VRC.Core.BestHTTP");
-            webClient.Headers.Add("X-Unity-Version", "2019.4.40f1");
+            using WebClient webClient = SetupWebClient();
             try
             {
                 string web = webClient.DownloadString(url);
@@ -109,6 +93,22 @@ namespace VRChatAPI_New.Modules.Game
                 return null;
                 //skip as its likely avatar is been yeeted from VRC servers
             }
+        }
+        
+        private static WebClient SetupWebClient()
+        {
+            WebClient webClient = new WebClient();
+            webClient.BaseAddress = "https://api.vrchat.cloud";
+            webClient.Headers.Add("Accept", $"*/*");
+            webClient.Headers.Add("Cookie", $"auth={StaticGameValues.AuthKey}; twoFactorAuth={StaticGameValues.TwoFactorKey};");
+            webClient.Headers.Add("X-MacAddress", StaticGameValues.MacAddress);
+            webClient.Headers.Add("X-Client-Version", StaticGameValues.GameVersion);
+            webClient.Headers.Add("X-Platform", "standalonewindows");
+            webClient.Headers.Add("X-GameServer-Version", StaticGameValues.ServerVersion);
+            webClient.Headers.Add("user-agent", "VRC.Core.BestHTTP");
+            webClient.Headers.Add("X-Unity-Version", StaticGameValues.UnityVersion);
+            webClient.Headers.Add("X-Store", StaticGameValues.Store);
+            return webClient;
         }
     }
 }

@@ -1,12 +1,10 @@
 ﻿using System.Net;
 using System.Net.Http;
-using System.Security.Cryptography;
 
 namespace VRChatAPI_New.Modules.Game
 {
     public static class SARSGameClient
     {
-
         public static void SetupClient()
         {
             HttpClientHandler handler = SetupClientHandler();
@@ -37,10 +35,12 @@ namespace VRChatAPI_New.Modules.Game
             requestHeaders.AcceptEncoding.ParseAdd("gzip, identity");
             requestHeaders.TE.ParseAdd("identity");
             requestHeaders.Host = "api.vrchat.cloud";
-            requestHeaders.Add("X-Client-Version", StaticGameValues.GameVersion);
-            requestHeaders.Add("X-Unity-Version", StaticGameValues.UnityVersion);
-            requestHeaders.Add("X-Platform", "standalonewindows");
             requestHeaders.Add("X-MacAddress", StaticGameValues.MacAddress);
+            requestHeaders.Add("X-Client-Version", StaticGameValues.GameVersion);
+            requestHeaders.Add("X-Platform", "standalonewindows");
+            requestHeaders.Add("X-Unity-Version", StaticGameValues.UnityVersion);
+            requestHeaders.Add("X-GameServer-Version", StaticGameValues.ServerVersion);
+            requestHeaders.Add("X-Store", StaticGameValues.Store);
         }
     }
 }

@@ -22,6 +22,8 @@ namespace VRChatAPI_New
             StaticGameValues.ApiUrl = new Uri("https://api.vrchat.cloud/api/1/", UriKind.Absolute);
             StaticGameValues.GameVersion = SetupGameVersion();
             StaticGameValues.UnityVersion = SetupUnityGameVersion();
+            StaticGameValues.Store = SetupStore();
+            StaticGameValues.ServerVersion = SetupServerVersion();
             StaticGameValues.MacAddress = macAddress;
             StaticGameValues.CookieContainer = new CookieContainer();
             SARSGameClient.SetupClient();
@@ -30,7 +32,7 @@ namespace VRChatAPI_New
 
         private static string SetupGameVersion()
         {
-            string gameVersion = "2023.2.2p1-1305--Release";
+            string gameVersion = "2023.2.4-1319--Release";
             try
             {
                 WebClient client = new WebClient();
@@ -43,6 +45,40 @@ namespace VRChatAPI_New
             }
             catch { }
             return gameVersion;
+        }
+
+        private static string SetupServerVersion()
+        {
+            string serverVersion = "Release_1316";
+            try
+            {
+                WebClient client = new WebClient();
+                Stream stream = client.OpenRead("https://ares-mod.com/ServerVersion.txt");
+                StreamReader reader = new StreamReader(stream);
+                serverVersion = reader.ReadToEnd();
+                reader.Dispose();
+                stream.Dispose();
+                client.Dispose();
+            }
+            catch { }
+            return serverVersion;
+        }
+
+        private static string SetupStore()
+        {
+            string serverVersion = "Steam";
+            try
+            {
+                WebClient client = new WebClient();
+                Stream stream = client.OpenRead("https://ares-mod.com/Store.txt");
+                StreamReader reader = new StreamReader(stream);
+                serverVersion = reader.ReadToEnd();
+                reader.Dispose();
+                stream.Dispose();
+                client.Dispose();
+            }
+            catch { }
+            return serverVersion;
         }
 
         public static bool IsLoginGameInitialised()

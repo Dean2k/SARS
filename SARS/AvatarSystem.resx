@@ -1279,7 +1279,7 @@
     <value>Vertical</value>
   </data>
   <data name="avatarGrid.Size" type="System.Drawing.Size, System.Drawing">
-    <value>840, 447</value>
+    <value>840, 448</value>
   </data>
   <data name="avatarGrid.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
@@ -1439,7 +1439,7 @@
     <value>3</value>
   </data>
   <data name="groupBox7.Location" type="System.Drawing.Point, System.Drawing">
-    <value>9, 301</value>
+    <value>9, 302</value>
   </data>
   <data name="groupBox7.Size" type="System.Drawing.Size, System.Drawing">
     <value>797, 120</value>
@@ -2531,10 +2531,10 @@
     <value>14</value>
   </data>
   <data name="metroTabPage4.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 38</value>
+    <value>4, 39</value>
   </data>
   <data name="metroTabPage4.Size" type="System.Drawing.Size, System.Drawing">
-    <value>840, 444</value>
+    <value>840, 443</value>
   </data>
   <data name="metroTabPage4.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
@@ -2867,10 +2867,10 @@
     <value>12</value>
   </data>
   <data name="metroTabPage3.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 38</value>
+    <value>4, 39</value>
   </data>
   <data name="metroTabPage3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>840, 444</value>
+    <value>840, 443</value>
   </data>
   <data name="metroTabPage3.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
@@ -2900,7 +2900,7 @@
     <value>20, 20</value>
   </data>
   <data name="faq.Size" type="System.Drawing.Size, System.Drawing">
-    <value>840, 444</value>
+    <value>840, 443</value>
   </data>
   <data name="faq.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
@@ -2918,10 +2918,10 @@
     <value>2</value>
   </data>
   <data name="metroTabPage5.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 38</value>
+    <value>4, 39</value>
   </data>
   <data name="metroTabPage5.Size" type="System.Drawing.Size, System.Drawing">
-    <value>840, 444</value>
+    <value>840, 443</value>
   </data>
   <data name="metroTabPage5.TabIndex" type="System.Int32, mscorlib">
     <value>4</value>
@@ -3071,10 +3071,10 @@
     <value>5</value>
   </data>
   <data name="btnScanCache.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 38</value>
+    <value>4, 39</value>
   </data>
   <data name="btnScanCache.Size" type="System.Drawing.Size, System.Drawing">
-    <value>840, 444</value>
+    <value>840, 443</value>
   </data>
   <data name="btnScanCache.TabIndex" type="System.Int32, mscorlib">
     <value>5</value>
@@ -3578,10 +3578,10 @@
     <value>3</value>
   </data>
   <data name="metroTabPage6.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 38</value>
+    <value>4, 39</value>
   </data>
   <data name="metroTabPage6.Size" type="System.Drawing.Size, System.Drawing">
-    <value>840, 444</value>
+    <value>840, 443</value>
   </data>
   <data name="metroTabPage6.TabIndex" type="System.Int32, mscorlib">
     <value>6</value>

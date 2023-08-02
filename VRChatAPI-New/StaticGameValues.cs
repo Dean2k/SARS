@@ -14,6 +14,8 @@ namespace VRChatAPI_New
         public static string MacAddress { get; set; }
         public static string GameVersion { get; set; }
         public static string UnityVersion { get; set; }
+        public static string ServerVersion { get; set; }
+        public static string Store { get; set; }
         public static Uri ApiUrl { get; set; }
         public static CookieContainer CookieContainer { get; set; }
         public static HttpClient HttpClient { get; set; }
