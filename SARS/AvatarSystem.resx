@@ -234,6 +234,9 @@
   <data name="resource.Image" type="System.Resources.ResXNullRef, System.Windows.Forms">
     <value />
   </data>
+  <data name="resource.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
   <data name="resource.Location" type="System.Drawing.Point, System.Drawing">
     <value>444, 1</value>
   </data>
@@ -1029,6 +1032,9 @@
   <data name="resource.Image1" type="System.Resources.ResXNullRef, System.Windows.Forms">
     <value />
   </data>
+  <data name="resource.ImeMode1" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
   <data name="resource.Location1" type="System.Drawing.Point, System.Drawing">
     <value>101, 1</value>
   </data>
@@ -1097,6 +1103,9 @@
   </data>
   <data name="resource.Image2" type="System.Resources.ResXNullRef, System.Windows.Forms">
     <value />
+  </data>
+  <data name="resource.ImeMode2" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
   </data>
   <data name="resource.Location2" type="System.Drawing.Point, System.Drawing">
     <value>101, 1</value>
@@ -1279,7 +1288,7 @@
     <value>Vertical</value>
   </data>
   <data name="avatarGrid.Size" type="System.Drawing.Size, System.Drawing">
-    <value>840, 448</value>
+    <value>840, 451</value>
   </data>
   <data name="avatarGrid.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
@@ -1439,7 +1448,7 @@
     <value>3</value>
   </data>
   <data name="groupBox7.Location" type="System.Drawing.Point, System.Drawing">
-    <value>9, 302</value>
+    <value>9, 304</value>
   </data>
   <data name="groupBox7.Size" type="System.Drawing.Size, System.Drawing">
     <value>797, 120</value>
@@ -1528,7 +1537,7 @@
   <data name="resource.Image3" type="System.Resources.ResXNullRef, System.Windows.Forms">
     <value />
   </data>
-  <data name="resource.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+  <data name="resource.ImeMode3" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
   <data name="resource.Location3" type="System.Drawing.Point, System.Drawing">
@@ -1765,7 +1774,7 @@
   <data name="resource.Image4" type="System.Resources.ResXNullRef, System.Windows.Forms">
     <value />
   </data>
-  <data name="resource.ImeMode1" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+  <data name="resource.ImeMode4" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
   <data name="resource.Location4" type="System.Drawing.Point, System.Drawing">
@@ -1952,7 +1961,7 @@
     <value>Bottom, Left</value>
   </data>
   <data name="btnLight.Location" type="System.Drawing.Point, System.Drawing">
-    <value>6, 19</value>
+    <value>6, 13</value>
   </data>
   <data name="btnLight.Size" type="System.Drawing.Size, System.Drawing">
     <value>183, 35</value>
@@ -1979,7 +1988,7 @@
     <value>Bottom, Left</value>
   </data>
   <data name="btnDark.Location" type="System.Drawing.Point, System.Drawing">
-    <value>6, 60</value>
+    <value>6, 54</value>
   </data>
   <data name="btnDark.Size" type="System.Drawing.Size, System.Drawing">
     <value>183, 35</value>
@@ -2054,7 +2063,7 @@
     <value>Yellow</value>
   </data>
   <data name="cbThemeColour.Location" type="System.Drawing.Point, System.Drawing">
-    <value>6, 133</value>
+    <value>6, 127</value>
   </data>
   <data name="cbThemeColour.Size" type="System.Drawing.Size, System.Drawing">
     <value>183, 29</value>
@@ -2081,7 +2090,7 @@
     <value>True</value>
   </data>
   <data name="metroLabel12.Location" type="System.Drawing.Point, System.Drawing">
-    <value>32, 98</value>
+    <value>32, 92</value>
   </data>
   <data name="metroLabel12.Size" type="System.Drawing.Size, System.Drawing">
     <value>131, 25</value>
@@ -2108,7 +2117,7 @@
     <value>9, 140</value>
   </data>
   <data name="groupBox1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>195, 168</value>
+    <value>195, 162</value>
   </data>
   <data name="groupBox1.TabIndex" type="System.Int32, mscorlib">
     <value>90</value>
@@ -2240,7 +2249,7 @@
     <value>757, 269</value>
   </data>
   <data name="toggleWorld.Size" type="System.Drawing.Size, System.Drawing">
-    <value>80, 20</value>
+    <value>80, 17</value>
   </data>
   <data name="toggleWorld.TabIndex" type="System.Int32, mscorlib">
     <value>62</value>
@@ -2270,7 +2279,7 @@
     <value>757, 214</value>
   </data>
   <data name="toggleAvatar.Size" type="System.Drawing.Size, System.Drawing">
-    <value>80, 20</value>
+    <value>80, 17</value>
   </data>
   <data name="toggleAvatar.TabIndex" type="System.Int32, mscorlib">
     <value>61</value>
@@ -2323,7 +2332,7 @@
   <data name="resource.Image5" type="System.Resources.ResXNullRef, System.Windows.Forms">
     <value />
   </data>
-  <data name="resource.ImeMode2" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+  <data name="resource.ImeMode5" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
   <data name="resource.Location5" type="System.Drawing.Point, System.Drawing">
@@ -2446,7 +2455,7 @@
   <data name="resource.Image6" type="System.Resources.ResXNullRef, System.Windows.Forms">
     <value />
   </data>
-  <data name="resource.ImeMode3" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+  <data name="resource.ImeMode6" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
   <data name="resource.Location6" type="System.Drawing.Point, System.Drawing">
@@ -2776,14 +2785,14 @@
   <data name="resource.Image7" type="System.Resources.ResXNullRef, System.Windows.Forms">
     <value />
   </data>
-  <data name="resource.ImeMode4" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+  <data name="resource.ImeMode7" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
   <data name="resource.Location7" type="System.Drawing.Point, System.Drawing">
-    <value>470, 2</value>
+    <value>468, 1</value>
   </data>
   <data name="resource.Size7" type="System.Drawing.Size, System.Drawing">
-    <value>361, 361</value>
+    <value>365, 365</value>
   </data>
   <data name="resource.TabIndex7" type="System.Int32, mscorlib">
     <value>1</value>
@@ -2795,7 +2804,7 @@
     <value>3, 67</value>
   </data>
   <data name="txtAbout.Size" type="System.Drawing.Size, System.Drawing">
-    <value>834, 366</value>
+    <value>834, 367</value>
   </data>
   <data name="txtAbout.TabIndex" type="System.Int32, mscorlib">
     <value>57</value>
@@ -2972,7 +2981,7 @@
     <value>Bottom, Right</value>
   </data>
   <data name="btnGetScreenshots.Location" type="System.Drawing.Point, System.Drawing">
-    <value>591, 379</value>
+    <value>591, 380</value>
   </data>
   <data name="btnGetScreenshots.Size" type="System.Drawing.Size, System.Drawing">
     <value>120, 35</value>
@@ -2982,9 +2991,6 @@
   </data>
   <data name="btnGetScreenshots.Text" xml:space="preserve">
     <value>Take Pictures</value>
-  </data>
-  <data name="btnGetScreenshots.ToolTip" xml:space="preserve">
-    <value>Take Pictures of unknown avatars</value>
   </data>
   <data name="&gt;&gt;btnGetScreenshots.Name" xml:space="preserve">
     <value>btnGetScreenshots</value>
@@ -3002,7 +3008,7 @@
     <value>Bottom, Right</value>
   </data>
   <data name="btnScanCacheFolder.Location" type="System.Drawing.Point, System.Drawing">
-    <value>717, 379</value>
+    <value>717, 380</value>
   </data>
   <data name="btnScanCacheFolder.Size" type="System.Drawing.Size, System.Drawing">
     <value>120, 35</value>
@@ -3012,9 +3018,6 @@
   </data>
   <data name="btnScanCacheFolder.Text" xml:space="preserve">
     <value>Scan Cache</value>
-  </data>
-  <data name="btnScanCacheFolder.ToolTip" xml:space="preserve">
-    <value>Scan the avatar cache and uploads data to API if able to grab from VRChat API</value>
   </data>
   <data name="&gt;&gt;btnScanCacheFolder.Name" xml:space="preserve">
     <value>btnScanCacheFolder</value>
@@ -3034,14 +3037,14 @@
   <data name="resource.Image8" type="System.Resources.ResXNullRef, System.Windows.Forms">
     <value />
   </data>
-  <data name="resource.ImeMode5" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+  <data name="resource.ImeMode8" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
   <data name="resource.Location8" type="System.Drawing.Point, System.Drawing">
-    <value>477, 1</value>
+    <value>477, 2</value>
   </data>
   <data name="resource.Size8" type="System.Drawing.Size, System.Drawing">
-    <value>359, 359</value>
+    <value>357, 357</value>
   </data>
   <data name="resource.TabIndex8" type="System.Int32, mscorlib">
     <value>1</value>
@@ -3053,7 +3056,7 @@
     <value>3, 12</value>
   </data>
   <data name="txtCacheScannerLog.Size" type="System.Drawing.Size, System.Drawing">
-    <value>837, 361</value>
+    <value>837, 362</value>
   </data>
   <data name="txtCacheScannerLog.TabIndex" type="System.Int32, mscorlib">
     <value>69</value>
@@ -3184,7 +3187,7 @@
   <data name="resource.Image9" type="System.Resources.ResXNullRef, System.Windows.Forms">
     <value />
   </data>
-  <data name="resource.ImeMode6" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+  <data name="resource.ImeMode9" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
   <data name="resource.Location9" type="System.Drawing.Point, System.Drawing">
@@ -3226,7 +3229,7 @@
   <data name="resource.Image10" type="System.Resources.ResXNullRef, System.Windows.Forms">
     <value />
   </data>
-  <data name="resource.ImeMode7" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+  <data name="resource.ImeMode10" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
   <data name="resource.Location10" type="System.Drawing.Point, System.Drawing">
@@ -3406,7 +3409,7 @@
   <data name="resource.Image11" type="System.Resources.ResXNullRef, System.Windows.Forms">
     <value />
   </data>
-  <data name="resource.ImeMode8" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+  <data name="resource.ImeMode11" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
   <data name="resource.Location11" type="System.Drawing.Point, System.Drawing">
@@ -3448,7 +3451,7 @@
   <data name="resource.Image12" type="System.Resources.ResXNullRef, System.Windows.Forms">
     <value />
   </data>
-  <data name="resource.ImeMode9" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+  <data name="resource.ImeMode12" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
   <data name="resource.Location12" type="System.Drawing.Point, System.Drawing">
@@ -3517,7 +3520,7 @@
   <data name="resource.Image13" type="System.Resources.ResXNullRef, System.Windows.Forms">
     <value />
   </data>
-  <data name="resource.ImeMode10" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+  <data name="resource.ImeMode13" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
   <data name="resource.Location13" type="System.Drawing.Point, System.Drawing">
@@ -4031,12 +4034,6 @@
   <data name="&gt;&gt;metroToolTip1.Type" xml:space="preserve">
     <value>MetroFramework.Components.MetroToolTip, MetroFramework, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a</value>
   </data>
-  <data name="&gt;&gt;CacheMessages.Name" xml:space="preserve">
-    <value>CacheMessages</value>
-  </data>
-  <data name="&gt;&gt;CacheMessages.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Timer, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
   <data name="&gt;&gt;picture.Name" xml:space="preserve">
     <value>picture</value>
   </data>
@@ -4096,6 +4093,12 @@
   </data>
   <data name="&gt;&gt;Avatar.Type" xml:space="preserve">
     <value>System.Windows.Forms.DataGridViewCheckBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;CacheMessages.Name" xml:space="preserve">
+    <value>CacheMessages</value>
+  </data>
+  <data name="&gt;&gt;CacheMessages.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Timer, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;CacheScannerTimer.Name" xml:space="preserve">
     <value>CacheScannerTimer</value>

@@ -30,17 +30,17 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AvatarSystem));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle21 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle22 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle17 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle18 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle19 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle20 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
             this.btnToggleFavorite = new MetroFramework.Controls.MetroButton();
             this.btnSearchFavorites = new MetroFramework.Controls.MetroButton();
             this.cbLimit = new MetroFramework.Controls.MetroComboBox();
@@ -74,14 +74,13 @@
             this.chkContains = new MetroFramework.Controls.MetroCheckBox();
             this.metroToolTip1 = new MetroFramework.Components.MetroToolTip();
             this.btnWorldUnity = new MetroFramework.Controls.MetroButton();
+            this.chkUnityReplace = new MetroFramework.Controls.MetroCheckBox();
             this.btnScanCacheFolder = new MetroFramework.Controls.MetroButton();
             this.btnGetScreenshots = new MetroFramework.Controls.MetroButton();
-            this.chkUnityReplace = new MetroFramework.Controls.MetroCheckBox();
             this.metroLabel8 = new MetroFramework.Controls.MetroLabel();
             this.txtAvatarSizePc = new MetroFramework.Controls.MetroTextBox();
             this.txtAvatarSizeQuest = new MetroFramework.Controls.MetroTextBox();
             this.metroLabel9 = new MetroFramework.Controls.MetroLabel();
-            this.CacheMessages = new System.Windows.Forms.Timer(this.components);
             this.metroTabPage6 = new MetroFramework.Controls.MetroTabPage();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
             this.btnReLogin = new MetroFramework.Controls.MetroButton();
@@ -170,6 +169,7 @@
             this.Avatar = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.tabControl = new MetroFramework.Controls.MetroTabControl();
             this.btnHotswapWorld = new MetroFramework.Controls.MetroButton();
+            this.CacheMessages = new System.Windows.Forms.Timer(this.components);
             this.CacheScannerTimer = new System.Windows.Forms.Timer(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.nmQuestVersion)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nmPcVersion)).BeginInit();
@@ -236,6 +236,7 @@
             // 
             // 
             this.txtSearchTerm.CustomButton.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image")));
+            this.txtSearchTerm.CustomButton.ImeMode = ((System.Windows.Forms.ImeMode)(resources.GetObject("resource.ImeMode")));
             this.txtSearchTerm.CustomButton.Location = ((System.Drawing.Point)(resources.GetObject("resource.Location")));
             this.txtSearchTerm.CustomButton.Name = "";
             this.txtSearchTerm.CustomButton.Size = ((System.Drawing.Size)(resources.GetObject("resource.Size")));
@@ -516,26 +517,6 @@
             this.btnWorldUnity.UseStyleColors = true;
             this.btnWorldUnity.Click += new System.EventHandler(this.btnWorldUnity_Click);
             // 
-            // btnScanCacheFolder
-            // 
-            resources.ApplyResources(this.btnScanCacheFolder, "btnScanCacheFolder");
-            this.btnScanCacheFolder.FontSize = MetroFramework.MetroButtonSize.Medium;
-            this.btnScanCacheFolder.Name = "btnScanCacheFolder";
-            this.metroToolTip1.SetToolTip(this.btnScanCacheFolder, resources.GetString("btnScanCacheFolder.ToolTip"));
-            this.btnScanCacheFolder.UseSelectable = true;
-            this.btnScanCacheFolder.UseStyleColors = true;
-            this.btnScanCacheFolder.Click += new System.EventHandler(this.btnScanCacheFolder_Click);
-            // 
-            // btnGetScreenshots
-            // 
-            resources.ApplyResources(this.btnGetScreenshots, "btnGetScreenshots");
-            this.btnGetScreenshots.FontSize = MetroFramework.MetroButtonSize.Medium;
-            this.btnGetScreenshots.Name = "btnGetScreenshots";
-            this.metroToolTip1.SetToolTip(this.btnGetScreenshots, resources.GetString("btnGetScreenshots.ToolTip"));
-            this.btnGetScreenshots.UseSelectable = true;
-            this.btnGetScreenshots.UseStyleColors = true;
-            this.btnGetScreenshots.Click += new System.EventHandler(this.btnGetScreenshots_Click);
-            // 
             // chkUnityReplace
             // 
             resources.ApplyResources(this.chkUnityReplace, "chkUnityReplace");
@@ -546,6 +527,24 @@
             this.metroToolTip1.SetToolTip(this.chkUnityReplace, resources.GetString("chkUnityReplace.ToolTip"));
             this.chkUnityReplace.UseSelectable = true;
             this.chkUnityReplace.UseStyleColors = true;
+            // 
+            // btnScanCacheFolder
+            // 
+            resources.ApplyResources(this.btnScanCacheFolder, "btnScanCacheFolder");
+            this.btnScanCacheFolder.FontSize = MetroFramework.MetroButtonSize.Medium;
+            this.btnScanCacheFolder.Name = "btnScanCacheFolder";
+            this.btnScanCacheFolder.UseSelectable = true;
+            this.btnScanCacheFolder.UseStyleColors = true;
+            this.btnScanCacheFolder.Click += new System.EventHandler(this.btnScanCacheFolder_Click);
+            // 
+            // btnGetScreenshots
+            // 
+            resources.ApplyResources(this.btnGetScreenshots, "btnGetScreenshots");
+            this.btnGetScreenshots.FontSize = MetroFramework.MetroButtonSize.Medium;
+            this.btnGetScreenshots.Name = "btnGetScreenshots";
+            this.btnGetScreenshots.UseSelectable = true;
+            this.btnGetScreenshots.UseStyleColors = true;
+            this.btnGetScreenshots.Click += new System.EventHandler(this.btnGetScreenshots_Click);
             // 
             // metroLabel8
             // 
@@ -561,6 +560,7 @@
             // 
             // 
             this.txtAvatarSizePc.CustomButton.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image2")));
+            this.txtAvatarSizePc.CustomButton.ImeMode = ((System.Windows.Forms.ImeMode)(resources.GetObject("resource.ImeMode2")));
             this.txtAvatarSizePc.CustomButton.Location = ((System.Drawing.Point)(resources.GetObject("resource.Location2")));
             this.txtAvatarSizePc.CustomButton.Name = "";
             this.txtAvatarSizePc.CustomButton.Size = ((System.Drawing.Size)(resources.GetObject("resource.Size2")));
@@ -592,6 +592,7 @@
             // 
             // 
             this.txtAvatarSizeQuest.CustomButton.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image1")));
+            this.txtAvatarSizeQuest.CustomButton.ImeMode = ((System.Windows.Forms.ImeMode)(resources.GetObject("resource.ImeMode1")));
             this.txtAvatarSizeQuest.CustomButton.Location = ((System.Drawing.Point)(resources.GetObject("resource.Location1")));
             this.txtAvatarSizeQuest.CustomButton.Name = "";
             this.txtAvatarSizeQuest.CustomButton.Size = ((System.Drawing.Size)(resources.GetObject("resource.Size1")));
@@ -622,10 +623,6 @@
             this.metroLabel9.FontWeight = MetroFramework.MetroLabelWeight.Bold;
             this.metroLabel9.Name = "metroLabel9";
             this.metroLabel9.UseStyleColors = true;
-            // 
-            // CacheMessages
-            // 
-            this.CacheMessages.Tick += new System.EventHandler(this.CacheMessages_Tick);
             // 
             // metroTabPage6
             // 
@@ -685,7 +682,7 @@
             // 
             // 
             this.txtRePassword.CustomButton.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image9")));
-            this.txtRePassword.CustomButton.ImeMode = ((System.Windows.Forms.ImeMode)(resources.GetObject("resource.ImeMode6")));
+            this.txtRePassword.CustomButton.ImeMode = ((System.Windows.Forms.ImeMode)(resources.GetObject("resource.ImeMode9")));
             this.txtRePassword.CustomButton.Location = ((System.Drawing.Point)(resources.GetObject("resource.Location9")));
             this.txtRePassword.CustomButton.Name = "";
             this.txtRePassword.CustomButton.Size = ((System.Drawing.Size)(resources.GetObject("resource.Size9")));
@@ -717,7 +714,7 @@
             // 
             // 
             this.txtReUsername.CustomButton.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image10")));
-            this.txtReUsername.CustomButton.ImeMode = ((System.Windows.Forms.ImeMode)(resources.GetObject("resource.ImeMode7")));
+            this.txtReUsername.CustomButton.ImeMode = ((System.Windows.Forms.ImeMode)(resources.GetObject("resource.ImeMode10")));
             this.txtReUsername.CustomButton.Location = ((System.Drawing.Point)(resources.GetObject("resource.Location10")));
             this.txtReUsername.CustomButton.Name = "";
             this.txtReUsername.CustomButton.Size = ((System.Drawing.Size)(resources.GetObject("resource.Size10")));
@@ -799,7 +796,7 @@
             // 
             // 
             this.txtVRCPassword.CustomButton.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image11")));
-            this.txtVRCPassword.CustomButton.ImeMode = ((System.Windows.Forms.ImeMode)(resources.GetObject("resource.ImeMode8")));
+            this.txtVRCPassword.CustomButton.ImeMode = ((System.Windows.Forms.ImeMode)(resources.GetObject("resource.ImeMode11")));
             this.txtVRCPassword.CustomButton.Location = ((System.Drawing.Point)(resources.GetObject("resource.Location11")));
             this.txtVRCPassword.CustomButton.Name = "";
             this.txtVRCPassword.CustomButton.Size = ((System.Drawing.Size)(resources.GetObject("resource.Size11")));
@@ -831,7 +828,7 @@
             // 
             // 
             this.txtVRCUsername.CustomButton.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image12")));
-            this.txtVRCUsername.CustomButton.ImeMode = ((System.Windows.Forms.ImeMode)(resources.GetObject("resource.ImeMode9")));
+            this.txtVRCUsername.CustomButton.ImeMode = ((System.Windows.Forms.ImeMode)(resources.GetObject("resource.ImeMode12")));
             this.txtVRCUsername.CustomButton.Location = ((System.Drawing.Point)(resources.GetObject("resource.Location12")));
             this.txtVRCUsername.CustomButton.Name = "";
             this.txtVRCUsername.CustomButton.Size = ((System.Drawing.Size)(resources.GetObject("resource.Size12")));
@@ -871,7 +868,7 @@
             // 
             // 
             this.txtClientVersion.CustomButton.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image13")));
-            this.txtClientVersion.CustomButton.ImeMode = ((System.Windows.Forms.ImeMode)(resources.GetObject("resource.ImeMode10")));
+            this.txtClientVersion.CustomButton.ImeMode = ((System.Windows.Forms.ImeMode)(resources.GetObject("resource.ImeMode13")));
             this.txtClientVersion.CustomButton.Location = ((System.Drawing.Point)(resources.GetObject("resource.Location13")));
             this.txtClientVersion.CustomButton.Name = "";
             this.txtClientVersion.CustomButton.Size = ((System.Drawing.Size)(resources.GetObject("resource.Size13")));
@@ -930,7 +927,7 @@
             // 
             // 
             this.txtCacheScannerLog.CustomButton.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image8")));
-            this.txtCacheScannerLog.CustomButton.ImeMode = ((System.Windows.Forms.ImeMode)(resources.GetObject("resource.ImeMode5")));
+            this.txtCacheScannerLog.CustomButton.ImeMode = ((System.Windows.Forms.ImeMode)(resources.GetObject("resource.ImeMode8")));
             this.txtCacheScannerLog.CustomButton.Location = ((System.Drawing.Point)(resources.GetObject("resource.Location8")));
             this.txtCacheScannerLog.CustomButton.Name = "";
             this.txtCacheScannerLog.CustomButton.Size = ((System.Drawing.Size)(resources.GetObject("resource.Size8")));
@@ -1060,7 +1057,7 @@
             // 
             // 
             this.txtAbout.CustomButton.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image7")));
-            this.txtAbout.CustomButton.ImeMode = ((System.Windows.Forms.ImeMode)(resources.GetObject("resource.ImeMode4")));
+            this.txtAbout.CustomButton.ImeMode = ((System.Windows.Forms.ImeMode)(resources.GetObject("resource.ImeMode7")));
             this.txtAbout.CustomButton.Location = ((System.Drawing.Point)(resources.GetObject("resource.Location7")));
             this.txtAbout.CustomButton.Name = "";
             this.txtAbout.CustomButton.Size = ((System.Drawing.Size)(resources.GetObject("resource.Size7")));
@@ -1183,7 +1180,7 @@
             // 
             // 
             this.txtWorldOutput.CustomButton.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image5")));
-            this.txtWorldOutput.CustomButton.ImeMode = ((System.Windows.Forms.ImeMode)(resources.GetObject("resource.ImeMode2")));
+            this.txtWorldOutput.CustomButton.ImeMode = ((System.Windows.Forms.ImeMode)(resources.GetObject("resource.ImeMode5")));
             this.txtWorldOutput.CustomButton.Location = ((System.Drawing.Point)(resources.GetObject("resource.Location5")));
             this.txtWorldOutput.CustomButton.Name = "";
             this.txtWorldOutput.CustomButton.Size = ((System.Drawing.Size)(resources.GetObject("resource.Size5")));
@@ -1241,7 +1238,7 @@
             // 
             // 
             this.txtAvatarOutput.CustomButton.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image6")));
-            this.txtAvatarOutput.CustomButton.ImeMode = ((System.Windows.Forms.ImeMode)(resources.GetObject("resource.ImeMode3")));
+            this.txtAvatarOutput.CustomButton.ImeMode = ((System.Windows.Forms.ImeMode)(resources.GetObject("resource.ImeMode6")));
             this.txtAvatarOutput.CustomButton.Location = ((System.Drawing.Point)(resources.GetObject("resource.Location6")));
             this.txtAvatarOutput.CustomButton.Name = "";
             this.txtAvatarOutput.CustomButton.Size = ((System.Drawing.Size)(resources.GetObject("resource.Size6")));
@@ -1374,7 +1371,7 @@
             // 
             // 
             this.txtCustomApi.CustomButton.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image3")));
-            this.txtCustomApi.CustomButton.ImeMode = ((System.Windows.Forms.ImeMode)(resources.GetObject("resource.ImeMode")));
+            this.txtCustomApi.CustomButton.ImeMode = ((System.Windows.Forms.ImeMode)(resources.GetObject("resource.ImeMode3")));
             this.txtCustomApi.CustomButton.Location = ((System.Drawing.Point)(resources.GetObject("resource.Location3")));
             this.txtCustomApi.CustomButton.Name = "";
             this.txtCustomApi.CustomButton.Size = ((System.Drawing.Size)(resources.GetObject("resource.Size3")));
@@ -1471,7 +1468,7 @@
             // 
             // 
             this.txtApiKey.CustomButton.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image4")));
-            this.txtApiKey.CustomButton.ImeMode = ((System.Windows.Forms.ImeMode)(resources.GetObject("resource.ImeMode1")));
+            this.txtApiKey.CustomButton.ImeMode = ((System.Windows.Forms.ImeMode)(resources.GetObject("resource.ImeMode4")));
             this.txtApiKey.CustomButton.Location = ((System.Drawing.Point)(resources.GetObject("resource.Location4")));
             this.txtApiKey.CustomButton.Name = "";
             this.txtApiKey.CustomButton.Size = ((System.Drawing.Size)(resources.GetObject("resource.Size4")));
@@ -1630,14 +1627,14 @@
             this.avatarGrid.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
             this.avatarGrid.ClipboardCopyMode = System.Windows.Forms.DataGridViewClipboardCopyMode.Disable;
             this.avatarGrid.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle12.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(219)))), ((int)(((byte)(0)))), ((int)(((byte)(60)))));
-            dataGridViewCellStyle12.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            dataGridViewCellStyle12.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle12.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(219)))), ((int)(((byte)(0)))), ((int)(((byte)(60)))));
-            dataGridViewCellStyle12.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(219)))), ((int)(((byte)(0)))), ((int)(((byte)(60)))));
-            dataGridViewCellStyle12.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.avatarGrid.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle12;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(219)))), ((int)(((byte)(0)))), ((int)(((byte)(60)))));
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(219)))), ((int)(((byte)(0)))), ((int)(((byte)(60)))));
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(219)))), ((int)(((byte)(0)))), ((int)(((byte)(60)))));
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.avatarGrid.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.avatarGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.avatarGrid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.picture,
@@ -1650,26 +1647,26 @@
             this.Ripped,
             this.Fav,
             this.Avatar});
-            dataGridViewCellStyle21.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle21.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle21.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            dataGridViewCellStyle21.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(136)))), ((int)(((byte)(136)))), ((int)(((byte)(136)))));
-            dataGridViewCellStyle21.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
-            dataGridViewCellStyle21.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
-            dataGridViewCellStyle21.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.avatarGrid.DefaultCellStyle = dataGridViewCellStyle21;
+            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle10.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle10.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            dataGridViewCellStyle10.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(136)))), ((int)(((byte)(136)))), ((int)(((byte)(136)))));
+            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
+            dataGridViewCellStyle10.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
+            dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.avatarGrid.DefaultCellStyle = dataGridViewCellStyle10;
             this.avatarGrid.EnableHeadersVisualStyles = false;
             this.avatarGrid.GridColor = System.Drawing.Color.Silver;
             this.avatarGrid.Name = "avatarGrid";
             this.avatarGrid.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle22.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle22.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(174)))), ((int)(((byte)(219)))));
-            dataGridViewCellStyle22.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            dataGridViewCellStyle22.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle22.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
-            dataGridViewCellStyle22.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
-            dataGridViewCellStyle22.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.avatarGrid.RowHeadersDefaultCellStyle = dataGridViewCellStyle22;
+            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle11.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(174)))), ((int)(((byte)(219)))));
+            dataGridViewCellStyle11.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            dataGridViewCellStyle11.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle11.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
+            dataGridViewCellStyle11.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
+            dataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.avatarGrid.RowHeadersDefaultCellStyle = dataGridViewCellStyle11;
             this.avatarGrid.RowHeadersVisible = false;
             this.avatarGrid.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.avatarGrid.RowTemplate.Height = 80;
@@ -1685,9 +1682,9 @@
             // picture
             // 
             this.picture.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopCenter;
-            dataGridViewCellStyle13.NullValue = null;
-            this.picture.DefaultCellStyle = dataGridViewCellStyle13;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopCenter;
+            dataGridViewCellStyle2.NullValue = null;
+            this.picture.DefaultCellStyle = dataGridViewCellStyle2;
             this.picture.FillWeight = 45F;
             resources.ApplyResources(this.picture, "picture");
             this.picture.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Stretch;
@@ -1696,36 +1693,36 @@
             // 
             // AvatarName
             // 
-            dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopCenter;
-            dataGridViewCellStyle14.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.AvatarName.DefaultCellStyle = dataGridViewCellStyle14;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopCenter;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.AvatarName.DefaultCellStyle = dataGridViewCellStyle3;
             this.AvatarName.FillWeight = 1.126446F;
             resources.ApplyResources(this.AvatarName, "AvatarName");
             this.AvatarName.Name = "AvatarName";
             // 
             // Author
             // 
-            dataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopCenter;
-            dataGridViewCellStyle15.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.Author.DefaultCellStyle = dataGridViewCellStyle15;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopCenter;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.Author.DefaultCellStyle = dataGridViewCellStyle4;
             this.Author.FillWeight = 1.126446F;
             resources.ApplyResources(this.Author, "Author");
             this.Author.Name = "Author";
             // 
             // AvatarId
             // 
-            dataGridViewCellStyle16.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopCenter;
-            dataGridViewCellStyle16.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.AvatarId.DefaultCellStyle = dataGridViewCellStyle16;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopCenter;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.AvatarId.DefaultCellStyle = dataGridViewCellStyle5;
             this.AvatarId.FillWeight = 1.126446F;
             resources.ApplyResources(this.AvatarId, "AvatarId");
             this.AvatarId.Name = "AvatarId";
             // 
             // Logged
             // 
-            dataGridViewCellStyle17.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopCenter;
-            dataGridViewCellStyle17.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.Logged.DefaultCellStyle = dataGridViewCellStyle17;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopCenter;
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.Logged.DefaultCellStyle = dataGridViewCellStyle6;
             this.Logged.FillWeight = 1.126446F;
             resources.ApplyResources(this.Logged, "Logged");
             this.Logged.Name = "Logged";
@@ -1738,17 +1735,17 @@
             // 
             // Size
             // 
-            dataGridViewCellStyle18.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopCenter;
-            this.Size.DefaultCellStyle = dataGridViewCellStyle18;
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopCenter;
+            this.Size.DefaultCellStyle = dataGridViewCellStyle7;
             this.Size.FillWeight = 1.27783F;
             resources.ApplyResources(this.Size, "Size");
             this.Size.Name = "Size";
             // 
             // Ripped
             // 
-            dataGridViewCellStyle19.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopLeft;
-            dataGridViewCellStyle19.NullValue = false;
-            this.Ripped.DefaultCellStyle = dataGridViewCellStyle19;
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopLeft;
+            dataGridViewCellStyle8.NullValue = false;
+            this.Ripped.DefaultCellStyle = dataGridViewCellStyle8;
             this.Ripped.FalseValue = "false";
             this.Ripped.FillWeight = 0.3879563F;
             resources.ApplyResources(this.Ripped, "Ripped");
@@ -1759,9 +1756,9 @@
             // 
             // Fav
             // 
-            dataGridViewCellStyle20.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopCenter;
-            dataGridViewCellStyle20.NullValue = false;
-            this.Fav.DefaultCellStyle = dataGridViewCellStyle20;
+            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopCenter;
+            dataGridViewCellStyle9.NullValue = false;
+            this.Fav.DefaultCellStyle = dataGridViewCellStyle9;
             this.Fav.FalseValue = "false";
             this.Fav.FillWeight = 0.3879563F;
             resources.ApplyResources(this.Fav, "Fav");
@@ -1798,6 +1795,10 @@
             this.btnHotswapWorld.UseSelectable = true;
             this.btnHotswapWorld.UseStyleColors = true;
             this.btnHotswapWorld.Click += new System.EventHandler(this.btnHotswapWorld_Click);
+            // 
+            // CacheMessages
+            // 
+            this.CacheMessages.Tick += new System.EventHandler(this.CacheMessages_Tick);
             // 
             // CacheScannerTimer
             // 

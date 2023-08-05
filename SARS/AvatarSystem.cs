@@ -1015,7 +1015,18 @@ namespace SARS
                 {
                     var filePath = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
                     var invalidFileNameChars = Path.GetInvalidFileNameChars();
-                    var folderExtractLocation = folderDlg.FileName + @"\" + Path.GetFileNameWithoutExtension(avatarFile);
+                    string folderExtractLocation;
+                    if (!toggleAvatar.Checked && !toggleWorld.Checked)
+                    {
+                        folderExtractLocation = folderDlg.FileName + @"\" + Path.GetFileNameWithoutExtension(avatarFile);
+                    } else if(avatarFile.EndsWith(".vrcw"))
+                    {
+                        folderExtractLocation = txtWorldOutput.Text + @"\" + Path.GetFileNameWithoutExtension(avatarFile);
+                    }
+                    else
+                    {
+                        folderExtractLocation = txtAvatarOutput.Text + @"\" + Path.GetFileNameWithoutExtension(avatarFile);
+                    }
                     if (!Directory.Exists(folderExtractLocation)) Directory.CreateDirectory(folderExtractLocation);
                     var commands =
                         string.Format(
