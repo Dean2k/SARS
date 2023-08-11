@@ -6,6 +6,8 @@ Thx to [nesrak1](https://github.com/nesrak1/AssetsTools.NET) for the original "A
 
 Thx to [FACS01](https://github.com/FACS01-01/FACS_Utilities) for the bledshape and animation repairs only compatable with VRCA files extracted with S.A.R.S & scanning of the Unity Packages! (Also the auto fix scripts and shader reassign function wouldn't be possible without the original unity code thanks again)
 
+Thx to [FatihBAKIR]https://github.com/FatihBAKIR/UnityPacker/ for the ability to create unity packages
+
 Thx to Keafy for reuploader login code in which the new login code was driven from
 
 Original developer behind A.R.E.S [LargestBoi] (https://github.com/LargestBoi)

@@ -41,6 +41,10 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
             this.btnToggleFavorite = new MetroFramework.Controls.MetroButton();
             this.btnSearchFavorites = new MetroFramework.Controls.MetroButton();
             this.cbLimit = new MetroFramework.Controls.MetroComboBox();
@@ -75,6 +79,8 @@
             this.metroToolTip1 = new MetroFramework.Components.MetroToolTip();
             this.btnWorldUnity = new MetroFramework.Controls.MetroButton();
             this.chkUnityReplace = new MetroFramework.Controls.MetroCheckBox();
+            this.btnDownloadSafe = new MetroFramework.Controls.MetroButton();
+            this.btnUpdate = new MetroFramework.Controls.MetroButton();
             this.btnScanCacheFolder = new MetroFramework.Controls.MetroButton();
             this.btnGetScreenshots = new MetroFramework.Controls.MetroButton();
             this.metroLabel8 = new MetroFramework.Controls.MetroLabel();
@@ -168,9 +174,17 @@
             this.Fav = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.Avatar = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.tabControl = new MetroFramework.Controls.MetroTabControl();
+            this.metroTabPage7 = new MetroFramework.Controls.MetroTabPage();
+            this.metroLabel5 = new MetroFramework.Controls.MetroLabel();
+            this.dgSafeDownload = new System.Windows.Forms.DataGridView();
+            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column3 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.Column1 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.Column2 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.btnHotswapWorld = new MetroFramework.Controls.MetroButton();
             this.CacheMessages = new System.Windows.Forms.Timer(this.components);
             this.CacheScannerTimer = new System.Windows.Forms.Timer(this.components);
+            this.chkUnityPackage = new MetroFramework.Controls.MetroCheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.nmQuestVersion)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nmPcVersion)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.metroStyleManager1)).BeginInit();
@@ -190,6 +204,8 @@
             this.metroTabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.avatarGrid)).BeginInit();
             this.tabControl.SuspendLayout();
+            this.metroTabPage7.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgSafeDownload)).BeginInit();
             this.SuspendLayout();
             // 
             // btnToggleFavorite
@@ -527,6 +543,26 @@
             this.metroToolTip1.SetToolTip(this.chkUnityReplace, resources.GetString("chkUnityReplace.ToolTip"));
             this.chkUnityReplace.UseSelectable = true;
             this.chkUnityReplace.UseStyleColors = true;
+            // 
+            // btnDownloadSafe
+            // 
+            resources.ApplyResources(this.btnDownloadSafe, "btnDownloadSafe");
+            this.btnDownloadSafe.FontSize = MetroFramework.MetroButtonSize.Medium;
+            this.btnDownloadSafe.Name = "btnDownloadSafe";
+            this.metroToolTip1.SetToolTip(this.btnDownloadSafe, resources.GetString("btnDownloadSafe.ToolTip"));
+            this.btnDownloadSafe.UseSelectable = true;
+            this.btnDownloadSafe.UseStyleColors = true;
+            this.btnDownloadSafe.Click += new System.EventHandler(this.btnDownloadSafe_Click);
+            // 
+            // btnUpdate
+            // 
+            resources.ApplyResources(this.btnUpdate, "btnUpdate");
+            this.btnUpdate.FontSize = MetroFramework.MetroButtonSize.Medium;
+            this.btnUpdate.Name = "btnUpdate";
+            this.metroToolTip1.SetToolTip(this.btnUpdate, resources.GetString("btnUpdate.ToolTip"));
+            this.btnUpdate.UseSelectable = true;
+            this.btnUpdate.UseStyleColors = true;
+            this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
             // 
             // btnScanCacheFolder
             // 
@@ -1100,6 +1136,7 @@
             // 
             // metroTabPage4
             // 
+            this.metroTabPage4.Controls.Add(this.chkUnityPackage);
             this.metroTabPage4.Controls.Add(this.lblDownload);
             this.metroTabPage4.Controls.Add(this.chkReassignShaders);
             this.metroTabPage4.Controls.Add(this.btnUnityLoc);
@@ -1781,11 +1818,111 @@
             this.tabControl.Controls.Add(this.metroTabPage5);
             this.tabControl.Controls.Add(this.btnScanCache);
             this.tabControl.Controls.Add(this.metroTabPage6);
+            this.tabControl.Controls.Add(this.metroTabPage7);
             this.tabControl.FontWeight = MetroFramework.MetroTabControlWeight.Bold;
             this.tabControl.Name = "tabControl";
-            this.tabControl.SelectedIndex = 0;
+            this.tabControl.SelectedIndex = 2;
             this.tabControl.UseSelectable = true;
             this.tabControl.SelectedIndexChanged += new System.EventHandler(this.tabControl_SelectedIndexChanged);
+            // 
+            // metroTabPage7
+            // 
+            this.metroTabPage7.Controls.Add(this.btnUpdate);
+            this.metroTabPage7.Controls.Add(this.metroLabel5);
+            this.metroTabPage7.Controls.Add(this.btnDownloadSafe);
+            this.metroTabPage7.Controls.Add(this.dgSafeDownload);
+            this.metroTabPage7.HorizontalScrollbarBarColor = true;
+            this.metroTabPage7.HorizontalScrollbarHighlightOnWheel = false;
+            this.metroTabPage7.HorizontalScrollbarSize = 10;
+            resources.ApplyResources(this.metroTabPage7, "metroTabPage7");
+            this.metroTabPage7.Name = "metroTabPage7";
+            this.metroTabPage7.VerticalScrollbarBarColor = true;
+            this.metroTabPage7.VerticalScrollbarHighlightOnWheel = false;
+            this.metroTabPage7.VerticalScrollbarSize = 10;
+            // 
+            // metroLabel5
+            // 
+            resources.ApplyResources(this.metroLabel5, "metroLabel5");
+            this.metroLabel5.FontWeight = MetroFramework.MetroLabelWeight.Bold;
+            this.metroLabel5.Name = "metroLabel5";
+            this.metroLabel5.UseStyleColors = true;
+            // 
+            // dgSafeDownload
+            // 
+            this.dgSafeDownload.AllowUserToAddRows = false;
+            this.dgSafeDownload.AllowUserToOrderColumns = true;
+            this.dgSafeDownload.AllowUserToResizeRows = false;
+            resources.ApplyResources(this.dgSafeDownload, "dgSafeDownload");
+            this.dgSafeDownload.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgSafeDownload.BackgroundColor = System.Drawing.Color.DimGray;
+            this.dgSafeDownload.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dgSafeDownload.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
+            this.dgSafeDownload.ClipboardCopyMode = System.Windows.Forms.DataGridViewClipboardCopyMode.Disable;
+            this.dgSafeDownload.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
+            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle12.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(219)))), ((int)(((byte)(0)))), ((int)(((byte)(60)))));
+            dataGridViewCellStyle12.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            dataGridViewCellStyle12.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle12.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(219)))), ((int)(((byte)(0)))), ((int)(((byte)(60)))));
+            dataGridViewCellStyle12.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(219)))), ((int)(((byte)(0)))), ((int)(((byte)(60)))));
+            dataGridViewCellStyle12.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgSafeDownload.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle12;
+            this.dgSafeDownload.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgSafeDownload.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dataGridViewTextBoxColumn3,
+            this.Column3,
+            this.Column1,
+            this.Column2});
+            dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle14.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle14.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            dataGridViewCellStyle14.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(136)))), ((int)(((byte)(136)))), ((int)(((byte)(136)))));
+            dataGridViewCellStyle14.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
+            dataGridViewCellStyle14.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
+            dataGridViewCellStyle14.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgSafeDownload.DefaultCellStyle = dataGridViewCellStyle14;
+            this.dgSafeDownload.EnableHeadersVisualStyles = false;
+            this.dgSafeDownload.GridColor = System.Drawing.Color.Silver;
+            this.dgSafeDownload.Name = "dgSafeDownload";
+            this.dgSafeDownload.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            dataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle15.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(174)))), ((int)(((byte)(219)))));
+            dataGridViewCellStyle15.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            dataGridViewCellStyle15.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle15.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
+            dataGridViewCellStyle15.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
+            dataGridViewCellStyle15.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgSafeDownload.RowHeadersDefaultCellStyle = dataGridViewCellStyle15;
+            this.dgSafeDownload.RowHeadersVisible = false;
+            this.dgSafeDownload.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
+            this.dgSafeDownload.RowTemplate.Height = 20;
+            this.dgSafeDownload.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgSafeDownload.ShowEditingIcon = false;
+            this.dgSafeDownload.ShowRowErrors = false;
+            // 
+            // dataGridViewTextBoxColumn3
+            // 
+            dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopCenter;
+            dataGridViewCellStyle13.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewTextBoxColumn3.DefaultCellStyle = dataGridViewCellStyle13;
+            this.dataGridViewTextBoxColumn3.FillWeight = 250F;
+            resources.ApplyResources(this.dataGridViewTextBoxColumn3, "dataGridViewTextBoxColumn3");
+            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
+            // 
+            // Column3
+            // 
+            resources.ApplyResources(this.Column3, "Column3");
+            this.Column3.Name = "Column3";
+            // 
+            // Column1
+            // 
+            resources.ApplyResources(this.Column1, "Column1");
+            this.Column1.Name = "Column1";
+            // 
+            // Column2
+            // 
+            resources.ApplyResources(this.Column2, "Column2");
+            this.Column2.Name = "Column2";
             // 
             // btnHotswapWorld
             // 
@@ -1804,6 +1941,17 @@
             // 
             this.CacheScannerTimer.Interval = 300000;
             this.CacheScannerTimer.Tick += new System.EventHandler(this.CacheScannerTimer_Tick);
+            // 
+            // chkUnityPackage
+            // 
+            resources.ApplyResources(this.chkUnityPackage, "chkUnityPackage");
+            this.chkUnityPackage.Checked = true;
+            this.chkUnityPackage.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.chkUnityPackage.FontSize = MetroFramework.MetroCheckBoxSize.Medium;
+            this.chkUnityPackage.FontWeight = MetroFramework.MetroCheckBoxWeight.Bold;
+            this.chkUnityPackage.Name = "chkUnityPackage";
+            this.chkUnityPackage.UseSelectable = true;
+            this.chkUnityPackage.UseStyleColors = true;
             // 
             // AvatarSystem
             // 
@@ -1877,6 +2025,9 @@
             this.metroTabPage1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.avatarGrid)).EndInit();
             this.tabControl.ResumeLayout(false);
+            this.metroTabPage7.ResumeLayout(false);
+            this.metroTabPage7.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgSafeDownload)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -2013,6 +2164,16 @@
         private System.Windows.Forms.DataGridViewCheckBoxColumn Ripped;
         private System.Windows.Forms.DataGridViewCheckBoxColumn Fav;
         private System.Windows.Forms.DataGridViewCheckBoxColumn Avatar;
+        private MetroFramework.Controls.MetroTabPage metroTabPage7;
+        public MetroFramework.Controls.MetroButton btnDownloadSafe;
+        private System.Windows.Forms.DataGridView dgSafeDownload;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn Column3;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn Column1;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn Column2;
+        public MetroFramework.Controls.MetroButton btnUpdate;
+        public MetroFramework.Controls.MetroLabel metroLabel5;
+        public MetroFramework.Controls.MetroCheckBox chkUnityPackage;
     }
 }
 

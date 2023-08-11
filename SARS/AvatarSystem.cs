@@ -20,6 +20,7 @@ using System.Net;
 using System.Reflection;
 using System.Runtime.InteropServices;
 using System.Runtime.InteropServices.ComTypes;
+using System.Security.Policy;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -248,8 +249,6 @@ namespace SARS
             CacheScannerTimer.Enabled = false;
             cacheFolderAuto = null;
             string limit = cbLimit.Text;
-            DateTime? before = null;
-            DateTime? after = null;
             bool avatar = true;
             if (limit == "Max")
             {
@@ -1019,7 +1018,8 @@ namespace SARS
                     if (!toggleAvatar.Checked && !toggleWorld.Checked)
                     {
                         folderExtractLocation = folderDlg.FileName + @"\" + Path.GetFileNameWithoutExtension(avatarFile);
-                    } else if(avatarFile.EndsWith(".vrcw"))
+                    }
+                    else if (avatarFile.EndsWith(".vrcw"))
                     {
                         folderExtractLocation = txtWorldOutput.Text + @"\" + Path.GetFileNameWithoutExtension(avatarFile);
                     }
@@ -1083,6 +1083,30 @@ namespace SARS
                         FixVRCMaterials fixVRCMaterials = new FixVRCMaterials();
                         message = message + Environment.NewLine + fixVRCMaterials.FixMaterials(folderExtractLocation);
                     }
+
+                    if (chkUnityPackage.Checked)
+                    {
+                        RandomFunctions.tryDeleteDirectory(folderExtractLocation + @"\ExportedProject\.Scripts", false);
+                        RandomFunctions.tryDeleteDirectory(folderExtractLocation + @"\ExportedProject\.Shader", false);
+                        var inpath = folderExtractLocation + @"\ExportedProject\Assets";
+
+                        var extensions = new List<string>()
+                        {
+                            "meta"
+                        };
+
+                        var skipFolders = new List<string>()
+                        {
+                            ".Scripts",
+                            ".Shader"
+                        };
+                        
+                        var pack = Package.FromDirectory(inpath, Path.GetFileNameWithoutExtension(avatarFile), true, extensions.ToArray(), skipFolders.ToArray());
+                        pack.GeneratePackage(saveLocation: folderExtractLocation.Replace(Path.GetFileNameWithoutExtension(avatarFile), ""));
+                        
+                        RandomFunctions.tryDeleteDirectory(folderExtractLocation);
+                    }
+
                     MessageBox.Show(message);
                     if (vrcaLocation == "")
                     {
@@ -1961,7 +1985,7 @@ namespace SARS
                 return null;
             }
         }
-        
+
 
         private void UploadCacheResultWorld(VRChatCacheResultWorld model)
         {
@@ -2624,6 +2648,7 @@ namespace SARS
                                         FileName = "AssetViewer.exe",
                                         Arguments = commands,
                                         WorkingDirectory = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location) + @"\NewestViewer\",
+                                        WindowStyle = ProcessWindowStyle.Hidden
                                     };
                                     p.StartInfo = psi;
                                     p.Start();
@@ -2680,6 +2705,77 @@ namespace SARS
         private void avatarGrid_Row(object sender, DataGridViewCellEventArgs e)
         {
             SarsClient.AvatarSizeAndVersions(avatarGrid, avatars, nmPcVersion, nmQuestVersion, txtAvatarSizePc, txtAvatarSizeQuest);
+        }
+
+        private void btnDownloadSafe_Click(object sender, EventArgs e)
+        {
+            SafeDownload();
+        }
+
+        private async Task<bool> SafeDownload()
+        {
+            if (dgSafeDownload.SelectedRows.Count > 1)
+            {
+                foreach (DataGridViewRow row in dgSafeDownload.SelectedRows)
+                {
+                    if (!(bool)row.Cells[3].Value)
+                    {
+                        if ((bool)row.Cells[2].Value)
+                        {
+                            string avatarId = row.Cells[0].Value.ToString();
+                            Download download = new Download { Text = $"{avatarId}" };
+                            download.Show();
+                            var filePath = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location) + $"\\VRCA\\{avatarId}.vrca";
+                            string url = $"https://vrca.ares-mod.com/SARS/{AvatarId}";
+                            if ((bool)row.Cells[1].Value)
+                            {
+                                url += "_quest.vrca";
+                            }
+                            else
+                            {
+                                url += "_pc.vrca";
+                            }
+                            await Task.Run(() => VRCA.DownloadVrcaFile(url, filePath, download.downloadProgress));
+
+                            download.Close();
+                        }
+                        else
+                        {
+                            MessageBox.Show("Download not ready yet, try again later");
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("Downloading file failed, this is likely because its been deleted from VRChat");
+                    }
+                }
+            }
+            return true;
+        }
+
+        private void btnUpdate_Click(object sender, EventArgs e)
+        {
+            GetRequests key = new GetRequests { Key = new Guid(configSave.Config.ApiKey) };
+            List<DownloadQueueList> download = shrekApi.DownloadQueueRefresh(key);
+            dgSafeDownload.AllowUserToAddRows = true;
+            foreach (var item in download)
+            {
+                try
+                {
+                    DataGridViewRow row = (DataGridViewRow)dgSafeDownload.Rows[0].Clone();
+
+                    row.Cells[0].Value = item.AvatarId;
+                    row.Cells[1].Value = item.Quest;
+                    row.Cells[2].Value = item.Downloaded;
+                    row.Cells[3].Value = item.Failed;
+                    dgSafeDownload.Rows.Add(row);
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex);
+                }
+            }
+            dgSafeDownload.AllowUserToAddRows = false;
         }
     }
 }

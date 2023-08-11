@@ -82,6 +82,41 @@ namespace SARS.Modules
             }
         }
 
+        /// <summary>
+        /// Gets download queue
+        /// </summary>
+        /// <returns></returns>
+        public List<DownloadQueueList> DownloadQueueRefresh(GetRequests key)
+        {
+            string apiUrl = $"https://unlocked.modvrc.com/Avatar/GetMyRequests?key={key.Key}";
+
+            var httpWebRequest = (HttpWebRequest)WebRequest.Create(apiUrl);
+            httpWebRequest.ContentType = "application/json";
+            httpWebRequest.Method = "POST";
+            httpWebRequest.UserAgent = $"SARS" + coreApiVersion;
+            string jsonPost = JsonConvert.SerializeObject(key.Key);
+            using (var streamWriter = new StreamWriter(httpWebRequest.GetRequestStream()))
+            {
+                streamWriter.Write(jsonPost);
+            }
+            try
+            {
+                var httpResponse = (HttpWebResponse)httpWebRequest.GetResponse();
+                using (var streamReader = new StreamReader(httpResponse.GetResponseStream()))
+                {
+                    var result = streamReader.ReadToEnd();
+                    List<DownloadQueueList> avatarResponse = JsonConvert.DeserializeObject<List<DownloadQueueList>>(result);
+
+                    return avatarResponse;
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
+                return new List<DownloadQueueList>();
+            }
+        }
+
         public DatabaseStats DatabaseStats()
         {
             using (WebClient webClient = new WebClient())
