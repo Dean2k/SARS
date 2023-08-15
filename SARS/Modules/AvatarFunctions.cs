@@ -73,9 +73,9 @@ namespace SARS.Modules
                             {
                                 version[7] = questVersion.ToString();
                             }
-                            await Task.Run(() => VRCA.DownloadVrcaFile(string.Join("/", version), filePath.Replace(".vrca", "_quest.vrca"), download.downloadProgress));
+                            await Task.Run(() => VRCA.DownloadVrcaFile(string.Join("/", version), filePath.Replace(".vrca", "_quest.vrca"), download.downloadProgress, false));
                         }
-                        catch { await Task.Run(() => VRCA.DownloadVrcaFile(avatar.Avatar.QuestAssetUrl, filePath.Replace(".vrca", "_quest.vrca"), download.downloadProgress)); }
+                        catch { await Task.Run(() => VRCA.DownloadVrcaFile(avatar.Avatar.QuestAssetUrl, filePath.Replace(".vrca", "_quest.vrca"), download.downloadProgress, false)); }
                         ShowSelectedInExplorer.FileOrFolder(filePath.Replace(".vrca", "_quest.vrca"));
                     }
                     Console.WriteLine("QUEST DOWNLOAD");
@@ -88,9 +88,9 @@ namespace SARS.Modules
                             {
                                 version[7] = pcVersion.ToString();
                             }
-                            await Task.Run(() => VRCA.DownloadVrcaFile(string.Join("/", version), filePath.Replace(".vrca", "_pc.vrca"), download.downloadProgress));
+                            await Task.Run(() => VRCA.DownloadVrcaFile(string.Join("/", version), filePath.Replace(".vrca", "_pc.vrca"), download.downloadProgress, false));
                         }
-                        catch { await Task.Run(() => VRCA.DownloadVrcaFile(avatar.Avatar.PcAssetUrl, filePath.Replace(".vrca", "_pc.vrca"), download.downloadProgress)); }
+                        catch { await Task.Run(() => VRCA.DownloadVrcaFile(avatar.Avatar.PcAssetUrl, filePath.Replace(".vrca", "_pc.vrca"), download.downloadProgress, false)); }
                         ShowSelectedInExplorer.FileOrFolder(filePath.Replace(".vrca", "_pc.vrca"));
                     }
                     Console.WriteLine("PC DOWNLOAD");
@@ -112,9 +112,9 @@ namespace SARS.Modules
                                 {
                                     version[7] = questVersion.ToString();
                                 }
-                                await Task.Run(() => VRCA.DownloadVrcaFile(string.Join("/", version), filePath.Replace(".vrca", "_quest.vrca"), download.downloadProgress));
+                                await Task.Run(() => VRCA.DownloadVrcaFile(string.Join("/", version), filePath.Replace(".vrca", "_quest.vrca"), download.downloadProgress, false));
                             }
-                            catch { await Task.Run(() => VRCA.DownloadVrcaFile(avatar.Avatar.QuestAssetUrl, filePath.Replace(".vrca", "_quest.vrca"), download.downloadProgress)); }
+                            catch { await Task.Run(() => VRCA.DownloadVrcaFile(avatar.Avatar.QuestAssetUrl, filePath.Replace(".vrca", "_quest.vrca"), download.downloadProgress, false)); }
                             ShowSelectedInExplorer.FileOrFolder(filePath.Replace(".vrca", "_quest.vrca"));
                             pcDownload = false;
                         }
@@ -136,9 +136,9 @@ namespace SARS.Modules
                                 {
                                     version[7] = pcVersion.ToString();
                                 }
-                                await Task.Run(() => VRCA.DownloadVrcaFile(string.Join("/", version), filePath.Replace(".vrca", "_pc.vrca"), download.downloadProgress));
+                                await Task.Run(() => VRCA.DownloadVrcaFile(string.Join("/", version), filePath.Replace(".vrca", "_pc.vrca"), download.downloadProgress, false));
                             }
-                            catch { await Task.Run(() => VRCA.DownloadVrcaFile(avatar.Avatar.PcAssetUrl, filePath.Replace(".vrca", "_pc.vrca"), download.downloadProgress)); }
+                            catch { await Task.Run(() => VRCA.DownloadVrcaFile(avatar.Avatar.PcAssetUrl, filePath.Replace(".vrca", "_pc.vrca"), download.downloadProgress, false)); }
                             ShowSelectedInExplorer.FileOrFolder(filePath.Replace(".vrca", "_pc.vrca"));
                             pcDownload = true;
                         }
@@ -164,9 +164,9 @@ namespace SARS.Modules
                     {
                         version[7] = pcVersion.ToString();
                     }
-                    await Task.Run(() => VRCA.DownloadVrcaFile(string.Join("/", version), filePath.Replace(".vrca", "_pc.vrca"), download.downloadProgress));
+                    await Task.Run(() => VRCA.DownloadVrcaFile(string.Join("/", version), filePath.Replace(".vrca", "_pc.vrca"), download.downloadProgress, false));
                 }
-                catch { await Task.Run(() => VRCA.DownloadVrcaFile(avatar.Avatar.PcAssetUrl, filePath.Replace(".vrca", "_pc.vrca"), download.downloadProgress)); }
+                catch { await Task.Run(() => VRCA.DownloadVrcaFile(avatar.Avatar.PcAssetUrl, filePath.Replace(".vrca", "_pc.vrca"), download.downloadProgress, false)); }
                 ShowSelectedInExplorer.FileOrFolder(filePath.Replace(".vrca", "_pc.vrca"));
                 pcDownload = true;
             }
@@ -179,9 +179,9 @@ namespace SARS.Modules
                     {
                         version[7] = questVersion.ToString();
                     }
-                    await Task.Run(() => VRCA.DownloadVrcaFile(string.Join("/", version), filePath.Replace(".vrca", "_quest.vrca"), download.downloadProgress));
+                    await Task.Run(() => VRCA.DownloadVrcaFile(string.Join("/", version), filePath.Replace(".vrca", "_quest.vrca"), download.downloadProgress, false));
                 }
-                catch { await Task.Run(() => VRCA.DownloadVrcaFile(avatar.Avatar.QuestAssetUrl, filePath.Replace(".vrca", "_quest.vrca"), download.downloadProgress)); }
+                catch { await Task.Run(() => VRCA.DownloadVrcaFile(avatar.Avatar.QuestAssetUrl, filePath.Replace(".vrca", "_quest.vrca"), download.downloadProgress, false)); }
                 ShowSelectedInExplorer.FileOrFolder(filePath.Replace(".vrca", "_quest.vrca"));
                 pcDownload = false;
             }
@@ -189,6 +189,7 @@ namespace SARS.Modules
             {
                 return false;
             }
+
             return true;
         }
 
@@ -205,9 +206,9 @@ namespace SARS.Modules
                     {
                         version[7] = pcVersion.ToString();
                     }
-                    await Task.Run(() => VRCA.DownloadVrcaFile(string.Join("/", version), filePath.Replace(".vrcw", "_pc.vrcw"), download.downloadProgress));
+                    await Task.Run(() => VRCA.DownloadVrcaFile(string.Join("/", version), filePath.Replace(".vrcw", "_pc.vrcw"), download.downloadProgress, false));
                 }
-                catch { await Task.Run(() => VRCA.DownloadVrcaFile(avatar.Avatar.PcAssetUrl, filePath.Replace(".vrcw", "_pc.vrcw"), download.downloadProgress)); }
+                catch { await Task.Run(() => VRCA.DownloadVrcaFile(avatar.Avatar.PcAssetUrl, filePath.Replace(".vrcw", "_pc.vrcw"), download.downloadProgress, false)); }
                 ShowSelectedInExplorer.FileOrFolder(filePath.Replace(".vrcw", "_pc.vrcw"));
                 pcDownload = false;
                 return true;

@@ -10,12 +10,12 @@ namespace VRChatAPI_New.Modules.Game
 {
     public static class VRCA
     {
-        public static async Task DownloadVrcaFile(string url, string fileLocation, ProgressBar progressBar)
+        public static async Task DownloadVrcaFile(string url, string fileLocation, ProgressBar progressBar, bool bypass)
         {
             if (url.StartsWith("http"))
             {
                 url += "?organization=vrchat";
-                using WebClient webClient = SetupWebClient();
+                using WebClient webClient = SetupWebClient(bypass);
                 try
                 {
                     webClient.DownloadProgressChanged += (s, e) =>
@@ -80,7 +80,7 @@ namespace VRChatAPI_New.Modules.Game
 
         public static VRChatFileInformation GetVersions(string url)
         {
-            using WebClient webClient = SetupWebClient();
+            using WebClient webClient = SetupWebClient(false);
             try
             {
                 string web = webClient.DownloadString(url);
@@ -94,20 +94,23 @@ namespace VRChatAPI_New.Modules.Game
                 //skip as its likely avatar is been yeeted from VRC servers
             }
         }
-        
-        private static WebClient SetupWebClient()
+
+        private static WebClient SetupWebClient(bool bypass)
         {
             WebClient webClient = new WebClient();
-            webClient.BaseAddress = "https://api.vrchat.cloud";
-            webClient.Headers.Add("Accept", $"*/*");
-            webClient.Headers.Add("Cookie", $"auth={StaticGameValues.AuthKey}; twoFactorAuth={StaticGameValues.TwoFactorKey};");
-            webClient.Headers.Add("X-MacAddress", StaticGameValues.MacAddress);
-            webClient.Headers.Add("X-Client-Version", StaticGameValues.GameVersion);
-            webClient.Headers.Add("X-Platform", "standalonewindows");
-            webClient.Headers.Add("X-GameServer-Version", StaticGameValues.ServerVersion);
-            webClient.Headers.Add("user-agent", "VRC.Core.BestHTTP");
-            webClient.Headers.Add("X-Unity-Version", StaticGameValues.UnityVersion);
-            webClient.Headers.Add("X-Store", StaticGameValues.Store);
+            if (bypass)
+            {
+                webClient.BaseAddress = "https://api.vrchat.cloud";
+                webClient.Headers.Add("Accept", $"*/*");
+                webClient.Headers.Add("Cookie", $"auth={StaticGameValues.AuthKey}; twoFactorAuth={StaticGameValues.TwoFactorKey};");
+                webClient.Headers.Add("X-MacAddress", StaticGameValues.MacAddress);
+                webClient.Headers.Add("X-Client-Version", StaticGameValues.GameVersion);
+                webClient.Headers.Add("X-Platform", "standalonewindows");
+                webClient.Headers.Add("X-GameServer-Version", StaticGameValues.ServerVersion);
+                webClient.Headers.Add("user-agent", "VRC.Core.BestHTTP");
+                webClient.Headers.Add("X-Unity-Version", StaticGameValues.UnityVersion);
+                webClient.Headers.Add("X-Store", StaticGameValues.Store);
+            }
             return webClient;
         }
     }

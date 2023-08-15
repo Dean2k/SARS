@@ -117,6 +117,41 @@ namespace SARS.Modules
             }
         }
 
+        /// <summary>
+        /// Gets download queue
+        /// </summary>
+        /// <returns></returns>
+        public bool RequestAvatar(RequestAvatar avatar)
+        {
+            string apiUrl = $"https://unlocked.modvrc.com/Avatar/RequestDownload";
+
+            var httpWebRequest = (HttpWebRequest)WebRequest.Create(apiUrl);
+            httpWebRequest.ContentType = "application/json";
+            httpWebRequest.Method = "POST";
+            httpWebRequest.UserAgent = $"SARS" + coreApiVersion;
+            string jsonPost = JsonConvert.SerializeObject(avatar);
+            using (var streamWriter = new StreamWriter(httpWebRequest.GetRequestStream()))
+            {
+                streamWriter.Write(jsonPost);
+            }
+            try
+            {
+                var httpResponse = (HttpWebResponse)httpWebRequest.GetResponse();
+                using (var streamReader = new StreamReader(httpResponse.GetResponseStream()))
+                {
+                    var result = streamReader.ReadToEnd();
+                    bool avatarResponse = JsonConvert.DeserializeObject<bool>(result);
+
+                    return avatarResponse;
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
+                return false;
+            }
+        }
+
         public DatabaseStats DatabaseStats()
         {
             using (WebClient webClient = new WebClient())

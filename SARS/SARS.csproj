@@ -153,6 +153,7 @@
     <Compile Include="Models\FileSizeUpdate.cs" />
     <Compile Include="Models\GetRequests.cs" />
     <Compile Include="Models\MatchModel.cs" />
+    <Compile Include="Models\RequestAvatar.cs" />
     <Compile Include="Models\VRCCacheScannerModel.cs" />
     <Compile Include="Models\VRChatCacheResultWorld.cs" />
     <Compile Include="Models\VRChatCacheResult.cs" />

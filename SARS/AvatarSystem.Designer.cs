@@ -121,6 +121,7 @@
             this.lblSize = new MetroFramework.Controls.MetroLabel();
             this.metroLabel10 = new MetroFramework.Controls.MetroLabel();
             this.metroTabPage4 = new MetroFramework.Controls.MetroTabPage();
+            this.chkUnityPackage = new MetroFramework.Controls.MetroCheckBox();
             this.lblDownload = new MetroFramework.Controls.MetroLabel();
             this.chkReassignShaders = new MetroFramework.Controls.MetroCheckBox();
             this.btnUnityLoc = new MetroFramework.Controls.MetroButton();
@@ -184,7 +185,6 @@
             this.btnHotswapWorld = new MetroFramework.Controls.MetroButton();
             this.CacheMessages = new System.Windows.Forms.Timer(this.components);
             this.CacheScannerTimer = new System.Windows.Forms.Timer(this.components);
-            this.chkUnityPackage = new MetroFramework.Controls.MetroCheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.nmQuestVersion)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nmPcVersion)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.metroStyleManager1)).BeginInit();
@@ -569,6 +569,7 @@
             resources.ApplyResources(this.btnScanCacheFolder, "btnScanCacheFolder");
             this.btnScanCacheFolder.FontSize = MetroFramework.MetroButtonSize.Medium;
             this.btnScanCacheFolder.Name = "btnScanCacheFolder";
+            this.metroToolTip1.SetToolTip(this.btnScanCacheFolder, resources.GetString("btnScanCacheFolder.ToolTip"));
             this.btnScanCacheFolder.UseSelectable = true;
             this.btnScanCacheFolder.UseStyleColors = true;
             this.btnScanCacheFolder.Click += new System.EventHandler(this.btnScanCacheFolder_Click);
@@ -1158,6 +1159,17 @@
             this.metroTabPage4.VerticalScrollbarBarColor = true;
             this.metroTabPage4.VerticalScrollbarHighlightOnWheel = false;
             this.metroTabPage4.VerticalScrollbarSize = 10;
+            // 
+            // chkUnityPackage
+            // 
+            resources.ApplyResources(this.chkUnityPackage, "chkUnityPackage");
+            this.chkUnityPackage.Checked = true;
+            this.chkUnityPackage.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.chkUnityPackage.FontSize = MetroFramework.MetroCheckBoxSize.Medium;
+            this.chkUnityPackage.FontWeight = MetroFramework.MetroCheckBoxWeight.Bold;
+            this.chkUnityPackage.Name = "chkUnityPackage";
+            this.chkUnityPackage.UseSelectable = true;
+            this.chkUnityPackage.UseStyleColors = true;
             // 
             // lblDownload
             // 
@@ -1821,7 +1833,7 @@
             this.tabControl.Controls.Add(this.metroTabPage7);
             this.tabControl.FontWeight = MetroFramework.MetroTabControlWeight.Bold;
             this.tabControl.Name = "tabControl";
-            this.tabControl.SelectedIndex = 2;
+            this.tabControl.SelectedIndex = 7;
             this.tabControl.UseSelectable = true;
             this.tabControl.SelectedIndexChanged += new System.EventHandler(this.tabControl_SelectedIndexChanged);
             // 
@@ -1941,17 +1953,6 @@
             // 
             this.CacheScannerTimer.Interval = 300000;
             this.CacheScannerTimer.Tick += new System.EventHandler(this.CacheScannerTimer_Tick);
-            // 
-            // chkUnityPackage
-            // 
-            resources.ApplyResources(this.chkUnityPackage, "chkUnityPackage");
-            this.chkUnityPackage.Checked = true;
-            this.chkUnityPackage.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.chkUnityPackage.FontSize = MetroFramework.MetroCheckBoxSize.Medium;
-            this.chkUnityPackage.FontWeight = MetroFramework.MetroCheckBoxWeight.Bold;
-            this.chkUnityPackage.Name = "chkUnityPackage";
-            this.chkUnityPackage.UseSelectable = true;
-            this.chkUnityPackage.UseStyleColors = true;
             // 
             // AvatarSystem
             // 

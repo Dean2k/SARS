@@ -2556,9 +2556,11 @@ namespace SARS
             {
                 ContextMenu m = new ContextMenu();
                 m.MenuItems.Add(new MenuItem("Copy Avatar ID", new System.EventHandler(CopyAvatarId)));
-                m.MenuItems.Add(new MenuItem("Preview Image", new System.EventHandler(previewImage)));
-                m.MenuItems.Add(new MenuItem("Preview VRCA", new System.EventHandler(previewVRCA)));
-                m.MenuItems.Add(new MenuItem("Hotswap", new System.EventHandler(hotswapRC)));
+                m.MenuItems.Add(new MenuItem("Request Avatar PC", new System.EventHandler(RequestAvatarDownloadPc)));
+                m.MenuItems.Add(new MenuItem("Request Avatar Quest", new System.EventHandler(RequestAvatarDownloadQuest)));
+                m.MenuItems.Add(new MenuItem("Preview Image", new System.EventHandler(PreviewImage)));
+                m.MenuItems.Add(new MenuItem("Preview VRCA", new System.EventHandler(PreviewVRCA)));
+                m.MenuItems.Add(new MenuItem("Hotswap", new System.EventHandler(HotswapRC)));
 
                 int currentMouseOverRow = avatarGrid.HitTest(e.X, e.Y).RowIndex;
 
@@ -2573,7 +2575,7 @@ namespace SARS
             }
         }
 
-        private void previewImage(Object sender, EventArgs e)
+        private void PreviewImage(Object sender, EventArgs e)
         {
             if (avatarGrid.GetCellCount(DataGridViewElementStates.Selected) > 0)
             {
@@ -2581,8 +2583,55 @@ namespace SARS
                 avatarImage.Show();
             }
         }
+        private void RequestAvatarDownloadPc(Object sender, EventArgs e)
+        {
+            if (avatarGrid.GetCellCount(DataGridViewElementStates.Selected) > 0)
+            {
 
-        private void previewVRCA(Object sender, EventArgs e)
+                AvatarModel avatar = avatars.SingleOrDefault(x => x.Avatar.AvatarId == avatarGrid.SelectedRows[0].Cells[3].Value);
+                if (!avatar.Avatar.PcAssetUrl.StartsWith("http"))
+                {
+                    MessageBox.Show("You don't need to request to download this as its already in your cache, just download the normal way");
+                    return;
+                }
+                if (string.IsNullOrEmpty(avatar.Avatar.PcAssetUrl) && avatar.Avatar.PcAssetUrl.ToLower() != "none")
+                {
+                    MessageBox.Show("PC asset url doesn't exist");
+                    return;
+                }
+                RequestAvatar requestAvatar = new RequestAvatar { AvatarId = avatar.Avatar.AvatarId, Key = new Guid(configSave.Config.ApiKey), Quest = false };
+                bool requested = shrekApi.RequestAvatar(requestAvatar);
+                if(!requested)
+                {
+                    MessageBox.Show("You need to be premium member to do this");                    
+                }
+            }
+        }
+
+        private void RequestAvatarDownloadQuest(Object sender, EventArgs e)
+        {
+            if (avatarGrid.GetCellCount(DataGridViewElementStates.Selected) > 0)
+            {
+
+                AvatarModel avatar = avatars.SingleOrDefault(x => x.Avatar.AvatarId == avatarGrid.SelectedRows[0].Cells[3].Value);
+                if (string.IsNullOrEmpty(avatar.Avatar.QuestAssetUrl) && avatar.Avatar.QuestAssetUrl.ToLower() != "none")
+                {
+                    MessageBox.Show("Quest asset url doesn't exist");
+                    return;
+                }
+                RequestAvatar requestAvatar = new RequestAvatar { AvatarId = avatar.Avatar.AvatarId, Key = new Guid(configSave.Config.ApiKey), Quest = false };
+                bool requested = shrekApi.RequestAvatar(requestAvatar);
+                if (!requested)
+                {
+                    MessageBox.Show("You need to be premium member to do this");
+                }else
+                {
+                    MessageBox.Show("Avatar requested, keep an eye out on the Download queue tab");
+                }
+            }
+        }
+
+        private void PreviewVRCA(Object sender, EventArgs e)
         {
             if (avatarGrid.GetCellCount(DataGridViewElementStates.Selected) > 0)
             {
@@ -2590,7 +2639,7 @@ namespace SARS
             }
         }
 
-        private void hotswapRC(Object sender, EventArgs e)
+        private void HotswapRC(Object sender, EventArgs e)
         {
             if (avatarGrid.GetCellCount(DataGridViewElementStates.Selected) > 0)
             {
@@ -2735,7 +2784,7 @@ namespace SARS
                             {
                                 url += "_pc.vrca";
                             }
-                            await Task.Run(() => VRCA.DownloadVrcaFile(url, filePath, download.downloadProgress));
+                            await Task.Run(() => VRCA.DownloadVrcaFile(url, filePath, download.downloadProgress, true));
 
                             download.Close();
                         }
