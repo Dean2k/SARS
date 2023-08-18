@@ -19,6 +19,7 @@ namespace FACS01.Utilities
             { "VRCAnimatorTemporaryPoseSpace", new string[] { "enterPoseSpace", "fixedDelay", "delayTime" } },
             { "VRCAnimatorTrackingControl", new string[] { "trackingHead", "trackingLeftHand", "trackingRightHand", "trackingHip" } },
             { "VRCAvatarDescriptor", new string[] { "ViewPosition", "ScaleIPD", "customExpressions", "expressionParameters" } },
+            { "PipelineManager", new string[] { "launchedFromSDKPipeline", "completedSDKPipeline", "blueprintId", "contentType", "assetBundleUnityVersion", "fallbackStatus" } },
             { "VRCAvatarParameterDriver", new string[] { "parameters", "localOnly" } },//*
             { "VRCExpressionParameters", new string[] { "parameters" } },//*
             { "VRCExpressionsMenu", new string[] { "controls" } },
@@ -70,7 +71,7 @@ namespace FACS01.Utilities
             }
 
             GenerateResults();
-            return(output_print);
+            return (output_print);
         }
 
         private void GenerateResults()
@@ -147,6 +148,11 @@ namespace FACS01.Utilities
             return WasModified;
         }
 
+        private void replaceBluePrintBlank(string[] arrLine, int scriptLineIndex)
+        {
+            arrLine[scriptLineIndex] = "  blueprintId: ";
+        }
+
         private void FixArray(string path)
         {
             File.WriteAllLines(path,
@@ -161,6 +167,14 @@ namespace FACS01.Utilities
             bool inspect = false; int scriptLineIndex = 0;
             bool collect = false; (string, string) scriptGUID = ("", "");
             List<string> paramsCollection = new List<string>();
+            if (path.Contains(".prefab"))
+            {
+                int replacement = arrLine.ToList().FindIndex(x => x.Contains("blueprintId"));
+                if(replacement != 0)
+                {
+                    arrLine[replacement] = "  blueprintId: ";
+                }
+            }
             while (arrLineIndex < arrLineCount)
             {
                 string line = arrLine[arrLineIndex];
@@ -187,6 +201,7 @@ namespace FACS01.Utilities
                                 scriptLineIndex = arrLineIndex;
                                 scriptGUID = GetGUIDfromLine(line);
                             }
+                            
                             else if (line.StartsWith(beginParams))
                             {
                                 collect = true;
@@ -241,6 +256,7 @@ namespace FACS01.Utilities
             VRCScriptsGUIDs.Add(("67cc4cb7839cd3741b63733d5adf0442", "141706016"), "VRCAnimatorTemporaryPoseSpace");
             VRCScriptsGUIDs.Add(("67cc4cb7839cd3741b63733d5adf0442", "-646210727"), "VRCAnimatorTrackingControl");
             VRCScriptsGUIDs.Add(("67cc4cb7839cd3741b63733d5adf0442", "542108242"), "VRCAvatarDescriptor");
+            VRCScriptsGUIDs.Add(("4ecd63eff847044b68db9453ce219299", "-1427037861"), "PipelineManager");
             VRCScriptsGUIDs.Add(("67cc4cb7839cd3741b63733d5adf0442", "-1506855854"), "VRCAvatarParameterDriver");
             VRCScriptsGUIDs.Add(("67cc4cb7839cd3741b63733d5adf0442", "-340790334"), "VRCExpressionsMenu");
             VRCScriptsGUIDs.Add(("67cc4cb7839cd3741b63733d5adf0442", "1852460640"), "VRCPlayableLayerControl");

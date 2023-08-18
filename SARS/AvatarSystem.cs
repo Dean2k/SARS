@@ -2763,7 +2763,7 @@ namespace SARS
 
         private async Task<bool> SafeDownload()
         {
-            if (dgSafeDownload.SelectedRows.Count > 1)
+            if (dgSafeDownload.SelectedRows.Count >= 1)
             {
                 foreach (DataGridViewRow row in dgSafeDownload.SelectedRows)
                 {
