@@ -1100,10 +1100,10 @@ namespace SARS
                             ".Scripts",
                             ".Shader"
                         };
-                        
+
                         var pack = Package.FromDirectory(inpath, Path.GetFileNameWithoutExtension(avatarFile), true, extensions.ToArray(), skipFolders.ToArray());
                         pack.GeneratePackage(saveLocation: folderExtractLocation.Replace(Path.GetFileNameWithoutExtension(avatarFile), ""));
-                        
+
                         RandomFunctions.tryDeleteDirectory(folderExtractLocation);
                     }
 
@@ -2078,6 +2078,14 @@ namespace SARS
                 FileSize = 0
             };
 
+            if (!_logSelf)
+            {
+                if(configSave.Config.UserId == avatarDetails.AuthorId)
+                {
+                    return;
+                }
+            }
+
             var fileSize = avatars.SingleOrDefault(x => x.Avatar.AvatarId == model.Id);
 
             if (fileSize != null)
@@ -2601,9 +2609,9 @@ namespace SARS
                 }
                 RequestAvatar requestAvatar = new RequestAvatar { AvatarId = avatar.Avatar.AvatarId, Key = new Guid(configSave.Config.ApiKey), Quest = false };
                 bool requested = shrekApi.RequestAvatar(requestAvatar);
-                if(!requested)
+                if (!requested)
                 {
-                    MessageBox.Show("You need to be premium member to do this");                    
+                    MessageBox.Show("You need to be premium member to do this");
                 }
             }
         }
@@ -2624,7 +2632,8 @@ namespace SARS
                 if (!requested)
                 {
                     MessageBox.Show("You need to be premium member to do this");
-                }else
+                }
+                else
                 {
                     MessageBox.Show("Avatar requested, keep an eye out on the Download queue tab");
                 }
@@ -2775,7 +2784,7 @@ namespace SARS
                             Download download = new Download { Text = $"{avatarId}" };
                             download.Show();
                             var filePath = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location) + $"\\VRCA\\{avatarId}.vrca";
-                            string url = $"https://vrca.ares-mod.com/SARS/{AvatarId}";
+                            string url = $"https://vrca.ares-mod.com/SARS/{avatarId}";
                             if ((bool)row.Cells[1].Value)
                             {
                                 url += "_quest.vrca";
@@ -2785,7 +2794,7 @@ namespace SARS
                                 url += "_pc.vrca";
                             }
                             await Task.Run(() => VRCA.DownloadVrcaFile(url, filePath, download.downloadProgress, true));
-
+                            ShowSelectedInExplorer.FileOrFolder(filePath);
                             download.Close();
                         }
                         else
@@ -2825,6 +2834,13 @@ namespace SARS
                 }
             }
             dgSafeDownload.AllowUserToAddRows = false;
+        }
+
+
+        private bool _logSelf = true;
+        private void chkSelfAvatars_CheckedChanged(object sender, EventArgs e)
+        {
+            _logSelf = !chkSelfAvatars.Checked;
         }
     }
 }
