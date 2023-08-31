@@ -2815,6 +2815,7 @@ namespace SARS
         {
             GetRequests key = new GetRequests { Key = new Guid(configSave.Config.ApiKey) };
             List<DownloadQueueList> download = shrekApi.DownloadQueueRefresh(key);
+            dgSafeDownload.Rows.Clear();
             dgSafeDownload.AllowUserToAddRows = true;
             foreach (var item in download)
             {
