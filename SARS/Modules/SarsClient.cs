@@ -13,6 +13,7 @@ using System.Net;
 using System.Reflection;
 using System.Threading;
 using System.Windows.Forms;
+using VRChatAPI_New;
 using VRChatAPI_New.Models;
 
 namespace SARS.Modules
@@ -238,7 +239,7 @@ namespace SARS.Modules
                                             myRequest.Method = "GET";
                                             myRequest.UserAgent = userAgent;
                                             myRequest.Accept = "*/*";
-                                            myRequest.Headers["X-Unity-Version"] = "2019.4.40f1";
+                                            myRequest.Headers["X-Unity-Version"] = StaticGameValues.UnityVersion ?? "2019.4.40f1";
                                             using (HttpWebResponse myResponse = (HttpWebResponse)myRequest.GetResponse())
                                             {
                                                 if (myResponse.StatusCode == HttpStatusCode.OK)

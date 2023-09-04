@@ -116,9 +116,9 @@ namespace VRChatAPI_New.Modules.Game
         {
             if (StaticGameValues.LoggedInOnce)
             {
+                await HttpRequests.PutAsync($"logout{ApiKeyAndOrg()}", new StringContent("{}", Encoding.UTF8, "application/json")).ConfigureAwait(false);
                 StaticGameValues.AuthKey = null;
                 StaticGameValues.TwoFactorKey = null;
-                await HttpRequests.PutAsync($"logout{ApiKeyAndOrg()}", new StringContent("{}", Encoding.UTF8, "application/json")).ConfigureAwait(false);
             }
         }
 

@@ -148,11 +148,6 @@ namespace FACS01.Utilities
             return WasModified;
         }
 
-        private void replaceBluePrintBlank(string[] arrLine, int scriptLineIndex)
-        {
-            arrLine[scriptLineIndex] = "  blueprintId: ";
-        }
-
         private void FixArray(string path)
         {
             File.WriteAllLines(path,
@@ -170,7 +165,7 @@ namespace FACS01.Utilities
             if (path.Contains(".prefab"))
             {
                 int replacement = arrLine.ToList().FindIndex(x => x.Contains("blueprintId"));
-                if(replacement != 0)
+                if(replacement != 0 && replacement != -1)
                 {
                     arrLine[replacement] = "  blueprintId: ";
                 }

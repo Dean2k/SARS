@@ -98,7 +98,7 @@ namespace VRChatAPI_New.Modules.Game
         private static WebClient SetupWebClient(bool bypass)
         {
             WebClient webClient = new WebClient();
-            if (bypass)
+            if (!bypass)
             {
                 webClient.BaseAddress = "https://api.vrchat.cloud";
                 webClient.Headers.Add("Accept", $"*/*");
