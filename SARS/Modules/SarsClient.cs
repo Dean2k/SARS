@@ -8,6 +8,7 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Drawing.Imaging;
 using System.IO;
+using System.IO.Compression;
 using System.Linq;
 using System.Net;
 using System.Reflection;
@@ -124,7 +125,7 @@ namespace SARS.Modules
             }
         }
 
-        
+
         public static VRChatFileInformation avatarVersionPc;
         public static VRChatFileInformation avatarVersionQuest;
         public static void AvatarSizeAndVersions(DataGridView avatarGrid, List<AvatarModel> avatars, NumericUpDown nmPcVersion, NumericUpDown nmQuestVersion, MetroTextBox txtAvatarSizePc, MetroTextBox txtAvatarSizeQuest)
@@ -301,6 +302,22 @@ namespace SARS.Modules
             RandomFunctions.tryDeleteDirectory(programLocation + $"\\{configSave.Config.HotSwapName}");
             RandomFunctions.tryDeleteDirectory(@"C:\Users\" + Environment.UserName + $"\\AppData\\Local\\Temp\\DefaultCompany\\{configSave.Config.HotSwapName}");
             RandomFunctions.tryDeleteDirectory(@"C:\Users\" + Environment.UserName + $"\\AppData\\LocalLow\\DefaultCompany\\{configSave.Config.HotSwapName}");
+        }
+
+        public static void ClearViewer()
+        {
+            var programLocation = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
+            RandomFunctions.KillProcess("AssetViewer.exe");
+            RandomFunctions.tryDeleteDirectory(programLocation + $"\\NewestViewer");
+        }
+
+        public static void ExtractViewer()
+        {
+            var programLocation = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
+
+            string fileExtractFolder = $"{programLocation}\\NewViewer\\";
+            ZipFile.ExtractToDirectory(fileExtractFolder + @"\viewer.zip", fileExtractFolder);
+            RandomFunctions.tryDelete(fileExtractFolder + @"\viewer.zip");
         }
 
         public static void CleanWorldHsb(ConfigSave<Config> configSave)

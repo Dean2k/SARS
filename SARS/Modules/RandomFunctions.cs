@@ -38,16 +38,14 @@ namespace SARS.Modules
             }
         }
 
-        public static void tryDeleteDirectory(string location, bool showExceptions = true)
+        public static void tryDeleteDirectory(string location)
         {
             try
             {
                 Directory.Delete(location, true);
-                //CoreFunctions.WriteLog($"Deleted file {location}", this);
             }
             catch
             {
-                //if (showExceptions) CoreFunctions.WriteLog($"{ex.Message}", this);
             }
         }
 

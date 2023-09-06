@@ -38,6 +38,8 @@ namespace SARS
         public ConfigSave<Config> configSave;
         public ConfigSave<List<AvatarModel>> rippedList;
         public ConfigSave<List<AvatarModel>> favList;
+        public ConfigSave<ListDown> downloadQueue;
+        public List<string> requestedAvatarIds = new List<string>();
         private HotswapConsole hotSwapConsole;
         private Thread _vrcaThread;
         private string userAgent = "UnityPlayer/2019.4.40f1 (UnityWebRequest/1.0, libcurl/7.80.0-DEV)";
@@ -84,6 +86,21 @@ namespace SARS
 
             try
             {
+                downloadQueue = new ConfigSave<ListDown>(filePath + "\\download.cfg");
+                if(downloadQueue.Config.Download == null)
+                {
+                    downloadQueue.Config.Download = new List<string>();
+                }
+            }
+            catch
+            {
+                MessageBox.Show("Error with download file, list reset");
+                File.Delete(filePath + "\\download.cfg");
+                Console.WriteLine("Error with download");
+            }
+
+            try
+            {
                 rippedList = new ConfigSave<List<AvatarModel>>(filePath + "\\rippedNew.cfg");
             }
             catch
@@ -121,6 +138,14 @@ namespace SARS
 
             CheckFav();
             CheckRipped();
+
+            if (configSave.Config.ViewerVersion != 2)
+            {
+                SarsClient.ClearViewer();
+                SarsClient.ExtractViewer();
+                configSave.Config.ViewerVersion = 2;
+                configSave.Save();
+            }
 
             if (string.IsNullOrEmpty(configSave.Config.HotSwapWorldName))
             {
@@ -657,8 +682,7 @@ namespace SARS
                     try
                     {
                         Image myImg = (row.Cells[0].Value as Image);
-                        myImg.Save(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location) +
-                                    $"\\{configSave.Config.HotSwapName}\\Assets\\Shrek SMART\\Resources\\shrekLogo.png", ImageFormat.Png);
+                        myImg.Save(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location) + $"\\{configSave.Config.HotSwapName}\\Assets\\Shrek SMART\\Resources\\shrekLogo.png", ImageFormat.Png);
                         avatar = avatars.FirstOrDefault(x => x.Avatar.AvatarId == row.Cells[3].Value);
                     }
                     catch { }
@@ -701,8 +725,8 @@ namespace SARS
             var unityTemp = $"\\Local\\Temp\\DefaultCompany\\{configSave.Config.HotSwapName}";
             var unityTemp2 = $"\\LocalLow\\Temp\\DefaultCompany\\{configSave.Config.HotSwapName}";
 
-            RandomFunctions.tryDeleteDirectory(tempFolder + unityTemp, false);
-            RandomFunctions.tryDeleteDirectory(tempFolder + unityTemp2, false);
+            RandomFunctions.tryDeleteDirectory(tempFolder + unityTemp);
+            RandomFunctions.tryDeleteDirectory(tempFolder + unityTemp2);
 
             if (configSave.Config.HsbVersion != 2)
             {
@@ -1044,7 +1068,7 @@ namespace SARS
                     p.Start();
                     p.WaitForExit();
 
-                    RandomFunctions.tryDeleteDirectory(folderExtractLocation + @"\AssetRipper\GameAssemblies", false);
+                    RandomFunctions.tryDeleteDirectory(folderExtractLocation + @"\AssetRipper\GameAssemblies");
                     try
                     {
                         Directory.Move(folderExtractLocation + @"\Assets\Shader",
@@ -1061,9 +1085,9 @@ namespace SARS
                     catch
                     {
                     }
-                    RandomFunctions.tryDeleteDirectory(folderExtractLocation + @"\AuxiliaryFiles", false);
-                    RandomFunctions.tryDeleteDirectory(folderExtractLocation + @"\ExportedProject\AssetRipper", false);
-                    RandomFunctions.tryDeleteDirectory(folderExtractLocation + @"\ExportedProject\ProjectSettings", false);
+                    RandomFunctions.tryDeleteDirectory(folderExtractLocation + @"\AuxiliaryFiles");
+                    RandomFunctions.tryDeleteDirectory(folderExtractLocation + @"\ExportedProject\AssetRipper");
+                    RandomFunctions.tryDeleteDirectory(folderExtractLocation + @"\ExportedProject\ProjectSettings");
                     try
                     {
                         Directory.Move(folderExtractLocation + @"\ExportedProject\Assets\Shader",
@@ -1086,8 +1110,8 @@ namespace SARS
 
                     if (chkUnityPackage.Checked)
                     {
-                        RandomFunctions.tryDeleteDirectory(folderExtractLocation + @"\ExportedProject\.Scripts", false);
-                        RandomFunctions.tryDeleteDirectory(folderExtractLocation + @"\ExportedProject\.Shader", false);
+                        RandomFunctions.tryDeleteDirectory(folderExtractLocation + @"\ExportedProject\.Scripts");
+                        RandomFunctions.tryDeleteDirectory(folderExtractLocation + @"\ExportedProject\.Shader");
                         var inpath = folderExtractLocation + @"\ExportedProject\Assets";
 
                         var extensions = new List<string>()
@@ -1156,7 +1180,7 @@ namespace SARS
                             {
                                 FileName = "AssetViewer.exe",
                                 Arguments = commands,
-                                WorkingDirectory = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location) + @"\NewestViewer\",
+                                WorkingDirectory = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location) + @"\NewViewer\",
                             };
                             p.StartInfo = psi;
                             p.Start();
@@ -1190,6 +1214,7 @@ namespace SARS
                 foreach (DataGridViewRow row in avatarGrid.SelectedRows)
                 {
                     avatar = avatars.FirstOrDefault(x => x.Avatar.AvatarId == row.Cells[3].Value);
+                    avatar.Avatar.QuestAssetUrl = "None";
                     download = new Download() { Text = $"{avatar.Avatar.AvatarName} - {avatar.Avatar.AvatarId}" };
                     download.Show();
                     await Task.Run(() => AvatarFunctions.DownloadVrcaAsync(avatar, nmPcVersion.Value, nmQuestVersion.Value, download));
@@ -1207,32 +1232,6 @@ namespace SARS
                 fileLocation = vrcaLocation;
             }
 
-            if (File.Exists(fileLocation) && File.Exists(fileLocation.Replace("_pc", "_quest")))
-            {
-                var dlgResult = MessageBox.Show("Select which version to extract", "VRCA Select",
-                   MessageBoxButtons.YesNo, MessageBoxIcon.Information);
-
-                if (dlgResult == DialogResult.No)
-                {
-                    fileLocation = fileLocation.Replace("_pc", "_quest");
-                }
-            }
-            else
-            {
-                if (!File.Exists(fileLocation))
-                {
-                    if (File.Exists(fileLocation.Replace("_pc", "_quest")))
-                    {
-                        fileLocation = fileLocation.Replace("_pc", "_quest");
-                    }
-                    else
-                    {
-                        MessageBox.Show("Avatar file doesn't exist");
-                        return false;
-                    }
-                }
-            }
-
             try
             {
                 string commands = string.Format($"\"{fileLocation}\"");
@@ -1242,7 +1241,7 @@ namespace SARS
                 {
                     FileName = "AssetViewer.exe",
                     Arguments = commands,
-                    WorkingDirectory = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location) + @"\NewestViewer\",
+                    WorkingDirectory = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location) + @"\NewViewer\",
                 };
                 p.StartInfo = psi;
                 p.Start();
@@ -2517,8 +2516,8 @@ namespace SARS
             var unityTemp = $"\\Local\\Temp\\DefaultCompany\\{configSave.Config.HotSwapWorldName}";
             var unityTemp2 = $"\\LocalLow\\Temp\\DefaultCompany\\{configSave.Config.HotSwapWorldName}";
 
-            RandomFunctions.tryDeleteDirectory(tempFolder + unityTemp, false);
-            RandomFunctions.tryDeleteDirectory(tempFolder + unityTemp2, false);
+            RandomFunctions.tryDeleteDirectory(tempFolder + unityTemp);
+            RandomFunctions.tryDeleteDirectory(tempFolder + unityTemp2);
 
             if (configSave.Config.HsbWorldVersion != 1)
             {
@@ -2627,7 +2626,7 @@ namespace SARS
                     MessageBox.Show("Quest asset url doesn't exist");
                     return;
                 }
-                RequestAvatar requestAvatar = new RequestAvatar { AvatarId = avatar.Avatar.AvatarId, Key = new Guid(configSave.Config.ApiKey), Quest = false };
+                RequestAvatar requestAvatar = new RequestAvatar { AvatarId = avatar.Avatar.AvatarId, Key = new Guid(configSave.Config.ApiKey), Quest = true };
                 bool requested = shrekApi.RequestAvatar(requestAvatar);
                 if (!requested)
                 {
@@ -2705,7 +2704,7 @@ namespace SARS
                                     {
                                         FileName = "AssetViewer.exe",
                                         Arguments = commands,
-                                        WorkingDirectory = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location) + @"\NewestViewer\",
+                                        WorkingDirectory = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location) + @"\NewViewer\",
                                         WindowStyle = ProcessWindowStyle.Hidden
                                     };
                                     p.StartInfo = psi;
@@ -2714,7 +2713,7 @@ namespace SARS
                                 }
                                 catch (Exception ex) { Console.WriteLine(ex.Message); }
                                 Console.WriteLine("testing");
-                                string screenshotLocation = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location) + @"\NewestViewer\AssetViewer_Data\avatarscreen.png";
+                                string screenshotLocation = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location) + @"\NewViewer\AssetViewer_Data\avatarscreen.png";
                                 string screenshotLocationNew = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location) + $"\\images\\{avatar.Avatar.AvatarId}.png";
                                 if (File.Exists(screenshotLocation))
                                 {
@@ -2811,18 +2810,27 @@ namespace SARS
             return true;
         }
 
-        private void btnUpdate_Click(object sender, EventArgs e)
+        private void UpdateDownloadList()
         {
             GetRequests key = new GetRequests { Key = new Guid(configSave.Config.ApiKey) };
             List<DownloadQueueList> download = shrekApi.DownloadQueueRefresh(key);
             dgSafeDownload.Rows.Clear();
             dgSafeDownload.AllowUserToAddRows = true;
+            string alertText = "";
             foreach (var item in download)
             {
+                if (item.Downloaded)
+                {
+                    if (!downloadQueue.Config.Download.Contains(item.AvatarId))
+                    {
+                        downloadQueue.Config.Download.Add(item.AvatarId);
+                        downloadQueue.Save();
+                        alertText = $"{alertText}{Environment.NewLine}{item.AvatarId}";
+                    }
+                }
                 try
                 {
                     DataGridViewRow row = (DataGridViewRow)dgSafeDownload.Rows[0].Clone();
-
                     row.Cells[0].Value = item.AvatarId;
                     row.Cells[1].Value = item.Quest;
                     row.Cells[2].Value = item.Downloaded;
@@ -2835,6 +2843,21 @@ namespace SARS
                 }
             }
             dgSafeDownload.AllowUserToAddRows = false;
+            if (alertText != "")
+            {
+                MessageBox.Show($"The following items have finished downloading {alertText}");
+            }
+        }
+
+        private void btnUpdate_Click(object sender, EventArgs e)
+        {
+            if (configSave.Config.ApiKey != null)
+            {
+                UpdateDownloadList();
+            } else
+            {
+                MessageBox.Show("Please enter your API Key");
+            }
         }
 
 
@@ -2842,6 +2865,29 @@ namespace SARS
         private void chkSelfAvatars_CheckedChanged(object sender, EventArgs e)
         {
             _logSelf = !chkSelfAvatars.Checked;
+        }
+
+        private void DownloadRefresh_Tick(object sender, EventArgs e)
+        {
+            if (configSave.Config.ApiKey != null)
+            {
+                UpdateDownloadList();
+            }
+            else
+            {
+                chkAutoRefreshDownload.Checked = false;
+                DownloadRefresh.Enabled = false;
+            }
+        }
+
+        private void chkAutoRefreshDownload_CheckedChanged(object sender, EventArgs e)
+        {
+            DownloadRefresh.Enabled = chkAutoRefreshDownload.Checked;
+        }
+
+        private void metroLabel21_Click(object sender, EventArgs e)
+        {
+            Process.Start("https://ko-fi.com/ShrekamusChrist");
         }
     }
 }

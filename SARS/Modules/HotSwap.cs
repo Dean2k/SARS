@@ -10,14 +10,16 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Web.Configuration;
 using System.Windows.Forms;
+using VRChatAPI_New;
 
 namespace SARS.Modules
 {
     public static class HotSwap
     {
+        public static string filePath = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
+        public static string firstLineReplace;
         public static async void HotswapProcess(HotswapConsole hotSwapConsole, AvatarSystem avatarSystem, string avatarFile, string customAvatarId = null, string imgFileLocation = null, string avatarName = null, string ReuploaderVrChat = null, bool replaceUnityVer = false)
         {
-            var filePath = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
             var fileDecompressed = filePath + @"\decompressed.vrca";
             var fileDecompressed2 = filePath + @"\decompressed1.vrca";
             var fileDecompressedFinal = filePath + @"\finalDecompressed.vrca";
@@ -71,7 +73,7 @@ namespace SARS.Modules
                 }
 
                 matchModelNew = getMatches(fileDecompressed, avatarIdRegex, avatarCabRegex, unityRegex,
-                    avatarPrefabIdRegex);
+                    avatarPrefabIdRegex, true);
             }
 
             try
@@ -89,7 +91,7 @@ namespace SARS.Modules
             }
 
             var matchModelOld = getMatches(fileDecompressed2, avatarIdRegex, avatarCabRegex, unityRegex,
-                avatarPrefabIdRegex);
+                avatarPrefabIdRegex, false);
             if (matchModelOld.UnityVersion == null)
             {
                 var dialogResult = MessageBox.Show("Possible risky hotswap detected", "Risky Upload",
@@ -100,6 +102,7 @@ namespace SARS.Modules
                         hotSwapConsole.Invoke((MethodInvoker)delegate { hotSwapConsole.Close(); });
                     return;
                 }
+                replaceUnityVer = false;
             }
 
             if (matchModelOld.UnityVersion != null)
@@ -108,13 +111,13 @@ namespace SARS.Modules
                     var dialogResult = MessageBox.Show(
                         "Replace 2017-2018 unity version, replacing this can cause issues but not replacing it can also increase a ban chance (Press OK to replace and cancel to skip replacements)",
                         "Possible 2017-2018 unity issue", MessageBoxButtons.OKCancel, MessageBoxIcon.Error);
-                    if (dialogResult == DialogResult.Cancel) matchModelOld.UnityVersion = null;
+                    if (dialogResult == DialogResult.Cancel) { matchModelOld.UnityVersion = null; replaceUnityVer = false; } 
                 }
             if (matchModelNew == null)
             {
                 matchModelNew = new MatchModel
                 {
-                    UnityVersion = "2019.4.31f1",//BaseUploader._unityVersion;
+                    UnityVersion = "2019.4.31f1",
                     AvatarAssetId = "prefab-id-v1_" + customAvatarId + "_" + RandomString(10) + ".prefab",
                     AvatarCab = "CAB-" + RandomString(32),
                     AvatarId = customAvatarId
@@ -192,10 +195,9 @@ namespace SARS.Modules
                     MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
-
         public static async void HotswapWorldProcess(HotswapConsole hotSwapConsole, AvatarSystem avatarSystem, string worldFile, string customWorldId = null)
         {
-            var filePath = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
+
             var fileDecompressed = filePath + @"\decompressed.vrcw";
             var fileDecompressed2 = filePath + @"\decompressed1.vrcw";
             var fileDecompressedFinal = filePath + @"\finalDecompressed.vrcw";
@@ -278,14 +280,14 @@ namespace SARS.Modules
                     var dialogResult = MessageBox.Show(
                         "Replace 2017-2018 unity version, replacing this can cause issues but not replacing it can also increase a ban chance (Press OK to replace and cancel to skip replacements)",
                         "Possible 2017-2018 unity issue", MessageBoxButtons.OKCancel, MessageBoxIcon.Error);
-                    if (dialogResult == DialogResult.Cancel) matchModelOld.UnityVersion = null;
+                    if (dialogResult == DialogResult.Cancel) { matchModelOld.UnityVersion = null; }
                 }
 
             if (matchModelNew == null)
             {
                 matchModelNew = new MatchModel
                 {
-                    UnityVersion = "2019.4.31f1",//BaseUploader._unityVersion;
+                    UnityVersion = "2019.4.31f1",
                     AvatarId = customWorldId
                 };
             }
@@ -393,27 +395,39 @@ namespace SARS.Modules
         }
 
         private static MatchModel getMatches(string file, Regex avatarId, Regex avatarCab, Regex unityVersion,
-            Regex avatarAssetId)
+            Regex avatarAssetId, bool firstRead)
         {
             MatchCollection avatarIdMatch = null;
             MatchCollection avatarAssetIdMatch = null;
             MatchCollection avatarCabMatch = null;
             MatchCollection unityMatch = null;
+            var enc = Encoding.GetEncoding(28591);
+            bool firstLine = true;
             var unityCount = 0;
 
-            foreach (var line in File.ReadLines(file))
+            using (var vReader = new StreamReaderOver(file, enc))
             {
-                var tempId = avatarId.Matches(line);
-                var tempAssetId = avatarAssetId.Matches(line);
-                var tempCab = avatarCab.Matches(line);
-                var tempUnity = unityVersion.Matches(line);
-                if (tempAssetId.Count > 0) avatarAssetIdMatch = tempAssetId;
-                if (tempId.Count > 0) avatarIdMatch = tempId;
-                if (tempCab.Count > 0) avatarCabMatch = tempCab;
-                if (tempUnity.Count > 0)
+                while (!vReader.EndOfStream)
                 {
-                    unityMatch = tempUnity;
-                    unityCount++;
+                    var vLine = vReader.ReadLine();
+                    if (firstLine && firstRead)
+                    {
+                        int indexCount = vLine.IndexOf("2019.4.31f1");
+                        firstLineReplace = vLine.Substring(0, indexCount);
+                        firstLine = false;
+                    }
+                    var tempId = avatarId.Matches(vLine);
+                    var tempAssetId = avatarAssetId.Matches(vLine);
+                    var tempCab = avatarCab.Matches(vLine);
+                    var tempUnity = unityVersion.Matches(vLine);
+                    if (tempAssetId.Count > 0) avatarAssetIdMatch = tempAssetId;
+                    if (tempId.Count > 0) avatarIdMatch = tempId;
+                    if (tempCab.Count > 0) avatarCabMatch = tempCab;
+                    if (tempUnity.Count > 0)
+                    {
+                        unityMatch = tempUnity;
+                        unityCount++;
+                    }
                 }
             }
 
@@ -461,6 +475,7 @@ namespace SARS.Modules
         private static void GetReadyForCompress(string oldFile, string newFile, MatchModel old, MatchModel newModel, bool unityReplace = false)
         {
             var enc = Encoding.GetEncoding(28591);
+            bool firstLine = unityReplace;
             using (var vReader = new StreamReaderOver(oldFile, enc))
             {
                 using (var vWriter = new StreamWriter(newFile, false, enc))
@@ -469,25 +484,50 @@ namespace SARS.Modules
                     {
                         var vLine = vReader.ReadLine();
                         var replace = CheckAndReplaceLine(vLine, old, newModel, unityReplace);
+                        if (firstLine && unityReplace)
+                        {
+                            int indexCount = replace.IndexOf("2022.3.5f1-DWR");
+                            if(indexCount == -1)
+                            {
+                                indexCount = replace.IndexOf("2019.4.40f1");
+                            }
+                            if (indexCount == -1)
+                            {
+                                indexCount = replace.IndexOf("2019.4.31f1");
+                                firstLine = false;
+                            }
+                            else if (indexCount != -1)
+                            {
+                                replace = firstLineReplace + replace.Substring(indexCount);
+                                firstLine = false;
+                            }
+                            else
+                            {
+                                replace = "";
+                            }
+                        }
+
                         vWriter.Write(replace);
                     }
+
                 }
             }
         }
 
         private static string CheckAndReplaceLine(string line, MatchModel old, MatchModel newModel, bool unityReplace = false)
         {
+            var enc = Encoding.GetEncoding(28591);
             var edited = line;
-            if (unityReplace)
-            {
-                if (edited.Contains("2019.4.40f1")) edited = edited.Replace("2019.4.40f1", "2019.4.31f1");
-            }
+
             if (edited.Contains(old.AvatarAssetId)) edited = edited.Replace(old.AvatarAssetId, newModel.AvatarAssetId);
             if (edited.Contains(old.AvatarId)) edited = edited.Replace(old.AvatarId, newModel.AvatarId);
             if (edited.Contains(old.AvatarCab)) edited = edited.Replace(old.AvatarCab, newModel.AvatarCab);
+            if (unityReplace) { 
             if (old.UnityVersion != null)
                 if (edited.Contains(old.UnityVersion))
                     edited = edited.Replace(old.UnityVersion, newModel.UnityVersion);
+            }
+
             return edited;
         }
 
@@ -526,7 +566,7 @@ namespace SARS.Modules
             {
                 var progressBar = new SZProgress(hotSwap);
                 SafeWrite(hotSwap.txtStatusText, $"Decompressing Asset, this may take a while!{Environment.NewLine}");
-                bunInst.file = BundleHelper.UnpackBundleToStream(bunInst.file, bunStream, progressBar);
+                bunInst.file = BundleHelper.UnpackBundleToStream(bunInst.file, bunStream);
             }
 
             SafeWrite(hotSwap.txtStatusText, $"----------------------------------------------------------{Environment.NewLine}Asset Decompressed!{Environment.NewLine}");
@@ -571,9 +611,10 @@ namespace SARS.Modules
 
             SafeWrite(hotSwap.txtStatusText, $"Final Step, Compressing File, this will take a while!{Environment.NewLine}");
             var progressBar = new SZProgress(hotSwap);
+
             using (AssetsFileWriter writer = new AssetsFileWriter(compFile))
             {
-                newUncompressedBundle.Pack(newUncompressedBundle.reader, writer, AssetBundleCompressionType.LZMA, progressBar);
+                newUncompressedBundle.Pack(writer, AssetBundleCompressionType.LZMA, progressed: progressBar);
             }
             SafeWrite(hotSwap.txtStatusText, $"Compressed file packing complete!{Environment.NewLine}");
 

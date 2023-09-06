@@ -27,7 +27,7 @@ namespace SARS.Modules
         public static void ReadUntilId(string filePath)
         {
 
-            string stringToFind = "avtr_";
+            string stringToFind = "prefab-id-v1_avtr_";
             string stringToFindWorld = "wrld_";
             Regex avatarIdRegEx = new Regex(@"avtr_[\w]{8}-[\w]{4}-[\w]{4}-[\w]{4}-[\w]{12}");
             Regex worldIdRegEx = new Regex(@"wrld_[\w]{8}-[\w]{4}-[\w]{4}-[\w]{4}-[\w]{12}");
@@ -49,10 +49,10 @@ namespace SARS.Modules
                                     string avatarId = stringToFind + words[1].Substring(0, 36);
                                     if (avatarIdRegEx.IsMatch(avatarId))
                                     {
-                                        CacheAvatar cacheAvatar = new CacheAvatar { AvatarId = avatarId.Trim(), FileLocation = filePath, AvatarDetected = File.GetCreationTime(filePath), FileSize = new FileInfo(filePath).Length };
+                                        CacheAvatar cacheAvatar = new CacheAvatar { AvatarId = avatarId.Replace("prefab-id-v1_", "").Trim(), FileLocation = filePath, AvatarDetected = File.GetCreationTime(filePath), FileSize = new FileInfo(filePath).Length };
                                         avatarIds.Add(cacheAvatar);
                                         autoAvatarIds.Add(cacheAvatar);
-                                        NewMessage($"Avatar found: {avatarId}{Environment.NewLine}");
+                                        NewMessage($"Avatar found: {avatarId.Replace("prefab-id-v1_", "")}{Environment.NewLine}");
                                         break;
 
                                     }

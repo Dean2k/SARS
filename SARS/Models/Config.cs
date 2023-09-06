@@ -27,6 +27,7 @@ namespace SARS.Models
         public string HotSwapWorldName { get; set; }
         public string MacAddress { get; set; }
         public string ReuploaderMacAddress { get; set; }
+        public int ViewerVersion { get; set; }
         public int HsbVersion { get; set; }
         public int HsbWorldVersion { get; set; }
         public bool AltAPI { get; set; }

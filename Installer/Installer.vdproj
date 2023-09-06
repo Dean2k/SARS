@@ -87,6 +87,12 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_0D08633B3DDEAD5FE6C939137D20184A"
+        "OwnerKey" = "8:_9F8E647C7E424B3A84C1BDDEC42AA087"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_0F0EBC3E2FD4F37F2113C966348BA3AE"
         "OwnerKey" = "8:_9B358BAB35234B118C5C03C01CB98DE7"
         "MsmSig" = "8:_UNDEFINED"
@@ -3766,12 +3772,6 @@
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_509120FDDF3DED0259DCE802272628F1"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
         "OwnerKey" = "8:_F9BF6B1A489746BAB53773BE404A2CE8"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -4702,6 +4702,12 @@
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_509120FDDF3DED0259DCE802272628F1"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
         "OwnerKey" = "8:_4DA0667631FC25514E14A35EB7E3F5FA"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -4739,6 +4745,12 @@
         {
         "MsmKey" = "8:_UNDEFINED"
         "OwnerKey" = "8:_7C52248A167C64EA606964527DDE7731"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_0D08633B3DDEAD5FE6C939137D20184A"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -5154,6 +5166,37 @@
             "Register" = "3:1"
             "Exclude" = "11:FALSE"
             "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_0D08633B3DDEAD5FE6C939137D20184A"
+            {
+            "AssemblyRegister" = "3:1"
+            "AssemblyIsInGAC" = "11:FALSE"
+            "AssemblyAsmDisplayName" = "8:YamlDotNet, Version=13.0.0.0, Culture=neutral, PublicKeyToken=ec19458f3c15af5e, processorArchitecture=MSIL"
+                "ScatterAssemblies"
+                {
+                    "_0D08633B3DDEAD5FE6C939137D20184A"
+                    {
+                    "Name" = "8:YamlDotNet.dll"
+                    "Attributes" = "3:512"
+                    }
+                }
+            "SourcePath" = "8:YamlDotNet.dll"
+            "TargetName" = "8:"
+            "Tag" = "8:"
+            "Folder" = "8:_F638F9820B244DB9B46B903B9370FECF"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
             "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_0F0EBC3E2FD4F37F2113C966348BA3AE"
@@ -12478,15 +12521,15 @@
         {
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:SARS"
-        "ProductCode" = "8:{E9256F54-09D8-406B-91E3-7C5E1F64F01A}"
-        "PackageCode" = "8:{7B27712E-1122-4C79-AF34-624E3BA6A68A}"
+        "ProductCode" = "8:{EBCBADCF-CBC9-474C-8E7C-8E8FB506F3E2}"
+        "PackageCode" = "8:{216DEF9F-D421-461E-9FC8-E5FA9D1AC0D9}"
         "UpgradeCode" = "8:{E03648F1-FF6A-44A2-B9C9-57FE29CE61D9}"
         "AspNetVersion" = "8:2.0.50727.0"
         "RestartWWWService" = "11:FALSE"
         "RemovePreviousVersions" = "11:TRUE"
         "DetectNewerInstalledVersion" = "11:TRUE"
         "InstallAllUsers" = "11:TRUE"
-        "ProductVersion" = "8:1.11.1"
+        "ProductVersion" = "8:1.12.3"
         "Manufacturer" = "8:Shrek Tech"
         "ARPHELPTELEPHONE" = "8:"
         "ARPHELPLINK" = "8:"

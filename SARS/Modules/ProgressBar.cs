@@ -52,4 +52,9 @@ public class SZProgress : SevenZip.ICodeProgress
     {
 
     }
+
+    public void SetProgress(long inSize, long outSize)
+    {
+        throw new NotImplementedException();
+    }
 }

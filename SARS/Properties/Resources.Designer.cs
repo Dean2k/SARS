@@ -115,5 +115,14 @@ namespace SARS.Properties {
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {newModel.AvatarCab}.
+        /// </summary>
+        internal static string Replacement {
+            get {
+                return ResourceManager.GetString("Replacement", resourceCulture);
+            }
+        }
     }
 }
