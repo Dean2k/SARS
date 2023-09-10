@@ -2705,14 +2705,13 @@ namespace SARS
                                         FileName = "AssetViewer.exe",
                                         Arguments = commands,
                                         WorkingDirectory = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location) + @"\NewViewer\",
-                                        WindowStyle = ProcessWindowStyle.Hidden
+                                        WindowStyle = ProcessWindowStyle.Minimized
                                     };
                                     p.StartInfo = psi;
                                     p.Start();
                                     p.WaitForExit();
                                 }
                                 catch (Exception ex) { Console.WriteLine(ex.Message); }
-                                Console.WriteLine("testing");
                                 string screenshotLocation = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location) + @"\NewViewer\AssetViewer_Data\avatarscreen.png";
                                 string screenshotLocationNew = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location) + $"\\images\\{avatar.Avatar.AvatarId}.png";
                                 if (File.Exists(screenshotLocation))

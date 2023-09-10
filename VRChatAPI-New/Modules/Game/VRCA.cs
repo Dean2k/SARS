@@ -14,7 +14,7 @@ namespace VRChatAPI_New.Modules.Game
         {
             if (url.StartsWith("http"))
             {
-                url += "?organization=vrchat";
+                url += "?apiKey=JlE5Jldo5Jibnk5O5hTx6XVqsJu4WJ26&organization=vrchat";
                 using WebClient webClient = SetupWebClient(bypass);
                 try
                 {

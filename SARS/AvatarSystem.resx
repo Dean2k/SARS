@@ -1288,7 +1288,7 @@
     <value>Vertical</value>
   </data>
   <data name="avatarGrid.Size" type="System.Drawing.Size, System.Drawing">
-    <value>840, 432</value>
+    <value>840, 429</value>
   </data>
   <data name="avatarGrid.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
@@ -2984,7 +2984,7 @@
     <value>True</value>
   </data>
   <data name="chkSelfAvatars.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 385</value>
+    <value>3, 382</value>
   </data>
   <data name="chkSelfAvatars.Size" type="System.Drawing.Size, System.Drawing">
     <value>228, 19</value>
@@ -3017,7 +3017,7 @@
     <value>True</value>
   </data>
   <data name="chkAutoScan.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 369</value>
+    <value>3, 366</value>
   </data>
   <data name="chkAutoScan.Size" type="System.Drawing.Size, System.Drawing">
     <value>277, 19</value>
@@ -3044,7 +3044,7 @@
     <value>Bottom, Right</value>
   </data>
   <data name="btnGetScreenshots.Location" type="System.Drawing.Point, System.Drawing">
-    <value>591, 369</value>
+    <value>591, 366</value>
   </data>
   <data name="btnGetScreenshots.Size" type="System.Drawing.Size, System.Drawing">
     <value>120, 35</value>
@@ -3071,7 +3071,7 @@
     <value>Bottom, Right</value>
   </data>
   <data name="btnScanCacheFolder.Location" type="System.Drawing.Point, System.Drawing">
-    <value>717, 369</value>
+    <value>717, 366</value>
   </data>
   <data name="btnScanCacheFolder.Size" type="System.Drawing.Size, System.Drawing">
     <value>120, 35</value>
@@ -3107,10 +3107,10 @@
     <value>NoControl</value>
   </data>
   <data name="resource.Location8" type="System.Drawing.Point, System.Drawing">
-    <value>487, 1</value>
+    <value>491, 2</value>
   </data>
   <data name="resource.Size8" type="System.Drawing.Size, System.Drawing">
-    <value>349, 349</value>
+    <value>343, 343</value>
   </data>
   <data name="resource.TabIndex8" type="System.Int32, mscorlib">
     <value>1</value>
@@ -3122,7 +3122,7 @@
     <value>3, 12</value>
   </data>
   <data name="txtCacheScannerLog.Size" type="System.Drawing.Size, System.Drawing">
-    <value>837, 351</value>
+    <value>837, 348</value>
   </data>
   <data name="txtCacheScannerLog.TabIndex" type="System.Int32, mscorlib">
     <value>69</value>
@@ -3647,10 +3647,10 @@
     <value>3</value>
   </data>
   <data name="metroTabPage6.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 38</value>
+    <value>4, 35</value>
   </data>
   <data name="metroTabPage6.Size" type="System.Drawing.Size, System.Drawing">
-    <value>840, 444</value>
+    <value>840, 447</value>
   </data>
   <data name="metroTabPage6.TabIndex" type="System.Int32, mscorlib">
     <value>6</value>
@@ -3677,7 +3677,7 @@
     <value>True</value>
   </data>
   <data name="metroLabel21.Location" type="System.Drawing.Point, System.Drawing">
-    <value>597, 419</value>
+    <value>597, 416</value>
   </data>
   <data name="metroLabel21.Size" type="System.Drawing.Size, System.Drawing">
     <value>240, 19</value>
@@ -3707,7 +3707,7 @@
     <value>True</value>
   </data>
   <data name="chkAutoRefreshDownload.Location" type="System.Drawing.Point, System.Drawing">
-    <value>199, 346</value>
+    <value>199, 343</value>
   </data>
   <data name="chkAutoRefreshDownload.Size" type="System.Drawing.Size, System.Drawing">
     <value>232, 19</value>
@@ -3734,7 +3734,7 @@
     <value>Bottom</value>
   </data>
   <data name="btnUpdate.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 337</value>
+    <value>3, 334</value>
   </data>
   <data name="btnUpdate.Size" type="System.Drawing.Size, System.Drawing">
     <value>191, 35</value>
@@ -3767,7 +3767,7 @@
     <value>True</value>
   </data>
   <data name="metroLabel5.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 375</value>
+    <value>4, 372</value>
   </data>
   <data name="metroLabel5.Size" type="System.Drawing.Size, System.Drawing">
     <value>730, 76</value>
@@ -3797,7 +3797,7 @@ you don't risk your account)
     <value>Bottom</value>
   </data>
   <data name="btnDownloadSafe.Location" type="System.Drawing.Point, System.Drawing">
-    <value>647, 337</value>
+    <value>647, 334</value>
   </data>
   <data name="btnDownloadSafe.Size" type="System.Drawing.Size, System.Drawing">
     <value>191, 35</value>
@@ -3860,7 +3860,7 @@ you don't risk your account)
     <value>Vertical</value>
   </data>
   <data name="dgSafeDownload.Size" type="System.Drawing.Size, System.Drawing">
-    <value>840, 335</value>
+    <value>840, 332</value>
   </data>
   <data name="dgSafeDownload.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
