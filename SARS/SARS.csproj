@@ -318,7 +318,7 @@
     <None Include="SARSWorld.zip">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="Template\SampleScene.unity">
+    <None Include="Template\Scene.unity">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
   </ItemGroup>
@@ -368,9 +368,6 @@
     <None Include="Resources\download.png" />
     <Content Include="shrek %282%29.ico" />
     <Content Include="SQLite.Interop.dll">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Template\shrekLogo.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="VRCA\VRCA.txt">

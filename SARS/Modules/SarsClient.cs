@@ -335,10 +335,13 @@ namespace SARS.Modules
             try
             {
                 var programLocation = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
-                File.Copy(programLocation + @"\Template\SampleScene.unity", programLocation + $"\\{configSave.Config.HotSwapName}\\Assets\\Scenes\\SampleScene.unity", true);
-                File.Copy(programLocation + @"\Template\shrekLogo.png", programLocation + $"\\{configSave.Config.HotSwapName}\\Assets\\Shrek SMART\\Resources\\shrekLogo.png", true);
+                File.Copy(programLocation + @"\Template\Scene.unity", programLocation + $"\\{configSave.Config.HotSwapName}\\Assets\\Scene.unity", true);
             }
-            catch { }
+            catch (Exception ex) { 
+             
+                Console.WriteLine(ex.Message);
+            
+            }
         }
 
         public static void UpdateFileSize(string avatarId, long size)

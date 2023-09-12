@@ -681,8 +681,6 @@ namespace SARS
 
                     try
                     {
-                        Image myImg = (row.Cells[0].Value as Image);
-                        myImg.Save(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location) + $"\\{configSave.Config.HotSwapName}\\Assets\\Shrek SMART\\Resources\\shrekLogo.png", ImageFormat.Png);
                         avatar = avatars.FirstOrDefault(x => x.Avatar.AvatarId == row.Cells[3].Value);
                     }
                     catch { }
@@ -728,10 +726,10 @@ namespace SARS
             RandomFunctions.tryDeleteDirectory(tempFolder + unityTemp);
             RandomFunctions.tryDeleteDirectory(tempFolder + unityTemp2);
 
-            if (configSave.Config.HsbVersion != 2)
+            if (configSave.Config.HsbVersion != 3)
             {
                 SarsClient.CleanHsb(configSave);
-                configSave.Config.HsbVersion = 2;
+                configSave.Config.HsbVersion = 3;
                 configSave.Save();
             }
 
