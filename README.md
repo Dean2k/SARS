@@ -1,4 +1,4 @@
-# Shrek Avatar Recovery System (S.A.R.S)
+# Semi-Automated Avatar Recovery System (S.A.R.S)
 
 S.A.R.S is an avatar recovery tool! It is only for educational uses! We do not condone theft of avatars, the tool soley exists to recover avatars from within VRChat back onto new accounts and into their unity packages keeping as much of the avatar in-tact as possible!
 
