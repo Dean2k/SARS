@@ -532,30 +532,29 @@ namespace SARS.Modules
                     while (!vReader.EndOfStream)
                     {
                         var vLine = vReader.ReadLine();
-                        var replace = CheckAndReplaceLine(vLine, old, newModel, unityReplace);
                         if (firstLine && unityReplace)
                         {
-                            int indexCount = replace.IndexOf("2022.3.5f1-DWR");
+                            int indexCount = vLine.IndexOf("2022.3.5f1-DWR");
                             if (indexCount == -1)
                             {
-                                indexCount = replace.IndexOf("2019.4.40f1");
+                                indexCount = vLine.IndexOf("2019.4.40f1");
                             }
                             if (indexCount == -1)
                             {
-                                indexCount = replace.IndexOf("2019.4.31f1");
+                                indexCount = vLine.IndexOf("2019.4.31f1");
                                 firstLine = false;
                             }
                             else if (indexCount != -1)
                             {
-                                replace = firstLineReplace + replace.Substring(indexCount);
+                                vLine = firstLineReplace + vLine.Substring(indexCount);
                                 firstLine = false;
                             }
                             else
                             {
-                                replace = "";
+                                vLine = "";
                             }
                         }
-
+                        var replace = CheckAndReplaceLine(vLine, old, newModel, unityReplace);
                         vWriter.Write(replace);
                     }
 
@@ -573,12 +572,29 @@ namespace SARS.Modules
                 if (edited.Contains(old.AvatarAssetId)) edited = edited.Replace(old.AvatarAssetId, newModel.AvatarAssetId);
             }
             if (edited.Contains(old.AvatarId)) edited = edited.Replace(old.AvatarId, newModel.AvatarId);
-            if (edited.Contains(old.AvatarCab)) edited = edited.Replace(old.AvatarCab, newModel.AvatarCab);
+            if (old.AvatarCab != null)
+            {
+                if (edited.Contains(old.AvatarCab)) edited = edited.Replace(old.AvatarCab, newModel.AvatarCab);
+            }
             if (unityReplace)
             {
                 if (old.UnityVersion != null)
+                {
                     if (edited.Contains(old.UnityVersion))
+                    {
                         edited = edited.Replace(old.UnityVersion, newModel.UnityVersion);
+                    }
+                }
+
+                // CACHE VERSIONS REPLACE
+                if (edited.Contains("2022.3.5f1-DWR"))
+                {
+                    edited = edited.Replace("2022.3.5f1-DWR", newModel.UnityVersion);
+                }
+                if (edited.Contains("2019.4.40f1"))
+                {
+                    edited = edited.Replace("2019.4.40f1", newModel.UnityVersion);
+                }
             }
 
             return edited;
