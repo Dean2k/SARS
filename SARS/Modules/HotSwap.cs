@@ -149,6 +149,7 @@ namespace SARS.Modules
 
 
             GetReadyForCompress(fileDecompressed2, fileDecompressedFinal, matchModelOld, matchModelNew, replaceUnityVer);
+
             bool failed = false;
             try
             {
@@ -156,19 +157,30 @@ namespace SARS.Modules
             }
             catch (Exception ex)
             {
-                failed = true;
+                MessageBox.Show($"Error compressing VRCA file\n{ex.Message}");
+                if (hotSwapConsole.InvokeRequired)
+                    hotSwapConsole.Invoke((MethodInvoker)delegate { hotSwapConsole.Close(); });
+                return;
             }
 
             if (failed)
             {
-                ModifyBundle(fileDecompressed2, fileDecompressedFinalFailed);
                 try
                 {
-                    CompressBundle(fileDecompressedFinalFailed, fileTarget, hotSwapConsole);
+
+                    var newUncompressedBundle = new AssetBundleFile();
+                    newUncompressedBundle.Read(new AssetsFileReader(File.OpenRead(fileDecompressedFinal)));
+
+
+                    using (AssetsFileWriter writer = new AssetsFileWriter(fileTarget))
+                    {
+                        newUncompressedBundle.Pack(writer, AssetBundleCompressionType.LZMA);
+                    }
+
+                    CompressBundle(fileDecompressedFinal, fileTarget, hotSwapConsole);
                 }
                 catch (Exception ex)
                 {
-                    failed = true;
                     MessageBox.Show($"Error compressing VRCA file\n{ex.Message}");
                     if (hotSwapConsole.InvokeRequired)
                         hotSwapConsole.Invoke((MethodInvoker)delegate { hotSwapConsole.Close(); });
