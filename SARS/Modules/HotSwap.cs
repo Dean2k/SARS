@@ -23,6 +23,7 @@ namespace SARS.Modules
             var fileDecompressed = filePath + @"\decompressed.vrca";
             var fileDecompressed2 = filePath + @"\decompressed1.vrca";
             var fileDecompressedFinal = filePath + @"\finalDecompressed.vrca";
+            var fileDecompressedFinalFailed = filePath + @"\finalDecompressedFail.vrca";
             var fileDummy = filePath + @"\dummy.vrca";
             var fileTarget = filePath + @"\target.vrca";
             var tempFolder = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData)
@@ -42,6 +43,7 @@ namespace SARS.Modules
             RandomFunctions.tryDelete(fileDecompressed);
             RandomFunctions.tryDelete(fileDecompressed2);
             RandomFunctions.tryDelete(fileDecompressedFinal);
+            RandomFunctions.tryDelete(fileDecompressedFinalFailed);
             RandomFunctions.tryDelete(fileDummy);
             RandomFunctions.tryDelete(fileTarget);
             MatchModel matchModelNew = null;
@@ -112,6 +114,7 @@ namespace SARS.Modules
                 RandomFunctions.tryDelete(fileDecompressed);
                 RandomFunctions.tryDelete(fileDecompressed2);
                 RandomFunctions.tryDelete(fileDecompressedFinal);
+                RandomFunctions.tryDelete(fileDecompressedFinalFailed);
                 RandomFunctions.tryDelete(fileDummy);
                 return;
             }
@@ -146,17 +149,31 @@ namespace SARS.Modules
 
 
             GetReadyForCompress(fileDecompressed2, fileDecompressedFinal, matchModelOld, matchModelNew, replaceUnityVer);
-
+            bool failed = false;
             try
             {
                 CompressBundle(fileDecompressedFinal, fileTarget, hotSwapConsole);
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Error compressing VRCA file\n{ex.Message}");
-                if (hotSwapConsole.InvokeRequired)
-                    hotSwapConsole.Invoke((MethodInvoker)delegate { hotSwapConsole.Close(); });
-                return;
+                failed = true;
+            }
+
+            if (failed)
+            {
+                ModifyBundle(fileDecompressed2, fileDecompressedFinalFailed);
+                try
+                {
+                    CompressBundle(fileDecompressedFinalFailed, fileTarget, hotSwapConsole);
+                }
+                catch (Exception ex)
+                {
+                    failed = true;
+                    MessageBox.Show($"Error compressing VRCA file\n{ex.Message}");
+                    if (hotSwapConsole.InvokeRequired)
+                        hotSwapConsole.Invoke((MethodInvoker)delegate { hotSwapConsole.Close(); });
+                    return;
+                }
             }
 
             try
@@ -201,6 +218,7 @@ namespace SARS.Modules
             RandomFunctions.tryDelete(fileDecompressed);
             RandomFunctions.tryDelete(fileDecompressed2);
             RandomFunctions.tryDelete(fileDecompressedFinal);
+            RandomFunctions.tryDelete(fileDecompressedFinalFailed);
             RandomFunctions.tryDelete(fileDummy);
             if (customAvatarId == null)
             {
@@ -519,6 +537,21 @@ namespace SARS.Modules
 
             if (unityMatch != null) matchModel.UnityVersion = unityMatch[0].Value;
             return matchModel;
+        }
+
+        private static void ModifyBundle(string decomp_bundle_path, string savePath)
+        {
+            var manager = new AssetsManager();
+            manager.LoadClassPackage("classdata.tpk");
+            var bundle = manager.LoadBundleFile(decomp_bundle_path);
+            var afileInst = manager.LoadAssetsFileFromBundle(bundle, 0, true);
+            var afile = afileInst.file;
+            afile.Metadata.UnityVersion = "2019.4.31f1";
+
+            using (AssetsFileWriter writer = new AssetsFileWriter(savePath))
+            {
+                afile.Write(writer);
+            }
         }
 
         private static void GetReadyForCompress(string oldFile, string newFile, MatchModel old, MatchModel newModel, bool unityReplace = false)
