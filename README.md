@@ -48,7 +48,7 @@ Features:
 
 Installation:
 	
-Step One: [DownloadMe](https://github.com/Dean2k/S.A.R.S/releases/latest/download/Release.zip).
+Step One: [DownloadMe](https://github.com/Dean2k/SARS/releases/latest/download/Release.zip).
 
 Step Two: Extract the files anywhere on you machine, just ensure they arent in system directories.
 
