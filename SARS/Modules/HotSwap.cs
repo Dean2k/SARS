@@ -618,6 +618,7 @@ namespace SARS.Modules
                     FileName = "AssetViewer.exe",
                     Arguments = commands,
                     WorkingDirectory = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location) + @"\NewerViewer\",
+                    WindowStyle = ProcessWindowStyle.Hidden
                 };
                 p.StartInfo = psi;
                 p.Start();
