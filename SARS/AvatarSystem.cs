@@ -139,11 +139,11 @@ namespace SARS
             CheckFav();
             CheckRipped();
 
-            if (configSave.Config.ViewerVersion != 2)
+            if (configSave.Config.ViewerVersion != 3)
             {
-                SarsClient.ClearViewer();
+                SarsClient.ClearOldViewer();
                 SarsClient.ExtractViewer();
-                configSave.Config.ViewerVersion = 2;
+                configSave.Config.ViewerVersion = 3;
                 configSave.Save();
             }
 
@@ -710,7 +710,7 @@ namespace SARS
             hotSwapConsole = new HotswapConsole();
             hotSwapConsole.Show();
 
-            _vrcaThread = new Thread(() => HotSwap.HotswapProcess(hotSwapConsole, this, fileLocation, customAvatarId, imgFileLocation, avatarName, null, chkUnityReplace.Checked));
+            _vrcaThread = new Thread(() => HotSwap.HotswapProcess(hotSwapConsole, this, fileLocation, chkUnityReplace.Checked));
             _vrcaThread.Start();
 
             return true;
@@ -1178,7 +1178,7 @@ namespace SARS
                             {
                                 FileName = "AssetViewer.exe",
                                 Arguments = commands,
-                                WorkingDirectory = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location) + @"\NewViewer\",
+                                WorkingDirectory = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location) + @"\NewerViewer\",
                             };
                             p.StartInfo = psi;
                             p.Start();
@@ -1239,7 +1239,7 @@ namespace SARS
                 {
                     FileName = "AssetViewer.exe",
                     Arguments = commands,
-                    WorkingDirectory = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location) + @"\NewViewer\",
+                    WorkingDirectory = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location) + @"\NewerViewer\",
                 };
                 p.StartInfo = psi;
                 p.Start();
@@ -2702,7 +2702,7 @@ namespace SARS
                                     {
                                         FileName = "AssetViewer.exe",
                                         Arguments = commands,
-                                        WorkingDirectory = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location) + @"\NewViewer\",
+                                        WorkingDirectory = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location) + @"\NewerViewer\",
                                         WindowStyle = ProcessWindowStyle.Minimized
                                     };
                                     p.StartInfo = psi;
@@ -2710,7 +2710,7 @@ namespace SARS
                                     p.WaitForExit();
                                 }
                                 catch (Exception ex) { Console.WriteLine(ex.Message); }
-                                string screenshotLocation = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location) + @"\NewViewer\AssetViewer_Data\avatarscreen.png";
+                                string screenshotLocation = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location) + @"\NewerViewer\AssetViewer_Data\avatarscreen.png";
                                 string screenshotLocationNew = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location) + $"\\images\\{avatar.Avatar.AvatarId}.png";
                                 if (File.Exists(screenshotLocation))
                                 {

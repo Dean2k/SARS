@@ -299,7 +299,7 @@
     <None Include="AssetRipperConsole_win64\Licenses\Xiph.md">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="NewViewer\viewer.zip">
+    <None Include="NewerViewer\NewerViewer.zip">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="packages.config" />

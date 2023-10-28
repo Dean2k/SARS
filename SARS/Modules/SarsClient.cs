@@ -304,20 +304,20 @@ namespace SARS.Modules
             RandomFunctions.tryDeleteDirectory(@"C:\Users\" + Environment.UserName + $"\\AppData\\LocalLow\\DefaultCompany\\{configSave.Config.HotSwapName}");
         }
 
-        public static void ClearViewer()
+        public static void ClearOldViewer()
         {
             var programLocation = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
             RandomFunctions.KillProcess("AssetViewer.exe");
-            RandomFunctions.tryDeleteDirectory(programLocation + $"\\NewestViewer");
+            RandomFunctions.tryDeleteDirectory(programLocation + $"\\NewViewer");
         }
 
         public static void ExtractViewer()
         {
             var programLocation = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
 
-            string fileExtractFolder = $"{programLocation}\\NewViewer\\";
-            ZipFile.ExtractToDirectory(fileExtractFolder + @"\viewer.zip", fileExtractFolder);
-            RandomFunctions.tryDelete(fileExtractFolder + @"\viewer.zip");
+            string fileExtractFolder = $"{programLocation}\\NewerViewer\\";
+            ZipFile.ExtractToDirectory(fileExtractFolder + @"\NewerViewer.zip", fileExtractFolder);
+            RandomFunctions.tryDelete(fileExtractFolder + @"\NewerViewer.zip");
         }
 
         public static void CleanWorldHsb(ConfigSave<Config> configSave)

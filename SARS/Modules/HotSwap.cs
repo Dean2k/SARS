@@ -3,6 +3,7 @@ using AssetsTools.NET.Extra;
 using SARS.Models;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Reflection;
@@ -18,12 +19,11 @@ namespace SARS.Modules
     {
         public static string filePath = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
         public static string firstLineReplace;
-        public static async void HotswapProcess(HotswapConsole hotSwapConsole, AvatarSystem avatarSystem, string avatarFile, string customAvatarId = null, string imgFileLocation = null, string avatarName = null, string ReuploaderVrChat = null, bool replaceUnityVer = false)
+        public static async void HotswapProcess(HotswapConsole hotSwapConsole, AvatarSystem avatarSystem, string avatarFile, bool replaceUnityVer = false)
         {
-            var fileDecompressed = filePath + @"\decompressed.vrca";
-            var fileDecompressed2 = filePath + @"\decompressed1.vrca";
+            var fileDecompressed = filePath + @"\dummy.vrca_decomp";
+            var fileDecompressed2 = filePath + @"\target.vrca_decomp";
             var fileDecompressedFinal = filePath + @"\finalDecompressed.vrca";
-            var fileDecompressedFinalFailed = filePath + @"\finalDecompressedFail.vrca";
             var fileDummy = filePath + @"\dummy.vrca";
             var fileTarget = filePath + @"\target.vrca";
             var tempFolder = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData)
@@ -43,51 +43,49 @@ namespace SARS.Modules
             RandomFunctions.tryDelete(fileDecompressed);
             RandomFunctions.tryDelete(fileDecompressed2);
             RandomFunctions.tryDelete(fileDecompressedFinal);
-            RandomFunctions.tryDelete(fileDecompressedFinalFailed);
             RandomFunctions.tryDelete(fileDummy);
             RandomFunctions.tryDelete(fileTarget);
             MatchModel matchModelNew = null;
-            if (customAvatarId == null)
+
+            try
             {
-                try
-                {
-                    File.Copy(unityVrca, fileDummy);
-                }
-                catch
-                {
-                    MessageBox.Show("Make sure you've started the build and publish on unity", "ERROR",
-                        MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    if (hotSwapConsole.InvokeRequired)
-                        hotSwapConsole.Invoke((MethodInvoker)delegate { hotSwapConsole.Close(); });
-                    return;
-                }
-
-                try
-                {
-                    SafeWrite(hotSwapConsole.txtStatusText, $"Step 1 - Decompressing Unity temp VRCA!{Environment.NewLine}");
-                    DecompressToFileStr(fileDummy, fileDecompressed, hotSwapConsole);
-                }
-                catch (Exception ex)
-                {
-                    //CoreFunctions.WriteLog(string.Format("{0}", ex.Message), this);
-                    MessageBox.Show("Error decompressing VRCA file" + ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    if (hotSwapConsole.InvokeRequired)
-                        hotSwapConsole.Invoke((MethodInvoker)delegate { hotSwapConsole.Close(); });
-                    return;
-                }
-
-                matchModelNew = getMatches(fileDecompressed, avatarIdRegex, avatarCabRegex, unityRegex,
-                    avatarPrefabIdRegex, true, avatarPrefabIdRegex2);
+                File.Copy(unityVrca, fileDummy);
+            }
+            catch
+            {
+                MessageBox.Show("Make sure you've started the build and publish on unity", "ERROR",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                if (hotSwapConsole.InvokeRequired)
+                    hotSwapConsole.Invoke((MethodInvoker)delegate { hotSwapConsole.Close(); });
+                return;
             }
 
             try
             {
-                SafeWrite(hotSwapConsole.txtStatusText, $"Step 2 - Decompressing selected VRCA!{Environment.NewLine}");
-                DecompressToFileStr(avatarFile, fileDecompressed2, hotSwapConsole);
+                SafeWrite(hotSwapConsole.txtStatusText, $"Step 1 - Decompressing Unity temp VRCA!{Environment.NewLine}");
+                DecompressToFileStr(fileDummy, hotSwapConsole);
             }
             catch (Exception ex)
             {
                 //CoreFunctions.WriteLog(string.Format("{0}", ex.Message), this);
+                MessageBox.Show("Error decompressing VRCA file" + ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                if (hotSwapConsole.InvokeRequired)
+                    hotSwapConsole.Invoke((MethodInvoker)delegate { hotSwapConsole.Close(); });
+                return;
+            }
+
+            matchModelNew = getMatches(fileDecompressed, avatarIdRegex, avatarCabRegex, unityRegex,
+                avatarPrefabIdRegex, true, avatarPrefabIdRegex2);
+
+
+            try
+            {
+                SafeWrite(hotSwapConsole.txtStatusText, $"Step 2 - Decompressing selected VRCA!{Environment.NewLine}");
+                DecompressToFileStr(avatarFile, hotSwapConsole);
+                File.Move(avatarFile + "_decomp", fileDecompressed2);
+            }
+            catch (Exception ex)
+            {
                 MessageBox.Show("Error decompressing VRCA file" + ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 if (hotSwapConsole.InvokeRequired)
                     hotSwapConsole.Invoke((MethodInvoker)delegate { hotSwapConsole.Close(); });
@@ -109,12 +107,11 @@ namespace SARS.Modules
                 replaceUnityVer = false;
             }
 
-            if(matchModelOld == null)
+            if (matchModelOld == null)
             {
                 RandomFunctions.tryDelete(fileDecompressed);
                 RandomFunctions.tryDelete(fileDecompressed2);
                 RandomFunctions.tryDelete(fileDecompressedFinal);
-                RandomFunctions.tryDelete(fileDecompressedFinalFailed);
                 RandomFunctions.tryDelete(fileDummy);
                 return;
             }
@@ -127,16 +124,6 @@ namespace SARS.Modules
                         "Possible 2017-2018 unity issue", MessageBoxButtons.OKCancel, MessageBoxIcon.Error);
                     if (dialogResult == DialogResult.Cancel) { matchModelOld.UnityVersion = null; replaceUnityVer = false; }
                 }
-            if (matchModelNew == null)
-            {
-                matchModelNew = new MatchModel
-                {
-                    UnityVersion = "2019.4.31f1",
-                    AvatarAssetId = $"prefab-id-v1_{customAvatarId}_{RandomString(10)}.prefab",
-                    AvatarCab = "CAB-" + RandomString(32),
-                    AvatarId = customAvatarId
-                };
-            }
 
 
             if (matchModelOld.AvatarAssetId != null)
@@ -150,7 +137,6 @@ namespace SARS.Modules
 
             GetReadyForCompress(fileDecompressed2, fileDecompressedFinal, matchModelOld, matchModelNew, replaceUnityVer);
 
-            bool failed = false;
             try
             {
                 CompressBundle(fileDecompressedFinal, fileTarget, hotSwapConsole);
@@ -161,31 +147,6 @@ namespace SARS.Modules
                 if (hotSwapConsole.InvokeRequired)
                     hotSwapConsole.Invoke((MethodInvoker)delegate { hotSwapConsole.Close(); });
                 return;
-            }
-
-            if (failed)
-            {
-                try
-                {
-
-                    var newUncompressedBundle = new AssetBundleFile();
-                    newUncompressedBundle.Read(new AssetsFileReader(File.OpenRead(fileDecompressedFinal)));
-
-
-                    using (AssetsFileWriter writer = new AssetsFileWriter(fileTarget))
-                    {
-                        newUncompressedBundle.Pack(writer, AssetBundleCompressionType.LZMA);
-                    }
-
-                    CompressBundle(fileDecompressedFinal, fileTarget, hotSwapConsole);
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show($"Error compressing VRCA file\n{ex.Message}");
-                    if (hotSwapConsole.InvokeRequired)
-                        hotSwapConsole.Invoke((MethodInvoker)delegate { hotSwapConsole.Close(); });
-                    return;
-                }
             }
 
             try
@@ -230,21 +191,17 @@ namespace SARS.Modules
             RandomFunctions.tryDelete(fileDecompressed);
             RandomFunctions.tryDelete(fileDecompressed2);
             RandomFunctions.tryDelete(fileDecompressedFinal);
-            RandomFunctions.tryDelete(fileDecompressedFinalFailed);
             RandomFunctions.tryDelete(fileDummy);
-            if (customAvatarId == null)
-            {
-                RandomFunctions.tryDelete(fileTarget);
-            }
+            RandomFunctions.tryDelete(fileTarget);
+
 
             if (hotSwapConsole.InvokeRequired)
                 hotSwapConsole.Invoke((MethodInvoker)delegate { hotSwapConsole.Close(); });
 
-            if (customAvatarId == null)
-            {
-                MessageBox.Show($"Got file sizes, comp:{compressedSize}, decomp:{uncompressedSize}", "Info",
-                    MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
+
+            MessageBox.Show($"Got file sizes, comp:{compressedSize}, decomp:{uncompressedSize}", "Info",
+                MessageBoxButtons.OK, MessageBoxIcon.Information);
+
         }
         public static async void HotswapWorldProcess(HotswapConsole hotSwapConsole, AvatarSystem avatarSystem, string worldFile, string customWorldId = null)
         {
@@ -285,7 +242,7 @@ namespace SARS.Modules
 
                 try
                 {
-                    DecompressToFileStr(fileDummy, fileDecompressed, hotSwapConsole);
+                    DecompressToFileStrWrld(fileDummy, fileDecompressed, hotSwapConsole);
                 }
                 catch (Exception ex)
                 {
@@ -301,7 +258,7 @@ namespace SARS.Modules
 
             try
             {
-                DecompressToFileStr(worldFile, fileDecompressed2, hotSwapConsole);
+                DecompressToFileStrWrld(worldFile, fileDecompressed2, hotSwapConsole);
             }
             catch (Exception ex)
             {
@@ -487,7 +444,7 @@ namespace SARS.Modules
 
             if (avatarAssetIdMatch == null) avatarAssetIdMatch = avatarIdMatch;
 
-            if(avatarIdMatch[0] != null)
+            if (avatarIdMatch[0] != null)
             {
                 if (!avatarIdMatch[0].Value.Contains("avtr_"))
                 {
@@ -551,21 +508,6 @@ namespace SARS.Modules
             return matchModel;
         }
 
-        private static void ModifyBundle(string decomp_bundle_path, string savePath)
-        {
-            var manager = new AssetsManager();
-            manager.LoadClassPackage("classdata.tpk");
-            var bundle = manager.LoadBundleFile(decomp_bundle_path);
-            var afileInst = manager.LoadAssetsFileFromBundle(bundle, 0, true);
-            var afile = afileInst.file;
-            afile.Metadata.UnityVersion = "2019.4.31f1";
-
-            using (AssetsFileWriter writer = new AssetsFileWriter(savePath))
-            {
-                afile.Write(writer);
-            }
-        }
-
         private static void GetReadyForCompress(string oldFile, string newFile, MatchModel old, MatchModel newModel, bool unityReplace = false)
         {
             var enc = Encoding.GetEncoding(28591);
@@ -577,28 +519,6 @@ namespace SARS.Modules
                     while (!vReader.EndOfStream)
                     {
                         var vLine = vReader.ReadLine();
-                        if (firstLine && unityReplace)
-                        {
-                            int indexCount = vLine.IndexOf("2022.3.5f1-DWR");
-                            if (indexCount == -1)
-                            {
-                                indexCount = vLine.IndexOf("2019.4.40f1");
-                            }
-                            if (indexCount == -1)
-                            {
-                                indexCount = vLine.IndexOf("2019.4.31f1");
-                                firstLine = false;
-                            }
-                            else if (indexCount != -1)
-                            {
-                                vLine = firstLineReplace + vLine.Substring(indexCount);
-                                firstLine = false;
-                            }
-                            else
-                            {
-                                vLine = "";
-                            }
-                        }
                         var replace = CheckAndReplaceLine(vLine, old, newModel, unityReplace);
                         vWriter.Write(replace);
                     }
@@ -631,14 +551,10 @@ namespace SARS.Modules
                     }
                 }
 
-                // CACHE VERSIONS REPLACE
-                if (edited.Contains("2022.3.5f1-DWR"))
+                // CACHE VERSIONS REPLACE (NEW METHOD)
+                if (edited.Contains("2023.1.18f1"))
                 {
-                    edited = edited.Replace("2022.3.5f1-DWR", newModel.UnityVersion);
-                }
-                if (edited.Contains("2019.4.40f1"))
-                {
-                    edited = edited.Replace("2019.4.40f1", newModel.UnityVersion);
+                    edited = edited.Replace("2023.1.18f1", newModel.UnityVersion);
                 }
             }
 
@@ -688,7 +604,29 @@ namespace SARS.Modules
         }
 
         //Creates function allowing it to be used with string imputs
-        private static void DecompressToFileStr(string bundlePath, string unpackedBundlePath, HotswapConsole hotSwap)
+        private static void DecompressToFileStr(string bundlePath, HotswapConsole hotSwap)
+        {
+            SafeWrite(hotSwap.txtStatusText, $"Declared new asset manager!{Environment.NewLine}");
+            SafeProgress(hotSwap.pbProgress, 1);
+            try
+            {
+                string commands = string.Format($"\"{bundlePath}\" \"cacheDecompress\"");
+                Console.WriteLine(commands);
+                Process p = new Process();
+                ProcessStartInfo psi = new ProcessStartInfo
+                {
+                    FileName = "AssetViewer.exe",
+                    Arguments = commands,
+                    WorkingDirectory = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location) + @"\NewerViewer\",
+                };
+                p.StartInfo = psi;
+                p.Start();
+                p.WaitForExit();
+            }
+            catch (Exception ex) { Console.WriteLine(ex.Message); }
+        }
+
+        private static void DecompressToFileStrWrld(string bundlePath, string unpackedBundlePath, HotswapConsole hotSwap)
         {
             SafeWrite(hotSwap.txtStatusText, $"Declared new asset manager!{Environment.NewLine}");
             SafeProgress(hotSwap.pbProgress, 1);
