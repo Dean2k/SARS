@@ -1306,10 +1306,10 @@
     <value>2</value>
   </data>
   <data name="metroTabPage1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 38</value>
+    <value>4, 39</value>
   </data>
   <data name="metroTabPage1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>840, 444</value>
+    <value>840, 443</value>
   </data>
   <data name="metroTabPage1.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -2567,10 +2567,10 @@
     <value>15</value>
   </data>
   <data name="metroTabPage4.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 39</value>
+    <value>4, 38</value>
   </data>
   <data name="metroTabPage4.Size" type="System.Drawing.Size, System.Drawing">
-    <value>840, 443</value>
+    <value>840, 444</value>
   </data>
   <data name="metroTabPage4.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
@@ -2816,10 +2816,10 @@
     <value>NoControl</value>
   </data>
   <data name="resource.Location7" type="System.Drawing.Point, System.Drawing">
-    <value>470, 2</value>
+    <value>468, 1</value>
   </data>
   <data name="resource.Size7" type="System.Drawing.Size, System.Drawing">
-    <value>361, 361</value>
+    <value>365, 365</value>
   </data>
   <data name="resource.TabIndex7" type="System.Int32, mscorlib">
     <value>1</value>
@@ -2831,7 +2831,7 @@
     <value>3, 67</value>
   </data>
   <data name="txtAbout.Size" type="System.Drawing.Size, System.Drawing">
-    <value>834, 366</value>
+    <value>834, 367</value>
   </data>
   <data name="txtAbout.TabIndex" type="System.Int32, mscorlib">
     <value>57</value>
@@ -2903,10 +2903,10 @@
     <value>12</value>
   </data>
   <data name="metroTabPage3.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 39</value>
+    <value>4, 38</value>
   </data>
   <data name="metroTabPage3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>840, 443</value>
+    <value>840, 444</value>
   </data>
   <data name="metroTabPage3.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
@@ -2984,7 +2984,7 @@
     <value>True</value>
   </data>
   <data name="chkSelfAvatars.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 380</value>
+    <value>3, 381</value>
   </data>
   <data name="chkSelfAvatars.Size" type="System.Drawing.Size, System.Drawing">
     <value>228, 19</value>
@@ -3017,7 +3017,7 @@
     <value>True</value>
   </data>
   <data name="chkAutoScan.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 364</value>
+    <value>3, 365</value>
   </data>
   <data name="chkAutoScan.Size" type="System.Drawing.Size, System.Drawing">
     <value>277, 19</value>
@@ -3044,7 +3044,7 @@
     <value>Bottom, Right</value>
   </data>
   <data name="btnGetScreenshots.Location" type="System.Drawing.Point, System.Drawing">
-    <value>591, 364</value>
+    <value>591, 365</value>
   </data>
   <data name="btnGetScreenshots.Size" type="System.Drawing.Size, System.Drawing">
     <value>120, 35</value>
@@ -3071,7 +3071,7 @@
     <value>Bottom, Right</value>
   </data>
   <data name="btnScanCacheFolder.Location" type="System.Drawing.Point, System.Drawing">
-    <value>717, 364</value>
+    <value>717, 365</value>
   </data>
   <data name="btnScanCacheFolder.Size" type="System.Drawing.Size, System.Drawing">
     <value>120, 35</value>
@@ -3107,10 +3107,10 @@
     <value>NoControl</value>
   </data>
   <data name="resource.Location8" type="System.Drawing.Point, System.Drawing">
-    <value>493, 2</value>
+    <value>491, 1</value>
   </data>
   <data name="resource.Size8" type="System.Drawing.Size, System.Drawing">
-    <value>341, 341</value>
+    <value>345, 345</value>
   </data>
   <data name="resource.TabIndex8" type="System.Int32, mscorlib">
     <value>1</value>
@@ -3122,7 +3122,7 @@
     <value>3, 12</value>
   </data>
   <data name="txtCacheScannerLog.Size" type="System.Drawing.Size, System.Drawing">
-    <value>837, 346</value>
+    <value>837, 347</value>
   </data>
   <data name="txtCacheScannerLog.TabIndex" type="System.Int32, mscorlib">
     <value>69</value>

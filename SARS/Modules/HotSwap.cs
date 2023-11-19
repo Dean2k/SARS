@@ -554,7 +554,7 @@ namespace SARS.Modules
                 // CACHE VERSIONS REPLACE (NEW METHOD)
                 if (edited.Contains("2023.1.18f1"))
                 {
-                    edited = edited.Replace("2023.1.18f1", newModel.UnityVersion);
+                    edited = edited.Replace("\b5.x.x\02023.1.18f1", $"\a5.x.x\0{newModel.UnityVersion}");
                 }
             }
 

@@ -1849,7 +1849,7 @@
             this.tabControl.Controls.Add(this.metroTabPage7);
             this.tabControl.FontWeight = MetroFramework.MetroTabControlWeight.Bold;
             this.tabControl.Name = "tabControl";
-            this.tabControl.SelectedIndex = 5;
+            this.tabControl.SelectedIndex = 2;
             this.tabControl.UseSelectable = true;
             this.tabControl.SelectedIndexChanged += new System.EventHandler(this.tabControl_SelectedIndexChanged);
             // 
