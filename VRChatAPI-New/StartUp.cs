@@ -32,11 +32,11 @@ namespace VRChatAPI_New
 
         private static string SetupGameVersion()
         {
-            string gameVersion = "2023.2.4-1319--Release";
+            string gameVersion = "2023.4.2p2-1390-53164fa82e-Release";
             try
             {
                 WebClient client = new WebClient();
-                Stream stream = client.OpenRead("https://ares-mod.com/Version.txt");
+                Stream stream = client.OpenRead("https://avatarrecovery.com/Version.txt");
                 StreamReader reader = new StreamReader(stream);
                 gameVersion = reader.ReadToEnd();
                 reader.Dispose();
@@ -49,11 +49,11 @@ namespace VRChatAPI_New
 
         private static string SetupServerVersion()
         {
-            string serverVersion = "Release_1316";
+            string serverVersion = "Release_1343";
             try
             {
                 WebClient client = new WebClient();
-                Stream stream = client.OpenRead("https://ares-mod.com/ServerVersion.txt");
+                Stream stream = client.OpenRead("https://avatarrecovery.com/ServerVersion.txt");
                 StreamReader reader = new StreamReader(stream);
                 serverVersion = reader.ReadToEnd();
                 reader.Dispose();
@@ -66,11 +66,11 @@ namespace VRChatAPI_New
 
         private static string SetupStore()
         {
-            string serverVersion = "Steam";
+            string serverVersion = "steam";
             try
             {
                 WebClient client = new WebClient();
-                Stream stream = client.OpenRead("https://ares-mod.com/Store.txt");
+                Stream stream = client.OpenRead("https://avatarrecovery.com/Store.txt");
                 StreamReader reader = new StreamReader(stream);
                 serverVersion = reader.ReadToEnd();
                 reader.Dispose();
@@ -92,11 +92,11 @@ namespace VRChatAPI_New
 
         private static string SetupUnityGameVersion()
         {
-            string unityVersion = "2019.4.40f1";
+            string unityVersion = "2022.3.6f1-DWR";
             try
             {
                 WebClient client = new WebClient();
-                Stream stream = client.OpenRead("https://ares-mod.com/UnityGameVersion.txt");
+                Stream stream = client.OpenRead("https://avatarrecovery.com/UnityGameVersion.txt");
                 StreamReader reader = new StreamReader(stream);
                 unityVersion = reader.ReadToEnd();
                 reader.Dispose();

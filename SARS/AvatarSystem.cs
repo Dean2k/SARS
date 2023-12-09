@@ -2,7 +2,6 @@
 using MetroFramework;
 using MetroFramework.Forms;
 using Microsoft.VisualBasic;
-using Microsoft.Win32;
 using Microsoft.WindowsAPICodePack.Dialogs;
 using Newtonsoft.Json;
 using SARS.Models;
@@ -20,7 +19,6 @@ using System.Net;
 using System.Reflection;
 using System.Runtime.InteropServices;
 using System.Runtime.InteropServices.ComTypes;
-using System.Security.Policy;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -42,7 +40,7 @@ namespace SARS
         public List<string> requestedAvatarIds = new List<string>();
         private HotswapConsole hotSwapConsole;
         private Thread _vrcaThread;
-        private string userAgent = "UnityPlayer/2019.4.40f1 (UnityWebRequest/1.0, libcurl/7.80.0-DEV)";
+        private string userAgent = "UnityPlayer/2022.3.6f1-DWR (UnityWebRequest/1.0, libcurl/7.80.0-DEV)";
         private string vrcaLocation = "";
         private string SystemName;
 
@@ -87,7 +85,7 @@ namespace SARS
             try
             {
                 downloadQueue = new ConfigSave<ListDown>(filePath + "\\download.cfg");
-                if(downloadQueue.Config.Download == null)
+                if (downloadQueue.Config.Download == null)
                 {
                     downloadQueue.Config.Download = new List<string>();
                 }
@@ -139,11 +137,11 @@ namespace SARS
             CheckFav();
             CheckRipped();
 
-            if (configSave.Config.ViewerVersion != 3)
+            if (configSave.Config.ViewerVersion != 4)
             {
                 SarsClient.ClearOldViewer();
                 SarsClient.ExtractViewer();
-                configSave.Config.ViewerVersion = 3;
+                configSave.Config.ViewerVersion = 4;
                 configSave.Save();
             }
 
@@ -167,9 +165,12 @@ namespace SARS
 
             var databaseStats = shrekApi.DatabaseStats();
 
-            lblPublic.Text = databaseStats.TotalPublic.ToString();
-            lblPrivate.Text = databaseStats.TotalPrivate.ToString();
-            lblSize.Text = databaseStats.TotalDatabase.ToString();
+            if (databaseStats != null)
+            {
+                lblPublic.Text = databaseStats.TotalPublic.ToString();
+                lblPrivate.Text = databaseStats.TotalPrivate.ToString();
+                lblSize.Text = databaseStats.TotalDatabase.ToString();
+            }
 
             MessageBoxManager.Yes = "PC";
             MessageBoxManager.No = "Quest";
@@ -187,8 +188,6 @@ namespace SARS
             rippedList.Config.RemoveAll(x => x == null);
             rippedList.Save();
         }
-
-
 
         private void LoadSettings()
         {
@@ -257,11 +256,6 @@ namespace SARS
                 DeleteLoginInfo();
             }
         }
-
-
-
-
-
 
         [DllImport("user32.dll")]
         private static extern int SendMessage(IntPtr hWnd, Int32 wMsg, bool wParam, Int32 lParam);
@@ -726,19 +720,17 @@ namespace SARS
             RandomFunctions.tryDeleteDirectory(tempFolder + unityTemp);
             RandomFunctions.tryDeleteDirectory(tempFolder + unityTemp2);
 
-            if (configSave.Config.HsbVersion != 3)
+            if (configSave.Config.HsbVersion != 4)
             {
                 SarsClient.CleanHsb(configSave);
-                configSave.Config.HsbVersion = 3;
+                configSave.Config.HsbVersion = 4;
                 configSave.Save();
             }
 
-            AvatarFunctions.ExtractHSB(configSave.Config.HotSwapName);
+            AvatarFunctions.ExtractHSB(configSave.Config.HotSwapName, false);
             SarsClient.CopyFiles(configSave);
             RandomFunctions.OpenUnity(configSave.Config.UnityLocation, configSave.Config.HotSwapName);
         }
-
-
 
         private void avatarGrid_CellPainting(object sender, DataGridViewCellPaintingEventArgs e)
         {
@@ -776,9 +768,8 @@ namespace SARS
         private void btnHsbClean_Click(object sender, EventArgs e)
         {
             SarsClient.CleanHsb(configSave);
+            AvatarFunctions.ExtractHSB(configSave.Config.HotSwapName, true);
         }
-
-
 
         private void btnLoadVRCA_Click(object sender, EventArgs e)
         {
@@ -1052,7 +1043,7 @@ namespace SARS
                     if (!Directory.Exists(folderExtractLocation)) Directory.CreateDirectory(folderExtractLocation);
                     var commands =
                         string.Format(
-                            "/C AssetRipper.exe \"{1}\" -o \"{0}\" -q ",
+                            "/C AssetRipper.exe \"{1}\" -o \"{0}\"",
                              folderExtractLocation, avatarFile);
 
                     var p = new Process();
@@ -1065,6 +1056,8 @@ namespace SARS
                     p.StartInfo = psi;
                     p.Start();
                     p.WaitForExit();
+
+                    if (!Directory.Exists(folderExtractLocation)) { return; }
 
                     RandomFunctions.tryDeleteDirectory(folderExtractLocation + @"\AssetRipper\GameAssemblies");
                     try
@@ -1123,10 +1116,15 @@ namespace SARS
                             ".Shader"
                         };
 
-                        var pack = Package.FromDirectory(inpath, Path.GetFileNameWithoutExtension(avatarFile), true, extensions.ToArray(), skipFolders.ToArray());
-                        pack.GeneratePackage(saveLocation: folderExtractLocation.Replace(Path.GetFileNameWithoutExtension(avatarFile), ""));
+                        try
+                        {
 
-                        RandomFunctions.tryDeleteDirectory(folderExtractLocation);
+                            var pack = Package.FromDirectory(inpath, Path.GetFileNameWithoutExtension(avatarFile), true, extensions.ToArray(), skipFolders.ToArray());
+                            pack.GeneratePackage(saveLocation: folderExtractLocation.Replace(Path.GetFileNameWithoutExtension(avatarFile), ""));
+                            RandomFunctions.tryDeleteDirectory(folderExtractLocation);
+                        }
+                        catch { MessageBox.Show("Failed to generate unity package"); }
+
                     }
 
                     MessageBox.Show(message);
@@ -1178,7 +1176,7 @@ namespace SARS
                             {
                                 FileName = "AssetViewer.exe",
                                 Arguments = commands,
-                                WorkingDirectory = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location) + @"\NewerViewer\",
+                                WorkingDirectory = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location) + @"\NewestViewer\",
                             };
                             p.StartInfo = psi;
                             p.Start();
@@ -1239,7 +1237,7 @@ namespace SARS
                 {
                     FileName = "AssetViewer.exe",
                     Arguments = commands,
-                    WorkingDirectory = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location) + @"\NewerViewer\",
+                    WorkingDirectory = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location) + @"\NewestViewer\",
                 };
                 p.StartInfo = psi;
                 p.Start();
@@ -1432,7 +1430,7 @@ namespace SARS
                 {
                     if (item != null)
                     {
-                        AvatarModel avatar = new AvatarModel { Tags = new List<string>(), Avatar = new AvatarDetails { ThumbnailUrl = "https://ares-mod.com/avatars/Image_not_available.png", ImageUrl = "https://ares-mod.com/avatars/Image_not_available.png", PcAssetUrl = item.FileLocation, AvatarId = item.AvatarId, AvatarName = "From cache no names", AvatarDescription = "Avatar is from the game cache no names are located", RecordCreated = item.AvatarDetected, ReleaseStatus = "????", UnityVersion = "????", QuestAssetUrl = "None", AuthorName = "Unknown", AuthorId = "Unknown Cache", FileSize = item.FileSize } };
+                        AvatarModel avatar = new AvatarModel { Tags = new List<string>(), Avatar = new AvatarDetails { ThumbnailUrl = "https://avatarrecovery.com/avatars/Image_not_available.png", ImageUrl = "https://avatarrecovery.com/avatars/Image_not_available.png", PcAssetUrl = item.FileLocation, AvatarId = item.AvatarId, AvatarName = "From cache no names", AvatarDescription = "Avatar is from the game cache no names are located", RecordCreated = item.AvatarDetected, ReleaseStatus = "????", UnityVersion = "????", QuestAssetUrl = "None", AuthorName = "Unknown", AuthorId = "Unknown Cache", FileSize = item.FileSize } };
                         list.Add(avatar);
                     }
                 }
@@ -1446,7 +1444,7 @@ namespace SARS
                 {
                     if (item != null)
                     {
-                        AvatarModel avatar = new AvatarModel { Tags = new List<string>(), Avatar = new AvatarDetails { ThumbnailUrl = "https://ares-mod.com/avatars/Image_not_available.png", ImageUrl = "https://ares-mod.com/avatars/Image_not_available.png", PcAssetUrl = item.FileLocation, AvatarId = item.AvatarId, AvatarName = "From cache no names", AvatarDescription = "Avatar is from the game cache no names are located", RecordCreated = item.AvatarDetected, ReleaseStatus = "????", UnityVersion = "????", QuestAssetUrl = "None", AuthorName = "Unknown", AuthorId = "Unknown Cache", FileSize = item.FileSize } };
+                        AvatarModel avatar = new AvatarModel { Tags = new List<string>(), Avatar = new AvatarDetails { ThumbnailUrl = "https://avatarrecovery.com/avatars/Image_not_available.png", ImageUrl = "https://avatarrecovery.com/avatars/Image_not_available.png", PcAssetUrl = item.FileLocation, AvatarId = item.AvatarId, AvatarName = "From cache no names", AvatarDescription = "Avatar is from the game cache no names are located", RecordCreated = item.AvatarDetected, ReleaseStatus = "????", UnityVersion = "????", QuestAssetUrl = "None", AuthorName = "Unknown", AuthorId = "Unknown Cache", FileSize = item.FileSize } };
                         list.Add(avatar);
                     }
                 }
@@ -1918,7 +1916,7 @@ namespace SARS
         private VRChatCacheResult GetDetailsApi(string avatarId)
         {
             AvatarSearch avatarSearch = new AvatarSearch { Key = configSave.Config.ApiKey, Amount = 1, PrivateAvatars = true, PublicAvatars = true, ContainsSearch = false, DebugMode = true, PcAvatars = true, QuestAvatars = chkQuest.Checked, AvatarId = avatarId };
-            var httpWebRequest = (HttpWebRequest)WebRequest.Create("https://unlocked.modvrc.com/Avatar/GetKeyAvatar");
+            var httpWebRequest = (HttpWebRequest)WebRequest.Create("https://api.avatarrecovery.com/Avatar/GetKeyAvatar");
             httpWebRequest.ContentType = "application/json";
             httpWebRequest.Method = "POST";
             httpWebRequest.UserAgent = $"SARS" + Assembly.GetExecutingAssembly().GetName().Version.ToString();
@@ -1983,7 +1981,6 @@ namespace SARS
             }
         }
 
-
         private void UploadCacheResultWorld(VRChatCacheResultWorld model)
         {
             AvatarDetailsSend avatarDetails = new AvatarDetailsSend
@@ -2017,7 +2014,7 @@ namespace SARS
             {
                 try
                 {
-                    string apiUrl = "https://unlocked.modvrc.com/Avatar/AddWorld";
+                    string apiUrl = "https://api.avatarrecovery.com/Avatar/AddWorld";
                     var httpWebRequest = (HttpWebRequest)WebRequest.Create(apiUrl);
                     httpWebRequest.ContentType = "application/json";
                     httpWebRequest.Method = "POST";
@@ -2077,7 +2074,7 @@ namespace SARS
 
             if (!_logSelf)
             {
-                if(configSave.Config.UserId == avatarDetails.AuthorId)
+                if (configSave.Config.UserId == avatarDetails.AuthorId)
                 {
                     return;
                 }
@@ -2116,7 +2113,7 @@ namespace SARS
             {
                 try
                 {
-                    string apiUrl = "https://unlocked.modvrc.com/Avatar/AddModel";
+                    string apiUrl = "https://api.avatarrecovery.com/Avatar/AddModel";
                     var httpWebRequest = (HttpWebRequest)WebRequest.Create(apiUrl);
                     httpWebRequest.ContentType = "application/json";
                     httpWebRequest.Method = "POST";
@@ -2164,7 +2161,7 @@ namespace SARS
                     {
                         using (var client = new WebClient())
                         {
-                            string url = $"https://unlocked.modvrc.com/Avatar/AddQuestSideCheat?questUrl={System.Uri.EscapeDataString(avatarDetails.QuestAssetUrl)}&avatarId={System.Uri.EscapeDataString(avatarDetails.AvatarId)}";
+                            string url = $"https://api.avatarrecovery.com/Avatar/AddQuestSideCheat?questUrl={System.Uri.EscapeDataString(avatarDetails.QuestAssetUrl)}&avatarId={System.Uri.EscapeDataString(avatarDetails.AvatarId)}";
                             var response = client.DownloadString(url);
                         }
                     }
@@ -2289,7 +2286,7 @@ namespace SARS
             {
                 if (row.Cells[5].Value != null)
                 {
-                    if (!string.IsNullOrEmpty(row.Cells[5].Value.ToString().Trim()) && row.Cells[5].Value != "https://ares-mod.com/avatars/Image_not_available.png")
+                    if (!string.IsNullOrEmpty(row.Cells[5].Value.ToString().Trim()) && row.Cells[5].Value != "https://avatarrecovery.com/avatars/Image_not_available.png")
                     {
                         try
                         {
@@ -2572,7 +2569,6 @@ namespace SARS
                 avatarGrid.ClearSelection();
                 avatarGrid.Rows[currentMouseOverRow].Selected = true;
                 m.Show(avatarGrid, new Point(e.X, e.Y));
-
             }
             if (e.Button == MouseButtons.Left)
             {
@@ -2588,11 +2584,11 @@ namespace SARS
                 avatarImage.Show();
             }
         }
+
         private void RequestAvatarDownloadPc(Object sender, EventArgs e)
         {
             if (avatarGrid.GetCellCount(DataGridViewElementStates.Selected) > 0)
             {
-
                 AvatarModel avatar = avatars.SingleOrDefault(x => x.Avatar.AvatarId == avatarGrid.SelectedRows[0].Cells[3].Value);
                 if (!avatar.Avatar.PcAssetUrl.StartsWith("http"))
                 {
@@ -2617,7 +2613,6 @@ namespace SARS
         {
             if (avatarGrid.GetCellCount(DataGridViewElementStates.Selected) > 0)
             {
-
                 AvatarModel avatar = avatars.SingleOrDefault(x => x.Avatar.AvatarId == avatarGrid.SelectedRows[0].Cells[3].Value);
                 if (string.IsNullOrEmpty(avatar.Avatar.QuestAssetUrl) && avatar.Avatar.QuestAssetUrl.ToLower() != "none")
                 {
@@ -2681,6 +2676,7 @@ namespace SARS
         {
             ThreadPool.QueueUserWorkItem(delegate
             {
+                string textFileData = "";
                 foreach (DataGridViewRow item in avatarGrid.Rows)
                 {
                     if (item.Cells[1] != null)
@@ -2690,40 +2686,81 @@ namespace SARS
                         string fileName = $"{Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location)}\\images\\{avatarId}.png";
                         if (item.Cells[1].Value.ToString() == avatarName)
                         {
+                            if (avatarId.ToLower().StartsWith("wrld_")) continue;
                             if (!File.Exists(fileName))
                             {
                                 AvatarModel avatar = avatars.FirstOrDefault(x => x.Avatar.AvatarId == avatarId);
-                                try
-                                {
-                                    string commands = string.Format($"\"{avatar.Avatar.PcAssetUrl}\" \"screen.shot\"");
-                                    Console.WriteLine(commands);
-                                    Process p = new Process();
-                                    ProcessStartInfo psi = new ProcessStartInfo
-                                    {
-                                        FileName = "AssetViewer.exe",
-                                        Arguments = commands,
-                                        WorkingDirectory = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location) + @"\NewerViewer\",
-                                        WindowStyle = ProcessWindowStyle.Minimized
-                                    };
-                                    p.StartInfo = psi;
-                                    p.Start();
-                                    p.WaitForExit();
-                                }
-                                catch (Exception ex) { Console.WriteLine(ex.Message); }
-                                string screenshotLocation = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location) + @"\NewerViewer\AssetViewer_Data\avatarscreen.png";
+
+                                string screenshotLocation = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location) + @"\NewestViewer\AssetViewer_Data\avatarscreen.png";
                                 string screenshotLocationNew = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location) + $"\\images\\{avatar.Avatar.AvatarId}.png";
-                                if (File.Exists(screenshotLocation))
-                                {
-                                    try
-                                    {
-                                        File.Move(screenshotLocation, screenshotLocationNew);
-                                        Bitmap bmp = new Bitmap(fileName);
-                                        item.Cells[0].Value = bmp;
-                                    }
-                                    catch { }
-                                }
+                                textFileData = $"{textFileData}{avatar.Avatar.PcAssetUrl};{avatar.Avatar.AvatarId}{Environment.NewLine}";
                             }
                         }
+                    }
+                }
+
+                string filePathAvatar = $@"{Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location)}\NewestViewer\avatarInfo.txt";
+
+                if (File.Exists(filePathAvatar))
+                {
+                    try
+                    {
+                        File.Delete(filePathAvatar);
+                    }
+                    catch { }
+                }
+
+                File.WriteAllText(filePathAvatar, textFileData);
+
+                try
+                {
+                    string commands = string.Format($"\"blank.vrca\" \"screen.shot\"");
+                    Console.WriteLine(commands);
+                    Process p = new Process();
+                    ProcessStartInfo psi = new ProcessStartInfo
+                    {
+                        FileName = "AssetViewer.exe",
+                        Arguments = commands,
+                        WorkingDirectory = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location) + @"\NewestViewer\",
+                        WindowStyle = ProcessWindowStyle.Minimized
+                    };
+                    p.StartInfo = psi;
+                    p.Start();
+                    p.WaitForExit();
+                }
+                catch (Exception ex) { Console.WriteLine(ex.Message); }
+
+                string[] lines = File.ReadAllLines(filePathAvatar);
+                foreach (string line in lines)
+                {
+                    if (!string.IsNullOrEmpty(line))
+                    {
+                        string[] avatarInfoSplit = line.Split(';');
+                        string screenshotName = avatarInfoSplit[1];
+                        string screenshotLocation = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location) + $"\\NewestViewer\\AssetViewer_Data\\{screenshotName}.png";
+                        string screenshotLocationNew = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location) + $"\\images\\{screenshotName}.png";
+                        try
+                        {
+                            File.Move(screenshotLocation, screenshotLocationNew);
+                        }
+                        catch
+                        {
+                            try
+                            {
+                                string baseFile = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location) + $"\\error.png";
+                                File.Copy(baseFile, screenshotLocationNew);
+                            } catch { }
+                        }
+                        Bitmap bmp = new Bitmap(screenshotLocationNew);
+                        foreach (DataGridViewRow row in avatarGrid.Rows)
+                        {
+                            if (row.Cells[3].Value.ToString().Equals(screenshotName))
+                            {
+                                row.Cells[0].Value = bmp;
+                                break;
+                            }
+                        }
+
                     }
                 }
                 MessageBox.Show("Screenshots done.");
@@ -2780,7 +2817,7 @@ namespace SARS
                             Download download = new Download { Text = $"{avatarId}" };
                             download.Show();
                             var filePath = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location) + $"\\VRCA\\{avatarId}.vrca";
-                            string url = $"https://vrca.ares-mod.com/SARS/{avatarId}";
+                            string url = $"https://vrca.avatarrecovery.com/SARS/{avatarId}";
                             if ((bool)row.Cells[1].Value)
                             {
                                 url += "_quest.vrca";
@@ -2851,14 +2888,15 @@ namespace SARS
             if (configSave.Config.ApiKey != null)
             {
                 UpdateDownloadList();
-            } else
+            }
+            else
             {
                 MessageBox.Show("Please enter your API Key");
             }
         }
 
-
         private bool _logSelf = true;
+
         private void chkSelfAvatars_CheckedChanged(object sender, EventArgs e)
         {
             _logSelf = !chkSelfAvatars.Checked;

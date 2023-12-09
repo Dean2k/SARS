@@ -28,18 +28,20 @@ namespace SARS.Modules
             var fileTarget = filePath + @"\target.vrca";
             var tempFolder = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData)
                 .Replace("\\Roaming", "");
-            var unityVrca = tempFolder + $"\\Local\\Temp\\DefaultCompany\\{avatarSystem.configSave.Config.HotSwapName}\\custom.vrca";
+            var unityVrca = tempFolder + $"\\Local\\Temp\\DefaultCompany\\{avatarSystem.configSave.Config.HotSwapName}\\";
             var regexId = @"avtr_[\w]{8}-[\w]{4}-[\w]{4}-[\w]{4}-[\w]{12}";
             var regexPrefabId = @"prefab-id-v1_avtr_[\w]{8}-[\w]{4}-[\w]{4}-[\w]{4}-[\w]{12}_[\d]{10}\.prefab";
             var regexPrefabId2 = @"prefab-id-v1_avtr_[\w]{8}-[\w]{4}-[\w]{4}-[\w]{4}-[\w]{12}\.prefab";
             var regexCab = @"CAB-[\w]{32}";
             var regexUnity = @"20[\d]{2}\.[\d]\.[\d]{2}f[\d]";
+            var regexUnityNewest = @"20[\d]{2}\.[\d]\.[\d]{1}f[\d]";
             var avatarIdRegex = new Regex(regexId);
             var avatarPrefabIdRegex = new Regex(regexPrefabId);
             var avatarPrefabIdRegex2 = new Regex(regexPrefabId2);
             var avatarCabRegex = new Regex(regexCab);
             var unityRegex = new Regex(regexUnity);
-
+            var unityRegexNew = new Regex(regexUnityNewest);
+            unityVrca = Directory.GetFiles(unityVrca, "*.*", SearchOption.AllDirectories).Where(file => new string[] { ".vrca", ".VRCA" }.Contains(Path.GetExtension(file))).FirstOrDefault().ToString();
             RandomFunctions.tryDelete(fileDecompressed);
             RandomFunctions.tryDelete(fileDecompressed2);
             RandomFunctions.tryDelete(fileDecompressedFinal);
@@ -75,7 +77,7 @@ namespace SARS.Modules
             }
 
             matchModelNew = getMatches(fileDecompressed, avatarIdRegex, avatarCabRegex, unityRegex,
-                avatarPrefabIdRegex, true, avatarPrefabIdRegex2);
+                avatarPrefabIdRegex, true, avatarPrefabIdRegex2, unityRegexNew);
 
 
             try
@@ -93,7 +95,7 @@ namespace SARS.Modules
             }
 
             var matchModelOld = getMatches(fileDecompressed2, avatarIdRegex, avatarCabRegex, unityRegex,
-                avatarPrefabIdRegex, false, avatarPrefabIdRegex2);
+                avatarPrefabIdRegex, false, avatarPrefabIdRegex2, unityRegexNew);
             if (matchModelOld.UnityVersion == null)
             {
                 var dialogResult = MessageBox.Show("Possible risky hotswap detected", "Risky Upload",
@@ -134,9 +136,9 @@ namespace SARS.Modules
                 }
             }
 
-
+            SafeWrite(hotSwapConsole.txtStatusText, $"Step 3 - Editing values!{Environment.NewLine}");
             GetReadyForCompress(fileDecompressed2, fileDecompressedFinal, matchModelOld, matchModelNew, replaceUnityVer);
-
+            SafeWrite(hotSwapConsole.txtStatusText, $"Step 3 - Done!{Environment.NewLine}");
             try
             {
                 CompressBundle(fileDecompressedFinal, fileTarget, hotSwapConsole);
@@ -295,7 +297,7 @@ namespace SARS.Modules
             {
                 matchModelNew = new MatchModel
                 {
-                    UnityVersion = "2019.4.31f1",
+                    UnityVersion = "2022.3.6f1",
                     AvatarId = customWorldId
                 };
             }
@@ -403,15 +405,15 @@ namespace SARS.Modules
         }
 
         private static MatchModel getMatches(string file, Regex avatarId, Regex avatarCab, Regex unityVersion,
-            Regex avatarAssetId, bool firstRead, Regex fallbackAssetId)
+            Regex avatarAssetId, bool firstRead, Regex fallbackAssetId, Regex newestUnity)
         {
             MatchCollection avatarIdMatch = null;
             MatchCollection avatarAssetIdMatch = null;
             MatchCollection avatarAssetIdMatch2 = null;
             MatchCollection avatarCabMatch = null;
             MatchCollection unityMatch = null;
+            MatchCollection unityMatchNewest = null;
             var enc = Encoding.GetEncoding(28591);
-            bool firstLine = true;
             var unityCount = 0;
 
             using (var vReader = new StreamReaderOver(file, enc))
@@ -419,16 +421,11 @@ namespace SARS.Modules
                 while (!vReader.EndOfStream)
                 {
                     var vLine = vReader.ReadLine();
-                    if (firstLine && firstRead)
-                    {
-                        int indexCount = vLine.IndexOf("2019.4.31f1");
-                        firstLineReplace = vLine.Substring(0, indexCount);
-                        firstLine = false;
-                    }
                     var tempId = avatarId.Matches(vLine);
                     var tempAssetId = avatarAssetId.Matches(vLine);
                     var tempCab = avatarCab.Matches(vLine);
                     var tempUnity = unityVersion.Matches(vLine);
+                    var tempUnity2 = newestUnity.Matches(vLine);
                     var tempAssetId2 = fallbackAssetId.Matches(vLine);
                     if (tempAssetId.Count > 0) avatarAssetIdMatch = tempAssetId;
                     if (tempAssetId2.Count > 0) avatarAssetIdMatch2 = tempAssetId2;
@@ -437,6 +434,11 @@ namespace SARS.Modules
                     if (tempUnity.Count > 0)
                     {
                         unityMatch = tempUnity;
+                        unityCount++;
+                    }
+                    if (tempUnity2.Count > 0)
+                    {
+                        unityMatchNewest = tempUnity2;
                         unityCount++;
                     }
                 }
@@ -477,6 +479,7 @@ namespace SARS.Modules
             }
 
             if (unityMatch != null) matchModel.UnityVersion = unityMatch[0].Value;
+            if (unityMatchNewest != null) matchModel.UnityVersion = unityMatchNewest[0].Value;
             return matchModel;
         }
         private static MatchModel getMatchesWorld(string file, Regex worldId, Regex unityVersion)
@@ -551,11 +554,10 @@ namespace SARS.Modules
                     }
                 }
 
-                // CACHE VERSIONS REPLACE (NEW METHOD)
-                if (edited.Contains("2023.1.18f1"))
-                {
-                    edited = edited.Replace("\b5.x.x\02023.1.18f1", $"\a5.x.x\0{newModel.UnityVersion}");
-                }
+                //if (edited.Contains("2019.4.31f1c1"))
+                //{
+                //    edited = edited.Replace("2019.4.31f1c1", $"\0\02019.4.31f1");
+                //}
             }
 
             return edited;
@@ -617,7 +619,7 @@ namespace SARS.Modules
                 {
                     FileName = "AssetViewer.exe",
                     Arguments = commands,
-                    WorkingDirectory = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location) + @"\NewerViewer\",
+                    WorkingDirectory = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location) + @"\NewestViewer\",
                     WindowStyle = ProcessWindowStyle.Hidden
                 };
                 p.StartInfo = psi;

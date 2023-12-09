@@ -221,9 +221,6 @@
     <EmbeddedResource Include="SARS.resx">
       <DependentUpon>SARS.cs</DependentUpon>
     </EmbeddedResource>
-    <None Include="AssetRipperConsole_win64\libvlc.dylib">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
     <None Include="AssetRipperConsole_win64\Licenses\AsmResolver.md">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
@@ -299,7 +296,7 @@
     <None Include="AssetRipperConsole_win64\Licenses\Xiph.md">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="NewerViewer\NewerViewer.zip">
+    <None Include="NewestViewer\NewestViewer.zip">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="packages.config" />
@@ -329,9 +326,6 @@
     <Content Include="AssetRipperConsole_win64\AssetRipper.exe">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="AssetRipperConsole_win64\av_libglesv2.dll">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
     <Content Include="AssetRipperConsole_win64\capstone.dll">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -339,15 +333,6 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="AssetRipperConsole_win64\crunchunity.dll">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="AssetRipperConsole_win64\libHarfBuzzSharp.dll">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="AssetRipperConsole_win64\libSkiaSharp.dll">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="AssetRipperConsole_win64\texgenpack.dll">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="AssetRipperConsole_win64\Texture2DDecoderNative.dll">
@@ -366,6 +351,9 @@
     <None Include="Resources\dot.png" />
     <None Include="Resources\Image_not_available.png" />
     <None Include="Resources\download.png" />
+    <Content Include="error.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="shrek %282%29.ico" />
     <Content Include="SQLite.Interop.dll">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>

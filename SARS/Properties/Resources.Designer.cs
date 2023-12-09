@@ -78,7 +78,7 @@ namespace SARS.Properties {
         /// -https://github.com/Dean2k/SARS
         ///Wanna join the community?
         /// -https://discord.gg/XAQvXuaCcs
-        /// -https://ares-mod.com.
+        /// -https://avatarrecovery.com.
         /// </summary>
         internal static string About {
             get {

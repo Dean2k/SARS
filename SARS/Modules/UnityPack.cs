@@ -135,7 +135,7 @@ namespace SARS.Modules
                 string fdirpath = Path.Combine(tmpPath, file.Value.GetHash());
                 Directory.CreateDirectory(fdirpath);
 
-                File.Copy(file.Value.GetDiskPath(), Path.Combine(fdirpath, "asset")); // copy to asset file
+                File.Copy(file.Value.GetDiskPath(), Path.Combine(fdirpath, "asset"), true); // copy to asset file
 
                 using (StreamWriter writer = new StreamWriter(Path.Combine(fdirpath, "pathname"))) // the pathname file
                 {

@@ -26,10 +26,10 @@ namespace SARS.Modules
         /// <returns></returns>
         public List<AvatarModel> AvatarSearch(AvatarSearch avatar, bool altApi, string customApi, bool avatarSearch)
         {
-            string apiUrl = "https://unlocked.modvrc.com/Avatar/GetKeyAvatar";
+            string apiUrl = "https://api.avatarrecovery.com/Avatar/GetKeyAvatar";
             if (altApi)
             {
-                apiUrl = "https://unlocked.ares-mod.com/Avatar/GetKeyAvatar";
+                apiUrl = "https://api.avatarrecovery.com/Avatar/GetKeyAvatar";
             }
             if(!string.IsNullOrEmpty(customApi))
             {
@@ -38,7 +38,7 @@ namespace SARS.Modules
 
             if (!avatarSearch)
             {
-                apiUrl = "https://unlocked.modvrc.com/Avatar/GetLazyWorlds";
+                apiUrl = "https://api.avatarrecovery.com/Avatar/GetLazyWorlds";
             }
             var httpWebRequest = (HttpWebRequest)WebRequest.Create(apiUrl);
             httpWebRequest.ContentType = "application/json";
@@ -88,7 +88,7 @@ namespace SARS.Modules
         /// <returns></returns>
         public List<DownloadQueueList> DownloadQueueRefresh(GetRequests key)
         {
-            string apiUrl = $"https://unlocked.modvrc.com/Avatar/GetMyRequests?key={key.Key}";
+            string apiUrl = $"https://api.avatarrecovery.com/Avatar/GetMyRequests?key={key.Key}";
 
             var httpWebRequest = (HttpWebRequest)WebRequest.Create(apiUrl);
             httpWebRequest.ContentType = "application/json";
@@ -123,7 +123,7 @@ namespace SARS.Modules
         /// <returns></returns>
         public bool RequestAvatar(RequestAvatar avatar)
         {
-            string apiUrl = $"https://unlocked.modvrc.com/Avatar/RequestDownload";
+            string apiUrl = $"https://api.avatarrecovery.com/Avatar/RequestDownload";
 
             var httpWebRequest = (HttpWebRequest)WebRequest.Create(apiUrl);
             httpWebRequest.ContentType = "application/json";
@@ -158,7 +158,7 @@ namespace SARS.Modules
             {
                 try
                 {
-                    string jsonString = webClient.DownloadString(new Uri($"https://unlocked.modvrc.com/Avatar/DatabaseStats"));
+                    string jsonString = webClient.DownloadString(new Uri($"https://api.avatarrecovery.com/Avatar/DatabaseStats"));
                     DatabaseStats vrChatCacheResult = JsonConvert.DeserializeObject<DatabaseStats>(jsonString);
                     return vrChatCacheResult;
                 }

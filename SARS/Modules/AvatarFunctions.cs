@@ -7,6 +7,7 @@ using System.Reflection;
 using System.Threading.Tasks;
 using System.Web.Configuration;
 using System.Windows.Forms;
+using VRChatAPI_New;
 using VRChatAPI_New.Models;
 using VRChatAPI_New.Modules.Game;
 
@@ -14,20 +15,28 @@ namespace SARS.Modules
 {
     internal static class AvatarFunctions
     {
-        public static void ExtractHSB(string hotSwapName)
+        public static void ExtractHSB(string hotSwapName, bool bypassCheck)
         {
             string filePath = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
-            if (!Directory.Exists(filePath + $"\\{hotSwapName}\\"))
+            if (bypassCheck)
             {
-                ZipFile.ExtractToDirectory(filePath + @"\SARS.zip", filePath + $"\\{hotSwapName}");
-                try
-                {
-                    string text = File.ReadAllText(filePath + $"\\{hotSwapName}\\ProjectSettings\\ProjectSettings.asset");
-                    text = text.Replace("SARS", hotSwapName);
-                    File.WriteAllText(filePath + $"\\{hotSwapName}\\ProjectSettings\\ProjectSettings.asset", text);
-                }
-                catch { }
+                ExtractData(hotSwapName, filePath);
+            } else if(!Directory.Exists(filePath + $"\\{hotSwapName}\\"))
+            {
+                ExtractData(hotSwapName, filePath);
             }
+        }
+
+        public static void ExtractData(string hotSwapName, string filePath)
+        {
+            ZipFile.ExtractToDirectory(filePath + @"\SARS.zip", filePath + $"\\{hotSwapName}");
+            try
+            {
+                string text = File.ReadAllText(filePath + $"\\{hotSwapName}\\ProjectSettings\\ProjectSettings.asset");
+                text = text.Replace("TestingVCCHS", hotSwapName);
+                File.WriteAllText(filePath + $"\\{hotSwapName}\\ProjectSettings\\ProjectSettings.asset", text);
+            }
+            catch { }
         }
 
         public static void ExtractWorldHSB(string hotSwapName)

@@ -24,7 +24,7 @@ namespace SARS.Modules
         public static void GetLatestVersion()
         {
             System.Net.WebClient wc = new System.Net.WebClient();
-            byte[] raw = wc.DownloadData("https://ares-mod.com/Latest.txt");
+            byte[] raw = wc.DownloadData("https://avatarrecovery.com/Latest.txt");
 
             string version = System.Text.Encoding.UTF8.GetString(raw);
             if (Assembly.GetExecutingAssembly().GetName().Version.ToString() != version)
@@ -36,12 +36,12 @@ namespace SARS.Modules
         public static void GetClientVersion(MetroTextBox text, ConfigSave<Config> configSave)
         {
             System.Net.WebClient wc = new System.Net.WebClient();
-            byte[] raw = wc.DownloadData("https://ares-mod.com/Version.txt");
+            byte[] raw = wc.DownloadData("https://avatarrecovery.com/Version.txt");
 
             text.Text = System.Text.Encoding.UTF8.GetString(raw);
             configSave.Config.ClientVersion = text.Text;
 
-            raw = wc.DownloadData("https://ares-mod.com/VersionUpdated.txt");
+            raw = wc.DownloadData("https://avatarrecovery.com/VersionUpdated.txt");
 
             configSave.Config.ClientVersionLastUpdated = Convert.ToDateTime(System.Text.Encoding.UTF8.GetString(raw));
             configSave.Save();
@@ -113,8 +113,28 @@ namespace SARS.Modules
                 using (var key = Registry.CurrentUser.OpenSubKey(@"SOFTWARE\Unity Technologies\Installer\Unity"))
                 {
                     if (key == null) return null;
+                    var version = key.GetValue("Version");
                     var o = key.GetValue("Location x64");
-                    if (o != null) return o.ToString();
+                    if (version != null && version.ToString() == "2022.3.6f1")
+                    {
+                        if (o != null) return o.ToString();
+                    }  else
+                    {
+                        using (var key1 = Registry.CurrentUser.OpenSubKey(@"SOFTWARE\Unity Technologies\Installer\Unity 2022.3.6f1"))
+                        {
+                            if (key == null) return null;
+                            var version1 = key1.GetValue("Version");
+                            var o1 = key1.GetValue("Location x64");
+                            if (version1 != null && version1.ToString() == "2022.3.6f1")
+                            {
+                                if (o1 != null) return o1.ToString();
+                            }
+                            else
+                            {
+
+                            }
+                        }
+                    }
                 }
 
                 return null;
@@ -308,16 +328,16 @@ namespace SARS.Modules
         {
             var programLocation = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
             RandomFunctions.KillProcess("AssetViewer.exe");
-            RandomFunctions.tryDeleteDirectory(programLocation + $"\\NewViewer");
+            RandomFunctions.tryDeleteDirectory(programLocation + $"\\NewerViewer");
         }
 
         public static void ExtractViewer()
         {
             var programLocation = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
 
-            string fileExtractFolder = $"{programLocation}\\NewerViewer\\";
-            ZipFile.ExtractToDirectory(fileExtractFolder + @"\NewerViewer.zip", fileExtractFolder);
-            RandomFunctions.tryDelete(fileExtractFolder + @"\NewerViewer.zip");
+            string fileExtractFolder = $"{programLocation}\\NewestViewer\\";
+            ZipFile.ExtractToDirectory(fileExtractFolder + @"\NewestViewer.zip", fileExtractFolder);
+            RandomFunctions.tryDelete(fileExtractFolder + @"\NewestViewer.zip");
         }
 
         public static void CleanWorldHsb(ConfigSave<Config> configSave)
@@ -348,7 +368,7 @@ namespace SARS.Modules
         {
             try
             {
-                string apiUrl = "https://unlocked.modvrc.com/Avatar/AddSize";
+                string apiUrl = "https://api.avatarrecovery.com/Avatar/AddSize";
                 var httpWebRequest = (HttpWebRequest)WebRequest.Create(apiUrl);
                 httpWebRequest.ContentType = "application/json";
                 httpWebRequest.Method = "POST";
