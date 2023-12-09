@@ -7,7 +7,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SARS", "SARS\SARS.csproj", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VRChatAPI-New", "VRChatAPI-New\VRChatAPI-New.csproj", "{CEDC4C2D-E846-4C34-99AD-7642853744F7}"
 EndProject
-Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "Installer", "Installer\Installer.vdproj", "{8E90F3A8-AABA-44DC-A78E-E9104D715CE8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AssetsTools.NET", "..\..\..\Code\AssetsTools.NET-upd21-with-inst\AssetsTools.NET-upd21-with-inst\AssetTools.NET\AssetsTools.NET.csproj", "{3D623BA7-2A18-4808-8612-AE67B087ADA7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -23,8 +23,10 @@ Global
 		{CEDC4C2D-E846-4C34-99AD-7642853744F7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CEDC4C2D-E846-4C34-99AD-7642853744F7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CEDC4C2D-E846-4C34-99AD-7642853744F7}.Release|Any CPU.Build.0 = Release|Any CPU
-		{8E90F3A8-AABA-44DC-A78E-E9104D715CE8}.Debug|Any CPU.ActiveCfg = Debug
-		{8E90F3A8-AABA-44DC-A78E-E9104D715CE8}.Release|Any CPU.ActiveCfg = Release
+		{3D623BA7-2A18-4808-8612-AE67B087ADA7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3D623BA7-2A18-4808-8612-AE67B087ADA7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3D623BA7-2A18-4808-8612-AE67B087ADA7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3D623BA7-2A18-4808-8612-AE67B087ADA7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

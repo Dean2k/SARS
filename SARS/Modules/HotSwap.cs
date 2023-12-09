@@ -23,6 +23,7 @@ namespace SARS.Modules
         {
             var fileDecompressed = filePath + @"\dummy.vrca_decomp";
             var fileDecompressed2 = filePath + @"\target.vrca_decomp";
+            var fileDecompressed3 = filePath + @"\target.vrca_decompp";
             var fileDecompressedFinal = filePath + @"\finalDecompressed.vrca";
             var fileDummy = filePath + @"\dummy.vrca";
             var fileTarget = filePath + @"\target.vrca";
@@ -44,6 +45,7 @@ namespace SARS.Modules
             unityVrca = Directory.GetFiles(unityVrca, "*.*", SearchOption.AllDirectories).Where(file => new string[] { ".vrca", ".VRCA" }.Contains(Path.GetExtension(file))).FirstOrDefault().ToString();
             RandomFunctions.tryDelete(fileDecompressed);
             RandomFunctions.tryDelete(fileDecompressed2);
+            RandomFunctions.tryDelete(fileDecompressed3);
             RandomFunctions.tryDelete(fileDecompressedFinal);
             RandomFunctions.tryDelete(fileDummy);
             RandomFunctions.tryDelete(fileTarget);
@@ -76,8 +78,7 @@ namespace SARS.Modules
                 return;
             }
 
-            matchModelNew = getMatches(fileDecompressed, avatarIdRegex, avatarCabRegex, unityRegex,
-                avatarPrefabIdRegex, true, avatarPrefabIdRegex2, unityRegexNew);
+            matchModelNew = getMatches(fileDecompressed, avatarIdRegex, avatarCabRegex, avatarPrefabIdRegex, true, avatarPrefabIdRegex2);
 
 
             try
@@ -94,38 +95,18 @@ namespace SARS.Modules
                 return;
             }
 
-            var matchModelOld = getMatches(fileDecompressed2, avatarIdRegex, avatarCabRegex, unityRegex,
-                avatarPrefabIdRegex, false, avatarPrefabIdRegex2, unityRegexNew);
-            if (matchModelOld.UnityVersion == null)
-            {
-                var dialogResult = MessageBox.Show("Possible risky hotswap detected", "Risky Upload",
-                    MessageBoxButtons.OKCancel, MessageBoxIcon.Error);
-                if (dialogResult == DialogResult.Cancel)
-                {
-                    if (hotSwapConsole.InvokeRequired)
-                        hotSwapConsole.Invoke((MethodInvoker)delegate { hotSwapConsole.Close(); });
-                    return;
-                }
-                replaceUnityVer = false;
-            }
+            var matchModelOld = getMatches(fileDecompressed2, avatarIdRegex, avatarCabRegex, avatarPrefabIdRegex, false, avatarPrefabIdRegex2);
+
 
             if (matchModelOld == null)
             {
                 RandomFunctions.tryDelete(fileDecompressed);
                 RandomFunctions.tryDelete(fileDecompressed2);
+                RandomFunctions.tryDelete(fileDecompressed3);
                 RandomFunctions.tryDelete(fileDecompressedFinal);
                 RandomFunctions.tryDelete(fileDummy);
                 return;
             }
-
-            if (matchModelOld.UnityVersion != null)
-                if (matchModelOld.UnityVersion.Contains("2017.") || matchModelOld.UnityVersion.Contains("2018."))
-                {
-                    var dialogResult = MessageBox.Show(
-                        "Replace 2017-2018 unity version, replacing this can cause issues but not replacing it can also increase a ban chance (Press OK to replace and cancel to skip replacements)",
-                        "Possible 2017-2018 unity issue", MessageBoxButtons.OKCancel, MessageBoxIcon.Error);
-                    if (dialogResult == DialogResult.Cancel) { matchModelOld.UnityVersion = null; replaceUnityVer = false; }
-                }
 
 
             if (matchModelOld.AvatarAssetId != null)
@@ -192,6 +173,7 @@ namespace SARS.Modules
 
             RandomFunctions.tryDelete(fileDecompressed);
             RandomFunctions.tryDelete(fileDecompressed2);
+            RandomFunctions.tryDelete(fileDecompressed3);
             RandomFunctions.tryDelete(fileDecompressedFinal);
             RandomFunctions.tryDelete(fileDummy);
             RandomFunctions.tryDelete(fileTarget);
@@ -404,15 +386,13 @@ namespace SARS.Modules
             }
         }
 
-        private static MatchModel getMatches(string file, Regex avatarId, Regex avatarCab, Regex unityVersion,
-            Regex avatarAssetId, bool firstRead, Regex fallbackAssetId, Regex newestUnity)
+        private static MatchModel getMatches(string file, Regex avatarId, Regex avatarCab,
+            Regex avatarAssetId, bool firstRead, Regex fallbackAssetId)
         {
             MatchCollection avatarIdMatch = null;
             MatchCollection avatarAssetIdMatch = null;
             MatchCollection avatarAssetIdMatch2 = null;
             MatchCollection avatarCabMatch = null;
-            MatchCollection unityMatch = null;
-            MatchCollection unityMatchNewest = null;
             var enc = Encoding.GetEncoding(28591);
             var unityCount = 0;
 
@@ -424,23 +404,11 @@ namespace SARS.Modules
                     var tempId = avatarId.Matches(vLine);
                     var tempAssetId = avatarAssetId.Matches(vLine);
                     var tempCab = avatarCab.Matches(vLine);
-                    var tempUnity = unityVersion.Matches(vLine);
-                    var tempUnity2 = newestUnity.Matches(vLine);
                     var tempAssetId2 = fallbackAssetId.Matches(vLine);
                     if (tempAssetId.Count > 0) avatarAssetIdMatch = tempAssetId;
                     if (tempAssetId2.Count > 0) avatarAssetIdMatch2 = tempAssetId2;
                     if (tempId.Count > 0) avatarIdMatch = tempId;
                     if (tempCab.Count > 0) avatarCabMatch = tempCab;
-                    if (tempUnity.Count > 0)
-                    {
-                        unityMatch = tempUnity;
-                        unityCount++;
-                    }
-                    if (tempUnity2.Count > 0)
-                    {
-                        unityMatchNewest = tempUnity2;
-                        unityCount++;
-                    }
                 }
             }
 
@@ -478,8 +446,6 @@ namespace SARS.Modules
                 matchModel.AvatarAssetId = avatarAssetIdMatch2[0].Value;
             }
 
-            if (unityMatch != null) matchModel.UnityVersion = unityMatch[0].Value;
-            if (unityMatchNewest != null) matchModel.UnityVersion = unityMatchNewest[0].Value;
             return matchModel;
         }
         private static MatchModel getMatchesWorld(string file, Regex worldId, Regex unityVersion)
@@ -513,9 +479,12 @@ namespace SARS.Modules
 
         private static void GetReadyForCompress(string oldFile, string newFile, MatchModel old, MatchModel newModel, bool unityReplace = false)
         {
+            ModifyBundle(oldFile);
+
+
             var enc = Encoding.GetEncoding(28591);
             bool firstLine = unityReplace;
-            using (var vReader = new StreamReaderOver(oldFile, enc))
+            using (var vReader = new StreamReaderOver(oldFile + "p", enc))
             {
                 using (var vWriter = new StreamWriter(newFile, false, enc))
                 {
@@ -544,23 +513,41 @@ namespace SARS.Modules
             {
                 if (edited.Contains(old.AvatarCab)) edited = edited.Replace(old.AvatarCab, newModel.AvatarCab);
             }
-            if (unityReplace)
-            {
-                if (old.UnityVersion != null)
-                {
-                    if (edited.Contains(old.UnityVersion))
-                    {
-                        edited = edited.Replace(old.UnityVersion, newModel.UnityVersion);
-                    }
-                }
-
-                //if (edited.Contains("2019.4.31f1c1"))
-                //{
-                //    edited = edited.Replace("2019.4.31f1c1", $"\0\02019.4.31f1");
-                //}
-            }
 
             return edited;
+        }
+
+        public static void ModifyBundle(string decomp_bundle_path)
+        {
+            var manager = new AssetsManager();
+            manager.LoadClassPackage("classdata.tpk");
+            var bundle = manager.LoadBundleFile(decomp_bundle_path);
+            var afileInst = manager.LoadAssetsFileFromBundle(bundle, 0, true);
+            var afile = afileInst.file;
+            var fileIndex = 0;
+            bundle.file.Header.EngineVersion = "2022.3.6f1";
+            afile.Metadata.UnityVersion = "2022.3.6f1";
+
+            foreach (var goInfo in afile.GetAssetsOfType(AssetClassID.MonoBehaviour))
+            {
+                var goBase = manager.GetBaseField(afileInst, goInfo);
+                var name = goBase["blueprintId"];
+
+                var unityName = goBase["unityVersion"];
+
+                if (unityName != null && !unityName.IsDummy)
+                {
+                    unityName.AsString = "2022.3.6f1";
+                    goInfo.SetNewData(goBase);
+                }
+            }
+
+            bundle.file.BlockAndDirInfo.DirectoryInfos[fileIndex].SetNewData(afile);
+
+            using (AssetsFileWriter writer = new AssetsFileWriter(decomp_bundle_path + "p"))
+            {
+                bundle.file.Write(writer);
+            }
         }
 
         private static void GetReadyForCompressWorld(string oldFile, string newFile, MatchModel old, MatchModel newModel)
