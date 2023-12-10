@@ -42,7 +42,12 @@ namespace SARS.Modules
             var avatarCabRegex = new Regex(regexCab);
             var unityRegex = new Regex(regexUnity);
             var unityRegexNew = new Regex(regexUnityNewest);
-            unityVrca = Directory.GetFiles(unityVrca, "*.*", SearchOption.AllDirectories).Where(file => new string[] { ".vrca", ".VRCA" }.Contains(Path.GetExtension(file))).FirstOrDefault().ToString();
+
+            var dirInfo = new DirectoryInfo(unityVrca);
+            var file = (from f in dirInfo.GetFiles("*.vrca") orderby f.LastWriteTime descending select f).First();
+
+
+            unityVrca = file.FullName;
             RandomFunctions.tryDelete(fileDecompressed);
             RandomFunctions.tryDelete(fileDecompressed2);
             RandomFunctions.tryDelete(fileDecompressed3);
@@ -520,7 +525,7 @@ namespace SARS.Modules
         public static void ModifyBundle(string decomp_bundle_path)
         {
             var manager = new AssetsManager();
-            manager.LoadClassPackage("classdata.tpk");
+            manager.LoadClassPackage("class.tpk");
             var bundle = manager.LoadBundleFile(decomp_bundle_path);
             var afileInst = manager.LoadAssetsFileFromBundle(bundle, 0, true);
             var afile = afileInst.file;

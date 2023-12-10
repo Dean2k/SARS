@@ -318,6 +318,9 @@
     <None Include="Template\Scene.unity">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Include="class.tpk">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
