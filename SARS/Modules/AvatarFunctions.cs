@@ -27,6 +27,19 @@ namespace SARS.Modules
             }
         }
 
+        public static void ExtractHSB2019(string hotSwapName, bool bypassCheck)
+        {
+            string filePath = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
+            if (bypassCheck)
+            {
+                ExtractData2019(hotSwapName, filePath);
+            }
+            else if (!Directory.Exists(filePath + $"\\{hotSwapName}\\"))
+            {
+                ExtractData2019(hotSwapName, filePath);
+            }
+        }
+
         public static void ExtractData(string hotSwapName, string filePath)
         {
             ZipFile.ExtractToDirectory(filePath + @"\SARS.zip", filePath + $"\\{hotSwapName}");
@@ -34,6 +47,18 @@ namespace SARS.Modules
             {
                 string text = File.ReadAllText(filePath + $"\\{hotSwapName}\\ProjectSettings\\ProjectSettings.asset");
                 text = text.Replace("TestingVCCHS", hotSwapName);
+                File.WriteAllText(filePath + $"\\{hotSwapName}\\ProjectSettings\\ProjectSettings.asset", text);
+            }
+            catch { }
+        }
+
+        public static void ExtractData2019(string hotSwapName, string filePath)
+        {
+            ZipFile.ExtractToDirectory(filePath + @"\SARS2019.zip", filePath + $"\\{hotSwapName}");
+            try
+            {
+                string text = File.ReadAllText(filePath + $"\\{hotSwapName}\\ProjectSettings\\ProjectSettings.asset");
+                text = text.Replace("SARS", hotSwapName);
                 File.WriteAllText(filePath + $"\\{hotSwapName}\\ProjectSettings\\ProjectSettings.asset", text);
             }
             catch { }

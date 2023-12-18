@@ -1,4 +1,5 @@
-﻿using FACS01.Utilities;
+﻿using CoreSystem;
+using FACS01.Utilities;
 using MetroFramework;
 using MetroFramework.Forms;
 using Microsoft.VisualBasic;
@@ -127,10 +128,17 @@ namespace SARS
                 LoadSettings();
             }
             catch { Console.WriteLine("Error loading settings"); }
-            if (string.IsNullOrEmpty(configSave.Config.HotSwapName))
+            if (string.IsNullOrEmpty(configSave.Config.HotSwapName2022))
             {
-                int randomAmount = RandomFunctions.random.Next(12);
-                configSave.Config.HotSwapName = RandomFunctions.RandomString(randomAmount);
+                int randomAmount = RandomFunctions.random.Next(8);
+                configSave.Config.HotSwapName2022 = RandomFunctions.RandomString(randomAmount);
+                configSave.Save();
+            }
+
+            if (string.IsNullOrEmpty(configSave.Config.HotSwapName2019))
+            {
+                int randomAmount = RandomFunctions.random.Next(8);
+                configSave.Config.HotSwapName2019 = RandomFunctions.RandomString(randomAmount);
                 configSave.Save();
             }
 
@@ -142,13 +150,6 @@ namespace SARS
                 SarsClient.ClearOldViewer();
                 SarsClient.ExtractViewer();
                 configSave.Config.ViewerVersion = 4;
-                configSave.Save();
-            }
-
-            if (string.IsNullOrEmpty(configSave.Config.HotSwapWorldName))
-            {
-                int randomAmount = RandomFunctions.random.Next(12);
-                configSave.Config.HotSwapWorldName = RandomFunctions.RandomString(randomAmount);
                 configSave.Save();
             }
 
@@ -200,9 +201,14 @@ namespace SARS
             SarsClient.GetClientVersion(txtClientVersion, configSave);
             SarsClient.GetLatestVersion();
 
-            if (string.IsNullOrEmpty(configSave.Config.UnityLocation))
+            if (string.IsNullOrEmpty(configSave.Config.UnityLocation2022))
             {
-                SarsClient.UnitySetup(configSave);
+                SarsClient.UnitySetup2022(configSave);
+            }
+
+            if (string.IsNullOrEmpty(configSave.Config.UnityLocation2019))
+            {
+                SarsClient.UnitySetup2019(configSave);
             }
 
             if (string.IsNullOrEmpty(configSave.Config.MacAddress))
@@ -641,10 +647,10 @@ namespace SARS
 
         private void btnHotswap_Click(object sender, EventArgs e)
         {
-            hotSwap();
+            hotSwap("2022");
         }
 
-        private async Task<bool> hotSwap(string customAvatarId = null, string avatarName = null, string imgFileLocation = null)
+        private async Task<bool> hotSwap(string version)
         {
             if (_vrcaThread != null)
             {
@@ -703,9 +709,16 @@ namespace SARS
             }
             hotSwapConsole = new HotswapConsole();
             hotSwapConsole.Show();
-
-            _vrcaThread = new Thread(() => HotSwap.HotswapProcess(hotSwapConsole, this, fileLocation, chkUnityReplace.Checked));
-            _vrcaThread.Start();
+            string inputName = Interaction.InputBox("Please name the internal asset name something.", "Avatar Name", "Avatar");
+            if (version == "2022")
+            {
+                _vrcaThread = new Thread(() => HotSwap.HotswapProcess(configSave.Config.HotSwapName2022, fileLocation, hotSwapConsole.txtStatusText, hotSwapConsole.pbProgress, inputName));
+                _vrcaThread.Start();
+            } else
+            {
+                _vrcaThread = new Thread(() => HotSwap.HotswapProcess(configSave.Config.HotSwapName2019, fileLocation, hotSwapConsole.txtStatusText, hotSwapConsole.pbProgress, inputName));
+                _vrcaThread.Start();
+            }
 
             return true;
         }
@@ -714,8 +727,8 @@ namespace SARS
         {
             var tempFolder = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData)
                 .Replace("\\Roaming", "");
-            var unityTemp = $"\\Local\\Temp\\DefaultCompany\\{configSave.Config.HotSwapName}";
-            var unityTemp2 = $"\\LocalLow\\Temp\\DefaultCompany\\{configSave.Config.HotSwapName}";
+            var unityTemp = $"\\Local\\Temp\\DefaultCompany\\{configSave.Config.HotSwapName2022}";
+            var unityTemp2 = $"\\LocalLow\\Temp\\DefaultCompany\\{configSave.Config.HotSwapName2022}";
 
             RandomFunctions.tryDeleteDirectory(tempFolder + unityTemp);
             RandomFunctions.tryDeleteDirectory(tempFolder + unityTemp2);
@@ -727,9 +740,9 @@ namespace SARS
                 configSave.Save();
             }
 
-            AvatarFunctions.ExtractHSB(configSave.Config.HotSwapName, false);
+            AvatarFunctions.ExtractHSB(configSave.Config.HotSwapName2022, false);
             SarsClient.CopyFiles(configSave);
-            RandomFunctions.OpenUnity(configSave.Config.UnityLocation, configSave.Config.HotSwapName);
+            RandomFunctions.OpenUnity(configSave.Config.UnityLocation2022, configSave.Config.HotSwapName2022);
         }
 
         private void avatarGrid_CellPainting(object sender, DataGridViewCellPaintingEventArgs e)
@@ -768,7 +781,9 @@ namespace SARS
         private void btnHsbClean_Click(object sender, EventArgs e)
         {
             SarsClient.CleanHsb(configSave);
-            AvatarFunctions.ExtractHSB(configSave.Config.HotSwapName, true);
+            SarsClient.CleanHsb2019(configSave);
+            AvatarFunctions.ExtractHSB(configSave.Config.HotSwapName2022, true);
+            AvatarFunctions.ExtractHSB2019(configSave.Config.HotSwapName2019, true);
         }
 
         private void btnLoadVRCA_Click(object sender, EventArgs e)
@@ -1144,7 +1159,7 @@ namespace SARS
 
         private void btnUnityLoc_Click(object sender, EventArgs e)
         {
-            SarsClient.SelectFile(configSave);
+            SarsClient.SelectFile2022(configSave);
         }
 
         private void btnPreview_Click(object sender, EventArgs e)
@@ -1320,7 +1335,7 @@ namespace SARS
 
         private void btnUnityLoc_Click_1(object sender, EventArgs e)
         {
-            SarsClient.SelectFile(configSave);
+            SarsClient.SelectFile2022(configSave);
         }
 
         private void chkTls13_CheckedChanged(object sender, EventArgs e)
@@ -1584,238 +1599,6 @@ namespace SARS
             return true;
         }
 
-        private void btnReupload_Click(object sender, EventArgs e)
-        {
-            //if (_vrcaThread != null)
-            //{
-            //    if (_vrcaThread.IsAlive)
-            //    {
-            //        MessageBox.Show("VRCA Still hotswapping please try again later");
-            //        return;
-            //    }
-            //}
-            //if (File.Exists("target_pc.vrca"))
-            //{
-            //    File.Delete("target_pc.vrca");
-            //}
-            //if (File.Exists("target_quest.vrca"))
-            //{
-            //    File.Delete("target_quest.vrca");
-            //}
-            //if (configSave.Config.ReuploaderUserId == null)
-            //{
-            //    MessageBox.Show("Login with VRChat account first");
-            //    return;
-            //}
-
-            //ReuploaderVrChat._userId = configSave.Config.UserId;
-            //ReuploaderVrChat._authCookie = configSave.Config.ReuploaderAuthKey;
-            //ReuploaderVrChat._twoFactor = configSave.Config.ReuploaderTwoFactor;
-            //string avatarName = SetUpAvatarName();
-            //if (string.IsNullOrEmpty(avatarName))
-            //{
-            //    MessageBox.Show("Please enter an avatar name");
-            //    return;
-            //}
-
-            //string imgFileLocation = FileFitler("png", "png files (*.png)|*.png");
-
-            //if (string.IsNullOrEmpty(imgFileLocation))
-            //{
-            //    MessageBox.Show("Please Select A image File");
-            //    return;
-            //}
-
-            //string avatarId = $"avtr_{Guid.NewGuid()}";
-
-            //BaseUploader._avatarName = avatarName;
-
-            ////try
-            ////{
-            ////    ReuploaderVrChat.VRChatApiUser.Logout();
-            ////}
-            ////catch { }
-
-            //ReUploader(avatarId, avatarName, imgFileLocation);
-        }
-
-        //private async Task<bool> ReUploader(string avatarId, string avatarName, string imgFileLocation)
-        //{
-        //string fileLocation = "";
-        //string questLocation = "";
-
-        //if (vrcaLocation == "")
-        //{
-        //    if (avatarGrid.SelectedRows.Count > 1)
-        //    {
-        //        MessageBox.Show("Please only select 1 row at a time for hotswapping.");
-        //        return false;
-        //    }
-        //    if (avatarGrid.SelectedRows.Count < 1)
-        //    {
-        //        MessageBox.Show("Please only select 1 row at a time for hotswapping.");
-        //        return false;
-        //    }
-        //    Avatar avatar = new Avatar();
-        //    foreach (DataGridViewRow row in avatarGrid.SelectedRows)
-        //    {
-        //        try
-        //        {
-        //            avatar = avatars.FirstOrDefault(x => x.avatar.avatarId == row.Cells[3].Value);
-        //        }
-        //        catch { }
-        //        if (avatar.avatar.authorId == "Unknown Cache")
-        //        {
-        //            if (!File.Exists(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location) + $"\\VRCA\\{RandomFunctions.ReplaceInvalidChars(avatar.avatar.avatarName)}-{avatar.avatar.avatarId}_pc.vrca"))
-        //            {
-        //                File.Copy(avatar.avatar.pcAssetUrl, Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location) + $"\\VRCA\\{RandomFunctions.ReplaceInvalidChars(avatar.avatar.avatarName)}-{avatar.avatar.avatarId}_pc.vrca");
-        //            }
-        //            fileLocation = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location) + $"\\VRCA\\{RandomFunctions.ReplaceInvalidChars(avatar.avatar.avatarName)}-{avatar.avatar.avatarId}_pc.vrca";
-        //            AvatarFunctions.pcDownload = true;
-        //        }
-        //        else
-        //        {
-        //            Download download = new Download();
-        //            download.Show();
-        //            try
-        //            {
-        //                avatar = avatars.FirstOrDefault(x => x.avatar.avatarId == row.Cells[3].Value);
-        //                await Task.Run(() => AvatarFunctions.DownloadVrcaAsync(avatar, VrChat, configSave.Config.AuthKey, nmPcVersion.Value, nmQuestVersion.Value, configSave.Config.TwoFactor, download, true));
-        //            }
-        //            catch (Exception ex)
-        //            {
-        //                Console.WriteLine(ex.ToString());
-        //            }
-
-        //            fileLocation = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location) + $"\\VRCA\\{RandomFunctions.ReplaceInvalidChars(avatar.avatar.avatarName)}-{avatar.avatar.avatarId}_pc.vrca";
-        //            questLocation = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location) + $"\\VRCA\\{RandomFunctions.ReplaceInvalidChars(avatar.avatar.avatarName)}-{avatar.avatar.avatarId}_quest.vrca";
-        //        }
-        //    }
-        //    if (!File.Exists(fileLocation))
-        //    {
-        //        return false;
-        //    }
-        //}
-        //else
-        //{
-        //    fileLocation = vrcaLocation;
-        //}
-
-        //hotSwapConsole = new HotswapConsole();
-        //hotSwapConsole.Show();
-
-        //await Task.Run(() => HotSwap.HotswapProcess(hotSwapConsole, this, fileLocation, avatarId, imgFileLocation, avatarName, null));
-
-        //var filePath = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
-        //var fileTarget = filePath + @"\target.vrca";
-
-        //if (File.Exists(fileTarget))
-        //{
-        //    File.Move(fileTarget, fileTarget.Replace(".vrca", "_pc.vrca"));
-
-        //    if (!string.IsNullOrEmpty(questLocation))
-        //    {
-        //        fileLocation = questLocation;
-        //        if (File.Exists(fileLocation))
-        //        {
-        //            hotSwapConsole = new HotswapConsole();
-        //            hotSwapConsole.Show();
-        //            await Task.Run(() => HotSwap.HotswapProcess(hotSwapConsole, this, questLocation, avatarId, imgFileLocation, avatarName, null));
-        //            File.Move(fileTarget, fileTarget.Replace(".vrca", "_quest.vrca"));
-        //        }
-        //        else
-        //        {
-        //            questLocation = null;
-        //        }
-        //    }
-
-        //    if (ReuploaderVrChat != null)
-        //    {
-        //        ReuploaderVrChat._vrChatApiUser = ReuploaderVrChat._vrchatLoginHandle.LoginWithExistingSession(ReuploaderVrChat._authCookie, ReuploaderVrChat._twoFactor).Result;
-        //        StoredValues.VrchatApiClient = ReuploaderVrChat;
-        //        if (!string.IsNullOrEmpty(questLocation))
-        //        {
-        //            _ = BaseUploader.UploadAvatarAsync(avatarName, fileTarget.Replace(".vrca", "_pc.vrca"), fileTarget.Replace(".vrca", "_quest.vrca"), imgFileLocation, avatarId);
-        //        }
-        //        else
-        //        {
-        //            _ = BaseUploader.UploadAvatarAsync(avatarName, fileTarget.Replace(".vrca", "_pc.vrca"), null, imgFileLocation, avatarId);
-        //        }
-        //        MessageBox.Show($"Avatar Uploaded, Avatar ID: {avatarId}");
-        //    }
-        //    RandomFunctions.tryDelete(fileTarget.Replace(".vrca", "_pc.vrca"));
-        //    RandomFunctions.tryDelete(fileTarget.Replace(".vrca", "_quest.vrca"));
-        //    return true;
-        //}
-        //return false;
-        //}
-
-        private string FileFitler(string defaultExt, string filter)
-        {
-            OpenFileDialog imgFile = new OpenFileDialog
-            {
-                InitialDirectory = @"C:\",
-                Title = "Browse Files",
-
-                CheckFileExists = true,
-                CheckPathExists = true,
-
-                DefaultExt = defaultExt,
-                Filter = filter,
-                FilterIndex = 2,
-                RestoreDirectory = true,
-
-                ReadOnlyChecked = true,
-                ShowReadOnly = true
-            };
-            if (imgFile.ShowDialog() == DialogResult.OK)
-            {
-                return imgFile.FileName;
-            }
-            else
-            {
-                return null;
-            }
-        }
-
-        private static string SetUpAvatarName()
-        {
-            string input = Interaction.InputBox("Enter Avatar Name", "Avatar Name", "");
-            return input;
-        }
-
-        private void btnReLogin_Click(object sender, EventArgs e)
-        {
-            //try
-            //{
-            //    DeleteLoginInfo();
-            //}
-            //catch
-            //{
-            //}
-            //if (txtReUsername.Text != "" && txtRePassword.Text != "")
-            //{
-            //    _ = ReuploaderVrChat._vrchatLoginHandle.Login(txtReUsername.Text, txtRePassword.Text, VRChatLoginHandle.VerifyTwoFactorAuthCode).Result;
-            //    if (string.IsNullOrEmpty(ReuploaderVrChat._userId))
-            //    {
-            //        MessageBox.Show("Error, Unable to login: invalid credentials");
-            //        return;
-            //    }
-            //    else
-            //    {
-            //        configSave.Config.ReuploaderUserId = ReuploaderVrChat._userId;
-            //        configSave.Config.ReuploaderAuthKey = ReuploaderVrChat._authCookie;
-            //        configSave.Config.ReuploaderTwoFactor = ReuploaderVrChat._twoFactor;
-            //        configSave.Save();
-            //        MessageBox.Show("Login Successful");
-            //    }
-            //}
-        }
-
-        private void chkReuploaderEnabled_CheckedChanged(object sender, EventArgs e)
-        {
-        }
-
         private void CacheMessages_Tick(object sender, EventArgs e)
         {
             if (CacheScanner.messages.Count == 0) return;
@@ -1829,26 +1612,9 @@ namespace SARS
             }
         }
 
-        private void btnLoadResults_Click(object sender, EventArgs e)
-        {
-        }
-
         private void txtClientVersion_TextChanged(object sender, EventArgs e)
         {
             StaticGameValues.GameVersion = txtClientVersion.Text;
-        }
-
-        private void btnNewPreview_Click(object sender, EventArgs e)
-        {
-            if (!string.IsNullOrEmpty(configSave.Config.ApiKey))
-            {
-                SARS sars = new SARS();
-                sars.Show();
-            }
-            else
-            {
-                MessageBox.Show("Please enter API Key first");
-            }
         }
 
         private VRChatCacheResult GetDetails(string avatarId)
@@ -2426,123 +2192,6 @@ namespace SARS
             Process.Start("https://github.com/poiyomi/PoiyomiToonShader/releases/tag/V8.1.166");
         }
 
-        private void btnHotswapWorld_Click(object sender, EventArgs e)
-        {
-            hotSwapWorld();
-        }
-
-        private async Task<bool> hotSwapWorld(string customAvatarId = null, string avatarName = null, string imgFileLocation = null)
-        {
-            if (_vrcaThread != null)
-            {
-                if (_vrcaThread.IsAlive)
-                {
-                    MessageBox.Show("VRCW Still hotswapping please try again later");
-                    return false;
-                }
-            }
-
-            string fileLocation = "";
-            if (vrcaLocation == "")
-            {
-                if (avatarGrid.SelectedRows.Count > 1)
-                {
-                    MessageBox.Show("Please only select 1 row at a time for hotswapping.");
-                    return false;
-                }
-                if (avatarGrid.SelectedRows.Count < 1)
-                {
-                    MessageBox.Show("You must at least select one avatar to hotswap");
-                    return false;
-                }
-                AvatarModel avatar = null;
-                foreach (DataGridViewRow row in avatarGrid.SelectedRows)
-                {
-                    avatar = avatars.FirstOrDefault(x => x.Avatar.AvatarId == avatarGrid.SelectedRows[0].Cells[3].Value);
-                    if (avatar.Avatar.AuthorId == "Unknown Cache")
-                    {
-                        if (!File.Exists(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location) + $"\\VRCW\\{RandomFunctions.ReplaceInvalidChars(avatar.Avatar.AvatarName)}-{avatar.Avatar.AvatarId}_pc.vrcw"))
-                        {
-                            File.Copy(avatar.Avatar.PcAssetUrl, Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location) + $"\\VRCW\\{RandomFunctions.ReplaceInvalidChars(avatar.Avatar.AvatarName)}-{avatar.Avatar.AvatarId}_pc.vrcw");
-                        }
-                        AvatarFunctions.pcDownload = true;
-                    }
-                    else
-                    {
-                        try
-                        {
-                            Image myImg = (row.Cells[0].Value as Image);
-                            myImg.Save(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location) +
-                                        $"\\{configSave.Config.HotSwapWorldName}\\Assets\\Shrek SMART\\Resources\\shrekLogo.png", ImageFormat.Png);
-                            avatar = avatars.FirstOrDefault(x => x.Avatar.AvatarId == row.Cells[3].Value);
-                        }
-                        catch { }
-                        Download download = new Download { Text = $"{avatar.Avatar.AvatarName} - {avatar.Avatar.AvatarId}" };
-                        download.Show();
-                        await Task.Run(() => AvatarFunctions.DownloadVrcwAsync(avatar, nmPcVersion.Value, download));
-                        download.Close();
-                    }
-                }
-
-                fileLocation = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location) + $"\\VRCW\\{RandomFunctions.ReplaceInvalidChars(avatar.Avatar.AvatarName)}-{avatar.Avatar.AvatarId}_pc.vrcw";
-
-                if (!File.Exists(fileLocation))
-                {
-                    return false;
-                }
-            }
-            else
-            {
-                fileLocation = vrcaLocation;
-            }
-            hotSwapConsole = new HotswapConsole();
-            hotSwapConsole.Show();
-
-            _vrcaThread = new Thread(() => HotSwap.HotswapWorldProcess(hotSwapConsole, this, fileLocation, customAvatarId));
-            _vrcaThread.Start();
-
-            return true;
-        }
-
-        private void btnWorldUnity_Click(object sender, EventArgs e)
-        {
-            var tempFolder = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData)
-                .Replace("\\Roaming", "");
-            var unityTemp = $"\\Local\\Temp\\DefaultCompany\\{configSave.Config.HotSwapWorldName}";
-            var unityTemp2 = $"\\LocalLow\\Temp\\DefaultCompany\\{configSave.Config.HotSwapWorldName}";
-
-            RandomFunctions.tryDeleteDirectory(tempFolder + unityTemp);
-            RandomFunctions.tryDeleteDirectory(tempFolder + unityTemp2);
-
-            if (configSave.Config.HsbWorldVersion != 1)
-            {
-                SarsClient.CleanWorldHsb(configSave);
-                configSave.Config.HsbWorldVersion = 1;
-                configSave.Save();
-            }
-
-            AvatarFunctions.ExtractWorldHSB(configSave.Config.HotSwapWorldName);
-            SarsClient.CopyFiles(configSave);
-            RandomFunctions.OpenUnity(configSave.Config.UnityLocation, configSave.Config.HotSwapWorldName);
-        }
-
-        private void btnCleanWorld_Click(object sender, EventArgs e)
-        {
-            SarsClient.CleanWorldHsb(configSave);
-        }
-
-        private void chkWorldHotswapping_CheckedChanged(object sender, EventArgs e)
-        {
-            if (chkWorldHotswapping.Checked)
-            {
-                btnHotswapWorld.Enabled = true;
-            }
-            else
-            {
-                btnHotswapWorld.Enabled = false;
-            }
-        }
-
         private void avatarGrid_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             if (avatarGrid.SelectedRows.Count == 1)
@@ -2562,13 +2211,17 @@ namespace SARS
                 m.MenuItems.Add(new MenuItem("Request Avatar Quest", new System.EventHandler(RequestAvatarDownloadQuest)));
                 m.MenuItems.Add(new MenuItem("Preview Image", new System.EventHandler(PreviewImage)));
                 m.MenuItems.Add(new MenuItem("Preview VRCA", new System.EventHandler(PreviewVRCA)));
-                m.MenuItems.Add(new MenuItem("Hotswap", new System.EventHandler(HotswapRC)));
+                m.MenuItems.Add(new MenuItem("Hotswap 2022", new System.EventHandler(HotswapRC)));
+                m.MenuItems.Add(new MenuItem("Hotswap 2019", new System.EventHandler(HotswapRC2019)));
 
                 int currentMouseOverRow = avatarGrid.HitTest(e.X, e.Y).RowIndex;
 
                 avatarGrid.ClearSelection();
-                avatarGrid.Rows[currentMouseOverRow].Selected = true;
-                m.Show(avatarGrid, new Point(e.X, e.Y));
+                if (currentMouseOverRow != -1)
+                {
+                    avatarGrid.Rows[currentMouseOverRow].Selected = true;
+                    m.Show(avatarGrid, new Point(e.X, e.Y));
+                }
             }
             if (e.Button == MouseButtons.Left)
             {
@@ -2646,11 +2299,26 @@ namespace SARS
             {
                 if (avatarGrid.SelectedRows[0].Cells[3].Value.ToString().StartsWith("avtr_"))
                 {
-                    hotSwap();
+                    hotSwap("2022");
                 }
                 else
                 {
-                    hotSwapWorld();
+                    MessageBox.Show("World hotswapping support has been deprecated");
+                }
+            }
+        }
+
+        private void HotswapRC2019(Object sender, EventArgs e)
+        {
+            if (avatarGrid.GetCellCount(DataGridViewElementStates.Selected) > 0)
+            {
+                if (avatarGrid.SelectedRows[0].Cells[3].Value.ToString().StartsWith("avtr_"))
+                {
+                    hotSwap("2019");
+                }
+                else
+                {
+                    MessageBox.Show("World hotswapping support has been deprecated");
                 }
             }
         }
@@ -2923,6 +2591,38 @@ namespace SARS
         private void metroLabel21_Click(object sender, EventArgs e)
         {
             Process.Start("https://ko-fi.com/ShrekamusChrist");
+        }
+
+        private void btnUnity2019_Click(object sender, EventArgs e)
+        {
+            var tempFolder = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData)
+                .Replace("\\Roaming", "");
+            var unityTemp = $"\\Local\\Temp\\DefaultCompany\\{configSave.Config.HotSwapName2019}";
+            var unityTemp2 = $"\\LocalLow\\Temp\\DefaultCompany\\{configSave.Config.HotSwapName2019}";
+
+            RandomFunctions.tryDeleteDirectory(tempFolder + unityTemp);
+            RandomFunctions.tryDeleteDirectory(tempFolder + unityTemp2);
+
+            if (configSave.Config.HsbVersion2019 != 1)
+            {
+                SarsClient.CleanHsb2019(configSave);
+                configSave.Config.HsbVersion2019 = 1;
+                configSave.Save();
+            }
+
+            AvatarFunctions.ExtractHSB2019(configSave.Config.HotSwapName2019, false);
+            SarsClient.CopyFiles2019(configSave);
+            RandomFunctions.OpenUnity(configSave.Config.UnityLocation2019, configSave.Config.HotSwapName2019);
+        }
+
+        private void btnHotswap2019_Click(object sender, EventArgs e)
+        {
+            hotSwap("2019");
+        }
+
+        private void btnChangeUnity2019_Click(object sender, EventArgs e)
+        {
+            SarsClient.SelectFile2019(configSave);
         }
     }
 }

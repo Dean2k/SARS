@@ -45,9 +45,6 @@
     <SuppressPseudoWarning Condition="'$(Configuration)' == 'Debug'">true</SuppressPseudoWarning>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="AssetsTools.NET">
-      <HintPath>.\AssetsTools.NET.dll</HintPath>
-    </Reference>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
@@ -56,9 +53,6 @@
     </Reference>
     <Reference Include="ICSharpCode.SharpZipLib, Version=0.85.4.369, Culture=neutral, PublicKeyToken=1b03e6acf1164f73, processorArchitecture=MSIL">
       <HintPath>..\packages\ICSharpCode.SharpZipLib.dll.0.85.4.369\lib\net20\ICSharpCode.SharpZipLib.dll</HintPath>
-    </Reference>
-    <Reference Include="MaterialSkin, Version=2.3.1.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\MaterialSkin.2.2.3.1\lib\net48\MaterialSkin.dll</HintPath>
     </Reference>
     <Reference Include="MetroFramework, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a, processorArchitecture=MSIL">
       <HintPath>..\packages\MetroModernUI.1.4.0.0\lib\net\MetroFramework.dll</HintPath>
@@ -127,12 +121,6 @@
     <Compile Include="AvatarPreview.Designer.cs">
       <DependentUpon>AvatarPreview.cs</DependentUpon>
     </Compile>
-    <Compile Include="AvatarCard.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="AvatarCard.Designer.cs">
-      <DependentUpon>AvatarCard.cs</DependentUpon>
-    </Compile>
     <Compile Include="AvatarSystem.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -159,7 +147,6 @@
     <Compile Include="Models\FileSizeUpdate.cs" />
     <Compile Include="Models\GetRequests.cs" />
     <Compile Include="Models\ListDown.cs" />
-    <Compile Include="Models\MatchModel.cs" />
     <Compile Include="Models\RequestAvatar.cs" />
     <Compile Include="Models\VRCCacheScannerModel.cs" />
     <Compile Include="Models\VRChatCacheResultWorld.cs" />
@@ -171,9 +158,7 @@
     <Compile Include="Modules\FixVRC3Scripts.cs" />
     <Compile Include="Modules\GenerateHtml.cs" />
     <Compile Include="Modules\GrabModel.cs" />
-    <Compile Include="Modules\HotSwap.cs" />
     <Compile Include="Modules\MessageBoxManager.cs" />
-    <Compile Include="Modules\ProgressBar.cs" />
     <Compile Include="Modules\RandomFunctions.cs" />
     <Compile Include="Modules\SarsClient.cs" />
     <Compile Include="Modules\SHOpenFolderAndSelectItems.cs" />
@@ -183,20 +168,11 @@
     <Compile Include="Modules\UnityPack.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SARS.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="SARS.Designer.cs">
-      <DependentUpon>SARS.cs</DependentUpon>
-    </Compile>
     <EmbeddedResource Include="Avatar Info.resx">
       <DependentUpon>Avatar Info.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="AvatarPreview.resx">
       <DependentUpon>AvatarPreview.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="AvatarCard.resx">
-      <DependentUpon>AvatarCard.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="AvatarSystem.resx">
       <DependentUpon>AvatarSystem.cs</DependentUpon>
@@ -218,9 +194,6 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <EmbeddedResource Include="SARS.resx">
-      <DependentUpon>SARS.cs</DependentUpon>
-    </EmbeddedResource>
     <None Include="AssetRipperConsole_win64\Licenses\AsmResolver.md">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
@@ -312,13 +285,16 @@
     <None Include="SARS.zip">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="SARSWorld.zip">
+    <None Include="SARS2019.zip">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="Template\Scene.unity">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="class.tpk">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Template\SceneCube.unity">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
   </ItemGroup>
@@ -375,6 +351,14 @@
     <Folder Include="External\" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\..\..\Code\AssetsTools.NET-upd21-with-inst\AssetsTools.NET-upd21-with-inst\AssetTools.NET\AssetsTools.NET.csproj">
+      <Project>{3d623ba7-2a18-4808-8612-ae67b087ada7}</Project>
+      <Name>AssetsTools.NET</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CoreSystem\CoreSystem.csproj">
+      <Project>{29a02b50-5725-4fd0-a280-3377fcfbf397}</Project>
+      <Name>CoreSystem</Name>
+    </ProjectReference>
     <ProjectReference Include="..\VRChatAPI-New\VRChatAPI-New.csproj">
       <Project>{cedc4c2d-e846-4c34-99ad-7642853744f7}</Project>
       <Name>VRChatAPI-New</Name>

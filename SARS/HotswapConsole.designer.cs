@@ -34,6 +34,7 @@ namespace SARS
             this.txtStatusText = new System.Windows.Forms.TextBox();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.pbProgress = new System.Windows.Forms.ProgressBar();
+            this.finished = new System.Windows.Forms.Timer(this.components);
             this.SuspendLayout();
             // 
             // txtStatusText
@@ -61,6 +62,11 @@ namespace SARS
             this.pbProgress.Size = new System.Drawing.Size(469, 23);
             this.pbProgress.TabIndex = 2;
             // 
+            // finished
+            // 
+            this.finished.Enabled = true;
+            this.finished.Tick += new System.EventHandler(this.finished_Tick);
+            // 
             // HotswapConsole
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -84,5 +90,6 @@ namespace SARS
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
         public System.Windows.Forms.TextBox txtStatusText;
         public System.Windows.Forms.ProgressBar pbProgress;
+        private System.Windows.Forms.Timer finished;
     }
 }

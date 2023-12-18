@@ -17,18 +17,20 @@ namespace SARS.Models
         public bool PreSelectedAvatarLocationChecked { get; set; }
         public string PreSelectedWorldLocation { get; set; }
         public bool PreSelectedWorldLocationChecked { get; set; }
-        public string UnityLocation { get; set; }
+        public string UnityLocation2019 { get; set; }
+        public string UnityLocation2022 { get; set; }
         public string ClientVersion { get; set; }
         public string UnityVersion { get; set; }
         public DateTime ClientVersionLastUpdated { get; set; }
         public bool LightMode { get; set; }
         public string ThemeColor { get; set; }
-        public string HotSwapName { get; set; }
-        public string HotSwapWorldName { get; set; }
+        public string HotSwapName2022 { get; set; }
+        public string HotSwapName2019 { get; set; }
         public string MacAddress { get; set; }
         public string ReuploaderMacAddress { get; set; }
         public int ViewerVersion { get; set; }
         public int HsbVersion { get; set; }
+        public int HsbVersion2019 { get; set; }
         public int HsbWorldVersion { get; set; }
         public bool AltAPI { get; set; }
         public bool Tls11 { get; set; }

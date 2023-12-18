@@ -60,6 +60,7 @@ namespace SARS.Modules
                 FileName = "CMD.EXE",
                 Arguments = commands,
                 WorkingDirectory = filePath,
+                WindowStyle = ProcessWindowStyle.Hidden,
             };
             process.StartInfo = processStartInfo;
             process.Start();

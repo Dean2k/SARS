@@ -47,46 +47,81 @@ namespace SARS.Modules
             configSave.Save();
         }
 
-        public static void UnitySetup(ConfigSave<Config> configSave)
+        public static void UnitySetup2019(ConfigSave<Config> configSave)
         {
-            var unityPath = UnityRegistry();
+            var unityPath = UnityRegistry2019();
             if (unityPath != null)
             {
                 var dlgResult =
                     MessageBox.Show(
-                        $"Possible unity path found, Location: '{unityPath + @"\Editor\Unity.exe"}' is this correct?",
+                        $"Possible unity 2019 path found, Location: '{unityPath + @"\Editor\Unity.exe"}' is this correct?",
                         "Unity", MessageBoxButtons.YesNo);
                 if (dlgResult == DialogResult.Yes)
                 {
                     if (File.Exists(unityPath + @"\Editor\Unity.exe"))
                     {
-                        configSave.Config.UnityLocation = unityPath + @"\Editor\Unity.exe";
+                        configSave.Config.UnityLocation2019 = unityPath + @"\Editor\Unity.exe";
                         configSave.Save();
-                        MessageBox.Show(
-                            "Leave the command window open it will close by itself after the unity setup is complete");
                     }
                     else
                     {
                         MessageBox.Show("Someone didn't check because that file doesn't exist!");
-                        SelectFile(configSave);
+                        SelectFile2019(configSave);
                     }
                 }
                 else
                 {
                     MessageBox.Show(
                         "Please select unity.exe, after doing this leave the command window open it will close by itself after setup is complete");
-                    SelectFile(configSave);
+                    SelectFile2019(configSave);
                 }
             }
             else
             {
                 MessageBox.Show(
                     "Please select unity.exe, after doing this leave the command window open it will close by itself after setup is complete");
-                SelectFile(configSave);
+                SelectFile2019(configSave);
             }
         }
 
-        public static void SelectFile(ConfigSave<Config> configSave)
+        public static void UnitySetup2022(ConfigSave<Config> configSave)
+        {
+            var unityPath = UnityRegistry2022();
+            if (unityPath != null)
+            {
+                var dlgResult =
+                    MessageBox.Show(
+                        $"Possible unity 2022 path found, Location: '{unityPath + @"\Editor\Unity.exe"}' is this correct?",
+                        "Unity", MessageBoxButtons.YesNo);
+                if (dlgResult == DialogResult.Yes)
+                {
+                    if (File.Exists(unityPath + @"\Editor\Unity.exe"))
+                    {
+                        configSave.Config.UnityLocation2022 = unityPath + @"\Editor\Unity.exe";
+                        configSave.Save();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Someone didn't check because that file doesn't exist!");
+                        SelectFile2022(configSave);
+                    }
+                }
+                else
+                {
+                    MessageBox.Show(
+                        "Please select unity.exe, after doing this leave the command window open it will close by itself after setup is complete");
+                    SelectFile2022(configSave);
+                }
+            }
+            else
+            {
+                MessageBox.Show(
+                    "Please select unity.exe, after doing this leave the command window open it will close by itself after setup is complete");
+                SelectFile2022(configSave);
+            }
+        }
+
+        public static void SelectFile2022(ConfigSave<Config> configSave)
         {
             var filePath = string.Empty;
 
@@ -102,11 +137,11 @@ namespace SARS.Modules
                     filePath = openFileDialog.FileName;
             }
 
-            configSave.Config.UnityLocation = filePath;
+            configSave.Config.UnityLocation2022 = filePath;
             configSave.Save();
         }
 
-        private static string UnityRegistry()
+        private static string UnityRegistry2022()
         {
             try
             {
@@ -126,6 +161,66 @@ namespace SARS.Modules
                             var version1 = key1.GetValue("Version");
                             var o1 = key1.GetValue("Location x64");
                             if (version1 != null && version1.ToString() == "2022.3.6f1")
+                            {
+                                if (o1 != null) return o1.ToString();
+                            }
+                            else
+                            {
+
+                            }
+                        }
+                    }
+                }
+
+                return null;
+            }
+            catch
+            {
+                return null;
+            }
+        }
+
+        public static void SelectFile2019(ConfigSave<Config> configSave)
+        {
+            var filePath = string.Empty;
+
+            using (var openFileDialog = new OpenFileDialog())
+            {
+                openFileDialog.InitialDirectory = "c:\\";
+                openFileDialog.Filter = "Unity (Unity.exe)|Unity.exe";
+                openFileDialog.RestoreDirectory = true;
+                openFileDialog.Title = "Select Unity exe";
+
+                if (openFileDialog.ShowDialog() == DialogResult.OK)
+                    //Get the path of specified file
+                    filePath = openFileDialog.FileName;
+            }
+
+            configSave.Config.UnityLocation2019 = filePath;
+            configSave.Save();
+        }
+
+        private static string UnityRegistry2019()
+        {
+            try
+            {
+                using (var key = Registry.CurrentUser.OpenSubKey(@"SOFTWARE\Unity Technologies\Installer\Unity"))
+                {
+                    if (key == null) return null;
+                    var version = key.GetValue("Version");
+                    var o = key.GetValue("Location x64");
+                    if (version != null && version.ToString() == "2019.4.31f1")
+                    {
+                        if (o != null) return o.ToString();
+                    }
+                    else
+                    {
+                        using (var key1 = Registry.CurrentUser.OpenSubKey(@"SOFTWARE\Unity Technologies\Installer\Unity 2019.4.31f1"))
+                        {
+                            if (key == null) return null;
+                            var version1 = key1.GetValue("Version");
+                            var o1 = key1.GetValue("Location x64");
+                            if (version1 != null && version1.ToString() == "2019.4.31f1")
                             {
                                 if (o1 != null) return o1.ToString();
                             }
@@ -319,9 +414,19 @@ namespace SARS.Modules
             var programLocation = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
             RandomFunctions.KillProcess("Unity Hub.exe");
             RandomFunctions.KillProcess("Unity.exe");
-            RandomFunctions.tryDeleteDirectory(programLocation + $"\\{configSave.Config.HotSwapName}");
-            RandomFunctions.tryDeleteDirectory(@"C:\Users\" + Environment.UserName + $"\\AppData\\Local\\Temp\\DefaultCompany\\{configSave.Config.HotSwapName}");
-            RandomFunctions.tryDeleteDirectory(@"C:\Users\" + Environment.UserName + $"\\AppData\\LocalLow\\DefaultCompany\\{configSave.Config.HotSwapName}");
+            RandomFunctions.tryDeleteDirectory(programLocation + $"\\{configSave.Config.HotSwapName2022}");
+            RandomFunctions.tryDeleteDirectory(@"C:\Users\" + Environment.UserName + $"\\AppData\\Local\\Temp\\DefaultCompany\\{configSave.Config.HotSwapName2022}");
+            RandomFunctions.tryDeleteDirectory(@"C:\Users\" + Environment.UserName + $"\\AppData\\LocalLow\\DefaultCompany\\{configSave.Config.HotSwapName2022}");
+        }
+
+        public static void CleanHsb2019(ConfigSave<Config> configSave)
+        {
+            var programLocation = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
+            RandomFunctions.KillProcess("Unity Hub.exe");
+            RandomFunctions.KillProcess("Unity.exe");
+            RandomFunctions.tryDeleteDirectory(programLocation + $"\\{configSave.Config.HotSwapName2019}");
+            RandomFunctions.tryDeleteDirectory(@"C:\Users\" + Environment.UserName + $"\\AppData\\Local\\Temp\\DefaultCompany\\{configSave.Config.HotSwapName2019}");
+            RandomFunctions.tryDeleteDirectory(@"C:\Users\" + Environment.UserName + $"\\AppData\\LocalLow\\DefaultCompany\\{configSave.Config.HotSwapName2019}");
         }
 
         public static void ClearOldViewer()
@@ -340,27 +445,34 @@ namespace SARS.Modules
             RandomFunctions.tryDelete(fileExtractFolder + @"\NewestViewer.zip");
         }
 
-        public static void CleanWorldHsb(ConfigSave<Config> configSave)
-        {
-            var programLocation = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
-            RandomFunctions.KillProcess("Unity Hub.exe");
-            RandomFunctions.KillProcess("Unity.exe");
-            RandomFunctions.tryDeleteDirectory(programLocation + $"\\{configSave.Config.HotSwapWorldName}");
-            RandomFunctions.tryDeleteDirectory(@"C:\Users\" + Environment.UserName + $"\\AppData\\Local\\Temp\\DefaultCompany\\{configSave.Config.HotSwapWorldName}");
-            RandomFunctions.tryDeleteDirectory(@"C:\Users\" + Environment.UserName + $"\\AppData\\LocalLow\\DefaultCompany\\{configSave.Config.HotSwapWorldName}");
-        }
-
         public static void CopyFiles(ConfigSave<Config> configSave)
         {
             try
             {
                 var programLocation = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
-                File.Copy(programLocation + @"\Template\Scene.unity", programLocation + $"\\{configSave.Config.HotSwapName}\\Assets\\Scene.unity", true);
+                File.Copy(programLocation + @"\Template\Scene.unity", programLocation + $"\\{configSave.Config.HotSwapName2022}\\Assets\\Scene.unity", true);
+                File.Copy(programLocation + @"\Template\SceneCube.unity", programLocation + $"\\{configSave.Config.HotSwapName2022}\\Assets\\SceneCube.unity", true);
             }
             catch (Exception ex) { 
              
                 Console.WriteLine(ex.Message);
             
+            }
+        }
+
+        public static void CopyFiles2019(ConfigSave<Config> configSave)
+        {
+            try
+            {
+                var programLocation = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
+                File.Copy(programLocation + @"\Template\Scene.unity", programLocation + $"\\{configSave.Config.HotSwapName2019}\\Assets\\Scene.unity", true);
+                File.Copy(programLocation + @"\Template\SceneCube.unity", programLocation + $"\\{configSave.Config.HotSwapName2019}\\Assets\\SceneCube.unity", true);
+            }
+            catch (Exception ex)
+            {
+
+                Console.WriteLine(ex.Message);
+
             }
         }
 
