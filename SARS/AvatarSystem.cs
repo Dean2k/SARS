@@ -776,6 +776,7 @@ namespace SARS
         private void btnResetScene_Click(object sender, EventArgs e)
         {
             SarsClient.CopyFiles(configSave);
+            SarsClient.CopyFiles2019(configSave);
         }
 
         private void btnHsbClean_Click(object sender, EventArgs e)
