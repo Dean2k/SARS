@@ -395,3 +395,8 @@ FodyWeavers.xsd
 /Reuploader.Core/Modules/ProgressableByteArrayContent.cs
 /Reuploader.Core/Modules/HttpFactory.cs
 /Reuploader.Core/Properties/AssemblyInfo.cs
+/CoreSystem/CoreSystem.csproj
+/CoreSystem/HotSwap.cs
+/CoreSystem/ProgressBar.cs
+/CoreSystem/StreamReader.cs
+/CoreSystem/Properties/AssemblyInfo.cs
