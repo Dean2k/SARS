@@ -400,3 +400,5 @@ FodyWeavers.xsd
 /CoreSystem/ProgressBar.cs
 /CoreSystem/StreamReader.cs
 /CoreSystem/Properties/AssemblyInfo.cs
+/CoreSystem/Model/UserKey.cs
+/CoreSystem/packages.config
