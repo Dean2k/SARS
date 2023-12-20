@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using CoreSystem.Model;
+using Newtonsoft.Json;
 using SARS.Models;
 using System;
 using System.Collections.Generic;
@@ -150,6 +151,38 @@ namespace SARS.Modules
                 Console.WriteLine(ex);
                 return false;
             }
+        }
+
+        public UserKey CheckKey(string key)
+        {
+            string apiUrl = $"https://api.avatarrecovery.com/Avatar/CheckLogin?search={key}";
+
+            var httpWebRequest = (HttpWebRequest)WebRequest.Create(apiUrl);
+            httpWebRequest.ContentType = "application/json";
+            httpWebRequest.Method = "POST";
+            httpWebRequest.UserAgent = $"SARS";
+            string jsonPost = JsonConvert.SerializeObject(key);
+            using (var streamWriter = new StreamWriter(httpWebRequest.GetRequestStream()))
+            {
+                streamWriter.Write(jsonPost);
+            }
+            try
+            {
+                var httpResponse = (HttpWebResponse)httpWebRequest.GetResponse();
+                using (var streamReader = new StreamReader(httpResponse.GetResponseStream()))
+                {
+                    var result = streamReader.ReadToEnd();
+                    UserKey avatarResponse = JsonConvert.DeserializeObject<UserKey>(result);
+
+                    return avatarResponse;
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
+                return null;
+            }
+
         }
 
         public DatabaseStats DatabaseStats()

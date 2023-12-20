@@ -526,8 +526,15 @@ namespace SARS
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            configSave.Config.ApiKey = txtApiKey.Text.Trim();
-            configSave.Save();
+            var key = shrekApi.CheckKey(txtApiKey.Text.Trim());
+            if (key != null && key.authenticated)
+            {
+                configSave.Config.ApiKey = txtApiKey.Text.Trim();
+                configSave.Save();
+            } else
+            {
+                MessageBox.Show("key is not valid");
+            }
         }
 
         private void btnLight_Click(object sender, EventArgs e)
@@ -712,11 +719,12 @@ namespace SARS
             string inputName = Interaction.InputBox("Please name the internal asset name something.", "Avatar Name", "Avatar");
             if (version == "2022")
             {
-                _vrcaThread = new Thread(() => HotSwap.HotswapProcess(configSave.Config.HotSwapName2022, fileLocation, hotSwapConsole.txtStatusText, hotSwapConsole.pbProgress, inputName));
+                _vrcaThread = new Thread(() => HotSwap.HotswapProcess(configSave.Config.HotSwapName2022, fileLocation, hotSwapConsole.txtStatusText, hotSwapConsole.pbProgress, inputName, chkUnlockPassword.Checked, chkAdvanceUnlock.Checked, configSave.Config.ApiKey));
                 _vrcaThread.Start();
-            } else
+            }
+            else
             {
-                _vrcaThread = new Thread(() => HotSwap.HotswapProcess(configSave.Config.HotSwapName2019, fileLocation, hotSwapConsole.txtStatusText, hotSwapConsole.pbProgress, inputName));
+                _vrcaThread = new Thread(() => HotSwap.HotswapProcess(configSave.Config.HotSwapName2019, fileLocation, hotSwapConsole.txtStatusText, hotSwapConsole.pbProgress, inputName, chkUnlockPassword.Checked, chkAdvanceUnlock.Checked, configSave.Config.ApiKey));
                 _vrcaThread.Start();
             }
 
@@ -2418,7 +2426,8 @@ namespace SARS
                             {
                                 string baseFile = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location) + $"\\error.png";
                                 File.Copy(baseFile, screenshotLocationNew);
-                            } catch { }
+                            }
+                            catch { }
                         }
                         Bitmap bmp = new Bitmap(screenshotLocationNew);
                         foreach (DataGridViewRow row in avatarGrid.Rows)
@@ -2624,6 +2633,40 @@ namespace SARS
         private void btnChangeUnity2019_Click(object sender, EventArgs e)
         {
             SarsClient.SelectFile2019(configSave);
+        }
+
+        private void chkUnlockPassword_CheckedChanged(object sender, EventArgs e)
+        {
+
+            var key = shrekApi.CheckKey(txtApiKey.Text.Trim());
+            if(key == null)
+            {
+                MessageBox.Show("This feature is locked to donators");
+                chkUnlockPassword.Checked = false;
+            }
+            if (key != null && !key.premium && chkUnlockPassword.Checked)
+            {
+                MessageBox.Show("This feature is locked to donators");
+                chkUnlockPassword.Checked = false;
+            }
+
+            if (!chkUnlockPassword.Checked && chkAdvanceUnlock.Checked)
+            {
+                chkAdvanceUnlock.Checked = false;
+            }
+        }
+
+        private void chkAdvanceUnlock_CheckedChanged(object sender, EventArgs e)
+        {
+            if (!chkUnlockPassword.Checked && chkAdvanceUnlock.Checked)
+            {
+                chkAdvanceUnlock.Checked = false;
+            }
+        }
+
+        private void txtApiKey_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
