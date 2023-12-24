@@ -38,6 +38,7 @@ namespace SARS
         public ConfigSave<List<AvatarModel>> rippedList;
         public ConfigSave<List<AvatarModel>> favList;
         public ConfigSave<ListDown> downloadQueue;
+        public List<LanguageTranslation> languageTranslations;
         public List<string> requestedAvatarIds = new List<string>();
         private HotswapConsole hotSwapConsole;
         private Thread _vrcaThread;
@@ -176,6 +177,17 @@ namespace SARS
             MessageBoxManager.Yes = "PC";
             MessageBoxManager.No = "Quest";
             MessageBoxManager.Register();
+
+            try
+            {
+                languageTranslations = shrekApi.LanguageList();
+                foreach (var language in languageTranslations)
+                {
+                    cbLanguage.Items.Add(language.name);
+                }
+                cbLanguage.SelectedIndex = 0;
+            }
+            catch { }
         }
 
         private void CheckFav()
@@ -717,14 +729,20 @@ namespace SARS
             hotSwapConsole = new HotswapConsole();
             hotSwapConsole.Show();
             string inputName = Interaction.InputBox("Please name the internal asset name something.", "Avatar Name", "Avatar");
+            string languageCode;
+            try
+            {
+                languageCode = languageTranslations.FirstOrDefault(x => x.name == cbLanguage.Text).code;
+            } catch { languageCode = "en"; }
+
             if (version == "2022")
             {
-                _vrcaThread = new Thread(() => HotSwap.HotswapProcess(configSave.Config.HotSwapName2022, fileLocation, hotSwapConsole.txtStatusText, hotSwapConsole.pbProgress, inputName, chkUnlockPassword.Checked, chkAdvanceUnlock.Checked, configSave.Config.ApiKey));
+                _vrcaThread = new Thread(() => HotSwap.HotswapProcess(configSave.Config.HotSwapName2022, fileLocation, hotSwapConsole.txtStatusText, hotSwapConsole.pbProgress, inputName, chkUnlockPassword.Checked, chkAdvanceUnlock.Checked, configSave.Config.ApiKey, chkTranslate.Checked, languageCode, chkAdvancedDic.Checked));
                 _vrcaThread.Start();
             }
             else
             {
-                _vrcaThread = new Thread(() => HotSwap.HotswapProcess(configSave.Config.HotSwapName2019, fileLocation, hotSwapConsole.txtStatusText, hotSwapConsole.pbProgress, inputName, chkUnlockPassword.Checked, chkAdvanceUnlock.Checked, configSave.Config.ApiKey));
+                _vrcaThread = new Thread(() => HotSwap.HotswapProcess(configSave.Config.HotSwapName2019, fileLocation, hotSwapConsole.txtStatusText, hotSwapConsole.pbProgress, inputName, chkUnlockPassword.Checked, chkAdvanceUnlock.Checked, configSave.Config.ApiKey, chkTranslate.Checked, languageCode, chkAdvancedDic.Checked));
                 _vrcaThread.Start();
             }
 
@@ -2650,9 +2668,10 @@ namespace SARS
                 chkUnlockPassword.Checked = false;
             }
 
-            if (!chkUnlockPassword.Checked && chkAdvanceUnlock.Checked)
+            if (!chkUnlockPassword.Checked)
             {
                 chkAdvanceUnlock.Checked = false;
+                chkAdvancedDic.Checked = false;
             }
         }
 
@@ -2667,6 +2686,14 @@ namespace SARS
         private void txtApiKey_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void chkAdvancedDic_CheckedChanged(object sender, EventArgs e)
+        {
+            if (!chkUnlockPassword.Checked && chkAdvancedDic.Checked)
+            {
+                chkAdvancedDic.Checked = false;
+            }
         }
     }
 }

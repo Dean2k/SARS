@@ -70,6 +70,9 @@
     <Reference Include="Microsoft.WindowsAPICodePack.Shell, Version=1.1.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\WindowsAPICodePack-Shell.1.1.1\lib\Microsoft.WindowsAPICodePack.Shell.dll</HintPath>
     </Reference>
+    <Reference Include="NetSpell.SpellChecker, Version=2.1.7.41329, Culture=neutral, PublicKeyToken=318b389f0db66e46">
+      <HintPath>..\packages\NetSpell.2.1.7\lib\NetSpell.SpellChecker.dll</HintPath>
+    </Reference>
     <Reference Include="netstandard, Version=2.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51" />
     <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.13.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
@@ -146,6 +149,7 @@
     <Compile Include="Models\DownloadQueueList.cs" />
     <Compile Include="Models\FileSizeUpdate.cs" />
     <Compile Include="Models\GetRequests.cs" />
+    <Compile Include="Models\Languages.cs" />
     <Compile Include="Models\ListDown.cs" />
     <Compile Include="Models\RequestAvatar.cs" />
     <Compile Include="Models\VRCCacheScannerModel.cs" />
@@ -267,6 +271,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="AssetRipperConsole_win64\Licenses\Xiph.md">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="en-US.dic">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="NewestViewer\NewestViewer.zip">

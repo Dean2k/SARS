@@ -202,5 +202,23 @@ namespace SARS.Modules
             }
             return null;
         }
+
+        public List<LanguageTranslation> LanguageList()
+        {
+            using (WebClient webClient = new WebClient())
+            {
+                try
+                {
+                    string jsonString = webClient.DownloadString(new Uri($"https://translate.avatarrecovery.com/languages"));
+                    List<LanguageTranslation> vrChatCacheResult = JsonConvert.DeserializeObject<List<LanguageTranslation>>(jsonString);
+                    return vrChatCacheResult;
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                }
+            }
+            return null;
+        }
     }
 }

@@ -82,6 +82,8 @@
             this.btnScanCacheFolder = new MetroFramework.Controls.MetroButton();
             this.chkSelfAvatars = new MetroFramework.Controls.MetroCheckBox();
             this.btnUnity2019 = new MetroFramework.Controls.MetroButton();
+            this.chkUnlockPassword = new MetroFramework.Controls.MetroCheckBox();
+            this.chkAdvanceUnlock = new MetroFramework.Controls.MetroCheckBox();
             this.btnGetScreenshots = new MetroFramework.Controls.MetroButton();
             this.metroLabel8 = new MetroFramework.Controls.MetroLabel();
             this.txtAvatarSizePc = new MetroFramework.Controls.MetroTextBox();
@@ -115,7 +117,6 @@
             this.lblSize = new MetroFramework.Controls.MetroLabel();
             this.metroLabel10 = new MetroFramework.Controls.MetroLabel();
             this.metroTabPage4 = new MetroFramework.Controls.MetroTabPage();
-            this.chkUnlockPassword = new MetroFramework.Controls.MetroCheckBox();
             this.btnUnityLocation2019 = new MetroFramework.Controls.MetroButton();
             this.chkUnityPackage = new MetroFramework.Controls.MetroCheckBox();
             this.lblDownload = new MetroFramework.Controls.MetroLabel();
@@ -179,7 +180,10 @@
             this.CacheScannerTimer = new System.Windows.Forms.Timer(this.components);
             this.DownloadRefresh = new System.Windows.Forms.Timer(this.components);
             this.btnHotswap2019 = new MetroFramework.Controls.MetroButton();
-            this.chkAdvanceUnlock = new MetroFramework.Controls.MetroCheckBox();
+            this.chkTranslate = new MetroFramework.Controls.MetroCheckBox();
+            this.cbLanguage = new MetroFramework.Controls.MetroComboBox();
+            this.metroLabel11 = new MetroFramework.Controls.MetroLabel();
+            this.chkAdvancedDic = new MetroFramework.Controls.MetroCheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.nmQuestVersion)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nmPcVersion)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.metroStyleManager1)).BeginInit();
@@ -566,6 +570,28 @@
             this.btnUnity2019.UseSelectable = true;
             this.btnUnity2019.UseStyleColors = true;
             this.btnUnity2019.Click += new System.EventHandler(this.btnUnity2019_Click);
+            // 
+            // chkUnlockPassword
+            // 
+            resources.ApplyResources(this.chkUnlockPassword, "chkUnlockPassword");
+            this.chkUnlockPassword.FontSize = MetroFramework.MetroCheckBoxSize.Medium;
+            this.chkUnlockPassword.FontWeight = MetroFramework.MetroCheckBoxWeight.Bold;
+            this.chkUnlockPassword.Name = "chkUnlockPassword";
+            this.metroToolTip1.SetToolTip(this.chkUnlockPassword, resources.GetString("chkUnlockPassword.ToolTip"));
+            this.chkUnlockPassword.UseSelectable = true;
+            this.chkUnlockPassword.UseStyleColors = true;
+            this.chkUnlockPassword.CheckedChanged += new System.EventHandler(this.chkUnlockPassword_CheckedChanged);
+            // 
+            // chkAdvanceUnlock
+            // 
+            resources.ApplyResources(this.chkAdvanceUnlock, "chkAdvanceUnlock");
+            this.chkAdvanceUnlock.FontSize = MetroFramework.MetroCheckBoxSize.Medium;
+            this.chkAdvanceUnlock.FontWeight = MetroFramework.MetroCheckBoxWeight.Bold;
+            this.chkAdvanceUnlock.Name = "chkAdvanceUnlock";
+            this.metroToolTip1.SetToolTip(this.chkAdvanceUnlock, resources.GetString("chkAdvanceUnlock.ToolTip"));
+            this.chkAdvanceUnlock.UseSelectable = true;
+            this.chkAdvanceUnlock.UseStyleColors = true;
+            this.chkAdvanceUnlock.CheckedChanged += new System.EventHandler(this.chkAdvanceUnlock_CheckedChanged);
             // 
             // btnGetScreenshots
             // 
@@ -1028,6 +1054,10 @@
             // 
             // metroTabPage4
             // 
+            this.metroTabPage4.Controls.Add(this.chkAdvancedDic);
+            this.metroTabPage4.Controls.Add(this.metroLabel11);
+            this.metroTabPage4.Controls.Add(this.cbLanguage);
+            this.metroTabPage4.Controls.Add(this.chkTranslate);
             this.metroTabPage4.Controls.Add(this.chkAdvanceUnlock);
             this.metroTabPage4.Controls.Add(this.chkUnlockPassword);
             this.metroTabPage4.Controls.Add(this.btnUnityLocation2019);
@@ -1053,17 +1083,6 @@
             this.metroTabPage4.VerticalScrollbarBarColor = true;
             this.metroTabPage4.VerticalScrollbarHighlightOnWheel = false;
             this.metroTabPage4.VerticalScrollbarSize = 10;
-            // 
-            // chkUnlockPassword
-            // 
-            resources.ApplyResources(this.chkUnlockPassword, "chkUnlockPassword");
-            this.chkUnlockPassword.FontSize = MetroFramework.MetroCheckBoxSize.Medium;
-            this.chkUnlockPassword.FontWeight = MetroFramework.MetroCheckBoxWeight.Bold;
-            this.chkUnlockPassword.Name = "chkUnlockPassword";
-            this.metroToolTip1.SetToolTip(this.chkUnlockPassword, resources.GetString("chkUnlockPassword.ToolTip"));
-            this.chkUnlockPassword.UseSelectable = true;
-            this.chkUnlockPassword.UseStyleColors = true;
-            this.chkUnlockPassword.CheckedChanged += new System.EventHandler(this.chkUnlockPassword_CheckedChanged);
             // 
             // btnUnityLocation2019
             // 
@@ -1696,7 +1715,7 @@
             this.tabControl.Controls.Add(this.metroTabPage7);
             this.tabControl.FontWeight = MetroFramework.MetroTabControlWeight.Bold;
             this.tabControl.Name = "tabControl";
-            this.tabControl.SelectedIndex = 1;
+            this.tabControl.SelectedIndex = 2;
             this.tabControl.UseSelectable = true;
             this.tabControl.SelectedIndexChanged += new System.EventHandler(this.tabControl_SelectedIndexChanged);
             // 
@@ -1852,16 +1871,42 @@
             this.btnHotswap2019.UseStyleColors = true;
             this.btnHotswap2019.Click += new System.EventHandler(this.btnHotswap2019_Click);
             // 
-            // chkAdvanceUnlock
+            // chkTranslate
             // 
-            resources.ApplyResources(this.chkAdvanceUnlock, "chkAdvanceUnlock");
-            this.chkAdvanceUnlock.FontSize = MetroFramework.MetroCheckBoxSize.Medium;
-            this.chkAdvanceUnlock.FontWeight = MetroFramework.MetroCheckBoxWeight.Bold;
-            this.chkAdvanceUnlock.Name = "chkAdvanceUnlock";
-            this.metroToolTip1.SetToolTip(this.chkAdvanceUnlock, resources.GetString("chkAdvanceUnlock.ToolTip"));
-            this.chkAdvanceUnlock.UseSelectable = true;
-            this.chkAdvanceUnlock.UseStyleColors = true;
-            this.chkAdvanceUnlock.CheckedChanged += new System.EventHandler(this.chkAdvanceUnlock_CheckedChanged);
+            resources.ApplyResources(this.chkTranslate, "chkTranslate");
+            this.chkTranslate.FontSize = MetroFramework.MetroCheckBoxSize.Medium;
+            this.chkTranslate.FontWeight = MetroFramework.MetroCheckBoxWeight.Bold;
+            this.chkTranslate.Name = "chkTranslate";
+            this.metroToolTip1.SetToolTip(this.chkTranslate, resources.GetString("chkTranslate.ToolTip"));
+            this.chkTranslate.UseSelectable = true;
+            this.chkTranslate.UseStyleColors = true;
+            // 
+            // cbLanguage
+            // 
+            resources.ApplyResources(this.cbLanguage, "cbLanguage");
+            this.cbLanguage.FontWeight = MetroFramework.MetroComboBoxWeight.Bold;
+            this.cbLanguage.FormattingEnabled = true;
+            this.cbLanguage.Name = "cbLanguage";
+            this.cbLanguage.UseSelectable = true;
+            this.cbLanguage.UseStyleColors = true;
+            // 
+            // metroLabel11
+            // 
+            resources.ApplyResources(this.metroLabel11, "metroLabel11");
+            this.metroLabel11.FontWeight = MetroFramework.MetroLabelWeight.Bold;
+            this.metroLabel11.Name = "metroLabel11";
+            this.metroLabel11.UseStyleColors = true;
+            // 
+            // chkAdvancedDic
+            // 
+            resources.ApplyResources(this.chkAdvancedDic, "chkAdvancedDic");
+            this.chkAdvancedDic.FontSize = MetroFramework.MetroCheckBoxSize.Medium;
+            this.chkAdvancedDic.FontWeight = MetroFramework.MetroCheckBoxWeight.Bold;
+            this.chkAdvancedDic.Name = "chkAdvancedDic";
+            this.metroToolTip1.SetToolTip(this.chkAdvancedDic, resources.GetString("chkAdvancedDic.ToolTip"));
+            this.chkAdvancedDic.UseSelectable = true;
+            this.chkAdvancedDic.UseStyleColors = true;
+            this.chkAdvancedDic.CheckedChanged += new System.EventHandler(this.chkAdvancedDic_CheckedChanged);
             // 
             // AvatarSystem
             // 
@@ -2075,6 +2120,10 @@
         private MetroFramework.Controls.MetroButton btnUnityLocation2019;
         public MetroFramework.Controls.MetroCheckBox chkUnlockPassword;
         public MetroFramework.Controls.MetroCheckBox chkAdvanceUnlock;
+        public MetroFramework.Controls.MetroLabel metroLabel11;
+        public MetroFramework.Controls.MetroComboBox cbLanguage;
+        public MetroFramework.Controls.MetroCheckBox chkTranslate;
+        public MetroFramework.Controls.MetroCheckBox chkAdvancedDic;
     }
 }
 
