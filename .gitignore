@@ -403,3 +403,14 @@ FodyWeavers.xsd
 /CoreSystem/Model/UserKey.cs
 /CoreSystem/packages.config
 /SARS/AssetRipperConsole_win64/AssetRipper.exe
+/CoreSystem/Model/TranslateModel.cs
+/CoreSystem/Model/PasswordModels.cs
+/CoreSystem/Model/TranslateModel.cs
+/CoreSystem/CoreSystem.csproj
+/CoreSystem/Model/PasswordModels.cs
+/CoreSystem/Model/TranslateModel.cs
+/CoreSystem/Model/UserKey.cs
+/CoreSystem/HotSwap.cs
+/CoreSystem/packages.config
+/CoreSystem/ProgressBar.cs
+/CoreSystem/StreamReader.cs
