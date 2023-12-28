@@ -801,8 +801,14 @@ namespace SARS
 
         private void btnResetScene_Click(object sender, EventArgs e)
         {
-            SarsClient.CopyFiles(configSave);
-            SarsClient.CopyFiles2019(configSave);
+            try
+            {
+                SarsClient.CopyFiles(configSave);
+            } catch { }
+            try
+            {
+                SarsClient.CopyFiles2019(configSave);
+            } catch { }
         }
 
         private void btnHsbClean_Click(object sender, EventArgs e)
