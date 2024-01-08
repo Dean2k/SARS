@@ -1,6 +1,7 @@
 ﻿using CoreSystem;
 using FACS01.Utilities;
 using MetroFramework;
+using MetroFramework.Controls;
 using MetroFramework.Forms;
 using Microsoft.VisualBasic;
 using Microsoft.WindowsAPICodePack.Dialogs;
@@ -19,7 +20,6 @@ using System.Linq;
 using System.Net;
 using System.Reflection;
 using System.Runtime.InteropServices;
-using System.Runtime.InteropServices.ComTypes;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -148,11 +148,12 @@ namespace SARS
 
             if (configSave.Config.ViewerVersion != 4)
             {
-                SarsClient.ClearOldViewer();
-                SarsClient.ExtractViewer();
+                SarsClient.ClearOldViewer();               
                 configSave.Config.ViewerVersion = 4;
                 configSave.Save();
             }
+
+            SarsClient.ExtractViewer();
 
             if (File.Exists(SQLite._databaseLocation))
             {
@@ -184,6 +185,8 @@ namespace SARS
                 foreach (var language in languageTranslations)
                 {
                     cbLanguage.Items.Add(language.name);
+                    cbAppTranslate.Items.Add(language.name);
+
                 }
                 cbLanguage.SelectedIndex = 0;
             }
@@ -2700,6 +2703,56 @@ namespace SARS
             {
                 chkAdvancedDic.Checked = false;
             }
+        }
+
+        private void LoopControlsAndTranslate(Control control, string languageCode)
+        {
+            switch (control)
+            {
+                case Button button:
+                    button.Text = Translate.TranslateAppItem(button.Text, languageCode, button.Name);
+                    break;
+                case CheckBox checkBox:
+                    checkBox.Text = Translate.TranslateAppItem(checkBox.Text, languageCode, checkBox.Name);
+                    break;
+                case GroupBox group:
+                    group.Text = Translate.TranslateAppItem(group.Text, languageCode, group.Name);
+                    break;
+                case MetroLabel label2:
+                    label2.Text = Translate.TranslateAppItem(label2.Text, languageCode, label2.Name);
+                    break;
+                case Label label:
+                    label.Text = Translate.TranslateAppItem(label.Text, languageCode,label.Name);
+                    break;
+                case Panel panel:
+                    panel.Text = Translate.TranslateAppItem(panel.Text, languageCode, panel.Name);
+                    break;
+                case TabControl tabcontrol:
+                    tabcontrol.Text = Translate.TranslateAppItem(tabcontrol.Text, languageCode, tabcontrol.Name);
+                    break;
+            }
+            foreach (Control child in control.Controls)
+                LoopControlsAndTranslate(child, languageCode);
+        }
+
+        private bool AlreadyTranslated = false;
+        private void btnTranslateApp_Click(object sender, EventArgs e)
+        {
+            if (AlreadyTranslated)
+            {
+                MessageBox.Show("Please restart the app to translate again"); 
+                return;
+            }
+            string languageCode;
+            try
+            {
+                languageCode = languageTranslations.FirstOrDefault(x => x.name == cbAppTranslate.Text).code;
+            }
+            catch { languageCode = "en"; }
+
+            foreach (Control child in this.Controls)
+                LoopControlsAndTranslate(child, languageCode);
+            AlreadyTranslated = true;
         }
     }
 }

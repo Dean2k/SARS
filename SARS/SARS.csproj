@@ -276,7 +276,7 @@
     <None Include="en-US.dic">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="NewestViewer\NewestViewer.zip">
+    <None Include="NewestViewer.zip">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="packages.config" />
@@ -356,6 +356,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="External\" />
+    <Folder Include="NewestViewer\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\..\..\Code\AssetsTools.NET-upd21-with-inst\AssetsTools.NET-upd21-with-inst\AssetTools.NET\AssetsTools.NET.csproj">

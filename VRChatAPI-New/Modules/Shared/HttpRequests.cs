@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using VRChatAPI_New.Exception;
 
-namespace VRChatAPI_New.Modules.Game
+namespace VRChatAPI_New.Modules.Shared
 {
     public static class HttpRequests
     {

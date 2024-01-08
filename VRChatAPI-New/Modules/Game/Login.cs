@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using VRChatAPI_New.Exception;
 using VRChatAPI_New.Models;
+using VRChatAPI_New.Modules.Shared;
 
 namespace VRChatAPI_New.Modules.Game
 {

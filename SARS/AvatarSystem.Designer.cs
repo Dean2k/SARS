@@ -137,6 +137,9 @@
             this.btnExtractVRCA = new MetroFramework.Controls.MetroButton();
             this.btnLoadVRCA = new MetroFramework.Controls.MetroButton();
             this.metroTabPage2 = new MetroFramework.Controls.MetroTabPage();
+            this.btnTranslateApp = new MetroFramework.Controls.MetroButton();
+            this.metroLabel16 = new MetroFramework.Controls.MetroLabel();
+            this.cbAppTranslate = new MetroFramework.Controls.MetroComboBox();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
             this.chkCustomApi = new MetroFramework.Controls.MetroCheckBox();
             this.metroLabel7 = new MetroFramework.Controls.MetroLabel();
@@ -1301,6 +1304,9 @@
             // 
             // metroTabPage2
             // 
+            this.metroTabPage2.Controls.Add(this.btnTranslateApp);
+            this.metroTabPage2.Controls.Add(this.metroLabel16);
+            this.metroTabPage2.Controls.Add(this.cbAppTranslate);
             this.metroTabPage2.Controls.Add(this.groupBox5);
             this.metroTabPage2.Controls.Add(this.groupBox4);
             this.metroTabPage2.Controls.Add(this.groupBox2);
@@ -1314,6 +1320,31 @@
             this.metroTabPage2.VerticalScrollbarHighlightOnWheel = false;
             this.metroTabPage2.VerticalScrollbarSize = 10;
             this.metroTabPage2.Click += new System.EventHandler(this.metroTabPage2_Click);
+            // 
+            // btnTranslateApp
+            // 
+            resources.ApplyResources(this.btnTranslateApp, "btnTranslateApp");
+            this.btnTranslateApp.FontSize = MetroFramework.MetroButtonSize.Medium;
+            this.btnTranslateApp.Name = "btnTranslateApp";
+            this.btnTranslateApp.UseSelectable = true;
+            this.btnTranslateApp.UseStyleColors = true;
+            this.btnTranslateApp.Click += new System.EventHandler(this.btnTranslateApp_Click);
+            // 
+            // metroLabel16
+            // 
+            resources.ApplyResources(this.metroLabel16, "metroLabel16");
+            this.metroLabel16.FontWeight = MetroFramework.MetroLabelWeight.Bold;
+            this.metroLabel16.Name = "metroLabel16";
+            this.metroLabel16.UseStyleColors = true;
+            // 
+            // cbAppTranslate
+            // 
+            resources.ApplyResources(this.cbAppTranslate, "cbAppTranslate");
+            this.cbAppTranslate.FontWeight = MetroFramework.MetroComboBoxWeight.Bold;
+            this.cbAppTranslate.FormattingEnabled = true;
+            this.cbAppTranslate.Name = "cbAppTranslate";
+            this.cbAppTranslate.UseSelectable = true;
+            this.cbAppTranslate.UseStyleColors = true;
             // 
             // groupBox5
             // 
@@ -1752,7 +1783,7 @@
             this.tabControl.Controls.Add(this.metroTabPage7);
             this.tabControl.FontWeight = MetroFramework.MetroTabControlWeight.Bold;
             this.tabControl.Name = "tabControl";
-            this.tabControl.SelectedIndex = 2;
+            this.tabControl.SelectedIndex = 0;
             this.tabControl.UseSelectable = true;
             this.tabControl.SelectedIndexChanged += new System.EventHandler(this.tabControl_SelectedIndexChanged);
             // 
@@ -1966,6 +1997,7 @@
             this.metroTabPage4.ResumeLayout(false);
             this.metroTabPage4.PerformLayout();
             this.metroTabPage2.ResumeLayout(false);
+            this.metroTabPage2.PerformLayout();
             this.groupBox5.ResumeLayout(false);
             this.groupBox5.PerformLayout();
             this.groupBox4.ResumeLayout(false);
@@ -2124,6 +2156,9 @@
         public MetroFramework.Controls.MetroComboBox cbLanguage;
         public MetroFramework.Controls.MetroCheckBox chkTranslate;
         public MetroFramework.Controls.MetroCheckBox chkAdvancedDic;
+        public MetroFramework.Controls.MetroButton btnTranslateApp;
+        public MetroFramework.Controls.MetroLabel metroLabel16;
+        public MetroFramework.Controls.MetroComboBox cbAppTranslate;
     }
 }
 

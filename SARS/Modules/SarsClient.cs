@@ -25,11 +25,16 @@ namespace SARS.Modules
         {
             System.Net.WebClient wc = new System.Net.WebClient();
             byte[] raw = wc.DownloadData("https://avatarrecovery.com/Latest.txt");
-
             string version = System.Text.Encoding.UTF8.GetString(raw);
-            if (Assembly.GetExecutingAssembly().GetName().Version.ToString() != version)
+            Version latestVersion = new Version(version);
+
+            if (Assembly.GetExecutingAssembly().GetName().Version < latestVersion)
             {
-                MessageBox.Show($"You are running an out of date version of SARS please update to stay secure\nYour Version: {Assembly.GetExecutingAssembly().GetName().Version.ToString()}\nLatest Version: {version}");
+                MessageBox.Show($"You are running an out of date version of SARS please update to stay secure\nYour Version: {Assembly.GetExecutingAssembly().GetName().Version}\nLatest Version: {version}", "Out of date");
+            }
+            else if (Assembly.GetExecutingAssembly().GetName().Version > latestVersion)
+            {
+                MessageBox.Show($"Are you magic? you are running a later version than whats released!?!?!?!\nYour Version: {Assembly.GetExecutingAssembly().GetName().Version}\nLatest Version: {version}", "DA FUDGE");
             }
         }
 
@@ -441,8 +446,11 @@ namespace SARS.Modules
             var programLocation = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
 
             string fileExtractFolder = $"{programLocation}\\NewestViewer\\";
-            ZipFile.ExtractToDirectory(fileExtractFolder + @"\NewestViewer.zip", fileExtractFolder);
-            RandomFunctions.tryDelete(fileExtractFolder + @"\NewestViewer.zip");
+
+            if (!File.Exists(fileExtractFolder + "AssetViewer.exe"))
+            {
+                ZipFile.ExtractToDirectory($@"{programLocation}\NewestViewer.zip", fileExtractFolder);
+            }
         }
 
         public static void CopyFiles(ConfigSave<Config> configSave)

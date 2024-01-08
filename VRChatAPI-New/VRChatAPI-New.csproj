@@ -59,7 +59,7 @@
     <Compile Include="Models\ApiClass.cs" />
     <Compile Include="Models\TwoFactorAuth.cs" />
     <Compile Include="Models\VRChatUserInfo.cs" />
-    <Compile Include="Modules\Game\HttpRequests.cs" />
+    <Compile Include="Modules\Shared\HttpRequests.cs" />
     <Compile Include="Modules\Game\Login.cs" />
     <Compile Include="Modules\Game\SARSGameClient.cs" />
     <Compile Include="Modules\Game\VRCA.cs" />
