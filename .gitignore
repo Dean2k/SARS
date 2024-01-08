@@ -414,3 +414,4 @@ FodyWeavers.xsd
 /CoreSystem/packages.config
 /CoreSystem/ProgressBar.cs
 /CoreSystem/StreamReader.cs
+/CoreSystem/Translate.cs
