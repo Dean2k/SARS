@@ -63,11 +63,11 @@ namespace ARC
 
         private void CheckFolders()
         {
-            CreateDirectoryIfNotExist(StaticValues.AssetRipper);
-            CreateDirectoryIfNotExist(StaticValues.VrcaDownloadFolder);
-            CreateDirectoryIfNotExist(StaticValues.ImagesDownloadFolder);
-            CreateDirectoryIfNotExist(StaticValues.TempFileLocation);
-            CreateDirectoryIfNotExist(StaticValues.ArcDocuments);
+            CreateDirectoryIfNotExist($"{Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData)}\\ARC\\");
+            CreateDirectoryIfNotExist($"{Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments)}\\ARC\\");
+            CreateDirectoryIfNotExist($"{Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments)}\\ARC\\AssetRipper");
+            CreateDirectoryIfNotExist($"{Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments)}\\ARC\\VRCA");
+            CreateDirectoryIfNotExist($"{Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments)}\\ARC\\Images");        
         }
 
         private void AvatarSystem_Load(object sender, EventArgs e)
