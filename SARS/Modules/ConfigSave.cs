@@ -2,7 +2,7 @@
 using System;
 using System.IO;
 
-namespace SARS.Modules
+namespace ARC.Modules
 {
     public class ConfigSave<T> where T : class
     {

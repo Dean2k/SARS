@@ -3,7 +3,7 @@ using System.Net.Http;
 
 namespace VRChatAPI_New.Modules.Game
 {
-    public static class SARSGameClient
+    public static class ARCGameClient
     {
         public static void SetupClient()
         {

@@ -1,5 +1,5 @@
 ﻿using Microsoft.VisualBasic.Devices;
-using SARS.Models;
+using ARC.Models;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -12,8 +12,9 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using static System.Net.Mime.MediaTypeNames;
+using ARC.Models.InternalModels;
 
-namespace SARS.Modules
+namespace ARC.Modules
 {
     public class CacheScanner
     {
@@ -26,7 +27,6 @@ namespace SARS.Modules
 
         public static void ReadUntilId(string filePath)
         {
-
             string stringToFind = "prefab-id-v1_avtr_";
             string stringToFindWorld = "wrld_";
             Regex avatarIdRegEx = new Regex(@"avtr_[\w]{8}-[\w]{4}-[\w]{4}-[\w]{4}-[\w]{12}");
@@ -54,7 +54,6 @@ namespace SARS.Modules
                                         autoAvatarIds.Add(cacheAvatar);
                                         NewMessage($"Avatar found: {avatarId.Replace("prefab-id-v1_", "")}{Environment.NewLine}");
                                         break;
-
                                     }
                                 }
                             }
@@ -154,9 +153,7 @@ namespace SARS.Modules
                     {
                         if (!avatarIds.Any(x => x.FileLocation.Contains(cache)))
                         {
-
                             tasks.Add(Task.Run(() => ReadUntilId(cache)));
-
                         }
                     }
                     catch { }
@@ -173,15 +170,12 @@ namespace SARS.Modules
                 Task.WaitAll(tasks.ToArray());
             }
 
-
             string outputBuffer = "";
             string outputBufferWorld = "";
 
             if (!bypassLoaded)
             {
-
                 avatarIds = avatarIds.Distinct().ToList();
-
 
                 foreach (var item in avatarIds)
                 {
@@ -202,7 +196,6 @@ namespace SARS.Modules
             }
             else
             {
-
                 autoAvatarIds = autoAvatarIds.Distinct().ToList();
 
                 foreach (var item in autoAvatarIds)
@@ -226,7 +219,6 @@ namespace SARS.Modules
             stop.Stop();
             string timeRan = TimeSpan.FromMilliseconds(stop.ElapsedMilliseconds).TotalSeconds.ToString();
             NewMessage($"Found {avatarsFound} avatars & {worldsFound} Worlds in {timeRan} seconds{Environment.NewLine}");
-
         }
 
         public static List<string> GetCacheLocations(string path)
@@ -253,7 +245,6 @@ namespace SARS.Modules
                         Directory.Delete(item, false);
                         Console.WriteLine($"Deleting empty folder {item}{Environment.NewLine}");
                     }
-
                 }
                 catch (Exception e)
                 {

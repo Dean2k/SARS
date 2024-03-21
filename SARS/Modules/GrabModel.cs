@@ -1,4 +1,4 @@
-﻿namespace SARS.Modules
+﻿namespace ARC.Modules
 {
     public class GrabModel
     {

@@ -1,4 +1,4 @@
-﻿namespace SARS
+﻿namespace ARC
 {
     partial class AvatarPreview
     {

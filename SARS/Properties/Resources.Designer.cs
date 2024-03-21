@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace SARS.Properties {
+namespace ARC.Properties {
     using System;
     
     
@@ -39,7 +39,7 @@ namespace SARS.Properties {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("SARS.Properties.Resources", typeof(Resources).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("ARC.Properties.Resources", typeof(Resources).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -75,7 +75,7 @@ namespace SARS.Properties {
         ///nesrak1 for AssetsTools.NET:
         /// -https://github.com/nesrak1/AssetsTools.NET
         ///GitHub:
-        /// -https://github.com/Dean2k/SARS
+        /// -https://github.com/Dean2k/ARC
         ///Wanna join the community?
         /// -https://discord.gg/XAQvXuaCcs
         /// -https://avatarrecovery.com.

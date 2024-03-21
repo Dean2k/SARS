@@ -7,11 +7,11 @@ using System.Net;
 using System.Reflection;
 using System.Xml.Linq;
 
-namespace SARS.Modules
+namespace ARC.Modules
 {
     public static class SQLite
     {
-        public static string _databaseLocation = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location) + "\\SARS.db3";
+        public static string _databaseLocation = $"{StaticValues.ArcDocuments}\\SARS.db3";
         public static void Setup()
         {
             if (!File.Exists(_databaseLocation))

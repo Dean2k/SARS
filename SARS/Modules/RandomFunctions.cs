@@ -4,7 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Reflection;
 
-namespace SARS.Modules
+namespace ARC.Modules
 {
     public static class RandomFunctions
     {
@@ -51,7 +51,6 @@ namespace SARS.Modules
 
         public static void OpenUnity(string unityPath, string hotSwapName)
         {
-            string filePath = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
             string commands = string.Format("/C \"{0}\" -ProjectPath " + hotSwapName, unityPath);
 
             Process process = new Process();
@@ -59,7 +58,7 @@ namespace SARS.Modules
             {
                 FileName = "CMD.EXE",
                 Arguments = commands,
-                WorkingDirectory = filePath,
+                WorkingDirectory = StaticValues.ArcDocuments,
                 WindowStyle = ProcessWindowStyle.Hidden,
             };
             process.StartInfo = processStartInfo;

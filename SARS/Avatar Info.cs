@@ -1,11 +1,12 @@
 ﻿using MetroFramework.Components;
 using MetroFramework.Forms;
-using SARS.Models;
+using ARC.Models;
 using System;
 using System.Linq;
 using System.Windows.Forms;
+using ARC.Models.ExternalModels;
 
-namespace SARS
+namespace ARC
 {
     public partial class Avatar_Info : MetroForm
     {

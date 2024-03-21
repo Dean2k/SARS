@@ -1,4 +1,5 @@
-﻿using SARS.Models;
+﻿using ARC.Models;
+using ARC;
 using System;
 using System.IO;
 using System.IO.Compression;
@@ -10,8 +11,9 @@ using System.Windows.Forms;
 using VRChatAPI_New;
 using VRChatAPI_New.Models;
 using VRChatAPI_New.Modules.Game;
+using ARC.Models.ExternalModels;
 
-namespace SARS.Modules
+namespace ARC.Modules
 {
     internal static class AvatarFunctions
     {
@@ -21,7 +23,8 @@ namespace SARS.Modules
             if (bypassCheck)
             {
                 ExtractData(hotSwapName, filePath);
-            } else if(!Directory.Exists(filePath + $"\\{hotSwapName}\\"))
+            }
+            else if (!Directory.Exists($"{StaticValues.ArcDocuments}\\{hotSwapName}\\"))
             {
                 ExtractData(hotSwapName, filePath);
             }
@@ -34,7 +37,7 @@ namespace SARS.Modules
             {
                 ExtractData2019(hotSwapName, filePath);
             }
-            else if (!Directory.Exists(filePath + $"\\{hotSwapName}\\"))
+            else if (!Directory.Exists($"{StaticValues.ArcDocuments}\\{hotSwapName}\\"))
             {
                 ExtractData2019(hotSwapName, filePath);
             }
@@ -42,42 +45,26 @@ namespace SARS.Modules
 
         public static void ExtractData(string hotSwapName, string filePath)
         {
-            ZipFile.ExtractToDirectory(filePath + @"\SARS.zip", filePath + $"\\{hotSwapName}");
+            ZipFile.ExtractToDirectory($@"{filePath}\Assets\ARC.zip", $"{StaticValues.ArcDocuments}\\{hotSwapName}");
             try
             {
-                string text = File.ReadAllText(filePath + $"\\{hotSwapName}\\ProjectSettings\\ProjectSettings.asset");
+                string text = File.ReadAllText($"{StaticValues.ArcDocuments}\\{hotSwapName}\\ProjectSettings\\ProjectSettings.asset");
                 text = text.Replace("TestingVCCHS", hotSwapName);
-                File.WriteAllText(filePath + $"\\{hotSwapName}\\ProjectSettings\\ProjectSettings.asset", text);
+                File.WriteAllText($"{StaticValues.ArcDocuments}{hotSwapName}\\ProjectSettings\\ProjectSettings.asset", text);
             }
             catch { }
         }
 
         public static void ExtractData2019(string hotSwapName, string filePath)
         {
-            ZipFile.ExtractToDirectory(filePath + @"\SARS2019.zip", filePath + $"\\{hotSwapName}");
+            ZipFile.ExtractToDirectory($@"{filePath}\Assets\ARC2019.zip", $"{StaticValues.ArcDocuments}\\{hotSwapName}");
             try
             {
-                string text = File.ReadAllText(filePath + $"\\{hotSwapName}\\ProjectSettings\\ProjectSettings.asset");
+                string text = File.ReadAllText($"{StaticValues.ArcDocuments}\\{hotSwapName}\\ProjectSettings\\ProjectSettings.asset");
                 text = text.Replace("SARS", hotSwapName);
-                File.WriteAllText(filePath + $"\\{hotSwapName}\\ProjectSettings\\ProjectSettings.asset", text);
+                File.WriteAllText($"{StaticValues.ArcDocuments}{hotSwapName}\\ProjectSettings\\ProjectSettings.asset", text);
             }
             catch { }
-        }
-
-        public static void ExtractWorldHSB(string hotSwapName)
-        {
-            string filePath = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
-            if (!Directory.Exists(filePath + $"\\{hotSwapName}\\"))
-            {
-                ZipFile.ExtractToDirectory(filePath + @"\SARSWorld.zip", filePath + $"\\{hotSwapName}");
-                try
-                {
-                    string text = File.ReadAllText(filePath + $"\\{hotSwapName}\\ProjectSettings\\ProjectSettings.asset");
-                    text = text.Replace("SARS", hotSwapName);
-                    File.WriteAllText(filePath + $"\\{hotSwapName}\\ProjectSettings\\ProjectSettings.asset", text);
-                }
-                catch { }
-            }
         }
 
         public static bool pcDownload = true;
@@ -91,7 +78,7 @@ namespace SARS.Modules
                 MessageBoxManager.Register();
             }
             catch { }
-            var filePath = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location) + $"\\VRCA\\{RandomFunctions.ReplaceInvalidChars(avatar.Avatar.AvatarName)}-{avatar.Avatar.AvatarId}.vrca";
+            var filePath = $"{StaticValues.VrcaDownloadFolder}{RandomFunctions.ReplaceInvalidChars(avatar.Avatar.AvatarName)}-{avatar.Avatar.AvatarId}.vrca";
             //download.Text = $"{avatar.avatar.avatarName} - {avatar.avatar.avatarId}";
             if (avatar.Avatar.PcAssetUrl.ToLower() != "none" && avatar.Avatar.QuestAssetUrl.ToLower() != "none" && avatar.Avatar.PcAssetUrl != null && avatar.Avatar.QuestAssetUrl != null)
             {
@@ -246,7 +233,6 @@ namespace SARS.Modules
                 ShowSelectedInExplorer.FileOrFolder(filePath.Replace(".vrcw", "_pc.vrcw"));
                 pcDownload = false;
                 return true;
-
             }
             return false;
         }

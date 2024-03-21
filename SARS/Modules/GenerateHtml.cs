@@ -1,10 +1,11 @@
-﻿using SARS.Models;
+﻿using ARC.Models;
+using ARC.Models.ExternalModels;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Reflection;
 
-namespace SARS.Modules
+namespace ARC.Modules
 {
     public static class GenerateHtml
     {

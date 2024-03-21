@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace SARS
+namespace ARC
 {
     public partial class AvatarPreview : Form
     {

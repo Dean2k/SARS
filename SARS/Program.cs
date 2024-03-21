@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Windows.Forms;
 
-namespace SARS
+namespace ARC
 {
     internal static class Program
     {
