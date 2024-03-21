@@ -63,172 +63,16 @@ namespace ARC
 
         private void CheckFolders()
         {
-            CreateDirectoryIfNotExist($"{Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData)}\\ARC\\");
-            CreateDirectoryIfNotExist($"{Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments)}\\ARC\\");
-            CreateDirectoryIfNotExist($"{Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments)}\\ARC\\AssetRipper");
-            CreateDirectoryIfNotExist($"{Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments)}\\ARC\\VRCA");
-            CreateDirectoryIfNotExist($"{Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments)}\\ARC\\Images");        
+            CreateDirectoryIfNotExist(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "ARC"));
+            CreateDirectoryIfNotExist(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "ARC"));
+            CreateDirectoryIfNotExist(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "ARC", "AssetRipper"));
+            CreateDirectoryIfNotExist(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "ARC", "VRCA"));
+            CreateDirectoryIfNotExist(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "ARC", "Images"));        
         }
 
         private void AvatarSystem_Load(object sender, EventArgs e)
         {
             CheckFolders();
-
-            typeof(DataGridView).InvokeMember("DoubleBuffered", BindingFlags.NonPublic | BindingFlags.Instance | BindingFlags.SetProperty, null, avatarGrid, new object[] { true });
-            string filePath = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
-
-            ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls11 | SecurityProtocolType.Tls12 | SecurityProtocolType.Tls13;
-            if (filePath.ToLower().Contains("\\local\\temp"))
-            {
-                MessageBox.Show("EXTRACT THE PROGRAM FIRST");
-                Close();
-            }
-
-            var assembly = Assembly.GetExecutingAssembly();
-            var fileVersionInfo = FileVersionInfo.GetVersionInfo(assembly.Location);
-            SystemName = $"Avatar Recovery Client (A.R.C) V{fileVersionInfo.ProductVersion}";
-            this.Text = SystemName;
-            txtAbout.Text = Resources.About;
-            cbSearchTerm.SelectedIndex = 0;
-            cbLimit.SelectedIndex = 3;
-            if (!Directory.Exists(StaticValues.TempFileLocation))
-            {
-                Directory.CreateDirectory(StaticValues.TempFileLocation);
-            }
-
-            if (!Directory.Exists(StaticValues.ArcDocuments))
-            {
-                Directory.CreateDirectory(StaticValues.ArcDocuments);
-            }
-
-            try
-            {
-                StaticValues.Config = new ConfigSave<Config>(StaticValues.ConfigLocation);
-            }
-            catch
-            {
-                MessageBox.Show("Error with config file, settings reset");
-                if (File.Exists(StaticValues.ConfigLocation))
-                {
-                    File.Delete(StaticValues.ConfigLocation);
-                }
-                Console.WriteLine("Error with config");
-            }
-
-            try
-            {
-                downloadQueue = new ConfigSave<ListDown>(StaticValues.DownloadLocation);
-                if (downloadQueue.Config.Download == null)
-                {
-                    downloadQueue.Config.Download = new List<string>();
-                }
-            }
-            catch
-            {
-                MessageBox.Show("Error with download file, list reset");
-                File.Delete(StaticValues.DownloadLocation);
-                Console.WriteLine("Error with download");
-            }
-
-            try
-            {
-                StaticValues.RippedList = new ConfigSave<List<AvatarModel>>(StaticValues.RippedLocation);
-            }
-            catch
-            {
-                MessageBox.Show("Error with ripped file, ripped list reset");
-                File.Delete(StaticValues.RippedLocation);
-                StaticValues.RippedList = new ConfigSave<List<AvatarModel>>(StaticValues.RippedLocation);
-                Console.WriteLine("Error with ripped list");
-            }
-
-            try
-            {
-                StaticValues.FavList = new ConfigSave<List<AvatarModel>>(StaticValues.FavLocation);
-            }
-            catch
-            {
-                MessageBox.Show("Error with favorites file, favorites list reset");
-                File.Delete(StaticValues.FavLocation);
-                StaticValues.FavList = new ConfigSave<List<AvatarModel>>(StaticValues.FavLocation);
-                Console.WriteLine("Error with fav list");
-            }
-
-            tabControl.SelectedIndex = 0;
-            try
-            {
-                LoadSettings();
-            }
-            catch { Console.WriteLine("Error loading settings"); }
-            if (string.IsNullOrEmpty(StaticValues.Config.Config.HotSwapName2022))
-            {
-                int randomAmount = RandomFunctions.random.Next(8);
-                StaticValues.Config.Config.HotSwapName2022 = RandomFunctions.RandomString(randomAmount);
-                StaticValues.Config.Save();
-            }
-
-            if (string.IsNullOrEmpty(StaticValues.Config.Config.HotSwapName2019))
-            {
-                int randomAmount = RandomFunctions.random.Next(8);
-                StaticValues.Config.Config.HotSwapName2019 = RandomFunctions.RandomString(randomAmount);
-                StaticValues.Config.Save();
-            }
-
-            CheckFav();
-            CheckRipped();
-
-            if (StaticValues.Config.Config.ViewerVersion != 4)
-            {
-                ArcClient.ClearOldViewer();
-                StaticValues.Config.Config.ViewerVersion = 4;
-                StaticValues.Config.Save();
-            }
-
-            ArcClient.ExtractViewer();
-
-            if (File.Exists(SQLite._databaseLocation))
-            {
-                StaticValues.Config.Config.AvatarsInLocalDatabase = SQLite.CountAvatars();
-                StaticValues.Config.Save();
-            }
-
-            lblLocalDb.Text = StaticValues.Config.Config.AvatarsInLocalDatabase.ToString();
-            lblLoggedMe.Text = StaticValues.Config.Config.AvatarsLoggedToApi.ToString();
-
-            arcApi = new ArcApi(fileVersionInfo.FileVersion);
-
-            var databaseStats = arcApi.DatabaseStats();
-
-            if (databaseStats != null)
-            {
-                lblPublic.Text = databaseStats.TotalPublic.ToString();
-                lblPrivate.Text = databaseStats.TotalPrivate.ToString();
-                lblSize.Text = databaseStats.TotalDatabase.ToString();
-            }
-
-            MessageBoxManager.Yes = "PC";
-            MessageBoxManager.No = "Quest";
-            MessageBoxManager.Register();
-
-            try
-            {
-                languageTranslations = arcApi.LanguageList();
-                foreach (var language in languageTranslations)
-                {
-                    cbLanguage.Items.Add(language.name);
-                    cbAppTranslate.Items.Add(language.name);
-
-                }
-                cbLanguage.SelectedIndex = 0;
-            }
-            catch { }
-
-            _cookies = new CookieContainer();
-
-            if (StaticValues.Config.Config.CookieAuth != null && StaticValues.Config.Config.ApiKey != null)
-            {
-                _cookies.Add(new Uri("https://api.avatarrecovery.com/"), new Cookie(".AspNetCore.Cookies", StaticValues.Config.Config.CookieAuth));
-            }
         }
 
         private void CheckFav()
@@ -1280,7 +1124,7 @@ namespace ARC
                             {
                                 FileName = "AssetViewer.exe",
                                 Arguments = commands,
-                                WorkingDirectory = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location) + @"\NewestViewer\",
+                                WorkingDirectory = StaticValues.VrcaViewer,
                             };
                             p.StartInfo = psi;
                             p.Start();
@@ -1341,7 +1185,7 @@ namespace ARC
                 {
                     FileName = "AssetViewer.exe",
                     Arguments = commands,
-                    WorkingDirectory = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location) + @"\NewestViewer\",
+                    WorkingDirectory = StaticValues.VrcaViewer,
                 };
                 p.StartInfo = psi;
                 p.Start();
@@ -2775,7 +2619,7 @@ namespace ARC
         private void CookieChecker_Tick(object sender, EventArgs e)
         {
             CookieAuth cookieAuth = arcApi.GetCookie(Guid.ToString());
-            if (cookieAuth.Cookie != null)
+            if (cookieAuth.Cookie != null && cookieAuth.Key != null)
             {
                 MessageBox.Show("login successful");
                 StaticValues.Config.Config.ApiKey = cookieAuth.Key.ToString();
@@ -2783,9 +2627,165 @@ namespace ARC
                 StaticValues.Config.Save();
                 if (StaticValues.Config.Config.CookieAuth != null && StaticValues.Config.Config.ApiKey != null)
                 {
+                    if(_cookies == null)
+                    {
+                        _cookies = new CookieContainer();
+                    }
                     _cookies.Add(new Uri("https://api.avatarrecovery.com/"), new Cookie(".AspNetCore.Cookies", StaticValues.Config.Config.CookieAuth));
                 }
                 CookieChecker.Enabled = false;
+            }
+        }
+
+        private void AvatarSystem_Shown(object sender, EventArgs e)
+        {
+            
+
+            typeof(DataGridView).InvokeMember("DoubleBuffered", BindingFlags.NonPublic | BindingFlags.Instance | BindingFlags.SetProperty, null, avatarGrid, new object[] { true });
+            string filePath = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
+
+            ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls11 | SecurityProtocolType.Tls12 | SecurityProtocolType.Tls13;
+            if (filePath.ToLower().Contains("\\local\\temp"))
+            {
+                MessageBox.Show("EXTRACT THE PROGRAM FIRST");
+                Close();
+            }
+
+            var assembly = Assembly.GetExecutingAssembly();
+            var fileVersionInfo = FileVersionInfo.GetVersionInfo(assembly.Location);
+            SystemName = $"Avatar Recovery Client (A.R.C) V{fileVersionInfo.ProductVersion}";
+            this.Text = SystemName;
+            txtAbout.Text = Resources.About;
+            cbSearchTerm.SelectedIndex = 0;
+            cbLimit.SelectedIndex = 3;
+
+            try
+            {
+                StaticValues.Config = new ConfigSave<Config>(StaticValues.ConfigLocation);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error with config file, settings reset");
+                if (File.Exists(StaticValues.ConfigLocation))
+                {
+                    File.Delete(StaticValues.ConfigLocation);
+                }
+                Console.WriteLine("Error with config");
+            }
+
+            try
+            {
+                downloadQueue = new ConfigSave<ListDown>(StaticValues.DownloadLocation);
+                if (downloadQueue.Config.Download == null)
+                {
+                    downloadQueue.Config.Download = new List<string>();
+                }
+            }
+            catch
+            {
+                MessageBox.Show("Error with download file, list reset");
+                File.Delete(StaticValues.DownloadLocation);
+                Console.WriteLine("Error with download");
+            }
+
+            try
+            {
+                StaticValues.RippedList = new ConfigSave<List<AvatarModel>>(StaticValues.RippedLocation);
+            }
+            catch
+            {
+                MessageBox.Show("Error with ripped file, ripped list reset");
+                File.Delete(StaticValues.RippedLocation);
+                StaticValues.RippedList = new ConfigSave<List<AvatarModel>>(StaticValues.RippedLocation);
+                Console.WriteLine("Error with ripped list");
+            }
+
+            try
+            {
+                StaticValues.FavList = new ConfigSave<List<AvatarModel>>(StaticValues.FavLocation);
+            }
+            catch
+            {
+                MessageBox.Show("Error with favorites file, favorites list reset");
+                File.Delete(StaticValues.FavLocation);
+                StaticValues.FavList = new ConfigSave<List<AvatarModel>>(StaticValues.FavLocation);
+                Console.WriteLine("Error with fav list");
+            }
+
+            tabControl.SelectedIndex = 0;
+            try
+            {
+                LoadSettings();
+            }
+            catch { Console.WriteLine("Error loading settings"); }
+            if (string.IsNullOrEmpty(StaticValues.Config.Config.HotSwapName2022))
+            {
+                int randomAmount = RandomFunctions.random.Next(8);
+                StaticValues.Config.Config.HotSwapName2022 = RandomFunctions.RandomString(randomAmount);
+                StaticValues.Config.Save();
+            }
+
+            if (string.IsNullOrEmpty(StaticValues.Config.Config.HotSwapName2019))
+            {
+                int randomAmount = RandomFunctions.random.Next(8);
+                StaticValues.Config.Config.HotSwapName2019 = RandomFunctions.RandomString(randomAmount);
+                StaticValues.Config.Save();
+            }
+
+            CheckFav();
+            CheckRipped();
+
+            if (StaticValues.Config.Config.ViewerVersion != 4)
+            {
+                ArcClient.ClearOldViewer();
+                StaticValues.Config.Config.ViewerVersion = 4;
+                StaticValues.Config.Save();
+            }
+
+            ArcClient.ExtractViewer();
+
+            if (File.Exists(SQLite._databaseLocation))
+            {
+                StaticValues.Config.Config.AvatarsInLocalDatabase = SQLite.CountAvatars();
+                StaticValues.Config.Save();
+            }
+
+            lblLocalDb.Text = StaticValues.Config.Config.AvatarsInLocalDatabase.ToString();
+            lblLoggedMe.Text = StaticValues.Config.Config.AvatarsLoggedToApi.ToString();
+
+            arcApi = new ArcApi(fileVersionInfo.FileVersion);
+
+            var databaseStats = arcApi.DatabaseStats();
+
+            if (databaseStats != null)
+            {
+                lblPublic.Text = databaseStats.TotalPublic.ToString();
+                lblPrivate.Text = databaseStats.TotalPrivate.ToString();
+                lblSize.Text = databaseStats.TotalDatabase.ToString();
+            }
+
+            MessageBoxManager.Yes = "PC";
+            MessageBoxManager.No = "Quest";
+            MessageBoxManager.Register();
+
+            try
+            {
+                languageTranslations = arcApi.LanguageList();
+                foreach (var language in languageTranslations)
+                {
+                    cbLanguage.Items.Add(language.name);
+                    cbAppTranslate.Items.Add(language.name);
+
+                }
+                cbLanguage.SelectedIndex = 0;
+            }
+            catch { }
+
+            _cookies = new CookieContainer();
+
+            if (StaticValues.Config.Config.CookieAuth != null && StaticValues.Config.Config.ApiKey != null)
+            {
+                _cookies.Add(new Uri("https://api.avatarrecovery.com/"), new Cookie(".AspNetCore.Cookies", StaticValues.Config.Config.CookieAuth));
             }
         }
     }

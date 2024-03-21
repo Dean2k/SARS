@@ -86,6 +86,7 @@
             this.chkAdvanceUnlock = new MetroFramework.Controls.MetroCheckBox();
             this.chkAdvancedDic = new MetroFramework.Controls.MetroCheckBox();
             this.chkTranslate = new MetroFramework.Controls.MetroCheckBox();
+            this.chkAdditional = new MetroFramework.Controls.MetroCheckBox();
             this.btnGetScreenshots = new MetroFramework.Controls.MetroButton();
             this.metroLabel8 = new MetroFramework.Controls.MetroLabel();
             this.txtAvatarSizePc = new MetroFramework.Controls.MetroTextBox();
@@ -165,6 +166,8 @@
             this.Column1 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.Column2 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.metroTabPage8 = new MetroFramework.Controls.MetroTabPage();
+            this.lblUnityVersion = new MetroFramework.Controls.MetroLabel();
+            this.metroLabel15 = new MetroFramework.Controls.MetroLabel();
             this.metroLabel11 = new MetroFramework.Controls.MetroLabel();
             this.cbLanguage = new MetroFramework.Controls.MetroComboBox();
             this.btnLoadVRCA = new MetroFramework.Controls.MetroButton();
@@ -178,9 +181,6 @@
             this.btnHotswap2019 = new MetroFramework.Controls.MetroButton();
             this.btnAddPublic = new MetroFramework.Controls.MetroButton();
             this.CookieChecker = new System.Windows.Forms.Timer(this.components);
-            this.lblUnityVersion = new MetroFramework.Controls.MetroLabel();
-            this.metroLabel15 = new MetroFramework.Controls.MetroLabel();
-            this.chkAdditional = new MetroFramework.Controls.MetroCheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.nmQuestVersion)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nmPcVersion)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.metroStyleManager1)).BeginInit();
@@ -609,6 +609,16 @@
             this.metroToolTip1.SetToolTip(this.chkTranslate, resources.GetString("chkTranslate.ToolTip"));
             this.chkTranslate.UseSelectable = true;
             this.chkTranslate.UseStyleColors = true;
+            // 
+            // chkAdditional
+            // 
+            resources.ApplyResources(this.chkAdditional, "chkAdditional");
+            this.chkAdditional.FontSize = MetroFramework.MetroCheckBoxSize.Medium;
+            this.chkAdditional.FontWeight = MetroFramework.MetroCheckBoxWeight.Bold;
+            this.chkAdditional.Name = "chkAdditional";
+            this.metroToolTip1.SetToolTip(this.chkAdditional, resources.GetString("chkAdditional.ToolTip"));
+            this.chkAdditional.UseSelectable = true;
+            this.chkAdditional.UseStyleColors = true;
             // 
             // btnGetScreenshots
             // 
@@ -1551,7 +1561,7 @@
             this.tabControl.Controls.Add(this.metroTabPage8);
             this.tabControl.FontWeight = MetroFramework.MetroTabControlWeight.Bold;
             this.tabControl.Name = "tabControl";
-            this.tabControl.SelectedIndex = 0;
+            this.tabControl.SelectedIndex = 1;
             this.tabControl.UseSelectable = true;
             this.tabControl.SelectedIndexChanged += new System.EventHandler(this.tabControl_SelectedIndexChanged);
             // 
@@ -1708,6 +1718,20 @@
             this.metroTabPage8.VerticalScrollbarHighlightOnWheel = false;
             this.metroTabPage8.VerticalScrollbarSize = 10;
             // 
+            // lblUnityVersion
+            // 
+            resources.ApplyResources(this.lblUnityVersion, "lblUnityVersion");
+            this.lblUnityVersion.FontWeight = MetroFramework.MetroLabelWeight.Bold;
+            this.lblUnityVersion.Name = "lblUnityVersion";
+            this.lblUnityVersion.UseStyleColors = true;
+            // 
+            // metroLabel15
+            // 
+            resources.ApplyResources(this.metroLabel15, "metroLabel15");
+            this.metroLabel15.FontWeight = MetroFramework.MetroLabelWeight.Bold;
+            this.metroLabel15.Name = "metroLabel15";
+            this.metroLabel15.UseStyleColors = true;
+            // 
             // metroLabel11
             // 
             resources.ApplyResources(this.metroLabel11, "metroLabel11");
@@ -1808,30 +1832,6 @@
             this.CookieChecker.Interval = 5000;
             this.CookieChecker.Tick += new System.EventHandler(this.CookieChecker_Tick);
             // 
-            // lblUnityVersion
-            // 
-            resources.ApplyResources(this.lblUnityVersion, "lblUnityVersion");
-            this.lblUnityVersion.FontWeight = MetroFramework.MetroLabelWeight.Bold;
-            this.lblUnityVersion.Name = "lblUnityVersion";
-            this.lblUnityVersion.UseStyleColors = true;
-            // 
-            // metroLabel15
-            // 
-            resources.ApplyResources(this.metroLabel15, "metroLabel15");
-            this.metroLabel15.FontWeight = MetroFramework.MetroLabelWeight.Bold;
-            this.metroLabel15.Name = "metroLabel15";
-            this.metroLabel15.UseStyleColors = true;
-            // 
-            // chkAdditional
-            // 
-            resources.ApplyResources(this.chkAdditional, "chkAdditional");
-            this.chkAdditional.FontSize = MetroFramework.MetroCheckBoxSize.Medium;
-            this.chkAdditional.FontWeight = MetroFramework.MetroCheckBoxWeight.Bold;
-            this.chkAdditional.Name = "chkAdditional";
-            this.metroToolTip1.SetToolTip(this.chkAdditional, resources.GetString("chkAdditional.ToolTip"));
-            this.chkAdditional.UseSelectable = true;
-            this.chkAdditional.UseStyleColors = true;
-            // 
             // AvatarSystem
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -1869,6 +1869,7 @@
             this.Style = MetroFramework.MetroColorStyle.Default;
             this.Theme = MetroFramework.MetroThemeStyle.Default;
             this.Load += new System.EventHandler(this.AvatarSystem_Load);
+            this.Shown += new System.EventHandler(this.AvatarSystem_Shown);
             ((System.ComponentModel.ISupportInitialize)(this.nmQuestVersion)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nmPcVersion)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.metroStyleManager1)).EndInit();
