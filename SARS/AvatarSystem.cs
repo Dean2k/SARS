@@ -595,12 +595,12 @@ namespace ARC
 
             if (version == "2022")
             {
-                _vrcaThread = new Thread(() => HotSwap.HotswapProcess(StaticValues.Config.Config.HotSwapName2022, fileLocation, hotSwapConsole.txtStatusText, hotSwapConsole.pbProgress, inputName, chkUnlockPassword.Checked, chkAdvanceUnlock.Checked, "", chkTranslate.Checked, languageCode, chkAdvancedDic.Checked));
+                _vrcaThread = new Thread(() => HotSwap.HotswapProcess(StaticValues.Config.Config.HotSwapName2022, fileLocation, hotSwapConsole.txtStatusText, hotSwapConsole.pbProgress, inputName, chkUnlockPassword.Checked, chkAdvanceUnlock.Checked, StaticValues.Config.Config.ApiKey, chkTranslate.Checked, languageCode, chkAdvancedDic.Checked));
                 _vrcaThread.Start();
             }
             else
             {
-                _vrcaThread = new Thread(() => HotSwap.HotswapProcess(StaticValues.Config.Config.HotSwapName2019, fileLocation, hotSwapConsole.txtStatusText, hotSwapConsole.pbProgress, inputName, chkUnlockPassword.Checked, chkAdvanceUnlock.Checked, "", chkTranslate.Checked, languageCode, chkAdvancedDic.Checked));
+                _vrcaThread = new Thread(() => HotSwap.HotswapProcess(StaticValues.Config.Config.HotSwapName2019, fileLocation, hotSwapConsole.txtStatusText, hotSwapConsole.pbProgress, inputName, chkUnlockPassword.Checked, chkAdvanceUnlock.Checked, StaticValues.Config.Config.ApiKey, chkTranslate.Checked, languageCode, chkAdvancedDic.Checked));
                 _vrcaThread.Start();
             }
 
