@@ -2743,6 +2743,7 @@ namespace ARC
             }
 
             ArcClient.ExtractViewer();
+            ArcClient.ExtractRipper();
 
             if (File.Exists(SQLite._databaseLocation))
             {

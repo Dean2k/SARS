@@ -469,6 +469,18 @@ namespace ARC.Modules
             }
         }
 
+        public static void ExtractRipper()
+        {
+            if (!Directory.Exists(StaticValues.AssetRipper))
+            {
+                Directory.CreateDirectory(StaticValues.AssetRipper);
+            }
+            if (!File.Exists(StaticValues.AssetRipper + "AssetRipper.exe"))
+            {
+                ZipFile.ExtractToDirectory($@"{AppContext.BaseDirectory}\Assets\AssetRipper.zip", StaticValues.AssetRipper);
+            }
+        }
+
         public static void CopyFiles(ConfigSave<Config> configSave)
         {
             try
