@@ -836,7 +836,7 @@ namespace ARC
             }
             else
             {
-                MessageBox.Show("Please enter your Username/Password and make sure the client version has been filled");
+                MessageBox.Show("Please enter your Username/Password and make sure the client version has been filled\nIf the client version isn't filled turn off any VPN and reopen this app");
             }
         }
 

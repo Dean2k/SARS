@@ -379,7 +379,7 @@ namespace ARC.Modules
                                             myRequest.Method = "GET";
                                             myRequest.UserAgent = userAgent;
                                             myRequest.Accept = "*/*";
-                                            myRequest.Headers["X-Unity-Version"] = StaticGameValues.UnityVersion ?? "2019.4.40f1";
+                                            myRequest.Headers["X-Unity-Version"] = StaticGameValues.UnityVersion ?? "2022.3.6f1-DWR";
                                             using (HttpWebResponse myResponse = (HttpWebResponse)myRequest.GetResponse())
                                             {
                                                 if (myResponse.StatusCode == HttpStatusCode.OK)

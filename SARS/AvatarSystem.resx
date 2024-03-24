@@ -123,7 +123,7 @@
   </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="btnToggleFavorite.Location" type="System.Drawing.Point, System.Drawing">
-    <value>251, 462</value>
+    <value>251, 460</value>
   </data>
   <data name="btnToggleFavorite.Size" type="System.Drawing.Size, System.Drawing">
     <value>120, 35</value>
@@ -151,7 +151,7 @@
     <value>Bottom, Left</value>
   </data>
   <data name="btnSearchFavorites.Location" type="System.Drawing.Point, System.Drawing">
-    <value>125, 462</value>
+    <value>125, 460</value>
   </data>
   <data name="btnSearchFavorites.Size" type="System.Drawing.Size, System.Drawing">
     <value>120, 35</value>
@@ -274,7 +274,7 @@
     <value>Bottom, Left</value>
   </data>
   <data name="btnRipped.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 462</value>
+    <value>0, 460</value>
   </data>
   <data name="btnRipped.Size" type="System.Drawing.Size, System.Drawing">
     <value>120, 35</value>
@@ -724,7 +724,7 @@
     <value>Bottom, Left</value>
   </data>
   <data name="btnBrowserView.Location" type="System.Drawing.Point, System.Drawing">
-    <value>377, 462</value>
+    <value>377, 460</value>
   </data>
   <data name="btnBrowserView.Size" type="System.Drawing.Size, System.Drawing">
     <value>120, 35</value>
@@ -1150,7 +1150,7 @@
     <value>Vertical</value>
   </data>
   <data name="avatarGrid.Size" type="System.Drawing.Size, System.Drawing">
-    <value>840, 456</value>
+    <value>840, 454</value>
   </data>
   <data name="avatarGrid.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
@@ -1189,7 +1189,7 @@
     <value>False</value>
   </data>
   <data name="txtAvatarSizeQuest.Location" type="System.Drawing.Point, System.Drawing">
-    <value>710, 471</value>
+    <value>710, 469</value>
   </data>
   <data name="txtAvatarSizeQuest.Size" type="System.Drawing.Size, System.Drawing">
     <value>129, 29</value>
@@ -1216,7 +1216,7 @@
     <value>True</value>
   </data>
   <data name="metroLabel9.Location" type="System.Drawing.Point, System.Drawing">
-    <value>710, 453</value>
+    <value>710, 451</value>
   </data>
   <data name="metroLabel9.Size" type="System.Drawing.Size, System.Drawing">
     <value>127, 19</value>
@@ -1246,7 +1246,7 @@
     <value>True</value>
   </data>
   <data name="metroLabel8.Location" type="System.Drawing.Point, System.Drawing">
-    <value>573, 452</value>
+    <value>573, 450</value>
   </data>
   <data name="metroLabel8.Size" type="System.Drawing.Size, System.Drawing">
     <value>107, 19</value>
@@ -1291,7 +1291,7 @@
     <value>False</value>
   </data>
   <data name="txtAvatarSizePc.Location" type="System.Drawing.Point, System.Drawing">
-    <value>563, 471</value>
+    <value>563, 469</value>
   </data>
   <data name="txtAvatarSizePc.Size" type="System.Drawing.Size, System.Drawing">
     <value>129, 29</value>
@@ -2437,7 +2437,7 @@
     <value>True</value>
   </data>
   <data name="chkSelfAvatars.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 426</value>
+    <value>3, 424</value>
   </data>
   <data name="chkSelfAvatars.Size" type="System.Drawing.Size, System.Drawing">
     <value>228, 19</value>
@@ -2470,7 +2470,7 @@
     <value>True</value>
   </data>
   <data name="chkAutoScan.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 410</value>
+    <value>3, 408</value>
   </data>
   <data name="chkAutoScan.Size" type="System.Drawing.Size, System.Drawing">
     <value>277, 19</value>
@@ -2497,7 +2497,7 @@
     <value>Bottom, Right</value>
   </data>
   <data name="btnGetScreenshots.Location" type="System.Drawing.Point, System.Drawing">
-    <value>591, 410</value>
+    <value>591, 408</value>
   </data>
   <data name="btnGetScreenshots.Size" type="System.Drawing.Size, System.Drawing">
     <value>120, 35</value>
@@ -2524,7 +2524,7 @@
     <value>Bottom, Right</value>
   </data>
   <data name="btnScanCacheFolder.Location" type="System.Drawing.Point, System.Drawing">
-    <value>717, 410</value>
+    <value>717, 408</value>
   </data>
   <data name="btnScanCacheFolder.Size" type="System.Drawing.Size, System.Drawing">
     <value>120, 35</value>
@@ -2560,10 +2560,10 @@
     <value>NoControl</value>
   </data>
   <data name="resource.Location6" type="System.Drawing.Point, System.Drawing">
-    <value>447, 2</value>
+    <value>449, 2</value>
   </data>
   <data name="resource.Size6" type="System.Drawing.Size, System.Drawing">
-    <value>387, 387</value>
+    <value>385, 385</value>
   </data>
   <data name="resource.TabIndex6" type="System.Int32, mscorlib">
     <value>1</value>
@@ -2575,7 +2575,7 @@
     <value>3, 12</value>
   </data>
   <data name="txtCacheScannerLog.Size" type="System.Drawing.Size, System.Drawing">
-    <value>837, 392</value>
+    <value>837, 390</value>
   </data>
   <data name="txtCacheScannerLog.TabIndex" type="System.Int32, mscorlib">
     <value>69</value>
@@ -2935,7 +2935,7 @@
     <value>True</value>
   </data>
   <data name="metroLabel21.Location" type="System.Drawing.Point, System.Drawing">
-    <value>597, 471</value>
+    <value>597, 469</value>
   </data>
   <data name="metroLabel21.Size" type="System.Drawing.Size, System.Drawing">
     <value>240, 19</value>
@@ -2965,7 +2965,7 @@
     <value>True</value>
   </data>
   <data name="chkAutoRefreshDownload.Location" type="System.Drawing.Point, System.Drawing">
-    <value>199, 398</value>
+    <value>199, 396</value>
   </data>
   <data name="chkAutoRefreshDownload.Size" type="System.Drawing.Size, System.Drawing">
     <value>232, 19</value>
@@ -2992,7 +2992,7 @@
     <value>Bottom</value>
   </data>
   <data name="btnUpdate.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 389</value>
+    <value>3, 387</value>
   </data>
   <data name="btnUpdate.Size" type="System.Drawing.Size, System.Drawing">
     <value>191, 35</value>
@@ -3025,7 +3025,7 @@
     <value>True</value>
   </data>
   <data name="metroLabel5.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 427</value>
+    <value>4, 425</value>
   </data>
   <data name="metroLabel5.Size" type="System.Drawing.Size, System.Drawing">
     <value>723, 76</value>
@@ -3055,7 +3055,7 @@ you don't risk your account)
     <value>Bottom</value>
   </data>
   <data name="btnDownloadSafe.Location" type="System.Drawing.Point, System.Drawing">
-    <value>647, 389</value>
+    <value>647, 387</value>
   </data>
   <data name="btnDownloadSafe.Size" type="System.Drawing.Size, System.Drawing">
     <value>191, 35</value>
@@ -3118,7 +3118,7 @@ you don't risk your account)
     <value>Vertical</value>
   </data>
   <data name="dgSafeDownload.Size" type="System.Drawing.Size, System.Drawing">
-    <value>840, 387</value>
+    <value>840, 385</value>
   </data>
   <data name="dgSafeDownload.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>

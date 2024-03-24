@@ -31,6 +31,9 @@ namespace VRChatAPI_New.Modules.Game
         {
             var requestHeaders = StaticGameValues.HttpClient.DefaultRequestHeaders;
             requestHeaders.Clear();
+            requestHeaders.UserAgent.Clear(); 
+            requestHeaders.AcceptEncoding.Clear();
+            requestHeaders.TE.Clear();
             requestHeaders.UserAgent.ParseAdd("VRC.Core.BestHTTP");
             requestHeaders.AcceptEncoding.ParseAdd("gzip, identity");
             requestHeaders.TE.ParseAdd("identity");
