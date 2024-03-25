@@ -110,7 +110,13 @@ namespace VRChatAPI_New.Modules.Game
                 webClient.Headers.Add("user-agent", "VRC.Core.BestHTTP");
                 webClient.Headers.Add("X-Unity-Version", StaticGameValues.UnityVersion);
                 webClient.Headers.Add("X-Store", StaticGameValues.Store);
+                if(string.IsNullOrEmpty(StaticGameValues.MacAddress) || string.IsNullOrEmpty(StaticGameValues.GameVersion) || string.IsNullOrEmpty(StaticGameValues.ServerVersion) || string.IsNullOrEmpty(StaticGameValues.UnityVersion) || string.IsNullOrEmpty(StaticGameValues.Store))
+                {
+                    MessageBox.Show("A needed value is blank, please restart ARC");
+                    return null;
+                }
             }
+
             return webClient;
         }
     }

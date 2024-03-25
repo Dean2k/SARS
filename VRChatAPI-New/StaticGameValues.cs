@@ -31,6 +31,11 @@ namespace VRChatAPI_New
             {
                 throw new NotSetup("Please ensure you run the SetupDownloader function first.");
             }
+
+            if(StaticGameValues.MacAddress == null)
+            {
+                throw new NotSetup("Mac address is null, this will lead to client bans, please populate");
+            }
         }
     }
 }

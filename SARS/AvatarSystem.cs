@@ -67,7 +67,7 @@ namespace ARC
             CreateDirectoryIfNotExist(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "ARC"));
             CreateDirectoryIfNotExist(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "ARC", "AssetRipper"));
             CreateDirectoryIfNotExist(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "ARC", "VRCA"));
-            CreateDirectoryIfNotExist(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "ARC", "Images"));        
+            CreateDirectoryIfNotExist(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "ARC", "Images"));
         }
 
         private void AvatarSystem_Load(object sender, EventArgs e)
@@ -85,6 +85,11 @@ namespace ARC
         {
             StaticValues.RippedList.Config.RemoveAll(x => x == null);
             StaticValues.RippedList.Save();
+        }
+
+        private void CheckUnity()
+        {
+
         }
 
         private void LoadSettings()
@@ -113,6 +118,7 @@ namespace ARC
                 StaticValues.Config.Config.MacAddress = EasyHash.GetSHA1String(new byte[] { (byte)rnd.Next(254), (byte)rnd.Next(254), (byte)rnd.Next(254), (byte)rnd.Next(254), (byte)rnd.Next(254) });
                 StaticValues.Config.Save();
             }
+
             if (!string.IsNullOrEmpty(StaticValues.Config.Config.PreSelectedAvatarLocation))
             {
                 txtAvatarOutput.Text = StaticValues.Config.Config.PreSelectedAvatarLocation;
@@ -161,7 +167,7 @@ namespace ARC
             {
                 limit = "500";
             }
-            if (_cookies==null)
+            if (_cookies == null)
             {
                 MessageBox.Show("Please enter your login with discord first.");
                 return;
@@ -2605,7 +2611,7 @@ namespace ARC
         private void btnAddPublic_Click(object sender, EventArgs e)
         {
             if (StaticValues.Config.Config.AuthKey == null) { MessageBox.Show("login with an alt first"); }
-            if(!txtSearchTerm.Text.Contains("avtr_")) { MessageBox.Show("please enter an avatar id first"); }
+            if (!txtSearchTerm.Text.Contains("avtr_")) { MessageBox.Show("please enter an avatar id first"); }
             VRChatCacheResult vRChatCacheResult = GetDetails(txtSearchTerm.Text);
 
             if (vRChatCacheResult != null)
@@ -2627,7 +2633,7 @@ namespace ARC
                 StaticValues.Config.Save();
                 if (StaticValues.Config.Config.CookieAuth != null && StaticValues.Config.Config.ApiKey != null)
                 {
-                    if(_cookies == null)
+                    if (_cookies == null)
                     {
                         _cookies = new CookieContainer();
                     }
@@ -2639,7 +2645,7 @@ namespace ARC
 
         private void AvatarSystem_Shown(object sender, EventArgs e)
         {
-            
+
 
             typeof(DataGridView).InvokeMember("DoubleBuffered", BindingFlags.NonPublic | BindingFlags.Instance | BindingFlags.SetProperty, null, avatarGrid, new object[] { true });
             string filePath = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
@@ -2663,7 +2669,7 @@ namespace ARC
             {
                 StaticValues.Config = new ConfigSave<Config>(StaticValues.ConfigLocation);
             }
-            catch (Exception ex)
+            catch
             {
                 MessageBox.Show("Error with config file, settings reset");
                 if (File.Exists(StaticValues.ConfigLocation))
@@ -2713,11 +2719,9 @@ namespace ARC
             }
 
             tabControl.SelectedIndex = 0;
-            try
-            {
-                LoadSettings();
-            }
-            catch { Console.WriteLine("Error loading settings"); }
+
+            LoadSettings();
+
             if (string.IsNullOrEmpty(StaticValues.Config.Config.HotSwapName2022))
             {
                 int randomAmount = RandomFunctions.random.Next(8);

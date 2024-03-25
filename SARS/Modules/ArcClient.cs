@@ -144,7 +144,10 @@ namespace ARC.Modules
                     //Get the path of specified file
                     filePath = openFileDialog.FileName;
             }
-
+            if (string.IsNullOrEmpty(filePath))
+            {
+                return;
+            }
             var versionInfo = FileVersionInfo.GetVersionInfo(filePath);
 
             if (!versionInfo.FileVersion.Contains("2022.3.6"))
@@ -211,7 +214,10 @@ namespace ARC.Modules
                     //Get the path of specified file
                     filePath = openFileDialog.FileName;
             }
-
+            if (string.IsNullOrEmpty(filePath))
+            {
+                return;
+            }
             var versionInfo = FileVersionInfo.GetVersionInfo(filePath);
 
             if(!versionInfo.FileVersion.Contains("2019.4.31"))
