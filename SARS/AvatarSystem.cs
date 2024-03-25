@@ -139,12 +139,17 @@ namespace ARC
             }
 
             StartUp.SetupDownloader(StaticValues.Config.Config.MacAddress);
-            var check = Login.LoginWithTokenAsync(StaticValues.Config.Config.AuthKey, StaticValues.Config.Config.TwoFactor).Result;
-            if (check == null)
-            {
-                MessageBox.Show("VRChat credentials expired, please relogin");
-                DeleteLoginInfo();
-            }
+            if (!string.IsNullOrEmpty(StaticValues.Config.Config.AuthKey))
+                try
+                {
+                    var check = Login.LoginWithTokenAsync(StaticValues.Config.Config.AuthKey, StaticValues.Config.Config.TwoFactor).Result;
+                    if (check == null)
+                    {
+                        MessageBox.Show("VRChat credentials expired, please relogin");
+                        DeleteLoginInfo();
+                    }
+                }
+                catch { }
         }
 
         [DllImport("user32.dll")]
