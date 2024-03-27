@@ -29,6 +29,7 @@ using VRChatAPI_New.Modules.Game;
 using ARC.Models.ExternalModels;
 using ARC.Models.InternalModels;
 using AssetsTools.NET.Extra;
+using System.Web;
 
 namespace ARC
 {
@@ -2641,7 +2642,7 @@ namespace ARC
                     {
                         _cookies = new CookieContainer();
                     }
-                    _cookies.Add(new Uri("https://api.avatarrecovery.com/"), new Cookie(".AspNetCore.Cookies", $"\"{StaticValues.Config.Config.CookieAuth}\""));
+                    _cookies.Add(new Uri("https://api.avatarrecovery.com/"), new Cookie(".AspNetCore.Cookies", $"{HttpUtility.UrlEncode(StaticValues.Config.Config.CookieAuth)}"));
                 }
                 CookieChecker.Enabled = false;
                 MessageBox.Show("login successful");
