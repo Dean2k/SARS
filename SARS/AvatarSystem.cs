@@ -67,6 +67,7 @@ namespace ARC
             CreateDirectoryIfNotExist(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "ARC"));
             CreateDirectoryIfNotExist(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "ARC", "AssetRipper"));
             CreateDirectoryIfNotExist(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "ARC", "VRCA"));
+            CreateDirectoryIfNotExist(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "ARC", "VRCW"));
             CreateDirectoryIfNotExist(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "ARC", "Images"));
         }
 
@@ -2378,7 +2379,7 @@ namespace ARC
                             string avatarId = row.Cells[0].Value.ToString();
                             Download download = new Download { Text = $"{avatarId}" };
                             download.Show();
-                            var filePath = $"{StaticValues.VrcwDownloadFolder}{avatarId}.vrca";
+                            var filePath = $"{StaticValues.VrcaDownloadFolder}{avatarId}.vrca";
                             string url = $"https://vrca.avatarrecovery.com/SARS/{avatarId}";
                             if ((bool)row.Cells[1].Value)
                             {
@@ -2626,13 +2627,11 @@ namespace ARC
                 MessageBox.Show("ADDED");
             }
         }
-
         private void CookieChecker_Tick(object sender, EventArgs e)
         {
             CookieAuth cookieAuth = arcApi.GetCookie(Guid.ToString());
-            if (cookieAuth.Cookie != null && cookieAuth.Key != null)
+            if (cookieAuth != null && cookieAuth.Cookie != null && cookieAuth.Key != null)
             {
-                MessageBox.Show("login successful");
                 StaticValues.Config.Config.ApiKey = cookieAuth.Key.ToString();
                 StaticValues.Config.Config.CookieAuth = cookieAuth.Cookie.Replace(".AspNetCore.Cookies=", "");
                 StaticValues.Config.Save();
@@ -2642,9 +2641,10 @@ namespace ARC
                     {
                         _cookies = new CookieContainer();
                     }
-                    _cookies.Add(new Uri("https://api.avatarrecovery.com/"), new Cookie(".AspNetCore.Cookies", StaticValues.Config.Config.CookieAuth));
+                    _cookies.Add(new Uri("https://api.avatarrecovery.com/"), new Cookie(".AspNetCore.Cookies", $"\"{StaticValues.Config.Config.CookieAuth}\""));
                 }
                 CookieChecker.Enabled = false;
+                MessageBox.Show("login successful");
             }
         }
 
