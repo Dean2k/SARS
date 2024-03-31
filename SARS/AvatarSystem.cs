@@ -89,11 +89,6 @@ namespace ARC
             StaticValues.RippedList.Save();
         }
 
-        private void CheckUnity()
-        {
-
-        }
-
         private void LoadSettings()
         {
             cbThemeColour.Text = StaticValues.Config.Config.ThemeColor;
@@ -1089,7 +1084,7 @@ namespace ARC
                             pack.GeneratePackage(saveLocation: folderExtractLocation.Replace(Path.GetFileNameWithoutExtension(avatarFile), ""));
                             RandomFunctions.tryDeleteDirectory(folderExtractLocation);
                         }
-                        catch { MessageBox.Show("Failed to generate unity package"); }
+                        catch (Exception ex) { MessageBox.Show("Failed to generate unity package\n" + ex.Message); }
 
                     }
 
@@ -2468,7 +2463,7 @@ namespace ARC
 
         private void DownloadRefresh_Tick(object sender, EventArgs e)
         {
-            if (StaticValues.Config.Config.ApiKey != null)
+            if (StaticValues.Config.Config != null && StaticValues.Config.Config.ApiKey != null)
             {
                 UpdateDownloadList();
             }
@@ -2630,11 +2625,22 @@ namespace ARC
         }
         private void CookieChecker_Tick(object sender, EventArgs e)
         {
+            if (arcApi == null)
+            {
+                var assembly = Assembly.GetExecutingAssembly();
+                var fileVersionInfo = FileVersionInfo.GetVersionInfo(assembly.Location);
+                arcApi = new ArcApi(fileVersionInfo.FileVersion);
+            }
+            if (Guid == null)
+            {
+                Guid = Guid.NewGuid();
+            }
             CookieAuth cookieAuth = arcApi.GetCookie(Guid.ToString());
             if (cookieAuth != null && cookieAuth.Cookie != null && cookieAuth.Key != null)
             {
                 StaticValues.Config.Config.ApiKey = cookieAuth.Key.ToString();
-                StaticValues.Config.Config.CookieAuth = cookieAuth.Cookie.Replace(".AspNetCore.Cookies=", "");
+                string[] cookie = cookieAuth.Cookie.Split(new string[] { ".AspNetCore.Cookies=" }, StringSplitOptions.None);
+                StaticValues.Config.Config.CookieAuth = cookie[cookie.Length - 1];
                 StaticValues.Config.Save();
                 if (StaticValues.Config.Config.CookieAuth != null && StaticValues.Config.Config.ApiKey != null)
                 {
@@ -2662,14 +2668,128 @@ namespace ARC
                 MessageBox.Show("EXTRACT THE PROGRAM FIRST");
                 Close();
             }
+            try
+            {
+                var assembly = Assembly.GetExecutingAssembly();
+                var fileVersionInfo = FileVersionInfo.GetVersionInfo(assembly.Location);
+                SystemName = $"Avatar Recovery Client (A.R.C) V{fileVersionInfo.ProductVersion}";
+                this.Text = SystemName;
+                txtAbout.Text = Resources.About;
+                cbSearchTerm.SelectedIndex = 0;
+                cbLimit.SelectedIndex = 3;
+                tabControl.SelectedIndex = 0;
+                arcApi = new ArcApi(fileVersionInfo.FileVersion);
+            }
+            catch { }
 
-            var assembly = Assembly.GetExecutingAssembly();
-            var fileVersionInfo = FileVersionInfo.GetVersionInfo(assembly.Location);
-            SystemName = $"Avatar Recovery Client (A.R.C) V{fileVersionInfo.ProductVersion}";
-            this.Text = SystemName;
-            txtAbout.Text = Resources.About;
-            cbSearchTerm.SelectedIndex = 0;
-            cbLimit.SelectedIndex = 3;
+            SetupConfig();
+            LoadSettings();
+
+            if (string.IsNullOrEmpty(StaticValues.Config.Config.HotSwapName2022))
+            {
+                int randomAmount = RandomFunctions.random.Next(8);
+                StaticValues.Config.Config.HotSwapName2022 = RandomFunctions.RandomString(randomAmount);
+                StaticValues.Config.Save();
+            }
+
+            if (string.IsNullOrEmpty(StaticValues.Config.Config.HotSwapName2019))
+            {
+                int randomAmount = RandomFunctions.random.Next(8);
+                StaticValues.Config.Config.HotSwapName2019 = RandomFunctions.RandomString(randomAmount);
+                StaticValues.Config.Save();
+            }
+
+            try
+            {
+                CheckFav();
+            }
+            catch { }
+            try
+            {
+                CheckRipped();
+            }
+            catch { }
+
+            if (StaticValues.Config.Config.ViewerVersion != 4)
+            {
+                ArcClient.ClearOldViewer();
+                StaticValues.Config.Config.ViewerVersion = 4;
+                StaticValues.Config.Save();
+            }
+
+            try
+            {
+                ArcClient.ExtractViewer();
+            }
+            catch { }
+            try
+            {
+                ArcClient.ExtractRipper();
+            }
+            catch { }
+
+            if (File.Exists(SQLite._databaseLocation))
+            {
+                StaticValues.Config.Config.AvatarsInLocalDatabase = SQLite.CountAvatars();
+                StaticValues.Config.Save();
+            }
+
+            try
+            {
+
+                lblLocalDb.Text = StaticValues.Config.Config.AvatarsInLocalDatabase.ToString();
+                lblLoggedMe.Text = StaticValues.Config.Config.AvatarsLoggedToApi.ToString();
+            }
+            catch { }
+
+
+
+            try
+            {
+                var databaseStats = arcApi.DatabaseStats();
+
+                if (databaseStats != null)
+                {
+                    lblPublic.Text = databaseStats.TotalPublic.ToString();
+                    lblPrivate.Text = databaseStats.TotalPrivate.ToString();
+                    lblSize.Text = databaseStats.TotalDatabase.ToString();
+                }
+            }
+            catch { }
+
+            try
+            {
+                MessageBoxManager.Yes = "PC";
+                MessageBoxManager.No = "Quest";
+                MessageBoxManager.Register();
+            }
+            catch { }
+
+            try
+            {
+                languageTranslations = arcApi.LanguageList();
+                foreach (var language in languageTranslations)
+                {
+                    cbLanguage.Items.Add(language.name);
+                    cbAppTranslate.Items.Add(language.name);
+
+                }
+                cbLanguage.SelectedIndex = 0;
+            }
+            catch { }
+
+            _cookies = new CookieContainer();
+
+            if (StaticValues.Config.Config.CookieAuth != null && StaticValues.Config.Config.ApiKey != null)
+            {
+                _cookies.Add(new Uri("https://api.avatarrecovery.com/"), new Cookie(".AspNetCore.Cookies", StaticValues.Config.Config.CookieAuth));
+            }
+
+            DownloadRefresh.Enabled = true;
+        }
+
+        private void SetupConfig()
+        {
 
             try
             {
@@ -2722,81 +2842,6 @@ namespace ARC
                 File.Delete(StaticValues.FavLocation);
                 StaticValues.FavList = new ConfigSave<List<AvatarModel>>(StaticValues.FavLocation);
                 Console.WriteLine("Error with fav list");
-            }
-
-            tabControl.SelectedIndex = 0;
-
-            LoadSettings();
-
-            if (string.IsNullOrEmpty(StaticValues.Config.Config.HotSwapName2022))
-            {
-                int randomAmount = RandomFunctions.random.Next(8);
-                StaticValues.Config.Config.HotSwapName2022 = RandomFunctions.RandomString(randomAmount);
-                StaticValues.Config.Save();
-            }
-
-            if (string.IsNullOrEmpty(StaticValues.Config.Config.HotSwapName2019))
-            {
-                int randomAmount = RandomFunctions.random.Next(8);
-                StaticValues.Config.Config.HotSwapName2019 = RandomFunctions.RandomString(randomAmount);
-                StaticValues.Config.Save();
-            }
-
-            CheckFav();
-            CheckRipped();
-
-            if (StaticValues.Config.Config.ViewerVersion != 4)
-            {
-                ArcClient.ClearOldViewer();
-                StaticValues.Config.Config.ViewerVersion = 4;
-                StaticValues.Config.Save();
-            }
-
-            ArcClient.ExtractViewer();
-            ArcClient.ExtractRipper();
-
-            if (File.Exists(SQLite._databaseLocation))
-            {
-                StaticValues.Config.Config.AvatarsInLocalDatabase = SQLite.CountAvatars();
-                StaticValues.Config.Save();
-            }
-
-            lblLocalDb.Text = StaticValues.Config.Config.AvatarsInLocalDatabase.ToString();
-            lblLoggedMe.Text = StaticValues.Config.Config.AvatarsLoggedToApi.ToString();
-
-            arcApi = new ArcApi(fileVersionInfo.FileVersion);
-
-            var databaseStats = arcApi.DatabaseStats();
-
-            if (databaseStats != null)
-            {
-                lblPublic.Text = databaseStats.TotalPublic.ToString();
-                lblPrivate.Text = databaseStats.TotalPrivate.ToString();
-                lblSize.Text = databaseStats.TotalDatabase.ToString();
-            }
-
-            MessageBoxManager.Yes = "PC";
-            MessageBoxManager.No = "Quest";
-            MessageBoxManager.Register();
-
-            try
-            {
-                languageTranslations = arcApi.LanguageList();
-                foreach (var language in languageTranslations)
-                {
-                    cbLanguage.Items.Add(language.name);
-                    cbAppTranslate.Items.Add(language.name);
-
-                }
-                cbLanguage.SelectedIndex = 0;
-            }
-            catch { }
-
-            _cookies = new CookieContainer();
-
-            if (StaticValues.Config.Config.CookieAuth != null && StaticValues.Config.Config.ApiKey != null)
-            {
-                _cookies.Add(new Uri("https://api.avatarrecovery.com/"), new Cookie(".AspNetCore.Cookies", StaticValues.Config.Config.CookieAuth));
             }
         }
     }

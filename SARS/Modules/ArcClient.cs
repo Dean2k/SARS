@@ -80,14 +80,14 @@ namespace ARC.Modules
                 else
                 {
                     MessageBox.Show(
-                        "Please select unity.exe, after doing this leave the command window open it will close by itself after setup is complete");
+                        "Please select unity.exe (2019), if you wanna skip this press Cancel");
                     SelectFile2019(configSave);
                 }
             }
             else
             {
                 MessageBox.Show(
-                    "Please select unity.exe, after doing this leave the command window open it will close by itself after setup is complete");
+                    "Please select unity.exe (2019), if you wanna skip this press Cancel");
                 SelectFile2019(configSave);
             }
         }
@@ -117,14 +117,14 @@ namespace ARC.Modules
                 else
                 {
                     MessageBox.Show(
-                        "Please select unity.exe, after doing this leave the command window open it will close by itself after setup is complete");
+                        "Please select unity.exe (2022), if you wanna skip this press Cancel");
                     SelectFile2022(configSave);
                 }
             }
             else
             {
                 MessageBox.Show(
-                    "Please select unity.exe, after doing this leave the command window open it will close by itself after setup is complete");
+                    "Please select unity.exe (2022), if you wanna skip this press Cancel");
                 SelectFile2022(configSave);
             }
         }
