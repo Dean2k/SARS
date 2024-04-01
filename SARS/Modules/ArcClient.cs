@@ -26,24 +26,34 @@ namespace ARC.Modules
     {
         public static void GetLatestVersion()
         {
-            System.Net.WebClient wc = new System.Net.WebClient();
-            byte[] raw = wc.DownloadData("https://avatarrecovery.com/Latest.txt");
-            string version = System.Text.Encoding.UTF8.GetString(raw);
-            Version latestVersion = new Version(version);
+            try
+            {
+                System.Net.WebClient wc = new System.Net.WebClient();
+                wc.Headers.Add("user-agent", "ARC");
+                byte[] raw = wc.DownloadData("https://avatarrecovery.com/Latest.txt");
+                string version = System.Text.Encoding.UTF8.GetString(raw);
+                Version latestVersion = new Version(version);
 
-            if (Assembly.GetExecutingAssembly().GetName().Version < latestVersion)
+                if (Assembly.GetExecutingAssembly().GetName().Version < latestVersion)
+                {
+                    MessageBox.Show($"You are running an out of date version of ARC please update to stay secure\nYour Version: {Assembly.GetExecutingAssembly().GetName().Version}\nLatest Version: {version}", "Out of date");
+                }
+                else if (Assembly.GetExecutingAssembly().GetName().Version > latestVersion)
+                {
+                    MessageBox.Show($"Are you magic? you are running a later version than whats released!?!?!?!\nYour Version: {Assembly.GetExecutingAssembly().GetName().Version}\nLatest Version: {version}", "DA FUDGE");
+                }
+            } catch (Exception ex)
             {
-                MessageBox.Show($"You are running an out of date version of ARC please update to stay secure\nYour Version: {Assembly.GetExecutingAssembly().GetName().Version}\nLatest Version: {version}", "Out of date");
-            }
-            else if (Assembly.GetExecutingAssembly().GetName().Version > latestVersion)
-            {
-                MessageBox.Show($"Are you magic? you are running a later version than whats released!?!?!?!\nYour Version: {Assembly.GetExecutingAssembly().GetName().Version}\nLatest Version: {version}", "DA FUDGE");
+                MessageBox.Show($"Error getting latest version\n{ex.Message}");
             }
         }
 
         public static void GetClientVersion(MetroTextBox text, ConfigSave<Config> configSave)
         {
-            System.Net.WebClient wc = new System.Net.WebClient();
+            try
+            {
+                System.Net.WebClient wc = new System.Net.WebClient();
+            wc.Headers.Add("user-agent", "ARC");
             byte[] raw = wc.DownloadData("https://avatarrecovery.com/Version.txt");
 
             text.Text = System.Text.Encoding.UTF8.GetString(raw);
@@ -53,6 +63,11 @@ namespace ARC.Modules
 
             configSave.Config.ClientVersionLastUpdated = Convert.ToDateTime(System.Text.Encoding.UTF8.GetString(raw));
             configSave.Save();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error getting latest version\n{ex.Message}");
+            }
         }
 
         public static void UnitySetup2019(ConfigSave<Config> configSave)

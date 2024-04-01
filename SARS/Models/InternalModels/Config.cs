@@ -31,5 +31,6 @@ namespace ARC.Models.InternalModels
         public bool IndexAdded { get; set; }
         public int AvatarsInLocalDatabase { get; set; }
         public int AvatarsLoggedToApi { get; set; }
+        public string DocumentLocation { get; set; }
     }
 }

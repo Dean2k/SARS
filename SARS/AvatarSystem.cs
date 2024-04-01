@@ -2778,6 +2778,8 @@ namespace ARC
             }
             catch { }
 
+            SetupDocumentLocation();
+
             _cookies = new CookieContainer();
 
             if (StaticValues.Config.Config.CookieAuth != null && StaticValues.Config.Config.ApiKey != null)
@@ -2786,6 +2788,22 @@ namespace ARC
             }
 
             DownloadRefresh.Enabled = true;
+        }
+
+        private void SetupDocumentLocation()
+        {
+            if (!string.IsNullOrEmpty(StaticValues.Config.Config.DocumentLocation))
+            {
+                StaticValues.ArcDocuments = $"{StaticValues.Config.Config.DocumentLocation}";
+                StaticValues.VrcaDownloadFolder = $"{StaticValues.ArcDocuments}VRCA\\";
+                StaticValues.VrcwDownloadFolder = $"{StaticValues.ArcDocuments}VRCW\\";
+                StaticValues.ImagesDownloadFolder = $"{StaticValues.ArcDocuments}Images\\";
+                StaticValues.UnityProject = $"{StaticValues.ArcDocuments}Unity\\";
+                StaticValues.VrcaViewer = $"{StaticValues.ArcDocuments}Viewer\\";
+                StaticValues.AssetRipper = $"{StaticValues.ArcDocuments}AssetRipper\\";
+                StaticValues.ExtractedFiles = $"{StaticValues.ArcDocuments}ExtractedFiles\\";
+                SetupNewLocation();
+            }
         }
 
         private void SetupConfig()
@@ -2843,6 +2861,58 @@ namespace ARC
                 StaticValues.FavList = new ConfigSave<List<AvatarModel>>(StaticValues.FavLocation);
                 Console.WriteLine("Error with fav list");
             }
+        }
+
+        private void btnDocumentLocation_Click(object sender, EventArgs e)
+        {
+            var folderDlg = new CommonOpenFileDialog { IsFolderPicker = true, InitialDirectory = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location) };
+            var result = folderDlg.ShowDialog();
+            if (result == CommonFileDialogResult.Ok)
+            {
+                txtDocumentLocation.Text = $"{folderDlg.FileName}\\";
+                StaticValues.Config.Config.DocumentLocation = $"{folderDlg.FileName}\\";
+                StaticValues.Config.Save();
+
+                StaticValues.ArcDocuments = StaticValues.Config.Config.DocumentLocation;
+                StaticValues.VrcaDownloadFolder = $"{StaticValues.ArcDocuments}VRCA\\";
+                StaticValues.VrcwDownloadFolder = $"{StaticValues.ArcDocuments}VRCW\\";
+                StaticValues.ImagesDownloadFolder = $"{StaticValues.ArcDocuments}Images\\";
+                StaticValues.UnityProject = $"{StaticValues.ArcDocuments}Unity\\";
+                StaticValues.VrcaViewer = $"{StaticValues.ArcDocuments}Viewer\\";
+                StaticValues.AssetRipper = $"{StaticValues.ArcDocuments}AssetRipper\\";
+                StaticValues.ExtractedFiles = $"{StaticValues.ArcDocuments}ExtractedFiles\\";
+                SetupNewLocation();
+                ArcClient.ExtractViewer();
+                ArcClient.ExtractRipper();
+            }
+        }
+
+        private void SetupNewLocation()
+        {
+            CreateDirectoryIfNotExist(StaticValues.ArcDocuments);
+            CreateDirectoryIfNotExist(StaticValues.VrcaDownloadFolder);
+            CreateDirectoryIfNotExist(StaticValues.VrcwDownloadFolder);
+            CreateDirectoryIfNotExist(StaticValues.ImagesDownloadFolder);
+            CreateDirectoryIfNotExist(StaticValues.UnityProject);
+            CreateDirectoryIfNotExist(StaticValues.VrcaViewer);
+            CreateDirectoryIfNotExist(StaticValues.AssetRipper);
+            CreateDirectoryIfNotExist(StaticValues.ExtractedFiles);
+        }
+
+        private void btnClearDocument_Click(object sender, EventArgs e)
+        {
+            txtDocumentLocation.Text = "";
+            StaticValues.Config.Config.DocumentLocation = null;
+            StaticValues.Config.Save();
+
+            StaticValues.ArcDocuments = $"{Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments)}\\ARC\\";
+            StaticValues.VrcaDownloadFolder = $"{StaticValues.ArcDocuments}VRCA\\";
+            StaticValues.VrcwDownloadFolder = $"{StaticValues.ArcDocuments}VRCW\\";
+            StaticValues.ImagesDownloadFolder = $"{StaticValues.ArcDocuments}Images\\";
+            StaticValues.UnityProject = $"{StaticValues.ArcDocuments}Unity\\";
+            StaticValues.VrcaViewer = $"{StaticValues.ArcDocuments}Viewer\\";
+            StaticValues.AssetRipper = $"{StaticValues.ArcDocuments}AssetRipper\\";
+            StaticValues.ExtractedFiles = $"{StaticValues.ArcDocuments}ExtractedFiles\\";
         }
     }
 }
