@@ -144,6 +144,13 @@ namespace ARC
                     {
                         MessageBox.Show("VRChat credentials expired, please relogin");
                         DeleteLoginInfo();
+                        if(this.Text.Contains("- Authed"))
+                        {
+                            this.Text.Replace(" - Authed", "- Not Authed");
+                        } else if(!this.Text.Contains("Not Authed"))
+                        {
+                            this.Text = $"{this.Text} - Not Authed";
+                        }
                     }
                 }
                 catch { }
@@ -2285,8 +2292,11 @@ namespace ARC
                     p.StartInfo = psi;
                     p.Start();
                     p.WaitForExit();
+                    Console.WriteLine(p.ExitCode);
                 }
                 catch (Exception ex) { Console.WriteLine(ex.Message); }
+
+                
 
                 string[] lines = File.ReadAllLines(filePathAvatar);
                 foreach (string line in lines)
@@ -2635,23 +2645,43 @@ namespace ARC
             {
                 Guid = Guid.NewGuid();
             }
-            CookieAuth cookieAuth = arcApi.GetCookie(Guid.ToString());
-            if (cookieAuth != null && cookieAuth.Cookie != null && cookieAuth.Key != null)
+            if (arcApi != null)
             {
-                StaticValues.Config.Config.ApiKey = cookieAuth.Key.ToString();
-                string[] cookie = cookieAuth.Cookie.Split(new string[] { ".AspNetCore.Cookies=" }, StringSplitOptions.None);
-                StaticValues.Config.Config.CookieAuth = cookie[cookie.Length - 1];
-                StaticValues.Config.Save();
-                if (StaticValues.Config.Config.CookieAuth != null && StaticValues.Config.Config.ApiKey != null)
+                CookieAuth cookieAuth = arcApi.GetCookie(Guid.ToString());
+                if (cookieAuth != null && cookieAuth.Cookie != null && cookieAuth.Key != null)
                 {
-                    if (_cookies == null)
+                    StaticValues.Config.Config.ApiKey = cookieAuth.Key.ToString();
+
+                    string[] cookie = cookieAuth.Cookie.Split(new string[] { ";" }, StringSplitOptions.None);
+                    if (cookie != null)
                     {
-                        _cookies = new CookieContainer();
+                        if (_cookies == null)
+                        {
+                            _cookies = new CookieContainer();
+                        }
+                        foreach (string cookieValue in cookie)
+                        {
+                            string[] temp = cookieValue.Split(new string[] { "=" }, StringSplitOptions.None);
+                            _cookies.Add(new Uri("https://api.avatarrecovery.com/"), new Cookie(temp[0], $"{HttpUtility.UrlEncode(temp[1])}"));
+                        }
+                        CookieChecker.Enabled = false;
+                        StaticValues.Config.Config.CookiesValues = cookie;
+                        StaticValues.Config.Save();
+                        if (!this.Text.Contains("- Authed") && !this.Text.Contains("Not Authed"))
+                        {
+                            this.Text = $"{this.Text} - Authed";
+                        } else
+                        {
+                            this.Text = this.Text.Replace("Not Authed", "Authed");
+                        }
+                        MessageBox.Show("login successful");
                     }
-                    _cookies.Add(new Uri("https://api.avatarrecovery.com/"), new Cookie(".AspNetCore.Cookies", $"{HttpUtility.UrlEncode(StaticValues.Config.Config.CookieAuth)}"));
                 }
+            }
+            else
+            {
                 CookieChecker.Enabled = false;
-                MessageBox.Show("login successful");
+                MessageBox.Show("Program error, try either use a VPN or disconnect from VPN if already using one");
             }
         }
 
@@ -2710,23 +2740,7 @@ namespace ARC
             }
             catch { }
 
-            if (StaticValues.Config.Config.ViewerVersion != 4)
-            {
-                ArcClient.ClearOldViewer();
-                StaticValues.Config.Config.ViewerVersion = 4;
-                StaticValues.Config.Save();
-            }
-
-            try
-            {
-                ArcClient.ExtractViewer();
-            }
-            catch { }
-            try
-            {
-                ArcClient.ExtractRipper();
-            }
-            catch { }
+            
 
             if (File.Exists(SQLite._databaseLocation))
             {
@@ -2780,11 +2794,34 @@ namespace ARC
 
             SetupDocumentLocation();
 
+            if (StaticValues.Config.Config.ViewerVersion != 5)
+            {
+                ArcClient.ClearOldViewer();
+                StaticValues.Config.Config.ViewerVersion = 5;
+                StaticValues.Config.Save();
+            }
+
+            try
+            {
+                ArcClient.ExtractViewer();
+            }
+            catch { }
+            try
+            {
+                ArcClient.ExtractRipper();
+            }
+            catch { }
+
             _cookies = new CookieContainer();
 
-            if (StaticValues.Config.Config.CookieAuth != null && StaticValues.Config.Config.ApiKey != null)
+            if (StaticValues.Config.Config.CookiesValues != null && StaticValues.Config.Config.ApiKey != null)
             {
-                _cookies.Add(new Uri("https://api.avatarrecovery.com/"), new Cookie(".AspNetCore.Cookies", StaticValues.Config.Config.CookieAuth));
+                foreach (string cookieValue in StaticValues.Config.Config.CookiesValues)
+                {
+                    string[] temp = cookieValue.Split(new string[] { "=" }, StringSplitOptions.None);
+                    _cookies.Add(new Uri("https://api.avatarrecovery.com/"), new Cookie(temp[0], $"{HttpUtility.UrlEncode(temp[1])}"));
+                }
+                this.Text = $"{this.Text} - Authed";
             }
 
             DownloadRefresh.Enabled = true;

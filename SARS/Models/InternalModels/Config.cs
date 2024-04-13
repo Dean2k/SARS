@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Net;
 
 namespace ARC.Models.InternalModels
 {
@@ -8,7 +9,7 @@ namespace ARC.Models.InternalModels
         public string AuthKey { get; set; }
         public string TwoFactor { get; set; }
         public string ApiKey { get; set; }
-        public string CookieAuth { get; set; }
+        public string[] CookiesValues { get; set; }
         public string PreSelectedAvatarLocation { get; set; }
         public bool PreSelectedAvatarLocationChecked { get; set; }
         public string PreSelectedWorldLocation { get; set; }
