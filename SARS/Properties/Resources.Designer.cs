@@ -75,10 +75,11 @@ namespace ARC.Properties {
         ///nesrak1 for AssetsTools.NET:
         /// -https://github.com/nesrak1/AssetsTools.NET
         ///GitHub:
-        /// -https://github.com/Dean2k/ARC
+        /// -https://github.com/Dean2k/SARS
         ///Wanna join the community?
+        /// -https://discord.gg/avatarrecovery
         /// -https://discord.gg/XAQvXuaCcs
-        /// -https://avatarrecovery.com.
+        /// -ht [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string About {
             get {

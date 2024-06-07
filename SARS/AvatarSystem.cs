@@ -47,6 +47,9 @@ namespace ARC
         private string vrcaLocation = "";
         private CookieContainer _cookies;
         private string SystemName;
+        private string unity2019 = "2019.4.31f1";
+        private string unity2022 = "2022.3.6f1";
+        private string unity2022L = "2022.3.22f1";
 
         public AvatarSystem()
         {
@@ -75,6 +78,19 @@ namespace ARC
         private void AvatarSystem_Load(object sender, EventArgs e)
         {
             CheckFolders();
+            if (string.IsNullOrEmpty(StaticValues.Config.Config.DocumentLocation))
+            {
+                StaticValues.Config.Config.DocumentLocation = $"{Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments)}\\ARC\\";
+                StaticValues.Config.Save();
+                StaticValues.ArcDocuments = $"{Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments)}\\ARC\\";
+                StaticValues.VrcaDownloadFolder = $"{StaticValues.ArcDocuments}VRCA\\";
+                StaticValues.VrcwDownloadFolder = $"{StaticValues.ArcDocuments}VRCW\\";
+                StaticValues.ImagesDownloadFolder = $"{StaticValues.ArcDocuments}Images\\";
+                StaticValues.UnityProject = $"{StaticValues.ArcDocuments}Unity\\";
+                StaticValues.VrcaViewer = $"{StaticValues.ArcDocuments}Viewer\\";
+                StaticValues.AssetRipper = $"{StaticValues.ArcDocuments}AssetRipper\\";
+                StaticValues.ExtractedFiles = $"{StaticValues.ArcDocuments}ExtractedFiles\\";
+            }
         }
 
         private void CheckFav()
@@ -99,14 +115,15 @@ namespace ARC
             ArcClient.GetClientVersion(txtClientVersion, StaticValues.Config);
             ArcClient.GetLatestVersion();
 
-            if (string.IsNullOrEmpty(StaticValues.Config.Config.UnityLocation2022))
-            {
-                ArcClient.UnitySetup2022(StaticValues.Config);
-            }
 
             if (string.IsNullOrEmpty(StaticValues.Config.Config.UnityLocation2019))
             {
-                ArcClient.UnitySetup2019(StaticValues.Config);
+                StaticValues.Config.Config.UnityLocation2019= ArcClient.UnitySetup(unity2019);
+            }
+
+            if (string.IsNullOrEmpty(StaticValues.Config.Config.UnityLocation2022L))
+            {
+                StaticValues.Config.Config.UnityLocation2022L = ArcClient.UnitySetup(unity2022L);
             }
 
             if (string.IsNullOrEmpty(StaticValues.Config.Config.MacAddress))
@@ -144,10 +161,11 @@ namespace ARC
                     {
                         MessageBox.Show("VRChat credentials expired, please relogin");
                         DeleteLoginInfo();
-                        if(this.Text.Contains("- Authed"))
+                        if (this.Text.Contains("- Authed"))
                         {
                             this.Text.Replace(" - Authed", "- Not Authed");
-                        } else if(!this.Text.Contains("Not Authed"))
+                        }
+                        else if (!this.Text.Contains("Not Authed"))
                         {
                             this.Text = $"{this.Text} - Not Authed";
                         }
@@ -168,13 +186,9 @@ namespace ARC
             cacheFolderAuto = null;
             string limit = cbLimit.Text;
             bool avatar = true;
-            if (limit == "Max")
-            {
-                limit = "10000";
-            }
             if (limit == "")
             {
-                limit = "500";
+                limit = "5000";
             }
             if (_cookies == null)
             {
@@ -213,13 +227,16 @@ namespace ARC
             avatars = arcApi.AvatarSearch(avatarSearch, avatar, _cookies);
 
             avatarGrid.Rows.Clear();
-            if (avatars != null)
+            if (avatars != null && avatars.Count > 0)
             {
                 SendMessage(avatarGrid.Handle, WM_SETREDRAW, false, 0);
                 LoadData(false, avatar);
                 SendMessage(avatarGrid.Handle, WM_SETREDRAW, true, 0);
                 avatarGrid.Refresh();
                 LoadImages();
+            } else
+            {
+                MessageBox.Show("No results");
             }
         }
 
@@ -536,12 +553,7 @@ namespace ARC
             LoadStyle(cbThemeColour.Text);
         }
 
-        private void btnHotswap_Click(object sender, EventArgs e)
-        {
-            hotSwap("2022");
-        }
-
-        private async Task<bool> hotSwap(string version)
+        private async Task<bool> hotSwap()
         {
             if (_vrcaThread != null)
             {
@@ -608,40 +620,25 @@ namespace ARC
             }
             catch { languageCode = "en"; }
 
-            if (version == "2022")
-            {
-                _vrcaThread = new Thread(() => HotSwap.HotswapProcess(StaticValues.Config.Config.HotSwapName2022, fileLocation, hotSwapConsole.txtStatusText, hotSwapConsole.pbProgress, inputName, chkUnlockPassword.Checked, chkAdvanceUnlock.Checked, StaticValues.Config.Config.ApiKey, chkTranslate.Checked, languageCode, chkAdvancedDic.Checked));
-                _vrcaThread.Start();
-            }
-            else
-            {
-                _vrcaThread = new Thread(() => HotSwap.HotswapProcess(StaticValues.Config.Config.HotSwapName2019, fileLocation, hotSwapConsole.txtStatusText, hotSwapConsole.pbProgress, inputName, chkUnlockPassword.Checked, chkAdvanceUnlock.Checked, StaticValues.Config.Config.ApiKey, chkTranslate.Checked, languageCode, chkAdvancedDic.Checked));
-                _vrcaThread.Start();
-            }
+            _vrcaThread = new Thread(() => HotSwap.HotswapProcess(fileLocation, hotSwapConsole.txtStatusText, hotSwapConsole.pbProgress, inputName, chkUnlockPassword.Checked, chkAdvanceUnlock.Checked, StaticValues.Config.Config.ApiKey, chkTranslate.Checked, languageCode, chkAdvancedDic.Checked, StaticValues.Config.Config.UnityLocation2019, StaticValues.Config.Config.UnityLocation2022L, StaticValues.Config.Config.HotSwapName2019, StaticValues.Config.Config.HotSwapName2022L, StaticValues.Config.Config.DocumentLocation, chkUnityOpen.Checked));
+            _vrcaThread.Start();
 
             return true;
         }
 
-        private void btnUnity_Click(object sender, EventArgs e)
+        private void unityExtract(string hotswapName)
         {
             var tempFolder = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData)
                 .Replace("\\Roaming", "");
-            var unityTemp = $"\\Local\\Temp\\DefaultCompany\\{StaticValues.Config.Config.HotSwapName2022}";
-            var unityTemp2 = $"\\LocalLow\\Temp\\DefaultCompany\\{StaticValues.Config.Config.HotSwapName2022}";
+            var unityTemp = $"\\Local\\Temp\\DefaultCompany\\{hotswapName}";
+            var unityTemp2 = $"\\LocalLow\\Temp\\DefaultCompany\\{hotswapName}";
 
             RandomFunctions.tryDeleteDirectory(tempFolder + unityTemp);
             RandomFunctions.tryDeleteDirectory(tempFolder + unityTemp2);
 
-            if (StaticValues.Config.Config.HsbVersion2022 != 4)
-            {
-                ArcClient.CleanHsb(StaticValues.Config);
-                StaticValues.Config.Config.HsbVersion2022 = 4;
-                StaticValues.Config.Save();
-            }
-
-            AvatarFunctions.ExtractHSB(StaticValues.Config.Config.HotSwapName2022, false);
-            ArcClient.CopyFiles(StaticValues.Config);
-            RandomFunctions.OpenUnity(StaticValues.Config.Config.UnityLocation2022, StaticValues.Config.Config.HotSwapName2022);
+            AvatarFunctions.ExtractHSB(hotswapName, false);
+            ArcClient.CopyFiles(hotswapName, StaticValues.Config.Config.DocumentLocation);
+            //RandomFunctions.OpenUnity(StaticValues.Config.Config.UnityLocation2022, StaticValues.Config.Config.HotSwapName2022);
         }
 
         private void avatarGrid_CellPainting(object sender, DataGridViewCellPaintingEventArgs e)
@@ -676,27 +673,30 @@ namespace ARC
         {
             try
             {
-                ArcClient.CopyFiles(StaticValues.Config);
+                ArcClient.CopyFiles(StaticValues.Config.Config.HotSwapName2019, StaticValues.Config.Config.DocumentLocation);
             }
             catch { }
             try
             {
-                ArcClient.CopyFiles2019(StaticValues.Config);
+                ArcClient.CopyFiles(StaticValues.Config.Config.HotSwapName2022L, StaticValues.Config.Config.DocumentLocation);
             }
             catch { }
         }
 
         private void btnHsbClean_Click(object sender, EventArgs e)
         {
-            ArcClient.CleanHsb(StaticValues.Config);
             ArcClient.CleanHsb2019(StaticValues.Config);
-            AvatarFunctions.ExtractHSB(StaticValues.Config.Config.HotSwapName2022, true);
+            ArcClient.CleanHsb2022L(StaticValues.Config);
             AvatarFunctions.ExtractHSB2019(StaticValues.Config.Config.HotSwapName2019, true);
+            AvatarFunctions.ExtractHSB2022L(StaticValues.Config.Config.HotSwapName2022L, true);
         }
+
+        private string previousSelectedFolder = null;
 
         private void btnLoadVRCA_Click(object sender, EventArgs e)
         {
-            vrcaLocation = SelectFileVrca();
+            vrcaLocation = SelectFileVrca(previousSelectedFolder);
+            previousSelectedFolder = vrcaLocation;
             if (!string.IsNullOrEmpty(vrcaLocation) && chkAdditional.Checked)
             {
                 DecompressToFileStr(vrcaLocation);
@@ -743,13 +743,18 @@ namespace ARC
         }
 
 
-        private string SelectFileVrca()
+        private string SelectFileVrca(string directory)
         {
             var filePath = string.Empty;
+            
+            if(directory == null)
+            {
+                directory = "C:\\";
+            }
 
             using (var openFileDialog = new OpenFileDialog())
             {
-                openFileDialog.InitialDirectory = "c:\\";
+                openFileDialog.InitialDirectory = directory;
                 openFileDialog.Filter = "vrca files (*.vrca)|*.vrca|vrcw files (*.vrcw)|*.vrcw";
                 openFileDialog.RestoreDirectory = true;
 
@@ -1273,11 +1278,6 @@ namespace ARC
         private void btn2FA_Click(object sender, EventArgs e)
         {
             Process.Start("https://support.google.com/accounts/answer/1066447?hl=en&ref_topic=2954345");
-        }
-
-        private void btnUnityLoc_Click_1(object sender, EventArgs e)
-        {
-            ArcClient.SelectFile2022(StaticValues.Config);
         }
 
         private void nmPcVersion_ValueChanged(object sender, EventArgs e)
@@ -2196,7 +2196,7 @@ namespace ARC
             {
                 if (avatarGrid.SelectedRows[0].Cells[3].Value.ToString().StartsWith("avtr_"))
                 {
-                    hotSwap("2022");
+                    hotSwap();
                 }
                 else
                 {
@@ -2211,7 +2211,7 @@ namespace ARC
             {
                 if (avatarGrid.SelectedRows[0].Cells[3].Value.ToString().StartsWith("avtr_"))
                 {
-                    hotSwap("2019");
+                    hotSwap();
                 }
                 else
                 {
@@ -2296,7 +2296,7 @@ namespace ARC
                 }
                 catch (Exception ex) { Console.WriteLine(ex.Message); }
 
-                
+
 
                 string[] lines = File.ReadAllLines(filePathAvatar);
                 foreach (string line in lines)
@@ -2494,36 +2494,31 @@ namespace ARC
             Process.Start("https://ko-fi.com/ShrekamusChrist");
         }
 
-        private void btnUnity2019_Click(object sender, EventArgs e)
-        {
-            var tempFolder = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData)
-                .Replace("\\Roaming", "");
-            var unityTemp = $"\\Local\\Temp\\DefaultCompany\\{StaticValues.Config.Config.HotSwapName2022}";
-            var unityTemp2 = $"\\LocalLow\\Temp\\DefaultCompany\\{StaticValues.Config.Config.HotSwapName2019}";
-
-            RandomFunctions.tryDeleteDirectory(tempFolder + unityTemp);
-            RandomFunctions.tryDeleteDirectory(tempFolder + unityTemp2);
-
-            if (StaticValues.Config.Config.HsbVersion2019 != 1)
-            {
-                ArcClient.CleanHsb2019(StaticValues.Config);
-                StaticValues.Config.Config.HsbVersion2019 = 1;
-                StaticValues.Config.Save();
-            }
-
-            AvatarFunctions.ExtractHSB2019(StaticValues.Config.Config.HotSwapName2019, false);
-            ArcClient.CopyFiles2019(StaticValues.Config);
-            RandomFunctions.OpenUnity(StaticValues.Config.Config.UnityLocation2019, StaticValues.Config.Config.HotSwapName2019);
-        }
-
         private void btnHotswap2019_Click(object sender, EventArgs e)
         {
-            hotSwap("2019");
+            string filePath = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
+            if (!Directory.Exists($"{StaticValues.ArcDocuments}{StaticValues.Config.Config.HotSwapName2022L}"))
+            {
+                AvatarFunctions.ExtractData2022L(StaticValues.Config.Config.HotSwapName2022L, $"{filePath}");
+            }
+            if (!Directory.Exists($"{StaticValues.ArcDocuments}{StaticValues.Config.Config.HotSwapName2019}"))
+            {
+                AvatarFunctions.ExtractData2019(StaticValues.Config.Config.HotSwapName2019, $"{filePath}");
+            }
+            hotSwap();
         }
 
         private void btnChangeUnity2019_Click(object sender, EventArgs e)
         {
-            ArcClient.SelectFile2019(StaticValues.Config);
+            try
+            {
+                MessageBoxManager.Yes = "Yes";
+                MessageBoxManager.No = "No";
+                MessageBoxManager.Register();
+            }
+            catch { }
+            StaticValues.Config.Config.UnityLocation2019 = ArcClient.UnitySetup(unity2019);
+            StaticValues.Config.Save();
         }
 
         private void chkUnlockPassword_CheckedChanged(object sender, EventArgs e)
@@ -2662,7 +2657,7 @@ namespace ARC
                         foreach (string cookieValue in cookie)
                         {
                             string[] temp = cookieValue.Split(new string[] { "=" }, StringSplitOptions.None);
-                            _cookies.Add(new Uri("https://api.avatarrecovery.com/"), new Cookie(temp[0], $"{HttpUtility.UrlEncode(temp[1])}"));
+                            _cookies.Add(new Uri("https://api.avatarrecovery.com/"), new Cookie(HttpUtility.UrlEncode(temp[0]), $"{HttpUtility.UrlEncode(temp[1])}"));
                         }
                         CookieChecker.Enabled = false;
                         StaticValues.Config.Config.CookiesValues = cookie;
@@ -2670,7 +2665,8 @@ namespace ARC
                         if (!this.Text.Contains("- Authed") && !this.Text.Contains("Not Authed"))
                         {
                             this.Text = $"{this.Text} - Authed";
-                        } else
+                        }
+                        else
                         {
                             this.Text = this.Text.Replace("Not Authed", "Authed");
                         }
@@ -2706,7 +2702,7 @@ namespace ARC
                 this.Text = SystemName;
                 txtAbout.Text = Resources.About;
                 cbSearchTerm.SelectedIndex = 0;
-                cbLimit.SelectedIndex = 3;
+                cbLimit.SelectedIndex = 5;
                 tabControl.SelectedIndex = 0;
                 arcApi = new ArcApi(fileVersionInfo.FileVersion);
             }
@@ -2715,10 +2711,10 @@ namespace ARC
             SetupConfig();
             LoadSettings();
 
-            if (string.IsNullOrEmpty(StaticValues.Config.Config.HotSwapName2022))
+            if (string.IsNullOrEmpty(StaticValues.Config.Config.HotSwapName2022L))
             {
                 int randomAmount = RandomFunctions.random.Next(8);
-                StaticValues.Config.Config.HotSwapName2022 = RandomFunctions.RandomString(randomAmount);
+                StaticValues.Config.Config.HotSwapName2022L = RandomFunctions.RandomString(randomAmount);
                 StaticValues.Config.Save();
             }
 
@@ -2740,7 +2736,7 @@ namespace ARC
             }
             catch { }
 
-            
+
 
             if (File.Exists(SQLite._databaseLocation))
             {
@@ -2922,6 +2918,20 @@ namespace ARC
                 ArcClient.ExtractViewer();
                 ArcClient.ExtractRipper();
             }
+
+            if (string.IsNullOrEmpty(StaticValues.Config.Config.DocumentLocation))
+            {
+                StaticValues.Config.Config.DocumentLocation = $"{Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments)}\\ARC\\";
+                StaticValues.Config.Save();
+                StaticValues.ArcDocuments = $"{Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments)}\\ARC\\";
+                StaticValues.VrcaDownloadFolder = $"{StaticValues.ArcDocuments}VRCA\\";
+                StaticValues.VrcwDownloadFolder = $"{StaticValues.ArcDocuments}VRCW\\";
+                StaticValues.ImagesDownloadFolder = $"{StaticValues.ArcDocuments}Images\\";
+                StaticValues.UnityProject = $"{StaticValues.ArcDocuments}Unity\\";
+                StaticValues.VrcaViewer = $"{StaticValues.ArcDocuments}Viewer\\";
+                StaticValues.AssetRipper = $"{StaticValues.ArcDocuments}AssetRipper\\";
+                StaticValues.ExtractedFiles = $"{StaticValues.ArcDocuments}ExtractedFiles\\";
+            }
         }
 
         private void SetupNewLocation()
@@ -2950,6 +2960,64 @@ namespace ARC
             StaticValues.VrcaViewer = $"{StaticValues.ArcDocuments}Viewer\\";
             StaticValues.AssetRipper = $"{StaticValues.ArcDocuments}AssetRipper\\";
             StaticValues.ExtractedFiles = $"{StaticValues.ArcDocuments}ExtractedFiles\\";
+        }
+
+        private void btnUnityLocation2022L_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                MessageBoxManager.Yes = "Yes";
+                MessageBoxManager.No = "No";
+                MessageBoxManager.Register();
+            }
+            catch { }
+            StaticValues.Config.Config.UnityLocation2022L = ArcClient.UnitySetup(unity2022L);
+            StaticValues.Config.Save();
+        }
+
+        private void btnOpen2019_Click(object sender, EventArgs e)
+        {
+            OpenUnity(StaticValues.Config.Config.UnityLocation2019, StaticValues.Config.Config.HotSwapName2019, StaticValues.Config.Config.DocumentLocation);
+        }
+
+        private void OpenUnity(string unityLocation, string hotswapName, string arcDocuments)
+        {
+            var tempFolder = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData)
+                .Replace("\\Roaming", "");
+
+            CopyFiles(arcDocuments, hotswapName);
+
+            string commands = string.Format("/C \"{0}\" -ProjectPath " + hotswapName, unityLocation);
+
+            Process process = new Process();
+            ProcessStartInfo processStartInfo = new ProcessStartInfo
+            {
+                FileName = "CMD.EXE",
+                Arguments = commands,
+                WorkingDirectory = arcDocuments,
+                WindowStyle = ProcessWindowStyle.Hidden,
+            };
+            process.StartInfo = processStartInfo;
+            process.Start();
+        }
+
+        public void CopyFiles(string arcDocuments, string hotswapName)
+        {
+            try
+            {
+                File.Copy($@"{AppContext.BaseDirectory}\Template\Scene.unity", $"{arcDocuments}\\{hotswapName}\\Assets\\Scene.unity", true);
+            }
+            catch (Exception ex)
+            {
+
+                Console.WriteLine(ex.Message);
+
+            }
+        }
+
+        private void btnOpen2022L_Click(object sender, EventArgs e)
+        {
+            OpenUnity(StaticValues.Config.Config.UnityLocation2022L, StaticValues.Config.Config.HotSwapName2022L, StaticValues.Config.Config.DocumentLocation);
         }
     }
 }

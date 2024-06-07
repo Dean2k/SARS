@@ -43,6 +43,31 @@ namespace ARC.Modules
             }
         }
 
+        public static void ExtractHSB2022L(string hotSwapName, bool bypassCheck)
+        {
+            string filePath = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
+            if (bypassCheck)
+            {
+                ExtractData2022L(hotSwapName, filePath);
+            }
+            else if (!Directory.Exists($"{StaticValues.ArcDocuments}\\{hotSwapName}\\"))
+            {
+                ExtractData2022L(hotSwapName, filePath);
+            }
+        }
+
+        public static void ExtractData2022L(string hotSwapName, string filePath)
+        {
+            ZipFile.ExtractToDirectory($@"{filePath}\Assets\ARC2022L.zip", $"{StaticValues.ArcDocuments}\\{hotSwapName}");
+            try
+            {
+                string text = File.ReadAllText($"{StaticValues.ArcDocuments}\\{hotSwapName}\\ProjectSettings\\ProjectSettings.asset");
+                text = text.Replace("newpack", hotSwapName);
+                File.WriteAllText($"{StaticValues.ArcDocuments}{hotSwapName}\\ProjectSettings\\ProjectSettings.asset", text);
+            }
+            catch { }
+        }
+
         public static void ExtractData(string hotSwapName, string filePath)
         {
             ZipFile.ExtractToDirectory($@"{filePath}\Assets\ARC.zip", $"{StaticValues.ArcDocuments}\\{hotSwapName}");

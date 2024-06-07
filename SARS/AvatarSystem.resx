@@ -123,7 +123,7 @@
   </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="btnToggleFavorite.Location" type="System.Drawing.Point, System.Drawing">
-    <value>251, 445</value>
+    <value>251, 427</value>
   </data>
   <data name="btnToggleFavorite.Size" type="System.Drawing.Size, System.Drawing">
     <value>120, 35</value>
@@ -151,7 +151,7 @@
     <value>Bottom, Left</value>
   </data>
   <data name="btnSearchFavorites.Location" type="System.Drawing.Point, System.Drawing">
-    <value>125, 445</value>
+    <value>125, 427</value>
   </data>
   <data name="btnSearchFavorites.Size" type="System.Drawing.Size, System.Drawing">
     <value>120, 35</value>
@@ -181,10 +181,10 @@
     <value>23</value>
   </data>
   <data name="cbLimit.Items" xml:space="preserve">
-    <value>Max</value>
+    <value>5000</value>
   </data>
   <data name="cbLimit.Items1" xml:space="preserve">
-    <value>5000</value>
+    <value>2000</value>
   </data>
   <data name="cbLimit.Items2" xml:space="preserve">
     <value>1000</value>
@@ -226,7 +226,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;cbLimit.ZOrder" xml:space="preserve">
-    <value>14</value>
+    <value>12</value>
   </data>
   <data name="txtSearchTerm.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Left, Right</value>
@@ -268,13 +268,13 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;txtSearchTerm.ZOrder" xml:space="preserve">
-    <value>15</value>
+    <value>13</value>
   </data>
   <data name="btnRipped.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Bottom, Left</value>
   </data>
   <data name="btnRipped.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 445</value>
+    <value>0, 427</value>
   </data>
   <data name="btnRipped.Size" type="System.Drawing.Size, System.Drawing">
     <value>120, 35</value>
@@ -322,7 +322,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;btnViewDetails.ZOrder" xml:space="preserve">
-    <value>16</value>
+    <value>14</value>
   </data>
   <data name="btnSearch.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Right</value>
@@ -349,7 +349,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;btnSearch.ZOrder" xml:space="preserve">
-    <value>17</value>
+    <value>15</value>
   </data>
   <data name="cbSearchTerm.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Left, Right</value>
@@ -394,7 +394,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;cbSearchTerm.ZOrder" xml:space="preserve">
-    <value>18</value>
+    <value>16</value>
   </data>
   <data name="chkQuest.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -421,7 +421,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;chkQuest.ZOrder" xml:space="preserve">
-    <value>19</value>
+    <value>17</value>
   </data>
   <data name="chkPC.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -448,7 +448,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;chkPC.ZOrder" xml:space="preserve">
-    <value>20</value>
+    <value>18</value>
   </data>
   <data name="chkPrivate.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -475,7 +475,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;chkPrivate.ZOrder" xml:space="preserve">
-    <value>21</value>
+    <value>19</value>
   </data>
   <data name="chkPublic.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -502,7 +502,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;chkPublic.ZOrder" xml:space="preserve">
-    <value>22</value>
+    <value>20</value>
   </data>
   <data name="lblAvatarCount.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -529,7 +529,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;lblAvatarCount.ZOrder" xml:space="preserve">
-    <value>23</value>
+    <value>21</value>
   </data>
   <data name="lblCount.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -556,7 +556,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;lblCount.ZOrder" xml:space="preserve">
-    <value>24</value>
+    <value>22</value>
   </data>
   <data name="lblFilter.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -583,7 +583,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;lblFilter.ZOrder" xml:space="preserve">
-    <value>25</value>
+    <value>23</value>
   </data>
   <data name="lblSearchType.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -610,7 +610,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;lblSearchType.ZOrder" xml:space="preserve">
-    <value>26</value>
+    <value>24</value>
   </data>
   <data name="lblSearchTerm.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -637,7 +637,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;lblSearchTerm.ZOrder" xml:space="preserve">
-    <value>27</value>
+    <value>25</value>
   </data>
   <data name="btnPreview.Location" type="System.Drawing.Point, System.Drawing">
     <value>34, 214</value>
@@ -661,7 +661,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;btnPreview.ZOrder" xml:space="preserve">
-    <value>12</value>
+    <value>10</value>
   </data>
   <data name="btnDownload.Location" type="System.Drawing.Point, System.Drawing">
     <value>171, 214</value>
@@ -691,7 +691,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;btnDownload.ZOrder" xml:space="preserve">
-    <value>13</value>
+    <value>11</value>
   </data>
   <data name="btnResetScene.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Right</value>
@@ -724,7 +724,7 @@
     <value>Bottom, Left</value>
   </data>
   <data name="btnBrowserView.Location" type="System.Drawing.Point, System.Drawing">
-    <value>377, 445</value>
+    <value>377, 427</value>
   </data>
   <data name="btnBrowserView.Size" type="System.Drawing.Size, System.Drawing">
     <value>120, 35</value>
@@ -747,68 +747,11 @@
   <data name="&gt;&gt;btnBrowserView.ZOrder" xml:space="preserve">
     <value>7</value>
   </data>
-  <data name="btnHotswap.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Top, Right</value>
-  </data>
-  <data name="btnHotswap.Location" type="System.Drawing.Point, System.Drawing">
-    <value>626, 214</value>
-  </data>
-  <data name="btnHotswap.Size" type="System.Drawing.Size, System.Drawing">
-    <value>120, 35</value>
-  </data>
-  <data name="btnHotswap.TabIndex" type="System.Int32, mscorlib">
-    <value>76</value>
-  </data>
-  <data name="btnHotswap.Text" xml:space="preserve">
-    <value>HotSwap 2022</value>
-  </data>
-  <data name="&gt;&gt;btnHotswap.Name" xml:space="preserve">
-    <value>btnHotswap</value>
-  </data>
-  <data name="&gt;&gt;btnHotswap.Type" xml:space="preserve">
-    <value>MetroFramework.Controls.MetroButton, MetroFramework, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a</value>
-  </data>
-  <data name="&gt;&gt;btnHotswap.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;btnHotswap.ZOrder" xml:space="preserve">
-    <value>10</value>
-  </data>
-  <data name="btnUnity.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Top, Right</value>
-  </data>
-  <data name="btnUnity.Location" type="System.Drawing.Point, System.Drawing">
-    <value>627, 164</value>
-  </data>
-  <data name="btnUnity.Size" type="System.Drawing.Size, System.Drawing">
-    <value>119, 35</value>
-  </data>
-  <data name="btnUnity.TabIndex" type="System.Int32, mscorlib">
-    <value>75</value>
-  </data>
-  <data name="btnUnity.Text" xml:space="preserve">
-    <value>Open Unity 2022</value>
-  </data>
-  <data name="btnUnity.ToolTip" xml:space="preserve">
-    <value>Avatars</value>
-  </data>
-  <data name="&gt;&gt;btnUnity.Name" xml:space="preserve">
-    <value>btnUnity</value>
-  </data>
-  <data name="&gt;&gt;btnUnity.Type" xml:space="preserve">
-    <value>MetroFramework.Controls.MetroButton, MetroFramework, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a</value>
-  </data>
-  <data name="&gt;&gt;btnUnity.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;btnUnity.ZOrder" xml:space="preserve">
-    <value>11</value>
-  </data>
   <data name="lblQuestVersion.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
   <data name="lblQuestVersion.Location" type="System.Drawing.Point, System.Drawing">
-    <value>469, 204</value>
+    <value>436, 203</value>
   </data>
   <data name="lblQuestVersion.Size" type="System.Drawing.Size, System.Drawing">
     <value>100, 19</value>
@@ -835,7 +778,7 @@
     <value>True</value>
   </data>
   <data name="lblPCVersion.Location" type="System.Drawing.Point, System.Drawing">
-    <value>328, 204</value>
+    <value>310, 203</value>
   </data>
   <data name="lblPCVersion.Size" type="System.Drawing.Size, System.Drawing">
     <value>80, 19</value>
@@ -862,10 +805,10 @@
     <value>Microsoft Sans Serif, 12pt</value>
   </data>
   <data name="nmQuestVersion.Location" type="System.Drawing.Point, System.Drawing">
-    <value>464, 223</value>
+    <value>436, 223</value>
   </data>
   <data name="nmQuestVersion.Size" type="System.Drawing.Size, System.Drawing">
-    <value>130, 26</value>
+    <value>120, 26</value>
   </data>
   <data name="nmQuestVersion.TabIndex" type="System.Int32, mscorlib">
     <value>80</value>
@@ -886,10 +829,10 @@
     <value>Microsoft Sans Serif, 12pt</value>
   </data>
   <data name="nmPcVersion.Location" type="System.Drawing.Point, System.Drawing">
-    <value>318, 223</value>
+    <value>310, 223</value>
   </data>
   <data name="nmPcVersion.Size" type="System.Drawing.Size, System.Drawing">
-    <value>129, 26</value>
+    <value>120, 26</value>
   </data>
   <data name="nmPcVersion.TabIndex" type="System.Int32, mscorlib">
     <value>79</value>
@@ -948,6 +891,36 @@
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
     <value>899, 816</value>
   </data>
+  <data name="chkUnityOpen.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="chkUnityOpen.Location" type="System.Drawing.Point, System.Drawing">
+    <value>732, 205</value>
+  </data>
+  <data name="chkUnityOpen.Size" type="System.Drawing.Size, System.Drawing">
+    <value>157, 19</value>
+  </data>
+  <data name="chkUnityOpen.TabIndex" type="System.Int32, mscorlib">
+    <value>100</value>
+  </data>
+  <data name="chkUnityOpen.Text" xml:space="preserve">
+    <value>Unity Already Open</value>
+  </data>
+  <data name="chkUnityOpen.ToolTip" xml:space="preserve">
+    <value>Use this when you already know the unity version and have the correct unity version open</value>
+  </data>
+  <data name="&gt;&gt;chkUnityOpen.Name" xml:space="preserve">
+    <value>chkUnityOpen</value>
+  </data>
+  <data name="&gt;&gt;chkUnityOpen.Type" xml:space="preserve">
+    <value>MetroFramework.Controls.MetroCheckBox, MetroFramework, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a</value>
+  </data>
+  <data name="&gt;&gt;chkUnityOpen.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;chkUnityOpen.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
   <data name="btnAddPublic.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Right</value>
   </data>
@@ -973,13 +946,13 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;btnAddPublic.ZOrder" xml:space="preserve">
-    <value>0</value>
+    <value>1</value>
   </data>
   <data name="btnHotswap2019.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Right</value>
   </data>
   <data name="btnHotswap2019.Location" type="System.Drawing.Point, System.Drawing">
-    <value>749, 214</value>
+    <value>750, 164</value>
   </data>
   <data name="btnHotswap2019.Size" type="System.Drawing.Size, System.Drawing">
     <value>120, 35</value>
@@ -988,7 +961,7 @@
     <value>98</value>
   </data>
   <data name="btnHotswap2019.Text" xml:space="preserve">
-    <value>HotSwap 2019</value>
+    <value>HotSwap</value>
   </data>
   <data name="&gt;&gt;btnHotswap2019.Name" xml:space="preserve">
     <value>btnHotswap2019</value>
@@ -1000,36 +973,6 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;btnHotswap2019.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="btnUnity2019.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Top, Right</value>
-  </data>
-  <data name="btnUnity2019.Location" type="System.Drawing.Point, System.Drawing">
-    <value>750, 164</value>
-  </data>
-  <data name="btnUnity2019.Size" type="System.Drawing.Size, System.Drawing">
-    <value>119, 35</value>
-  </data>
-  <data name="btnUnity2019.TabIndex" type="System.Int32, mscorlib">
-    <value>97</value>
-  </data>
-  <data name="btnUnity2019.Text" xml:space="preserve">
-    <value>Open Unity 2019</value>
-  </data>
-  <data name="btnUnity2019.ToolTip" xml:space="preserve">
-    <value>Avatars</value>
-  </data>
-  <data name="&gt;&gt;btnUnity2019.Name" xml:space="preserve">
-    <value>btnUnity2019</value>
-  </data>
-  <data name="&gt;&gt;btnUnity2019.Type" xml:space="preserve">
-    <value>MetroFramework.Controls.MetroButton, MetroFramework, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a</value>
-  </data>
-  <data name="&gt;&gt;btnUnity2019.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;btnUnity2019.ZOrder" xml:space="preserve">
     <value>2</value>
   </data>
   <data name="chkContains.AutoSize" type="System.Boolean, mscorlib">
@@ -1150,7 +1093,7 @@
     <value>Vertical</value>
   </data>
   <data name="avatarGrid.Size" type="System.Drawing.Size, System.Drawing">
-    <value>840, 439</value>
+    <value>840, 421</value>
   </data>
   <data name="avatarGrid.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
@@ -1189,7 +1132,7 @@
     <value>False</value>
   </data>
   <data name="txtAvatarSizeQuest.Location" type="System.Drawing.Point, System.Drawing">
-    <value>710, 454</value>
+    <value>710, 436</value>
   </data>
   <data name="txtAvatarSizeQuest.Size" type="System.Drawing.Size, System.Drawing">
     <value>129, 29</value>
@@ -1216,7 +1159,7 @@
     <value>True</value>
   </data>
   <data name="metroLabel9.Location" type="System.Drawing.Point, System.Drawing">
-    <value>710, 436</value>
+    <value>710, 418</value>
   </data>
   <data name="metroLabel9.Size" type="System.Drawing.Size, System.Drawing">
     <value>127, 19</value>
@@ -1246,7 +1189,7 @@
     <value>True</value>
   </data>
   <data name="metroLabel8.Location" type="System.Drawing.Point, System.Drawing">
-    <value>573, 435</value>
+    <value>573, 417</value>
   </data>
   <data name="metroLabel8.Size" type="System.Drawing.Size, System.Drawing">
     <value>107, 19</value>
@@ -1291,7 +1234,7 @@
     <value>False</value>
   </data>
   <data name="txtAvatarSizePc.Location" type="System.Drawing.Point, System.Drawing">
-    <value>563, 454</value>
+    <value>563, 436</value>
   </data>
   <data name="txtAvatarSizePc.Size" type="System.Drawing.Size, System.Drawing">
     <value>129, 29</value>
@@ -1312,10 +1255,10 @@
     <value>6</value>
   </data>
   <data name="metroTabPage1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 38</value>
+    <value>4, 35</value>
   </data>
   <data name="metroTabPage1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>840, 510</value>
+    <value>840, 513</value>
   </data>
   <data name="metroTabPage1.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -2092,10 +2035,10 @@
     <value>NoControl</value>
   </data>
   <data name="resource.Location4" type="System.Drawing.Point, System.Drawing">
-    <value>428, 1</value>
+    <value>434, 1</value>
   </data>
   <data name="resource.Size4" type="System.Drawing.Size, System.Drawing">
-    <value>405, 405</value>
+    <value>399, 399</value>
   </data>
   <data name="resource.TabIndex4" type="System.Int32, mscorlib">
     <value>1</value>
@@ -2107,7 +2050,7 @@
     <value>3, 67</value>
   </data>
   <data name="txtAbout.Size" type="System.Drawing.Size, System.Drawing">
-    <value>834, 407</value>
+    <value>834, 401</value>
   </data>
   <data name="txtAbout.TabIndex" type="System.Int32, mscorlib">
     <value>57</value>
@@ -2179,10 +2122,10 @@
     <value>12</value>
   </data>
   <data name="metroTabPage3.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 38</value>
+    <value>4, 35</value>
   </data>
   <data name="metroTabPage3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>840, 510</value>
+    <value>840, 513</value>
   </data>
   <data name="metroTabPage3.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
@@ -2260,7 +2203,7 @@
     <value>True</value>
   </data>
   <data name="chkSelfAvatars.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 418</value>
+    <value>3, 415</value>
   </data>
   <data name="chkSelfAvatars.Size" type="System.Drawing.Size, System.Drawing">
     <value>228, 19</value>
@@ -2293,7 +2236,7 @@
     <value>True</value>
   </data>
   <data name="chkAutoScan.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 402</value>
+    <value>3, 399</value>
   </data>
   <data name="chkAutoScan.Size" type="System.Drawing.Size, System.Drawing">
     <value>277, 19</value>
@@ -2320,7 +2263,7 @@
     <value>Bottom, Right</value>
   </data>
   <data name="btnGetScreenshots.Location" type="System.Drawing.Point, System.Drawing">
-    <value>591, 402</value>
+    <value>591, 399</value>
   </data>
   <data name="btnGetScreenshots.Size" type="System.Drawing.Size, System.Drawing">
     <value>120, 35</value>
@@ -2347,7 +2290,7 @@
     <value>Bottom, Right</value>
   </data>
   <data name="btnScanCacheFolder.Location" type="System.Drawing.Point, System.Drawing">
-    <value>717, 402</value>
+    <value>717, 399</value>
   </data>
   <data name="btnScanCacheFolder.Size" type="System.Drawing.Size, System.Drawing">
     <value>120, 35</value>
@@ -2383,7 +2326,7 @@
     <value>NoControl</value>
   </data>
   <data name="resource.Location5" type="System.Drawing.Point, System.Drawing">
-    <value>455, 2</value>
+    <value>457, 1</value>
   </data>
   <data name="resource.Size5" type="System.Drawing.Size, System.Drawing">
     <value>379, 379</value>
@@ -2398,7 +2341,7 @@
     <value>3, 12</value>
   </data>
   <data name="txtCacheScannerLog.Size" type="System.Drawing.Size, System.Drawing">
-    <value>837, 384</value>
+    <value>837, 381</value>
   </data>
   <data name="txtCacheScannerLog.TabIndex" type="System.Int32, mscorlib">
     <value>69</value>
@@ -2758,7 +2701,7 @@
     <value>True</value>
   </data>
   <data name="metroLabel21.Location" type="System.Drawing.Point, System.Drawing">
-    <value>597, 463</value>
+    <value>597, 451</value>
   </data>
   <data name="metroLabel21.Size" type="System.Drawing.Size, System.Drawing">
     <value>240, 19</value>
@@ -2788,7 +2731,7 @@
     <value>True</value>
   </data>
   <data name="chkAutoRefreshDownload.Location" type="System.Drawing.Point, System.Drawing">
-    <value>199, 390</value>
+    <value>199, 378</value>
   </data>
   <data name="chkAutoRefreshDownload.Size" type="System.Drawing.Size, System.Drawing">
     <value>232, 19</value>
@@ -2815,7 +2758,7 @@
     <value>Bottom</value>
   </data>
   <data name="btnUpdate.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 381</value>
+    <value>3, 369</value>
   </data>
   <data name="btnUpdate.Size" type="System.Drawing.Size, System.Drawing">
     <value>191, 35</value>
@@ -2848,7 +2791,7 @@
     <value>True</value>
   </data>
   <data name="metroLabel5.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 419</value>
+    <value>4, 407</value>
   </data>
   <data name="metroLabel5.Size" type="System.Drawing.Size, System.Drawing">
     <value>723, 76</value>
@@ -2878,7 +2821,7 @@ you don't risk your account)
     <value>Bottom</value>
   </data>
   <data name="btnDownloadSafe.Location" type="System.Drawing.Point, System.Drawing">
-    <value>647, 381</value>
+    <value>647, 369</value>
   </data>
   <data name="btnDownloadSafe.Size" type="System.Drawing.Size, System.Drawing">
     <value>191, 35</value>
@@ -2941,7 +2884,7 @@ you don't risk your account)
     <value>Vertical</value>
   </data>
   <data name="dgSafeDownload.Size" type="System.Drawing.Size, System.Drawing">
-    <value>840, 379</value>
+    <value>840, 367</value>
   </data>
   <data name="dgSafeDownload.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
@@ -2982,6 +2925,87 @@ you don't risk your account)
   <data name="&gt;&gt;metroTabPage7.ZOrder" xml:space="preserve">
     <value>6</value>
   </data>
+  <data name="btnOpen2022L.Location" type="System.Drawing.Point, System.Drawing">
+    <value>263, 396</value>
+  </data>
+  <data name="btnOpen2022L.Size" type="System.Drawing.Size, System.Drawing">
+    <value>244, 35</value>
+  </data>
+  <data name="btnOpen2022L.TabIndex" type="System.Int32, mscorlib">
+    <value>111</value>
+  </data>
+  <data name="btnOpen2022L.Text" xml:space="preserve">
+    <value>Open Unity 2022.3.22f1</value>
+  </data>
+  <data name="btnOpen2022L.ToolTip" xml:space="preserve">
+    <value>Unity 2022.3.22f1</value>
+  </data>
+  <data name="&gt;&gt;btnOpen2022L.Name" xml:space="preserve">
+    <value>btnOpen2022L</value>
+  </data>
+  <data name="&gt;&gt;btnOpen2022L.Type" xml:space="preserve">
+    <value>MetroFramework.Controls.MetroButton, MetroFramework, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a</value>
+  </data>
+  <data name="&gt;&gt;btnOpen2022L.Parent" xml:space="preserve">
+    <value>metroTabPage8</value>
+  </data>
+  <data name="&gt;&gt;btnOpen2022L.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="btnOpen2019.Location" type="System.Drawing.Point, System.Drawing">
+    <value>13, 396</value>
+  </data>
+  <data name="btnOpen2019.Size" type="System.Drawing.Size, System.Drawing">
+    <value>244, 35</value>
+  </data>
+  <data name="btnOpen2019.TabIndex" type="System.Int32, mscorlib">
+    <value>110</value>
+  </data>
+  <data name="btnOpen2019.Text" xml:space="preserve">
+    <value>Open Unity 2019</value>
+  </data>
+  <data name="btnOpen2019.ToolTip" xml:space="preserve">
+    <value>Unity 2019.4.31f1</value>
+  </data>
+  <data name="&gt;&gt;btnOpen2019.Name" xml:space="preserve">
+    <value>btnOpen2019</value>
+  </data>
+  <data name="&gt;&gt;btnOpen2019.Type" xml:space="preserve">
+    <value>MetroFramework.Controls.MetroButton, MetroFramework, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a</value>
+  </data>
+  <data name="&gt;&gt;btnOpen2019.Parent" xml:space="preserve">
+    <value>metroTabPage8</value>
+  </data>
+  <data name="&gt;&gt;btnOpen2019.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="btnUnityLocation2022L.Location" type="System.Drawing.Point, System.Drawing">
+    <value>263, 355</value>
+  </data>
+  <data name="btnUnityLocation2022L.Size" type="System.Drawing.Size, System.Drawing">
+    <value>244, 35</value>
+  </data>
+  <data name="btnUnityLocation2022L.TabIndex" type="System.Int32, mscorlib">
+    <value>108</value>
+  </data>
+  <data name="btnUnityLocation2022L.Text" xml:space="preserve">
+    <value>Change Unity Location 2022L</value>
+  </data>
+  <data name="btnUnityLocation2022L.ToolTip" xml:space="preserve">
+    <value>Unity 2022.3.22f1</value>
+  </data>
+  <data name="&gt;&gt;btnUnityLocation2022L.Name" xml:space="preserve">
+    <value>btnUnityLocation2022L</value>
+  </data>
+  <data name="&gt;&gt;btnUnityLocation2022L.Type" xml:space="preserve">
+    <value>MetroFramework.Controls.MetroButton, MetroFramework, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a</value>
+  </data>
+  <data name="&gt;&gt;btnUnityLocation2022L.Parent" xml:space="preserve">
+    <value>metroTabPage8</value>
+  </data>
+  <data name="&gt;&gt;btnUnityLocation2022L.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
   <data name="btnUnityLocation2019.Location" type="System.Drawing.Point, System.Drawing">
     <value>13, 355</value>
   </data>
@@ -2994,6 +3018,9 @@ you don't risk your account)
   <data name="btnUnityLocation2019.Text" xml:space="preserve">
     <value>Change Unity Location 2019</value>
   </data>
+  <data name="btnUnityLocation2019.ToolTip" xml:space="preserve">
+    <value>Unity 2019.4.31f1</value>
+  </data>
   <data name="&gt;&gt;btnUnityLocation2019.Name" xml:space="preserve">
     <value>btnUnityLocation2019</value>
   </data>
@@ -3004,7 +3031,7 @@ you don't risk your account)
     <value>metroTabPage8</value>
   </data>
   <data name="&gt;&gt;btnUnityLocation2019.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>5</value>
   </data>
   <data name="chkAdditional.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -3034,7 +3061,7 @@ you don't risk your account)
     <value>metroTabPage8</value>
   </data>
   <data name="&gt;&gt;chkAdditional.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>6</value>
   </data>
   <data name="lblUnityVersion.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -3061,7 +3088,7 @@ you don't risk your account)
     <value>metroTabPage8</value>
   </data>
   <data name="&gt;&gt;lblUnityVersion.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>7</value>
   </data>
   <data name="metroLabel15.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -3088,7 +3115,7 @@ you don't risk your account)
     <value>metroTabPage8</value>
   </data>
   <data name="&gt;&gt;metroLabel15.ZOrder" xml:space="preserve">
-    <value>5</value>
+    <value>8</value>
   </data>
   <data name="metroLabel11.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -3115,31 +3142,7 @@ you don't risk your account)
     <value>metroTabPage8</value>
   </data>
   <data name="&gt;&gt;metroLabel11.ZOrder" xml:space="preserve">
-    <value>6</value>
-  </data>
-  <data name="btnUnityLoc.Location" type="System.Drawing.Point, System.Drawing">
-    <value>263, 355</value>
-  </data>
-  <data name="btnUnityLoc.Size" type="System.Drawing.Size, System.Drawing">
-    <value>244, 35</value>
-  </data>
-  <data name="btnUnityLoc.TabIndex" type="System.Int32, mscorlib">
-    <value>63</value>
-  </data>
-  <data name="btnUnityLoc.Text" xml:space="preserve">
-    <value>Change Unity Location 2022</value>
-  </data>
-  <data name="&gt;&gt;btnUnityLoc.Name" xml:space="preserve">
-    <value>btnUnityLoc</value>
-  </data>
-  <data name="&gt;&gt;btnUnityLoc.Type" xml:space="preserve">
-    <value>MetroFramework.Controls.MetroButton, MetroFramework, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a</value>
-  </data>
-  <data name="&gt;&gt;btnUnityLoc.Parent" xml:space="preserve">
-    <value>metroTabPage8</value>
-  </data>
-  <data name="&gt;&gt;btnUnityLoc.ZOrder" xml:space="preserve">
-    <value>7</value>
+    <value>9</value>
   </data>
   <data name="chkAdvanceUnlock.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -3169,7 +3172,7 @@ you don't risk your account)
     <value>metroTabPage8</value>
   </data>
   <data name="&gt;&gt;chkAdvanceUnlock.ZOrder" xml:space="preserve">
-    <value>8</value>
+    <value>10</value>
   </data>
   <data name="cbLanguage.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Left, Right</value>
@@ -3196,7 +3199,7 @@ you don't risk your account)
     <value>metroTabPage8</value>
   </data>
   <data name="&gt;&gt;cbLanguage.ZOrder" xml:space="preserve">
-    <value>9</value>
+    <value>11</value>
   </data>
   <data name="toggleWorld.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Right</value>
@@ -3226,7 +3229,7 @@ you don't risk your account)
     <value>metroTabPage8</value>
   </data>
   <data name="&gt;&gt;toggleWorld.ZOrder" xml:space="preserve">
-    <value>10</value>
+    <value>12</value>
   </data>
   <data name="btnLoadVRCA.Location" type="System.Drawing.Point, System.Drawing">
     <value>8, 18</value>
@@ -3250,7 +3253,7 @@ you don't risk your account)
     <value>metroTabPage8</value>
   </data>
   <data name="&gt;&gt;btnLoadVRCA.ZOrder" xml:space="preserve">
-    <value>11</value>
+    <value>13</value>
   </data>
   <data name="chkTranslate.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -3280,7 +3283,7 @@ you don't risk your account)
     <value>metroTabPage8</value>
   </data>
   <data name="&gt;&gt;chkTranslate.ZOrder" xml:space="preserve">
-    <value>12</value>
+    <value>14</value>
   </data>
   <data name="btnExtractVRCA.Location" type="System.Drawing.Point, System.Drawing">
     <value>203, 18</value>
@@ -3304,7 +3307,7 @@ you don't risk your account)
     <value>metroTabPage8</value>
   </data>
   <data name="&gt;&gt;btnExtractVRCA.ZOrder" xml:space="preserve">
-    <value>13</value>
+    <value>15</value>
   </data>
   <data name="toggleAvatar.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Right</value>
@@ -3334,7 +3337,7 @@ you don't risk your account)
     <value>metroTabPage8</value>
   </data>
   <data name="&gt;&gt;toggleAvatar.ZOrder" xml:space="preserve">
-    <value>14</value>
+    <value>16</value>
   </data>
   <data name="chkReassignShaders.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -3361,7 +3364,7 @@ you don't risk your account)
     <value>metroTabPage8</value>
   </data>
   <data name="&gt;&gt;chkReassignShaders.ZOrder" xml:space="preserve">
-    <value>15</value>
+    <value>17</value>
   </data>
   <data name="chkAdvancedDic.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -3391,7 +3394,7 @@ you don't risk your account)
     <value>metroTabPage8</value>
   </data>
   <data name="&gt;&gt;chkAdvancedDic.ZOrder" xml:space="preserve">
-    <value>16</value>
+    <value>18</value>
   </data>
   <data name="lblDownload.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -3418,7 +3421,7 @@ you don't risk your account)
     <value>metroTabPage8</value>
   </data>
   <data name="&gt;&gt;lblDownload.ZOrder" xml:space="preserve">
-    <value>17</value>
+    <value>19</value>
   </data>
   <data name="chkUnityPackage.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -3445,7 +3448,7 @@ you don't risk your account)
     <value>metroTabPage8</value>
   </data>
   <data name="&gt;&gt;chkUnityPackage.ZOrder" xml:space="preserve">
-    <value>18</value>
+    <value>20</value>
   </data>
   <data name="btnWorldOut.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Right</value>
@@ -3472,7 +3475,7 @@ you don't risk your account)
     <value>metroTabPage8</value>
   </data>
   <data name="&gt;&gt;btnWorldOut.ZOrder" xml:space="preserve">
-    <value>19</value>
+    <value>21</value>
   </data>
   <data name="chkUnlockPassword.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -3502,7 +3505,7 @@ you don't risk your account)
     <value>metroTabPage8</value>
   </data>
   <data name="&gt;&gt;chkUnlockPassword.ZOrder" xml:space="preserve">
-    <value>20</value>
+    <value>22</value>
   </data>
   <data name="txtAvatarOutput.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Left, Right</value>
@@ -3544,7 +3547,7 @@ you don't risk your account)
     <value>metroTabPage8</value>
   </data>
   <data name="&gt;&gt;txtAvatarOutput.ZOrder" xml:space="preserve">
-    <value>21</value>
+    <value>23</value>
   </data>
   <data name="metroLabel14.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -3571,7 +3574,7 @@ you don't risk your account)
     <value>metroTabPage8</value>
   </data>
   <data name="&gt;&gt;metroLabel14.ZOrder" xml:space="preserve">
-    <value>22</value>
+    <value>24</value>
   </data>
   <data name="btnAvatarOut.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Right</value>
@@ -3598,7 +3601,7 @@ you don't risk your account)
     <value>metroTabPage8</value>
   </data>
   <data name="&gt;&gt;btnAvatarOut.ZOrder" xml:space="preserve">
-    <value>23</value>
+    <value>25</value>
   </data>
   <data name="metroLabel13.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -3625,7 +3628,7 @@ you don't risk your account)
     <value>metroTabPage8</value>
   </data>
   <data name="&gt;&gt;metroLabel13.ZOrder" xml:space="preserve">
-    <value>24</value>
+    <value>26</value>
   </data>
   <data name="txtWorldOutput.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Left, Right</value>
@@ -3667,13 +3670,13 @@ you don't risk your account)
     <value>metroTabPage8</value>
   </data>
   <data name="&gt;&gt;txtWorldOutput.ZOrder" xml:space="preserve">
-    <value>25</value>
+    <value>27</value>
   </data>
   <data name="metroTabPage8.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 35</value>
+    <value>4, 38</value>
   </data>
   <data name="metroTabPage8.Size" type="System.Drawing.Size, System.Drawing">
-    <value>840, 513</value>
+    <value>840, 510</value>
   </data>
   <data name="metroTabPage8.TabIndex" type="System.Int32, mscorlib">
     <value>8</value>
@@ -3712,7 +3715,7 @@ you don't risk your account)
     <value>$this</value>
   </data>
   <data name="&gt;&gt;tabControl.ZOrder" xml:space="preserve">
-    <value>28</value>
+    <value>26</value>
   </data>
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>

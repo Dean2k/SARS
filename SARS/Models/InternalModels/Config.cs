@@ -15,18 +15,16 @@ namespace ARC.Models.InternalModels
         public string PreSelectedWorldLocation { get; set; }
         public bool PreSelectedWorldLocationChecked { get; set; }
         public string UnityLocation2019 { get; set; }
-        public string UnityLocation2022 { get; set; }
+        public string UnityLocation2022L { get; set; }
         public string ClientVersion { get; set; }
         public string UnityVersion { get; set; }
         public DateTime ClientVersionLastUpdated { get; set; }
         public bool LightMode { get; set; }
         public string ThemeColor { get; set; }
-        public string HotSwapName2022 { get; set; }
+        public string HotSwapName2022L { get; set; }
         public string HotSwapName2019 { get; set; }
         public string MacAddress { get; set; }
         public int ViewerVersion { get; set; }
-        public int HsbVersion2022 { get; set; }
-        public int HsbVersion2019 { get; set; }
         public string UserAgent { get; set; }
         public bool ReplaceUnityVersion { get; set; }
         public bool IndexAdded { get; set; }

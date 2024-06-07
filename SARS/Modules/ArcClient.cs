@@ -70,81 +70,39 @@ namespace ARC.Modules
             }
         }
 
-        public static void UnitySetup2019(ConfigSave<Config> configSave)
+        public static string UnitySetup(string version)
         {
-            var unityPath = UnityRegistry2019();
+            var unityPath = UnityRegistry(version);
             if (unityPath != null)
             {
                 var dlgResult =
                     MessageBox.Show(
-                        $"Possible unity 2019 path found, Location: '{unityPath + @"\Editor\Unity.exe"}' is this correct?",
+                        $"Possible unity {version} path found, Location: '{unityPath + @"\Editor\Unity.exe"}' is this correct?",
                         "Unity", MessageBoxButtons.YesNo);
                 if (dlgResult == DialogResult.Yes)
                 {
                     if (File.Exists(unityPath + @"\Editor\Unity.exe"))
                     {
-                        configSave.Config.UnityLocation2019 = unityPath + @"\Editor\Unity.exe";
-                        configSave.Save();
+                        return unityPath + @"\Editor\Unity.exe";
                     }
                     else
                     {
                         MessageBox.Show("Someone didn't check because that file doesn't exist!");
-                        SelectFile2019(configSave);
                     }
                 }
                 else
                 {
-                    MessageBox.Show(
-                        "Please select unity.exe (2019), if you wanna skip this press Cancel");
-                    SelectFile2019(configSave);
+                    MessageBox.Show("Please select unity.exe (2022), if you wanna skip this press Cancel");
                 }
             }
             else
             {
-                MessageBox.Show(
-                    "Please select unity.exe (2019), if you wanna skip this press Cancel");
-                SelectFile2019(configSave);
+                MessageBox.Show("Please select unity.exe (2022), if you wanna skip this press Cancel");              
             }
+            return SelectFile(version);
         }
 
-        public static void UnitySetup2022(ConfigSave<Config> configSave)
-        {
-            var unityPath = UnityRegistry2022();
-            if (unityPath != null)
-            {
-                var dlgResult =
-                    MessageBox.Show(
-                        $"Possible unity 2022 path found, Location: '{unityPath + @"\Editor\Unity.exe"}' is this correct?",
-                        "Unity", MessageBoxButtons.YesNo);
-                if (dlgResult == DialogResult.Yes)
-                {
-                    if (File.Exists(unityPath + @"\Editor\Unity.exe"))
-                    {
-                        configSave.Config.UnityLocation2022 = unityPath + @"\Editor\Unity.exe";
-                        configSave.Save();
-                    }
-                    else
-                    {
-                        MessageBox.Show("Someone didn't check because that file doesn't exist!");
-                        SelectFile2022(configSave);
-                    }
-                }
-                else
-                {
-                    MessageBox.Show(
-                        "Please select unity.exe (2022), if you wanna skip this press Cancel");
-                    SelectFile2022(configSave);
-                }
-            }
-            else
-            {
-                MessageBox.Show(
-                    "Please select unity.exe (2022), if you wanna skip this press Cancel");
-                SelectFile2022(configSave);
-            }
-        }
-
-        public static void SelectFile2022(ConfigSave<Config> configSave)
+        public static string SelectFile(string version)
         {
             var filePath = string.Empty;
 
@@ -161,21 +119,20 @@ namespace ARC.Modules
             }
             if (string.IsNullOrEmpty(filePath))
             {
-                return;
+                return null;
             }
             var versionInfo = FileVersionInfo.GetVersionInfo(filePath);
 
-            if (!versionInfo.FileVersion.Contains("2022.3.6"))
+            if (!versionInfo.FileVersion.Contains(version))
             {
-                MessageBox.Show($"Incorrect unity version, please select again.\nWanted 2022.3.6.x got {versionInfo.FileVersion}");
-                return;
+                MessageBox.Show($"Incorrect unity version, please select again.\nWanted {version} got {versionInfo.FileVersion}");
+                return null;
             }
 
-            configSave.Config.UnityLocation2022 = filePath;
-            configSave.Save();
+            return filePath;
         }
 
-        private static string UnityRegistry2022()
+        private static string UnityRegistry(string unityVersion)
         {
             try
             {
@@ -184,17 +141,18 @@ namespace ARC.Modules
                     if (key == null) return null;
                     var version = key.GetValue("Version");
                     var o = key.GetValue("Location x64");
-                    if (version != null && version.ToString() == "2022.3.6f1")
+                    if (version != null && version.ToString() == unityVersion)
                     {
                         if (o != null) return o.ToString();
-                    }  else
+                    }
+                    else
                     {
-                        using (var key1 = Registry.CurrentUser.OpenSubKey(@"SOFTWARE\Unity Technologies\Installer\Unity 2022.3.6f1"))
+                        using (var key1 = Registry.CurrentUser.OpenSubKey($@"SOFTWARE\Unity Technologies\Installer\Unity {unityVersion}"))
                         {
                             if (key == null) return null;
                             var version1 = key1.GetValue("Version");
                             var o1 = key1.GetValue("Location x64");
-                            if (version1 != null && version1.ToString() == "2022.3.6f1")
+                            if (version1 != null && version1.ToString() == unityVersion)
                             {
                                 if (o1 != null) return o1.ToString();
                             }
@@ -213,78 +171,6 @@ namespace ARC.Modules
                 return null;
             }
         }
-
-        public static void SelectFile2019(ConfigSave<Config> configSave)
-        {
-            var filePath = string.Empty;
-
-            using (var openFileDialog = new OpenFileDialog())
-            {
-                openFileDialog.InitialDirectory = "c:\\";
-                openFileDialog.Filter = "Unity (Unity.exe)|Unity.exe";
-                openFileDialog.RestoreDirectory = true;
-                openFileDialog.Title = "Select Unity exe";
-
-                if (openFileDialog.ShowDialog() == DialogResult.OK)
-                    //Get the path of specified file
-                    filePath = openFileDialog.FileName;
-            }
-            if (string.IsNullOrEmpty(filePath))
-            {
-                return;
-            }
-            var versionInfo = FileVersionInfo.GetVersionInfo(filePath);
-
-            if(!versionInfo.FileVersion.Contains("2019.4.31"))
-            {
-                MessageBox.Show($"Incorrect unity version, please select again.\nWanted 2019.4.31.x got {versionInfo.FileVersion}");
-                return;
-            }
-
-            configSave.Config.UnityLocation2019 = filePath;
-            configSave.Save();
-        }
-
-        private static string UnityRegistry2019()
-        {
-            try
-            {
-                using (var key = Registry.CurrentUser.OpenSubKey(@"SOFTWARE\Unity Technologies\Installer\Unity"))
-                {
-                    if (key == null) return null;
-                    var version = key.GetValue("Version");
-                    var o = key.GetValue("Location x64");
-                    if (version != null && version.ToString() == "2019.4.31f1")
-                    {
-                        if (o != null) return o.ToString();
-                    }
-                    else
-                    {
-                        using (var key1 = Registry.CurrentUser.OpenSubKey(@"SOFTWARE\Unity Technologies\Installer\Unity 2019.4.31f1"))
-                        {
-                            if (key == null) return null;
-                            var version1 = key1.GetValue("Version");
-                            var o1 = key1.GetValue("Location x64");
-                            if (version1 != null && version1.ToString() == "2019.4.31f1")
-                            {
-                                if (o1 != null) return o1.ToString();
-                            }
-                            else
-                            {
-
-                            }
-                        }
-                    }
-                }
-
-                return null;
-            }
-            catch
-            {
-                return null;
-            }
-        }
-
 
         public static VRChatFileInformation avatarVersionPc;
         public static VRChatFileInformation avatarVersionQuest;
@@ -454,14 +340,6 @@ namespace ARC.Modules
             });
         }
 
-        public static void CleanHsb(ConfigSave<Config> configSave)
-        {
-            RandomFunctions.KillProcess("Unity Hub.exe");
-            RandomFunctions.KillProcess("Unity.exe");
-            RandomFunctions.tryDeleteDirectory($"{StaticValues.ArcDocuments}\\{configSave.Config.HotSwapName2022}");
-            RandomFunctions.tryDeleteDirectory(@"C:\Users\" + Environment.UserName + $"\\AppData\\Local\\Temp\\DefaultCompany\\{configSave.Config.HotSwapName2022}");
-            RandomFunctions.tryDeleteDirectory(@"C:\Users\" + Environment.UserName + $"\\AppData\\LocalLow\\DefaultCompany\\{configSave.Config.HotSwapName2022}");
-        }
 
         public static void CleanHsb2019(ConfigSave<Config> configSave)
         {
@@ -470,6 +348,15 @@ namespace ARC.Modules
             RandomFunctions.tryDeleteDirectory($"{StaticValues.ArcDocuments}\\{configSave.Config.HotSwapName2019}");
             RandomFunctions.tryDeleteDirectory(@"C:\Users\" + Environment.UserName + $"\\AppData\\Local\\Temp\\DefaultCompany\\{configSave.Config.HotSwapName2019}");
             RandomFunctions.tryDeleteDirectory(@"C:\Users\" + Environment.UserName + $"\\AppData\\LocalLow\\DefaultCompany\\{configSave.Config.HotSwapName2019}");
+        }
+
+        public static void CleanHsb2022L(ConfigSave<Config> configSave)
+        {
+            RandomFunctions.KillProcess("Unity Hub.exe");
+            RandomFunctions.KillProcess("Unity.exe");
+            RandomFunctions.tryDeleteDirectory($"{StaticValues.ArcDocuments}\\{configSave.Config.HotSwapName2022L}");
+            RandomFunctions.tryDeleteDirectory(@"C:\Users\" + Environment.UserName + $"\\AppData\\Local\\Temp\\DefaultCompany\\{configSave.Config.HotSwapName2022L}");
+            RandomFunctions.tryDeleteDirectory(@"C:\Users\" + Environment.UserName + $"\\AppData\\LocalLow\\DefaultCompany\\{configSave.Config.HotSwapName2022L}");
         }
 
         public static void ClearOldViewer()
@@ -502,26 +389,12 @@ namespace ARC.Modules
             }
         }
 
-        public static void CopyFiles(ConfigSave<Config> configSave)
+        public static void CopyFiles(string hotswapName, string arcDocuments)
         {
             try
             {
-                File.Copy($@"{AppContext.BaseDirectory}\Template\Scene.unity", $"{StaticValues.ArcDocuments}\\{configSave.Config.HotSwapName2022}\\Assets\\Scene.unity", true);
-                File.Copy($@"{AppContext.BaseDirectory}\Template\SceneCube.unity", $"{StaticValues.ArcDocuments}\\{configSave.Config.HotSwapName2022}\\Assets\\SceneCube.unity", true);
-            }
-            catch (Exception ex) { 
-             
-                Console.WriteLine(ex.Message);
-            
-            }
-        }
-
-        public static void CopyFiles2019(ConfigSave<Config> configSave)
-        {
-            try
-            {
-                File.Copy($@"{AppContext.BaseDirectory}\Template\Scene.unity", $"{StaticValues.ArcDocuments}\\{configSave.Config.HotSwapName2019}\\Assets\\Scene.unity", true);
-                File.Copy($@"{AppContext.BaseDirectory}\Template\SceneCube.unity", $"{StaticValues.ArcDocuments}\\{configSave.Config.HotSwapName2019}\\Assets\\SceneCube.unity", true);
+                File.Copy($@"{AppContext.BaseDirectory}\Template\Scene.unity", $"{arcDocuments}\\{hotswapName}\\Assets\\Scene.unity", true);
+                File.Copy($@"{AppContext.BaseDirectory}\Template\SceneCube.unity", $"{arcDocuments}\\{hotswapName}\\Assets\\SceneCube.unity", true);
             }
             catch (Exception ex)
             {

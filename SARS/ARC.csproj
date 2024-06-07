@@ -229,6 +229,9 @@
     <None Include="Assets\AssetRipper.zip">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Include="Assets\ARC2022L.zip">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="en-US.dic">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
@@ -245,9 +248,6 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <None Include="Assets\ARC.zip">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
     <None Include="Assets\ARC2019.zip">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>

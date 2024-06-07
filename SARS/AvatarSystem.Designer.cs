@@ -66,8 +66,6 @@
             this.btnDownload = new MetroFramework.Controls.MetroButton();
             this.btnResetScene = new MetroFramework.Controls.MetroButton();
             this.btnBrowserView = new MetroFramework.Controls.MetroButton();
-            this.btnHotswap = new MetroFramework.Controls.MetroButton();
-            this.btnUnity = new MetroFramework.Controls.MetroButton();
             this.lblQuestVersion = new MetroFramework.Controls.MetroLabel();
             this.lblPCVersion = new MetroFramework.Controls.MetroLabel();
             this.nmQuestVersion = new System.Windows.Forms.NumericUpDown();
@@ -81,12 +79,16 @@
             this.btnUpdate = new MetroFramework.Controls.MetroButton();
             this.btnScanCacheFolder = new MetroFramework.Controls.MetroButton();
             this.chkSelfAvatars = new MetroFramework.Controls.MetroCheckBox();
-            this.btnUnity2019 = new MetroFramework.Controls.MetroButton();
             this.chkUnlockPassword = new MetroFramework.Controls.MetroCheckBox();
             this.chkAdvanceUnlock = new MetroFramework.Controls.MetroCheckBox();
             this.chkAdvancedDic = new MetroFramework.Controls.MetroCheckBox();
             this.chkTranslate = new MetroFramework.Controls.MetroCheckBox();
             this.chkAdditional = new MetroFramework.Controls.MetroCheckBox();
+            this.btnUnityLocation2019 = new MetroFramework.Controls.MetroButton();
+            this.chkUnityOpen = new MetroFramework.Controls.MetroCheckBox();
+            this.btnUnityLocation2022L = new MetroFramework.Controls.MetroButton();
+            this.btnOpen2022L = new MetroFramework.Controls.MetroButton();
+            this.btnOpen2019 = new MetroFramework.Controls.MetroButton();
             this.btnGetScreenshots = new MetroFramework.Controls.MetroButton();
             this.metroLabel8 = new MetroFramework.Controls.MetroLabel();
             this.txtAvatarSizePc = new MetroFramework.Controls.MetroTextBox();
@@ -119,8 +121,6 @@
             this.txtAbout = new MetroFramework.Controls.MetroTextBox();
             this.lblSize = new MetroFramework.Controls.MetroLabel();
             this.metroLabel10 = new MetroFramework.Controls.MetroLabel();
-            this.btnUnityLocation2019 = new MetroFramework.Controls.MetroButton();
-            this.btnUnityLoc = new MetroFramework.Controls.MetroButton();
             this.toggleWorld = new MetroFramework.Controls.MetroToggle();
             this.toggleAvatar = new MetroFramework.Controls.MetroToggle();
             this.btnWorldOut = new MetroFramework.Controls.MetroButton();
@@ -430,25 +430,6 @@
             this.btnBrowserView.UseStyleColors = true;
             this.btnBrowserView.Click += new System.EventHandler(this.btnBrowserView_Click);
             // 
-            // btnHotswap
-            // 
-            resources.ApplyResources(this.btnHotswap, "btnHotswap");
-            this.btnHotswap.FontSize = MetroFramework.MetroButtonSize.Medium;
-            this.btnHotswap.Name = "btnHotswap";
-            this.btnHotswap.UseSelectable = true;
-            this.btnHotswap.UseStyleColors = true;
-            this.btnHotswap.Click += new System.EventHandler(this.btnHotswap_Click);
-            // 
-            // btnUnity
-            // 
-            resources.ApplyResources(this.btnUnity, "btnUnity");
-            this.btnUnity.FontSize = MetroFramework.MetroButtonSize.Medium;
-            this.btnUnity.Name = "btnUnity";
-            this.metroToolTip1.SetToolTip(this.btnUnity, resources.GetString("btnUnity.ToolTip"));
-            this.btnUnity.UseSelectable = true;
-            this.btnUnity.UseStyleColors = true;
-            this.btnUnity.Click += new System.EventHandler(this.btnUnity_Click);
-            // 
             // lblQuestVersion
             // 
             resources.ApplyResources(this.lblQuestVersion, "lblQuestVersion");
@@ -561,16 +542,6 @@
             this.chkSelfAvatars.UseStyleColors = true;
             this.chkSelfAvatars.CheckedChanged += new System.EventHandler(this.chkSelfAvatars_CheckedChanged);
             // 
-            // btnUnity2019
-            // 
-            resources.ApplyResources(this.btnUnity2019, "btnUnity2019");
-            this.btnUnity2019.FontSize = MetroFramework.MetroButtonSize.Medium;
-            this.btnUnity2019.Name = "btnUnity2019";
-            this.metroToolTip1.SetToolTip(this.btnUnity2019, resources.GetString("btnUnity2019.ToolTip"));
-            this.btnUnity2019.UseSelectable = true;
-            this.btnUnity2019.UseStyleColors = true;
-            this.btnUnity2019.Click += new System.EventHandler(this.btnUnity2019_Click);
-            // 
             // chkUnlockPassword
             // 
             resources.ApplyResources(this.chkUnlockPassword, "chkUnlockPassword");
@@ -623,6 +594,56 @@
             this.metroToolTip1.SetToolTip(this.chkAdditional, resources.GetString("chkAdditional.ToolTip"));
             this.chkAdditional.UseSelectable = true;
             this.chkAdditional.UseStyleColors = true;
+            // 
+            // btnUnityLocation2019
+            // 
+            this.btnUnityLocation2019.FontSize = MetroFramework.MetroButtonSize.Tall;
+            resources.ApplyResources(this.btnUnityLocation2019, "btnUnityLocation2019");
+            this.btnUnityLocation2019.Name = "btnUnityLocation2019";
+            this.metroToolTip1.SetToolTip(this.btnUnityLocation2019, resources.GetString("btnUnityLocation2019.ToolTip"));
+            this.btnUnityLocation2019.UseSelectable = true;
+            this.btnUnityLocation2019.UseStyleColors = true;
+            this.btnUnityLocation2019.Click += new System.EventHandler(this.btnChangeUnity2019_Click);
+            // 
+            // chkUnityOpen
+            // 
+            resources.ApplyResources(this.chkUnityOpen, "chkUnityOpen");
+            this.chkUnityOpen.FontSize = MetroFramework.MetroCheckBoxSize.Medium;
+            this.chkUnityOpen.FontWeight = MetroFramework.MetroCheckBoxWeight.Bold;
+            this.chkUnityOpen.Name = "chkUnityOpen";
+            this.metroToolTip1.SetToolTip(this.chkUnityOpen, resources.GetString("chkUnityOpen.ToolTip"));
+            this.chkUnityOpen.UseSelectable = true;
+            this.chkUnityOpen.UseStyleColors = true;
+            // 
+            // btnUnityLocation2022L
+            // 
+            this.btnUnityLocation2022L.FontSize = MetroFramework.MetroButtonSize.Tall;
+            resources.ApplyResources(this.btnUnityLocation2022L, "btnUnityLocation2022L");
+            this.btnUnityLocation2022L.Name = "btnUnityLocation2022L";
+            this.metroToolTip1.SetToolTip(this.btnUnityLocation2022L, resources.GetString("btnUnityLocation2022L.ToolTip"));
+            this.btnUnityLocation2022L.UseSelectable = true;
+            this.btnUnityLocation2022L.UseStyleColors = true;
+            this.btnUnityLocation2022L.Click += new System.EventHandler(this.btnUnityLocation2022L_Click);
+            // 
+            // btnOpen2022L
+            // 
+            this.btnOpen2022L.FontSize = MetroFramework.MetroButtonSize.Tall;
+            resources.ApplyResources(this.btnOpen2022L, "btnOpen2022L");
+            this.btnOpen2022L.Name = "btnOpen2022L";
+            this.metroToolTip1.SetToolTip(this.btnOpen2022L, resources.GetString("btnOpen2022L.ToolTip"));
+            this.btnOpen2022L.UseSelectable = true;
+            this.btnOpen2022L.UseStyleColors = true;
+            this.btnOpen2022L.Click += new System.EventHandler(this.btnOpen2022L_Click);
+            // 
+            // btnOpen2019
+            // 
+            this.btnOpen2019.FontSize = MetroFramework.MetroButtonSize.Tall;
+            resources.ApplyResources(this.btnOpen2019, "btnOpen2019");
+            this.btnOpen2019.Name = "btnOpen2019";
+            this.metroToolTip1.SetToolTip(this.btnOpen2019, resources.GetString("btnOpen2019.ToolTip"));
+            this.btnOpen2019.UseSelectable = true;
+            this.btnOpen2019.UseStyleColors = true;
+            this.btnOpen2019.Click += new System.EventHandler(this.btnOpen2019_Click);
             // 
             // btnGetScreenshots
             // 
@@ -1082,24 +1103,6 @@
             this.metroLabel10.FontWeight = MetroFramework.MetroLabelWeight.Bold;
             this.metroLabel10.Name = "metroLabel10";
             this.metroLabel10.UseStyleColors = true;
-            // 
-            // btnUnityLocation2019
-            // 
-            this.btnUnityLocation2019.FontSize = MetroFramework.MetroButtonSize.Tall;
-            resources.ApplyResources(this.btnUnityLocation2019, "btnUnityLocation2019");
-            this.btnUnityLocation2019.Name = "btnUnityLocation2019";
-            this.btnUnityLocation2019.UseSelectable = true;
-            this.btnUnityLocation2019.UseStyleColors = true;
-            this.btnUnityLocation2019.Click += new System.EventHandler(this.btnChangeUnity2019_Click);
-            // 
-            // btnUnityLoc
-            // 
-            this.btnUnityLoc.FontSize = MetroFramework.MetroButtonSize.Tall;
-            resources.ApplyResources(this.btnUnityLoc, "btnUnityLoc");
-            this.btnUnityLoc.Name = "btnUnityLoc";
-            this.btnUnityLoc.UseSelectable = true;
-            this.btnUnityLoc.UseStyleColors = true;
-            this.btnUnityLoc.Click += new System.EventHandler(this.btnUnityLoc_Click_1);
             // 
             // toggleWorld
             // 
@@ -1617,7 +1620,7 @@
             this.tabControl.Controls.Add(this.metroTabPage8);
             this.tabControl.FontWeight = MetroFramework.MetroTabControlWeight.Bold;
             this.tabControl.Name = "tabControl";
-            this.tabControl.SelectedIndex = 1;
+            this.tabControl.SelectedIndex = 7;
             this.tabControl.UseSelectable = true;
             this.tabControl.SelectedIndexChanged += new System.EventHandler(this.tabControl_SelectedIndexChanged);
             // 
@@ -1751,12 +1754,14 @@
             // 
             // metroTabPage8
             // 
+            this.metroTabPage8.Controls.Add(this.btnOpen2022L);
+            this.metroTabPage8.Controls.Add(this.btnOpen2019);
+            this.metroTabPage8.Controls.Add(this.btnUnityLocation2022L);
             this.metroTabPage8.Controls.Add(this.btnUnityLocation2019);
             this.metroTabPage8.Controls.Add(this.chkAdditional);
             this.metroTabPage8.Controls.Add(this.lblUnityVersion);
             this.metroTabPage8.Controls.Add(this.metroLabel15);
             this.metroTabPage8.Controls.Add(this.metroLabel11);
-            this.metroTabPage8.Controls.Add(this.btnUnityLoc);
             this.metroTabPage8.Controls.Add(this.chkAdvanceUnlock);
             this.metroTabPage8.Controls.Add(this.cbLanguage);
             this.metroTabPage8.Controls.Add(this.toggleWorld);
@@ -1901,9 +1906,9 @@
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             resources.ApplyResources(this, "$this");
+            this.Controls.Add(this.chkUnityOpen);
             this.Controls.Add(this.btnAddPublic);
             this.Controls.Add(this.btnHotswap2019);
-            this.Controls.Add(this.btnUnity2019);
             this.Controls.Add(this.chkContains);
             this.Controls.Add(this.metroLabel2);
             this.Controls.Add(this.lblQuestVersion);
@@ -1911,8 +1916,6 @@
             this.Controls.Add(this.nmQuestVersion);
             this.Controls.Add(this.nmPcVersion);
             this.Controls.Add(this.btnResetScene);
-            this.Controls.Add(this.btnHotswap);
-            this.Controls.Add(this.btnUnity);
             this.Controls.Add(this.btnPreview);
             this.Controls.Add(this.btnDownload);
             this.Controls.Add(this.cbLimit);
@@ -1988,8 +1991,6 @@
         public MetroFramework.Controls.MetroButton btnDownload;
         public MetroFramework.Controls.MetroButton btnResetScene;
         public MetroFramework.Controls.MetroButton btnBrowserView;
-        public MetroFramework.Controls.MetroButton btnHotswap;
-        public MetroFramework.Controls.MetroButton btnUnity;
         public MetroFramework.Controls.MetroLabel lblQuestVersion;
         public MetroFramework.Controls.MetroLabel lblPCVersion;
         public System.Windows.Forms.NumericUpDown nmQuestVersion;
@@ -2018,7 +2019,6 @@
         private MetroFramework.Controls.MetroButton btnDark;
         private MetroFramework.Controls.MetroComboBox cbThemeColour;
         private MetroFramework.Controls.MetroLabel metroLabel12;
-        private MetroFramework.Controls.MetroButton btnUnityLoc;
         private MetroFramework.Controls.MetroToggle toggleWorld;
         private MetroFramework.Controls.MetroToggle toggleAvatar;
         private MetroFramework.Controls.MetroButton btnWorldOut;
@@ -2080,7 +2080,6 @@
         public MetroFramework.Controls.MetroCheckBox chkAutoRefreshDownload;
         public System.Windows.Forms.Timer DownloadRefresh;
         public MetroFramework.Controls.MetroLabel metroLabel21;
-        public MetroFramework.Controls.MetroButton btnUnity2019;
         public MetroFramework.Controls.MetroButton btnHotswap2019;
         private MetroFramework.Controls.MetroButton btnUnityLocation2019;
         public MetroFramework.Controls.MetroButton btnTranslateApp;
@@ -2107,6 +2106,10 @@
         private MetroFramework.Controls.MetroButton btnDocumentLocation;
         private MetroFramework.Controls.MetroLabel metroLabel7;
         private MetroFramework.Controls.MetroButton btnClearDocument;
+        public MetroFramework.Controls.MetroCheckBox chkUnityOpen;
+        private MetroFramework.Controls.MetroButton btnUnityLocation2022L;
+        private MetroFramework.Controls.MetroButton btnOpen2022L;
+        private MetroFramework.Controls.MetroButton btnOpen2019;
     }
 }
 
