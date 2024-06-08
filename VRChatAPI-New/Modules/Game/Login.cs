@@ -20,14 +20,14 @@ namespace VRChatAPI_New.Modules.Game
             StaticGameValues.CheckSetup();
 
             if (!string.IsNullOrEmpty(twoFactorAuth))
-            {
                 StaticGameValues.CookieContainer.Add(StaticGameValues.ApiUrl, new Cookie("twoFactorAuth", twoFactorAuth));
                 StaticGameValues.TwoFactorKey = twoFactorAuth;
+            {
             }
             StaticGameValues.CookieContainer.Add(StaticGameValues.ApiUrl, new Cookie("auth", auth));
             StaticGameValues.AuthKey = auth;
 
-            StaticGameValues.CookieContainer.Add(StaticGameValues.ApiUrl, new Cookie("apiKey", "JlE5Jldo5Jibnk5O5hTx6XVqsJu4WJ26"));
+            //StaticGameValues.CookieContainer.Add(StaticGameValues.ApiUrl, new Cookie("apiKey", "JlE5Jldo5Jibnk5O5hTx6XVqsJu4WJ26"));
 
             var webResponse = await HttpRequests.GetStringAsync($"auth/user{ApiKeyAndOrg()}").ConfigureAwait(false);
             if (webResponse.ToLower().Contains("missing credentials"))
@@ -110,7 +110,8 @@ namespace VRChatAPI_New.Modules.Game
         }
         private static string ApiKeyAndOrg()
         {
-            return "?apiKey=JlE5Jldo5Jibnk5O5hTx6XVqsJu4WJ26&organization=vrchat";
+            return "";
+            //return "?apiKey=JlE5Jldo5Jibnk5O5hTx6XVqsJu4WJ26&organization=vrchat";
         }
 
         public async static void Logout()

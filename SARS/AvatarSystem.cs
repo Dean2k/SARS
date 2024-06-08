@@ -43,12 +43,11 @@ namespace ARC
         public List<string> requestedAvatarIds = new List<string>();
         private HotswapConsole hotSwapConsole;
         private Thread _vrcaThread;
-        private string userAgent = "UnityPlayer/2022.3.6f1-DWR (UnityWebRequest/1.0, libcurl/7.80.0-DEV)";
+        private string userAgent = "UnityPlayer/2022.3.22f1-DWRL (UnityWebRequest/1.0, libcurl/8.5.0-DEV)";
         private string vrcaLocation = "";
         private CookieContainer _cookies;
         private string SystemName;
         private string unity2019 = "2019.4.31f1";
-        private string unity2022 = "2022.3.6f1";
         private string unity2022L = "2022.3.22f1";
 
         public AvatarSystem()

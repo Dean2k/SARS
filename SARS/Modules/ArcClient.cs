@@ -123,7 +123,7 @@ namespace ARC.Modules
             }
             var versionInfo = FileVersionInfo.GetVersionInfo(filePath);
 
-            if (!versionInfo.FileVersion.Contains(version))
+            if (!versionInfo.FileVersion.Contains(version.Replace("f1", "")))
             {
                 MessageBox.Show($"Incorrect unity version, please select again.\nWanted {version} got {versionInfo.FileVersion}");
                 return null;

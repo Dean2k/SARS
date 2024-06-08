@@ -92,7 +92,7 @@ namespace VRChatAPI_New
 
         private static string SetupUnityGameVersion()
         {
-            string unityVersion = "2022.3.6f1-DWR";
+            string unityVersion = "2022.3.22f1-DWRL";
             try
             {
                 WebClient client = new WebClient();

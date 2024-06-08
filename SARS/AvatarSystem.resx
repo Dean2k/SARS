@@ -123,7 +123,7 @@
   </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="btnToggleFavorite.Location" type="System.Drawing.Point, System.Drawing">
-    <value>251, 427</value>
+    <value>251, 424</value>
   </data>
   <data name="btnToggleFavorite.Size" type="System.Drawing.Size, System.Drawing">
     <value>120, 35</value>
@@ -151,7 +151,7 @@
     <value>Bottom, Left</value>
   </data>
   <data name="btnSearchFavorites.Location" type="System.Drawing.Point, System.Drawing">
-    <value>125, 427</value>
+    <value>125, 424</value>
   </data>
   <data name="btnSearchFavorites.Size" type="System.Drawing.Size, System.Drawing">
     <value>120, 35</value>
@@ -274,7 +274,7 @@
     <value>Bottom, Left</value>
   </data>
   <data name="btnRipped.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 427</value>
+    <value>0, 424</value>
   </data>
   <data name="btnRipped.Size" type="System.Drawing.Size, System.Drawing">
     <value>120, 35</value>
@@ -724,7 +724,7 @@
     <value>Bottom, Left</value>
   </data>
   <data name="btnBrowserView.Location" type="System.Drawing.Point, System.Drawing">
-    <value>377, 427</value>
+    <value>377, 424</value>
   </data>
   <data name="btnBrowserView.Size" type="System.Drawing.Size, System.Drawing">
     <value>120, 35</value>
@@ -1093,7 +1093,7 @@
     <value>Vertical</value>
   </data>
   <data name="avatarGrid.Size" type="System.Drawing.Size, System.Drawing">
-    <value>840, 421</value>
+    <value>840, 418</value>
   </data>
   <data name="avatarGrid.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
@@ -1132,7 +1132,7 @@
     <value>False</value>
   </data>
   <data name="txtAvatarSizeQuest.Location" type="System.Drawing.Point, System.Drawing">
-    <value>710, 436</value>
+    <value>710, 433</value>
   </data>
   <data name="txtAvatarSizeQuest.Size" type="System.Drawing.Size, System.Drawing">
     <value>129, 29</value>
@@ -1159,7 +1159,7 @@
     <value>True</value>
   </data>
   <data name="metroLabel9.Location" type="System.Drawing.Point, System.Drawing">
-    <value>710, 418</value>
+    <value>710, 415</value>
   </data>
   <data name="metroLabel9.Size" type="System.Drawing.Size, System.Drawing">
     <value>127, 19</value>
@@ -1189,7 +1189,7 @@
     <value>True</value>
   </data>
   <data name="metroLabel8.Location" type="System.Drawing.Point, System.Drawing">
-    <value>573, 417</value>
+    <value>573, 414</value>
   </data>
   <data name="metroLabel8.Size" type="System.Drawing.Size, System.Drawing">
     <value>107, 19</value>
@@ -1234,7 +1234,7 @@
     <value>False</value>
   </data>
   <data name="txtAvatarSizePc.Location" type="System.Drawing.Point, System.Drawing">
-    <value>563, 436</value>
+    <value>563, 433</value>
   </data>
   <data name="txtAvatarSizePc.Size" type="System.Drawing.Size, System.Drawing">
     <value>129, 29</value>
@@ -1255,10 +1255,10 @@
     <value>6</value>
   </data>
   <data name="metroTabPage1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 35</value>
+    <value>4, 38</value>
   </data>
   <data name="metroTabPage1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>840, 513</value>
+    <value>840, 510</value>
   </data>
   <data name="metroTabPage1.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -1786,10 +1786,10 @@
     <value>11</value>
   </data>
   <data name="metroTabPage2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 38</value>
+    <value>4, 35</value>
   </data>
   <data name="metroTabPage2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>840, 510</value>
+    <value>840, 513</value>
   </data>
   <data name="metroTabPage2.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -2701,7 +2701,7 @@
     <value>True</value>
   </data>
   <data name="metroLabel21.Location" type="System.Drawing.Point, System.Drawing">
-    <value>597, 451</value>
+    <value>597, 448</value>
   </data>
   <data name="metroLabel21.Size" type="System.Drawing.Size, System.Drawing">
     <value>240, 19</value>
@@ -2731,7 +2731,7 @@
     <value>True</value>
   </data>
   <data name="chkAutoRefreshDownload.Location" type="System.Drawing.Point, System.Drawing">
-    <value>199, 378</value>
+    <value>199, 375</value>
   </data>
   <data name="chkAutoRefreshDownload.Size" type="System.Drawing.Size, System.Drawing">
     <value>232, 19</value>
@@ -2758,7 +2758,7 @@
     <value>Bottom</value>
   </data>
   <data name="btnUpdate.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 369</value>
+    <value>3, 366</value>
   </data>
   <data name="btnUpdate.Size" type="System.Drawing.Size, System.Drawing">
     <value>191, 35</value>
@@ -2791,7 +2791,7 @@
     <value>True</value>
   </data>
   <data name="metroLabel5.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 407</value>
+    <value>4, 404</value>
   </data>
   <data name="metroLabel5.Size" type="System.Drawing.Size, System.Drawing">
     <value>723, 76</value>
@@ -2821,7 +2821,7 @@ you don't risk your account)
     <value>Bottom</value>
   </data>
   <data name="btnDownloadSafe.Location" type="System.Drawing.Point, System.Drawing">
-    <value>647, 369</value>
+    <value>647, 366</value>
   </data>
   <data name="btnDownloadSafe.Size" type="System.Drawing.Size, System.Drawing">
     <value>191, 35</value>
@@ -2884,7 +2884,7 @@ you don't risk your account)
     <value>Vertical</value>
   </data>
   <data name="dgSafeDownload.Size" type="System.Drawing.Size, System.Drawing">
-    <value>840, 367</value>
+    <value>840, 364</value>
   </data>
   <data name="dgSafeDownload.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
@@ -2902,10 +2902,10 @@ you don't risk your account)
     <value>7</value>
   </data>
   <data name="metroTabPage7.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 35</value>
+    <value>4, 38</value>
   </data>
   <data name="metroTabPage7.Size" type="System.Drawing.Size, System.Drawing">
-    <value>840, 513</value>
+    <value>840, 510</value>
   </data>
   <data name="metroTabPage7.TabIndex" type="System.Int32, mscorlib">
     <value>7</value>
