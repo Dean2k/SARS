@@ -2661,14 +2661,6 @@ namespace ARC
                         CookieChecker.Enabled = false;
                         StaticValues.Config.Config.CookiesValues = cookie;
                         StaticValues.Config.Save();
-                        if (!this.Text.Contains("- Authed") && !this.Text.Contains("Not Authed"))
-                        {
-                            this.Text = $"{this.Text} - Authed";
-                        }
-                        else
-                        {
-                            this.Text = this.Text.Replace("Not Authed", "Authed");
-                        }
                         MessageBox.Show("login successful");
                     }
                 }
@@ -2814,9 +2806,8 @@ namespace ARC
                 foreach (string cookieValue in StaticValues.Config.Config.CookiesValues)
                 {
                     string[] temp = cookieValue.Split(new string[] { "=" }, StringSplitOptions.None);
-                    _cookies.Add(new Uri("https://api.avatarrecovery.com/"), new Cookie(temp[0], $"{HttpUtility.UrlEncode(temp[1])}"));
+                    _cookies.Add(new Uri("https://api.avatarrecovery.com/"), new Cookie(HttpUtility.UrlEncode(temp[0]), $"{HttpUtility.UrlEncode(temp[1])}"));
                 }
-                this.Text = $"{this.Text} - Authed";
             }
 
             DownloadRefresh.Enabled = true;
