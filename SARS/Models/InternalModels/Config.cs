@@ -25,6 +25,7 @@ namespace ARC.Models.InternalModels
         public string HotSwapName2019 { get; set; }
         public string MacAddress { get; set; }
         public int ViewerVersion { get; set; }
+        public int RipperVersion { get; set; }
         public string UserAgent { get; set; }
         public bool ReplaceUnityVersion { get; set; }
         public bool IndexAdded { get; set; }

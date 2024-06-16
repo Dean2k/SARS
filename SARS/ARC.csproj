@@ -201,31 +201,6 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <None Include="AssetRipperConsole_win64\Licenses\AsmResolver.md" />
-    <None Include="AssetRipperConsole_win64\Licenses\AssetStudio.md" />
-    <None Include="AssetRipperConsole_win64\Licenses\Avalonia.md" />
-    <None Include="AssetRipperConsole_win64\Licenses\Cpp2IL.md" />
-    <None Include="AssetRipperConsole_win64\Licenses\Crunch.md" />
-    <None Include="AssetRipperConsole_win64\Licenses\darkfx.md" />
-    <None Include="AssetRipperConsole_win64\Licenses\Fmod5Sharp.md" />
-    <None Include="AssetRipperConsole_win64\Licenses\ILSpy.md" />
-    <None Include="AssetRipperConsole_win64\Licenses\ImageSharp.md" />
-    <None Include="AssetRipperConsole_win64\Licenses\LibVLCSharp.md" />
-    <None Include="AssetRipperConsole_win64\Licenses\Lz4.md" />
-    <None Include="AssetRipperConsole_win64\Licenses\MessageBoxAvalonia.md" />
-    <None Include="AssetRipperConsole_win64\Licenses\MonoCecil.md" />
-    <None Include="AssetRipperConsole_win64\Licenses\NAudio.md" />
-    <None Include="AssetRipperConsole_win64\Licenses\NAudioVorbis.md" />
-    <None Include="AssetRipperConsole_win64\Licenses\NVorbis.md" />
-    <None Include="AssetRipperConsole_win64\Licenses\SharpCompress.md" />
-    <None Include="AssetRipperConsole_win64\Licenses\SharpGLTF.md" />
-    <None Include="AssetRipperConsole_win64\Licenses\SharpZipLib.md" />
-    <None Include="AssetRipperConsole_win64\Licenses\Smolv.md" />
-    <None Include="AssetRipperConsole_win64\Licenses\SpirV.md" />
-    <None Include="AssetRipperConsole_win64\Licenses\texgenpack.md" />
-    <None Include="AssetRipperConsole_win64\Licenses\uTinyRipper.md" />
-    <None Include="AssetRipperConsole_win64\Licenses\uTinyRipperExporter.md" />
-    <None Include="AssetRipperConsole_win64\Licenses\Xiph.md" />
     <None Include="Assets\AssetRipper.zip">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
@@ -265,11 +240,6 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="AssetRipperConsole_win64\AssetRipper.exe" />
-    <Content Include="AssetRipperConsole_win64\capstone.dll" />
-    <Content Include="AssetRipperConsole_win64\crunch.dll" />
-    <Content Include="AssetRipperConsole_win64\crunchunity.dll" />
-    <Content Include="AssetRipperConsole_win64\Texture2DDecoderNative.dll" />
     <Content Include="css\bootstrap.min.css">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

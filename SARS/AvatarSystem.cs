@@ -1527,7 +1527,7 @@ namespace ARC
                     webClient.Headers.Add("user-agent",
                             "VRC.Core.BestHTTP");
                     webClient.Headers.Add("X-Unity-Version",
-                            "2019.4.40f1");
+                            "2022.3.22f1-DWRL");
                     string jsonString = webClient.DownloadString(new Uri($"https://api.vrchat.cloud/api/1/avatars/{avatarId}"));
                     VRChatCacheResult vrChatCacheResult = JsonConvert.DeserializeObject<VRChatCacheResult>(jsonString);
                     return vrChatCacheResult;
@@ -2793,6 +2793,14 @@ namespace ARC
                 ArcClient.ExtractViewer();
             }
             catch { }
+
+            if (StaticValues.Config.Config.RipperVersion != 2)
+            {
+                ArcClient.ClearOldRipper();
+                StaticValues.Config.Config.RipperVersion = 2;
+                StaticValues.Config.Save();
+            }
+
             try
             {
                 ArcClient.ExtractRipper();

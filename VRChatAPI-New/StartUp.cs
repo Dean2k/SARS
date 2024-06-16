@@ -32,7 +32,7 @@ namespace VRChatAPI_New
 
         private static string SetupGameVersion()
         {
-            string gameVersion = "2024.1.1p2-1407--Release";
+            string gameVersion = "2024.2.2-1456--Release";
             try
             {
                 WebClient client = new WebClient();

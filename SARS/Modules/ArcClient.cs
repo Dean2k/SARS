@@ -365,6 +365,12 @@ namespace ARC.Modules
             RandomFunctions.tryDeleteDirectory(StaticValues.VrcaViewer);
         }
 
+        public static void ClearOldRipper()
+        {
+            RandomFunctions.KillProcess("AssetRipper.exe");
+            RandomFunctions.tryDeleteDirectory(StaticValues.AssetRipper);
+        }
+
         public static void ExtractViewer()
         {
             if (!Directory.Exists(StaticValues.VrcaViewer))
