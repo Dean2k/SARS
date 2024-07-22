@@ -124,6 +124,8 @@ namespace ARC.Modules
             await Task.Run(() => ScanFunction(cacheLocation, bypassLoaded));
         }
 
+        private static List<string> AlreadyScanned = new List<string>();
+
         private static async Task ScanFunction(string cacheLocation, bool bypassLoaded)
         {
             if (!bypassLoaded)
@@ -139,24 +141,32 @@ namespace ARC.Modules
             Console.WriteLine("getting avatar Ids");
             foreach (string cache in locations)
             {
-                if (!bypassLoaded)
+                if (!AlreadyScanned.Contains(cache))
                 {
-                    try
+                    if (!bypassLoaded)
                     {
-                        tasks.Add(Task.Run(() => ReadUntilId(cache)));
-                    }
-                    catch { }
-                }
-                else
-                {
-                    try
-                    {
-                        if (!avatarIds.Any(x => x.FileLocation.Contains(cache)))
+                        try
                         {
                             tasks.Add(Task.Run(() => ReadUntilId(cache)));
                         }
+                        catch
+                        {
+                        }
                     }
-                    catch { }
+                    else
+                    {
+                        try
+                        {
+                            if (!avatarIds.Any(x => x.FileLocation.Contains(cache)))
+                            {
+                                tasks.Add(Task.Run(() => ReadUntilId(cache)));
+                            }
+                        }
+                        catch
+                        {
+                        }
+                    }
+                    AlreadyScanned.Add(cache);
                 }
             }
             Console.WriteLine("finished getting ids");

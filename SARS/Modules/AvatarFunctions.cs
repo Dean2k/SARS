@@ -4,6 +4,7 @@ using System;
 using System.IO;
 using System.IO.Compression;
 using System.Linq;
+using System.Net;
 using System.Reflection;
 using System.Threading.Tasks;
 using System.Web.Configuration;
@@ -12,6 +13,7 @@ using VRChatAPI_New;
 using VRChatAPI_New.Models;
 using VRChatAPI_New.Modules.Game;
 using ARC.Models.ExternalModels;
+using Newtonsoft.Json;
 
 namespace ARC.Modules
 {
@@ -94,6 +96,36 @@ namespace ARC.Modules
 
         public static bool pcDownload = true;
 
+        private static VRChatCacheResult GetDetails(string avatarId)
+        {
+            using (WebClient webClient = new WebClient())
+            {
+                try
+                {
+                    webClient.BaseAddress = "https://api.vrchat.cloud";
+                    webClient.Headers.Add("Accept", $"*/*");
+                    webClient.Headers.Add("Cookie", $"auth={StaticValues.Config.Config.AuthKey}; twoFactorAuth={StaticValues.Config.Config.TwoFactor}");
+                    webClient.Headers.Add("X-MacAddress", StaticGameValues.MacAddress);
+                    webClient.Headers.Add("X-Client-Version",
+                        StaticGameValues.GameVersion);
+                    webClient.Headers.Add("X-Platform",
+                        "standalonewindows");
+                    webClient.Headers.Add("user-agent",
+                        "VRC.Core.BestHTTP");
+                    webClient.Headers.Add("X-Unity-Version",
+                        "2022.3.22f1-DWRL");
+                    string jsonString = webClient.DownloadString(new Uri($"https://api.vrchat.cloud/api/1/avatars/{avatarId}"));
+                    VRChatCacheResult vrChatCacheResult = JsonConvert.DeserializeObject<VRChatCacheResult>(jsonString);
+                    return vrChatCacheResult;
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                }
+            }
+            return null;
+        }
+
         public static async Task<bool> DownloadVrcaAsync(AvatarModel avatar, decimal pcVersion, decimal questVersion, Download download, bool both = false)
         {
             try
@@ -103,8 +135,17 @@ namespace ARC.Modules
                 MessageBoxManager.Register();
             }
             catch { }
+
+            var temp = GetDetails(avatar.Avatar.AvatarId);
+
+
+            if (temp == null)
+            {
+                MessageBox.Show("Private avatar downloading is currently disabled to prevent bans");
+                return false;
+            }
+
             var filePath = $"{StaticValues.VrcaDownloadFolder}{RandomFunctions.ReplaceInvalidChars(avatar.Avatar.AvatarName)}-{avatar.Avatar.AvatarId}.vrca";
-            //download.Text = $"{avatar.avatar.avatarName} - {avatar.avatar.avatarId}";
             if (avatar.Avatar.PcAssetUrl.ToLower() != "none" && avatar.Avatar.QuestAssetUrl.ToLower() != "none" && avatar.Avatar.PcAssetUrl != null && avatar.Avatar.QuestAssetUrl != null)
             {
                 if (both)

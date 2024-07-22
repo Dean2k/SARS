@@ -10,6 +10,7 @@ namespace VRChatAPI_New.Modules.Game
 {
     public static class VRCA
     {
+
         public static async Task DownloadVrcaFile(string url, string fileLocation, ProgressBar progressBar, bool bypass)
         {
             if (url.StartsWith("http"))

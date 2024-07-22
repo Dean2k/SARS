@@ -117,7 +117,7 @@ namespace ARC
 
             if (string.IsNullOrEmpty(StaticValues.Config.Config.UnityLocation2019))
             {
-                StaticValues.Config.Config.UnityLocation2019= ArcClient.UnitySetup(unity2019);
+                StaticValues.Config.Config.UnityLocation2019 = ArcClient.UnitySetup(unity2019);
             }
 
             if (string.IsNullOrEmpty(StaticValues.Config.Config.UnityLocation2022L))
@@ -233,7 +233,8 @@ namespace ARC
                 SendMessage(avatarGrid.Handle, WM_SETREDRAW, true, 0);
                 avatarGrid.Refresh();
                 LoadImages();
-            } else
+            }
+            else
             {
                 MessageBox.Show("No results");
             }
@@ -745,8 +746,8 @@ namespace ARC
         private string SelectFileVrca(string directory)
         {
             var filePath = string.Empty;
-            
-            if(directory == null)
+
+            if (directory == null)
             {
                 directory = "C:\\";
             }
@@ -2371,6 +2372,8 @@ namespace ARC
             SafeDownload();
         }
 
+
+
         private async Task<bool> SafeDownload()
         {
             if (dgSafeDownload.SelectedRows.Count >= 1)
@@ -3017,5 +3020,6 @@ namespace ARC
         {
             OpenUnity(StaticValues.Config.Config.UnityLocation2022L, StaticValues.Config.Config.HotSwapName2022L, StaticValues.Config.Config.DocumentLocation);
         }
+
     }
 }
