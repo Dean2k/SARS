@@ -2797,10 +2797,10 @@ namespace ARC
             }
             catch { }
 
-            if (StaticValues.Config.Config.RipperVersion != 2)
+            if (StaticValues.Config.Config.RipperVersion != 3)
             {
                 ArcClient.ClearOldRipper();
-                StaticValues.Config.Config.RipperVersion = 2;
+                StaticValues.Config.Config.RipperVersion = 3;
                 StaticValues.Config.Save();
             }
 
