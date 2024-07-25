@@ -139,7 +139,7 @@ namespace ARC.Modules
             var temp = GetDetails(avatar.Avatar.AvatarId);
 
 
-            if (temp == null)
+            if (temp == null && avatar.Avatar.PcAssetUrl.StartsWith("https"))
             {
                 MessageBox.Show("Private avatar downloading is currently disabled to prevent bans");
                 return false;

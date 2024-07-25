@@ -620,7 +620,7 @@ namespace ARC
             }
             catch { languageCode = "en"; }
 
-            _vrcaThread = new Thread(() => HotSwap.HotswapProcess(fileLocation, hotSwapConsole.txtStatusText, hotSwapConsole.pbProgress, inputName, chkUnlockPassword.Checked, chkAdvanceUnlock.Checked, StaticValues.Config.Config.ApiKey, chkTranslate.Checked, languageCode, chkAdvancedDic.Checked, StaticValues.Config.Config.UnityLocation2019, StaticValues.Config.Config.UnityLocation2022L, StaticValues.Config.Config.HotSwapName2019, StaticValues.Config.Config.HotSwapName2022L, StaticValues.Config.Config.DocumentLocation, chkUnityOpen.Checked));
+            _vrcaThread = new Thread(() => HotSwap.HotswapProcess(fileLocation, hotSwapConsole.txtStatusText, hotSwapConsole.pbProgress, inputName, chkUnlockPassword.Checked, chkAdvanceUnlock.Checked, StaticValues.Config.Config.ApiKey, chkTranslate.Checked, languageCode, chkAdvancedDic.Checked, StaticValues.Config.Config.UnityLocation2019, StaticValues.Config.Config.UnityLocation2022L, StaticValues.Config.Config.HotSwapName2019, StaticValues.Config.Config.HotSwapName2022L, StaticValues.Config.Config.DocumentLocation, chkUnityOpen.Checked, StaticValues.Config.Config.DocumentLocation));
             _vrcaThread.Start();
 
             return true;
