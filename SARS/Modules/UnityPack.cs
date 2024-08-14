@@ -287,6 +287,7 @@ namespace ARC.Modules
             }
         }
 
+
         private static void CreateTarGZ(string tgzFilename, string sourceDirectory)
         {
             Stream outStream = File.Create(tgzFilename);
@@ -297,27 +298,30 @@ namespace ARC.Modules
             if (tarArchive.RootPath.EndsWith("/"))
                 tarArchive.RootPath = tarArchive.RootPath.Remove(tarArchive.RootPath.Length - 1);
 
-            AddDirectoryFilesToTar(tarArchive, sourceDirectory, true);
+            AddDirectoryFilesToTar(tarArchive, sourceDirectory, "");
 
             tarArchive.Close();
         }
 
-        private static void AddDirectoryFilesToTar(TarArchive tarArchive, string sourceDirectory, bool recurse)
+        private static void AddDirectoryFilesToTar(TarArchive tarArchive, string sourceDirectory, string currentdirectory)
         {
-            var filenames = Directory.GetFiles(sourceDirectory);
+            var pathToCurrentDirectory = Path.Combine(sourceDirectory, currentdirectory);
+            var filenames = Directory.GetFiles(pathToCurrentDirectory);
             foreach (var filename in filenames)
             {
                 var tarEntry = TarEntry.CreateEntryFromFile(filename);
-                tarEntry.Name = filename.Remove(0, tarArchive.RootPath.Length + 1);
+                tarEntry.Name = filename.Replace(sourceDirectory, "");
+                tarEntry.Name = tarEntry.Name.Replace('\\', '/');
+                if (tarEntry.Name.StartsWith("\\"))
+                {
+                    tarEntry.Name = tarEntry.Name.Substring(1);
+                }
                 tarArchive.WriteEntry(tarEntry, true);
             }
-
-            if (!recurse) return;
-
-            var directories = Directory.GetDirectories(sourceDirectory);
+            var directories = Directory.GetDirectories(pathToCurrentDirectory);
             foreach (var directory in directories)
             {
-                AddDirectoryFilesToTar(tarArchive, directory, true);
+                AddDirectoryFilesToTar(tarArchive, sourceDirectory, directory);
             }
         }
 
